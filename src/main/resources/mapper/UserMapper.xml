@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hp.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.hp.bean.User">
+    <id column="U_ID" jdbcType="INTEGER" property="uId" />
+    <result column="G_NUM" jdbcType="INTEGER" property="gNum" />
+    <result column="CHECK_NUM" jdbcType="INTEGER" property="checkNum" />
+    <result column="C_STATUS" jdbcType="INTEGER" property="cStatus" />
+    <result column="C_NUM" jdbcType="INTEGER" property="cNum" />
+    <result column="CLASS_NUM" jdbcType="INTEGER" property="classNum" />
+    <result column="U_EXP" jdbcType="INTEGER" property="uExp" />
+    <result column="U_NAME" jdbcType="VARCHAR" property="uName" />
+    <result column="U_SEX" jdbcType="INTEGER" property="uSex" />
+    <result column="U_PHONE" jdbcType="INTEGER" property="uPhone" />
+    <result column="U_EMAIL" jdbcType="VARCHAR" property="uEmail" />
+    <result column="U_ACC" jdbcType="VARCHAR" property="uAcc" />
+    <result column="U_PWD" jdbcType="VARCHAR" property="uPwd" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    U_ID, G_NUM, CHECK_NUM, C_STATUS, C_NUM, CLASS_NUM, U_EXP, U_NAME, U_SEX, U_PHONE, 
+    U_EMAIL, U_ACC, U_PWD
+  </sql>
+  <select id="selectByExample" parameterType="com.hp.bean.UserExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from e_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from e_user
+    where U_ID = #{uId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from e_user
+    where U_ID = #{uId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hp.bean.UserExample">
+    delete from e_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hp.bean.User">
+    insert into e_user (U_ID, G_NUM, CHECK_NUM, 
+      C_STATUS, C_NUM, CLASS_NUM, 
+      U_EXP, U_NAME, U_SEX, 
+      U_PHONE, U_EMAIL, U_ACC, 
+      U_PWD)
+    values (#{uId,jdbcType=INTEGER}, #{gNum,jdbcType=INTEGER}, #{checkNum,jdbcType=INTEGER}, 
+      #{cStatus,jdbcType=INTEGER}, #{cNum,jdbcType=INTEGER}, #{classNum,jdbcType=INTEGER}, 
+      #{uExp,jdbcType=INTEGER}, #{uName,jdbcType=VARCHAR}, #{uSex,jdbcType=INTEGER}, 
+      #{uPhone,jdbcType=INTEGER}, #{uEmail,jdbcType=VARCHAR}, #{uAcc,jdbcType=VARCHAR}, 
+      #{uPwd,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hp.bean.User">
+    insert into e_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uId != null">
+        U_ID,
+      </if>
+      <if test="gNum != null">
+        G_NUM,
+      </if>
+      <if test="checkNum != null">
+        CHECK_NUM,
+      </if>
+      <if test="cStatus != null">
+        C_STATUS,
+      </if>
+      <if test="cNum != null">
+        C_NUM,
+      </if>
+      <if test="classNum != null">
+        CLASS_NUM,
+      </if>
+      <if test="uExp != null">
+        U_EXP,
+      </if>
+      <if test="uName != null">
+        U_NAME,
+      </if>
+      <if test="uSex != null">
+        U_SEX,
+      </if>
+      <if test="uPhone != null">
+        U_PHONE,
+      </if>
+      <if test="uEmail != null">
+        U_EMAIL,
+      </if>
+      <if test="uAcc != null">
+        U_ACC,
+      </if>
+      <if test="uPwd != null">
+        U_PWD,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uId != null">
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="gNum != null">
+        #{gNum,jdbcType=INTEGER},
+      </if>
+      <if test="checkNum != null">
+        #{checkNum,jdbcType=INTEGER},
+      </if>
+      <if test="cStatus != null">
+        #{cStatus,jdbcType=INTEGER},
+      </if>
+      <if test="cNum != null">
+        #{cNum,jdbcType=INTEGER},
+      </if>
+      <if test="classNum != null">
+        #{classNum,jdbcType=INTEGER},
+      </if>
+      <if test="uExp != null">
+        #{uExp,jdbcType=INTEGER},
+      </if>
+      <if test="uName != null">
+        #{uName,jdbcType=VARCHAR},
+      </if>
+      <if test="uSex != null">
+        #{uSex,jdbcType=INTEGER},
+      </if>
+      <if test="uPhone != null">
+        #{uPhone,jdbcType=INTEGER},
+      </if>
+      <if test="uEmail != null">
+        #{uEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="uAcc != null">
+        #{uAcc,jdbcType=VARCHAR},
+      </if>
+      <if test="uPwd != null">
+        #{uPwd,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hp.bean.UserExample" resultType="java.lang.Long">
+    select count(*) from e_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update e_user
+    <set>
+      <if test="record.uId != null">
+        U_ID = #{record.uId,jdbcType=INTEGER},
+      </if>
+      <if test="record.gNum != null">
+        G_NUM = #{record.gNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.checkNum != null">
+        CHECK_NUM = #{record.checkNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.cStatus != null">
+        C_STATUS = #{record.cStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.cNum != null">
+        C_NUM = #{record.cNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.classNum != null">
+        CLASS_NUM = #{record.classNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.uExp != null">
+        U_EXP = #{record.uExp,jdbcType=INTEGER},
+      </if>
+      <if test="record.uName != null">
+        U_NAME = #{record.uName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uSex != null">
+        U_SEX = #{record.uSex,jdbcType=INTEGER},
+      </if>
+      <if test="record.uPhone != null">
+        U_PHONE = #{record.uPhone,jdbcType=INTEGER},
+      </if>
+      <if test="record.uEmail != null">
+        U_EMAIL = #{record.uEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uAcc != null">
+        U_ACC = #{record.uAcc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uPwd != null">
+        U_PWD = #{record.uPwd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update e_user
+    set U_ID = #{record.uId,jdbcType=INTEGER},
+      G_NUM = #{record.gNum,jdbcType=INTEGER},
+      CHECK_NUM = #{record.checkNum,jdbcType=INTEGER},
+      C_STATUS = #{record.cStatus,jdbcType=INTEGER},
+      C_NUM = #{record.cNum,jdbcType=INTEGER},
+      CLASS_NUM = #{record.classNum,jdbcType=INTEGER},
+      U_EXP = #{record.uExp,jdbcType=INTEGER},
+      U_NAME = #{record.uName,jdbcType=VARCHAR},
+      U_SEX = #{record.uSex,jdbcType=INTEGER},
+      U_PHONE = #{record.uPhone,jdbcType=INTEGER},
+      U_EMAIL = #{record.uEmail,jdbcType=VARCHAR},
+      U_ACC = #{record.uAcc,jdbcType=VARCHAR},
+      U_PWD = #{record.uPwd,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hp.bean.User">
+    update e_user
+    <set>
+      <if test="gNum != null">
+        G_NUM = #{gNum,jdbcType=INTEGER},
+      </if>
+      <if test="checkNum != null">
+        CHECK_NUM = #{checkNum,jdbcType=INTEGER},
+      </if>
+      <if test="cStatus != null">
+        C_STATUS = #{cStatus,jdbcType=INTEGER},
+      </if>
+      <if test="cNum != null">
+        C_NUM = #{cNum,jdbcType=INTEGER},
+      </if>
+      <if test="classNum != null">
+        CLASS_NUM = #{classNum,jdbcType=INTEGER},
+      </if>
+      <if test="uExp != null">
+        U_EXP = #{uExp,jdbcType=INTEGER},
+      </if>
+      <if test="uName != null">
+        U_NAME = #{uName,jdbcType=VARCHAR},
+      </if>
+      <if test="uSex != null">
+        U_SEX = #{uSex,jdbcType=INTEGER},
+      </if>
+      <if test="uPhone != null">
+        U_PHONE = #{uPhone,jdbcType=INTEGER},
+      </if>
+      <if test="uEmail != null">
+        U_EMAIL = #{uEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="uAcc != null">
+        U_ACC = #{uAcc,jdbcType=VARCHAR},
+      </if>
+      <if test="uPwd != null">
+        U_PWD = #{uPwd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where U_ID = #{uId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hp.bean.User">
+    update e_user
+    set G_NUM = #{gNum,jdbcType=INTEGER},
+      CHECK_NUM = #{checkNum,jdbcType=INTEGER},
+      C_STATUS = #{cStatus,jdbcType=INTEGER},
+      C_NUM = #{cNum,jdbcType=INTEGER},
+      CLASS_NUM = #{classNum,jdbcType=INTEGER},
+      U_EXP = #{uExp,jdbcType=INTEGER},
+      U_NAME = #{uName,jdbcType=VARCHAR},
+      U_SEX = #{uSex,jdbcType=INTEGER},
+      U_PHONE = #{uPhone,jdbcType=INTEGER},
+      U_EMAIL = #{uEmail,jdbcType=VARCHAR},
+      U_ACC = #{uAcc,jdbcType=VARCHAR},
+      U_PWD = #{uPwd,jdbcType=VARCHAR}
+    where U_ID = #{uId,jdbcType=INTEGER}
+  </update>
+</mapper>

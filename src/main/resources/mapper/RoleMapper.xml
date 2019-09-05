@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hp.dao.RoleMapper">
+  <resultMap id="BaseResultMap" type="com.hp.bean.Role">
+    <id column="R_NUM" jdbcType="INTEGER" property="rNum" />
+    <result column="R_NAME" jdbcType="VARCHAR" property="rName" />
+    <result column="R_REMARKS" jdbcType="VARCHAR" property="rRemarks" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    R_NUM, R_NAME, R_REMARKS
+  </sql>
+  <select id="selectByExample" parameterType="com.hp.bean.RoleExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from e_role
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from e_role
+    where R_NUM = #{rNum,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from e_role
+    where R_NUM = #{rNum,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hp.bean.RoleExample">
+    delete from e_role
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hp.bean.Role">
+    insert into e_role (R_NUM, R_NAME, R_REMARKS
+      )
+    values (#{rNum,jdbcType=INTEGER}, #{rName,jdbcType=VARCHAR}, #{rRemarks,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hp.bean.Role">
+    insert into e_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rNum != null">
+        R_NUM,
+      </if>
+      <if test="rName != null">
+        R_NAME,
+      </if>
+      <if test="rRemarks != null">
+        R_REMARKS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rNum != null">
+        #{rNum,jdbcType=INTEGER},
+      </if>
+      <if test="rName != null">
+        #{rName,jdbcType=VARCHAR},
+      </if>
+      <if test="rRemarks != null">
+        #{rRemarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hp.bean.RoleExample" resultType="java.lang.Long">
+    select count(*) from e_role
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update e_role
+    <set>
+      <if test="record.rNum != null">
+        R_NUM = #{record.rNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.rName != null">
+        R_NAME = #{record.rName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rRemarks != null">
+        R_REMARKS = #{record.rRemarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update e_role
+    set R_NUM = #{record.rNum,jdbcType=INTEGER},
+      R_NAME = #{record.rName,jdbcType=VARCHAR},
+      R_REMARKS = #{record.rRemarks,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hp.bean.Role">
+    update e_role
+    <set>
+      <if test="rName != null">
+        R_NAME = #{rName,jdbcType=VARCHAR},
+      </if>
+      <if test="rRemarks != null">
+        R_REMARKS = #{rRemarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where R_NUM = #{rNum,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hp.bean.Role">
+    update e_role
+    set R_NAME = #{rName,jdbcType=VARCHAR},
+      R_REMARKS = #{rRemarks,jdbcType=VARCHAR}
+    where R_NUM = #{rNum,jdbcType=INTEGER}
+  </update>
+</mapper>

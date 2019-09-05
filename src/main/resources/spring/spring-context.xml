@@ -17,7 +17,7 @@
     <!-- 数据库连接池 -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" >
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
-        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/express?rewriteBatchedStatements=true&amp;useUnicode=true&amp;characterEncoding=utf8"/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/education??rewriteBatchedStatements=true&amp;useUnicode=true&amp;characterEncoding=utf8"/>
         <property name="user" value="root"/>
         <property name="password" value="root"/>
     </bean>
@@ -27,7 +27,7 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" >
         <property name="configLocation" value="classpath:mybatis/config.xml" />
         <property name="dataSource" ref="dataSource" />
-        <!-- <property name="mapperLocations" value="classpath:mapper/*.xml"/> -->
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
     </bean>
     
     <!-- mapper扫描器，将mybatis的接口实现加入到ioc容器中 -->

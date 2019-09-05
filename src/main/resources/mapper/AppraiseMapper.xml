@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hp.dao.AppraiseMapper">
+  <resultMap id="BaseResultMap" type="com.hp.bean.Appraise">
+    <id column="APPRAISE_NUM" jdbcType="INTEGER" property="appraiseNum" />
+    <result column="U_ID" jdbcType="INTEGER" property="uId" />
+    <result column="U_ID2" jdbcType="INTEGER" property="uId2" />
+    <result column="A_LEAVE" jdbcType="INTEGER" property="aLeave" />
+    <result column="A_TEXT" jdbcType="VARCHAR" property="aText" />
+    <result column="A_DATE" jdbcType="TIMESTAMP" property="aDate" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    APPRAISE_NUM, U_ID, U_ID2, A_LEAVE, A_TEXT, A_DATE
+  </sql>
+  <select id="selectByExample" parameterType="com.hp.bean.AppraiseExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from e_appraise
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from e_appraise
+    where APPRAISE_NUM = #{appraiseNum,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from e_appraise
+    where APPRAISE_NUM = #{appraiseNum,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hp.bean.AppraiseExample">
+    delete from e_appraise
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hp.bean.Appraise">
+    insert into e_appraise (APPRAISE_NUM, U_ID, U_ID2, 
+      A_LEAVE, A_TEXT, A_DATE
+      )
+    values (#{appraiseNum,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, #{uId2,jdbcType=INTEGER}, 
+      #{aLeave,jdbcType=INTEGER}, #{aText,jdbcType=VARCHAR}, #{aDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hp.bean.Appraise">
+    insert into e_appraise
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="appraiseNum != null">
+        APPRAISE_NUM,
+      </if>
+      <if test="uId != null">
+        U_ID,
+      </if>
+      <if test="uId2 != null">
+        U_ID2,
+      </if>
+      <if test="aLeave != null">
+        A_LEAVE,
+      </if>
+      <if test="aText != null">
+        A_TEXT,
+      </if>
+      <if test="aDate != null">
+        A_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="appraiseNum != null">
+        #{appraiseNum,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null">
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="uId2 != null">
+        #{uId2,jdbcType=INTEGER},
+      </if>
+      <if test="aLeave != null">
+        #{aLeave,jdbcType=INTEGER},
+      </if>
+      <if test="aText != null">
+        #{aText,jdbcType=VARCHAR},
+      </if>
+      <if test="aDate != null">
+        #{aDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hp.bean.AppraiseExample" resultType="java.lang.Long">
+    select count(*) from e_appraise
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update e_appraise
+    <set>
+      <if test="record.appraiseNum != null">
+        APPRAISE_NUM = #{record.appraiseNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.uId != null">
+        U_ID = #{record.uId,jdbcType=INTEGER},
+      </if>
+      <if test="record.uId2 != null">
+        U_ID2 = #{record.uId2,jdbcType=INTEGER},
+      </if>
+      <if test="record.aLeave != null">
+        A_LEAVE = #{record.aLeave,jdbcType=INTEGER},
+      </if>
+      <if test="record.aText != null">
+        A_TEXT = #{record.aText,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aDate != null">
+        A_DATE = #{record.aDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update e_appraise
+    set APPRAISE_NUM = #{record.appraiseNum,jdbcType=INTEGER},
+      U_ID = #{record.uId,jdbcType=INTEGER},
+      U_ID2 = #{record.uId2,jdbcType=INTEGER},
+      A_LEAVE = #{record.aLeave,jdbcType=INTEGER},
+      A_TEXT = #{record.aText,jdbcType=VARCHAR},
+      A_DATE = #{record.aDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hp.bean.Appraise">
+    update e_appraise
+    <set>
+      <if test="uId != null">
+        U_ID = #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="uId2 != null">
+        U_ID2 = #{uId2,jdbcType=INTEGER},
+      </if>
+      <if test="aLeave != null">
+        A_LEAVE = #{aLeave,jdbcType=INTEGER},
+      </if>
+      <if test="aText != null">
+        A_TEXT = #{aText,jdbcType=VARCHAR},
+      </if>
+      <if test="aDate != null">
+        A_DATE = #{aDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where APPRAISE_NUM = #{appraiseNum,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hp.bean.Appraise">
+    update e_appraise
+    set U_ID = #{uId,jdbcType=INTEGER},
+      U_ID2 = #{uId2,jdbcType=INTEGER},
+      A_LEAVE = #{aLeave,jdbcType=INTEGER},
+      A_TEXT = #{aText,jdbcType=VARCHAR},
+      A_DATE = #{aDate,jdbcType=TIMESTAMP}
+    where APPRAISE_NUM = #{appraiseNum,jdbcType=INTEGER}
+  </update>
+</mapper>

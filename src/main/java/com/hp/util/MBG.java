@@ -11,7 +11,7 @@ import org.mybatis.generator.internal.DefaultShellCallback;
 public class MBG {
 	
 	/**
-	 * .本类用于调整MBG插件，请勿运行 
+	 * .本类用于调整插件，请勿运行 
 	 * */
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
