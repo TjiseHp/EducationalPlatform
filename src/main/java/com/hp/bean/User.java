@@ -19,7 +19,7 @@ public class User {
 
     private Integer uSex;
 
-    private Integer uPhone;
+    private String uPhone;
 
     private String uEmail;
 
@@ -99,12 +99,12 @@ public class User {
         this.uSex = uSex;
     }
 
-    public Integer getuPhone() {
+    public String getuPhone() {
         return uPhone;
     }
 
-    public void setuPhone(Integer uPhone) {
-        this.uPhone = uPhone;
+    public void setuPhone(String uPhone) {
+        this.uPhone = uPhone == null ? null : uPhone.trim();
     }
 
     public String getuEmail() {
