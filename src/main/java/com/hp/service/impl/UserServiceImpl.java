@@ -17,6 +17,11 @@ public class UserServiceImpl implements UserService {
 		return userDao.queryAllStudent();
 	}
 
+	public List<User> queryAllTeacher() {
+		// TODO Auto-generated method stub
+		return userDao.queryAllTeacher();
+	}
+
 	
 
 }

@@ -33,6 +33,13 @@ public class UserCortroller {
 		return student;
 	}
 	
+	@ResponseBody
+	@RequestMapping("/TeacherTable")
+	public Object teacherTable() {
+		List<User> teacher=userService.queryAllTeacher();
+		return teacher;
+	}
+	
 	
 //	@Autowired
 //	public UserService userService;

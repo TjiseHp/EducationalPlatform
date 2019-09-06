@@ -6,6 +6,8 @@ public interface UserService {
 
 	List<User> queryAllStudent();
 
+	List<User> queryAllTeacher();
+
 
 
 }
