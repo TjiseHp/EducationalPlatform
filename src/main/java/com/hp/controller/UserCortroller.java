@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.hp.bean.Credit;
 import com.hp.bean.User;
 import com.hp.service.CreditService;
 import com.hp.service.UserService;
@@ -22,7 +23,7 @@ import com.hp.util.PageUtil;
  */
 @Controller
 @RequestMapping("/user")
-public class UserCortroller {
+public class UserCortroller  {
 	
 	@Autowired
 	public UserService userService;
@@ -30,12 +31,12 @@ public class UserCortroller {
 	@Autowired
 	public CreditService creditService;
 	
-	@ResponseBody
-	@RequestMapping("/TeacherTable")
-	public Object teacherTable() {
-		List<User> teacher=userService.queryAllTeacher();
-		return teacher;
-	}
+//	@ResponseBody
+//	@RequestMapping("/TeacherTable")
+//	public Object teacherTable() {
+//		List<User> teacher=userService.queryAllTeacher();
+//		return teacher;
+//	}
 	
 	
 	//查询全部学生(会员)列表
@@ -64,6 +65,61 @@ public class UserCortroller {
 		modelAndView.setViewName("main");
 		return modelAndView;
 	}
+	
+	@RequestMapping("/teacherTable")
+	public ModelAndView teacherTable(@RequestParam(defaultValue = "1",required = true,value = "pageNum") Integer pageNum,HttpServletRequest httpServletRequest) {
+		Integer pageSize=PageUtil.getPageSize();
+		ModelAndView modelAndView = new ModelAndView();
+		HttpSession httpSession = httpServletRequest.getSession();
+		
+		PageHelper.startPage(pageNum, pageSize);
+		List<User> teacher=userService.queryAllTeacher();
+		PageInfo<User> pageInfo = new PageInfo<User>(teacher);
+		
+		modelAndView.addObject("pageInfo", pageInfo);
+		modelAndView.addObject("httpSession",httpSession);		
+		modelAndView.addObject("mainPage", "user/teacherTable.jsp");
+		modelAndView.setViewName("main");
+		return modelAndView;
+	}
+	
+	
+	//积分消费记录明细查询
+	@RequestMapping("/creditConsumption")
+	public ModelAndView creditTable(@RequestParam(defaultValue = "1",required = true,value = "pageNum") Integer pageNum,HttpServletRequest httpServletRequest) {
+		Integer pageSize=PageUtil.getPageSize();
+		ModelAndView modelAndView = new ModelAndView();
+		HttpSession httpSession = httpServletRequest.getSession();
+		
+		PageHelper.startPage(pageNum, pageSize);
+		List<Credit> creditConsumption=userService.queryAllConsumption();
+		PageInfo<Credit> pageInfo = new PageInfo<Credit>(creditConsumption);
+		
+		modelAndView.addObject("pageInfo", pageInfo);
+		modelAndView.addObject("httpSession",httpSession);		
+		modelAndView.addObject("mainPage", "user/creditConsumption.jsp");
+		modelAndView.setViewName("main");
+		return modelAndView;
+	}
+	
+	//查询历史购买订单
+		@RequestMapping("/creditBuy")
+		public ModelAndView creditBuyTable(@RequestParam(defaultValue = "1",required = true,value = "pageNum") Integer pageNum,HttpServletRequest httpServletRequest) {
+			Integer pageSize=PageUtil.getPageSize();
+			ModelAndView modelAndView = new ModelAndView();
+			HttpSession httpSession = httpServletRequest.getSession();
+			
+			PageHelper.startPage(pageNum, pageSize);
+			List<Credit> creditBuy=userService.queryAllBuy();
+			PageInfo<Credit> pageInfo = new PageInfo<Credit>(creditBuy);
+			
+			modelAndView.addObject("pageInfo", pageInfo);
+			modelAndView.addObject("httpSession",httpSession);		
+			modelAndView.addObject("mainPage", "user/creditBuy.jsp");
+			modelAndView.setViewName("main");
+			return modelAndView;
+		}
+	
 	
 	
 	
