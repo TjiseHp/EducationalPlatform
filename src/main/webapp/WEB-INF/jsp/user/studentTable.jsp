@@ -27,6 +27,7 @@
 					  				<td>手机		</td>
 					  				<td>性别		</td>
 					  				<td>邮箱		</td>
+					  				<td>剩余积分	</td>
 					  				<td>
 					  					<a class="btn btn-success btn-xs" role="button" href="javascript:;" onclick="doAdd();" >新&nbsp;增</a>
 					  				</td>
@@ -38,6 +39,7 @@
 						  				<td>${students.uPhone}</td>
 						  				<td>${students.uSex}</td>
 						  				<td>${students.uEmail}</td>
+						  				<td>${students.credit}</td>
 						  				<td>
 						  					<a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doUpdate('${couriers.courierNo}');">修改</a>
 						  					<a class="btn btn-danger btn-xs" role="button" href="javascript:;" onclick="doDel('${couriers.courierNo}');">删除</a>

@@ -1,5 +1,9 @@
 package com.hp.bean;
 
+/*
+ * 	实例化后新增加了
+ * 	1.Credit 及其对应方法，用于快速增加积分信息。
+ * */
 public class User {
     private Integer uId;
 
@@ -26,8 +30,18 @@ public class User {
     private String uAcc;
 
     private String uPwd;
+    
+    private String credit;
 
-    public Integer getuId() {
+	public String getCredit() {
+		return credit;
+	}
+
+	public void setCredit(String credit) {
+		this.credit = credit;
+	}
+
+	public Integer getuId() {
         return uId;
     }
 
