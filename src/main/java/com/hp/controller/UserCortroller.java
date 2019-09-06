@@ -26,19 +26,15 @@ public class UserCortroller {
 	@Autowired
 	public UserService userService;
 	
-	@ResponseBody
-	@RequestMapping("/studentTable")
-	public Object studentTable() {
-		List<User> student = userService.queryAllStudent();
-		return student;
-	}
+//	@ResponseBody
+//	@RequestMapping("/studentTable")
+//	public Object studentTable() {
+//		List<User> student = userService.queryAllStudent();
+//		return student;
+//	}
 	
 	
-//	@Autowired
-//	public UserService userService;
 	
-	/*
-	@ResponseBody
 	@RequestMapping("/studentTable")
 	public ModelAndView studentTable(@RequestParam(defaultValue = "1",required = true,value = "pageNum") Integer pageNum,HttpServletRequest httpServletRequest) {
 		Integer pageSize=PageUtil.getPageSize();
@@ -46,23 +42,17 @@ public class UserCortroller {
 		HttpSession httpSession = httpServletRequest.getSession();
 		
 		PageHelper.startPage(pageNum, pageSize);
-		List<User> students = userService.queryAllStudents();
+		List<User> students = userService.queryAllStudent();
 		PageInfo<User> pageInfo = new PageInfo<User>(students);
 		
 		modelAndView.addObject("pageInfo", pageInfo);
 		modelAndView.addObject("httpSession",httpSession);		
-		modelAndView.addObject("mainPage", "");
-		modelAndView.setViewName("");
+		modelAndView.addObject("mainPage", "user/studentTable.jsp");
+		modelAndView.setViewName("main");
 		return modelAndView;
 	}
-	*/
 	
-//	@ResponseBody
-//	@RequestMapping("/studentTable")
-//	public Object studentTable() {
-//		List<User> students = userService.queryAllStudents();
-//		return students;
-//	}
+	
 	
 	
 }
