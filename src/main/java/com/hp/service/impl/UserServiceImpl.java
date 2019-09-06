@@ -29,11 +29,7 @@ public class UserServiceImpl implements UserService {
 		return userDao.queryAllConsumption();
 	}
 
-	@Override
-	public List<Credit> queryAllBuy() {
-		// TODO Auto-generated method stub
-		return userDao.queryAllBuy();
-	}
+	
 
 	
 	
