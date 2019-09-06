@@ -13,11 +13,7 @@ public interface UserDao {
 	@Select("select * from e_user where g_num = 2")
 	List<User> queryAllTeacher();
 
-	@Select("select * from e_credit where CREDIT_TEXT <> \"充值\"")
-	List<Credit> queryAllConsumption();
 	
-	@Select("select * from e_credit where CREDIT_TEXT =\"充值\"")
-	List<Credit> queryAllBuy();
 	
 	
 
