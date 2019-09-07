@@ -36,12 +36,12 @@ public class UserServiceImpl implements UserService {
 		userMapper.updateByPrimaryKeySelective(user);
 	}
 
-	
+	public List<User> queryStudentByExample(String search) {
+		return userDao.queryStudentByExample(search);
+	}
 
-	
-
-	
-	
-	
+	public void insertSelective(User user) {
+		userMapper.insertSelective(user);
+	}
 
 }

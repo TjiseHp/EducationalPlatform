@@ -41,21 +41,21 @@ public class CreditController {
 		return modelAndView;
 	}
 		
-		//查询历史购买订单
-		@RequestMapping("/creditBuy")
-		public ModelAndView creditBuyTable(@RequestParam(defaultValue = "1",required = true,value = "pageNum") Integer pageNum,HttpServletRequest httpServletRequest) {
-			Integer pageSize=PageUtil.getPageSize();
-			ModelAndView modelAndView = new ModelAndView();
-			HttpSession httpSession = httpServletRequest.getSession();
-			
-			PageHelper.startPage(pageNum, pageSize);
-			List<Credit> creditBuy=creditService.queryAllBuy();
-			PageInfo<Credit> pageInfo = new PageInfo<Credit>(creditBuy);
-			
-			modelAndView.addObject("pageInfo", pageInfo);
-			modelAndView.addObject("httpSession",httpSession);		
-			modelAndView.addObject("mainPage", "credit/creditBuy.jsp");
-			modelAndView.setViewName("main");
-			return modelAndView;
-		}
+	//查询历史购买订单
+	@RequestMapping("/creditBuy")
+	public ModelAndView creditBuyTable(@RequestParam(defaultValue = "1",required = true,value = "pageNum") Integer pageNum,HttpServletRequest httpServletRequest) {
+		Integer pageSize=PageUtil.getPageSize();
+		ModelAndView modelAndView = new ModelAndView();
+		HttpSession httpSession = httpServletRequest.getSession();
+		
+		PageHelper.startPage(pageNum, pageSize);
+		List<Credit> creditBuy=creditService.queryAllBuy();
+		PageInfo<Credit> pageInfo = new PageInfo<Credit>(creditBuy);
+		
+		modelAndView.addObject("pageInfo", pageInfo);
+		modelAndView.addObject("httpSession",httpSession);		
+		modelAndView.addObject("mainPage", "credit/creditBuy.jsp");
+		modelAndView.setViewName("main");
+		return modelAndView;
+	}
 }

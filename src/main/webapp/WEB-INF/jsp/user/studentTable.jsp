@@ -20,7 +20,19 @@
 		function doUpdate(uId) {		
 			window.location.href = "${pageContext.request.contextPath}/user/updateStudent?uId="+uId;
 		}
-	
+		
+		function doSearch(){
+			var search = $("#search").val();
+			if(search == ""){
+				window.location.href = "${pageContext.request.contextPath}/user/studentTable";
+			}else{
+				window.location.href = "${pageContext.request.contextPath}/user/searchStudent?search="+search;
+			}
+		}
+		
+		function doAdd() {
+			window.location.href = "${pageContext.request.contextPath}/user/insertStudent";
+		}
 	</script>
 	
 	<div class="table-responsive text-center">
@@ -55,14 +67,7 @@
 		  				<td>${students.uId}</td>
 		  				<td>${students.uName}</td>
 		  				<td>${students.uPhone}</td>
-		  				<td>
-		  					<c:if test="${students.uSex==1}">
-		  						男
-		  					</c:if>
-		  					<c:if test="${students.uSex==2}">
-		  						女
-		  					</c:if>
-		  				</td>
+		  				<td>${students.uSex}</td>
 		  				<td>${students.uEmail}</td>
 		  				<td>${students.credit}</td>
 		  				<td>
