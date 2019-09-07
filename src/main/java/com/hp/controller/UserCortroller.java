@@ -86,7 +86,7 @@ public class UserCortroller  {
 	
 	//学生更新页面跳转
 	@RequestMapping("/updateStudent")
-	public ModelAndView updateCourier
+	public ModelAndView updateStudent
 			(HttpServletRequest httpServletRequest,
 			@RequestParam(required = true,value = "uId") Integer uId) {
 		HttpSession httpSession = httpServletRequest.getSession();
@@ -101,11 +101,31 @@ public class UserCortroller  {
 	
 	//更新学生信息
 	@RequestMapping(value = "/doUpdateStudent",produces = {"text/html;charset=utf-8"})
-	public String updateCourier(User user,HttpServletRequest httpServletRequest) {
+	public String doUpdateStudent(User user,HttpServletRequest httpServletRequest) {
 		userService.updateByPrimaryKeySelective(user);
 		return "redirect: studentTable";
 	}
 	
+	//模糊查询
+	@RequestMapping("/searchStudent")
+	public ModelAndView searchStudent
+		(		@RequestParam(defaultValue = "1",required = true,value = "pageNum") Integer pageNum,
+				@RequestParam(required = true,value = "search") String search,
+				HttpServletRequest httpServletRequest) {
+		System.out.println("模糊查询:"+search);
+		Integer pageSize=PageUtil.getPageSize();
+		ModelAndView modelAndView = new ModelAndView();
+		HttpSession httpSession = httpServletRequest.getSession();
+		PageHelper.startPage(pageNum, pageSize);
+		List<User> users = userService.queryStudentByExample(search);
+		PageInfo<User> pageInfo = new PageInfo<User>(users);
+		System.out.println("users size:"+users.size());
+		modelAndView.addObject("pageInfo", pageInfo);
+		modelAndView.addObject("httpSession",httpSession);
+		modelAndView.addObject("mainPage", "user/studentTable.jsp");
+		modelAndView.setViewName("main");
+		return modelAndView;
+	}
 	
 	//删除教师
 		@RequestMapping("/deleteTeacher")
@@ -116,21 +136,38 @@ public class UserCortroller  {
 			return "redirect:teacherTable";
 		}
 		
-	
+
+	//插入学生信息--页面跳转
+	@RequestMapping("/insertStudent")
+	public ModelAndView insertStudent(HttpServletRequest httpServletRequest) {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("mainPage", "user/insertStudent.jsp");
+		modelAndView.setViewName("main");
+		return modelAndView;
+	}
+
 	//教师更新页面跳转
-		@RequestMapping("/updateTeacher")
-		public ModelAndView updateTeacher
-				(HttpServletRequest httpServletRequest,
-				@RequestParam(required = true,value = "uId") Integer uId) {
-			HttpSession httpSession = httpServletRequest.getSession();
-			User user = userService.queryTeacherByuId(uId);
-			ModelAndView modelAndView = new ModelAndView();
-			modelAndView.addObject("httpSession",httpSession);
-			modelAndView.addObject("user",user);
-			modelAndView.addObject("mainPage", "user/updateTeacher.jsp");
-			modelAndView.setViewName("main");
-			return modelAndView;
-		}
+	@RequestMapping("/updateTeacher")
+	public ModelAndView updateTeacher
+			(HttpServletRequest httpServletRequest,
+			@RequestParam(required = true,value = "uId") Integer uId) {
+		HttpSession httpSession = httpServletRequest.getSession();
+		User user = userService.queryTeacherByuId(uId);
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("httpSession",httpSession);
+		modelAndView.addObject("user",user);
+		modelAndView.addObject("mainPage", "user/updateTeacher.jsp");
+		modelAndView.setViewName("main");
+		return modelAndView;
+	}
+
+	//执行插入学生信息
+	@RequestMapping(value = "/doInsertStudent",produces = {"text/html;charset=utf-8"})
+	public String doInsertStudent(User user,HttpSession httpSession) {
+		user.setgNum(1);
+		userService.insertSelective(user);
+		return "redirect: studentTable";
+	}
 	
 	//更新学生信息
 		@RequestMapping(value = "/doUpdateTeacher",produces = {"text/html;charset=utf-8"})

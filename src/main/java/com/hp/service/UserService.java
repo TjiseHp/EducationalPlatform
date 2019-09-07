@@ -15,5 +15,9 @@ public interface UserService {
 	void updateByPrimaryKeySelective(User user);
 
 	User queryTeacherByuId(Integer uId);
+	
+	List<User> queryStudentByExample(String search);
+
+	void insertSelective(User user);
 
 }

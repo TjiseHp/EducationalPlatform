@@ -19,10 +19,6 @@ public interface UserDao {
 	@Select("select * from e_user where U_ID = #{uId}")
 	User queryTeacherByuId(Integer uId);
 
-	
-	
-	
-
-
+	List<User> queryStudentByExample(String search);
 
 }

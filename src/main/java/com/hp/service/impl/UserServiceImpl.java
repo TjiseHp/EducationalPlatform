@@ -37,16 +37,15 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public User queryTeacherByuId(Integer uId) {
-		// TODO Auto-generated method stub
 		return userDao.queryTeacherByuId(uId);
 	}
 
-	
+	public List<User> queryStudentByExample(String search) {
+		return userDao.queryStudentByExample(search);
+	}
 
-	
-
-	
-	
-	
+	public void insertSelective(User user) {
+		userMapper.insertSelective(user);
+	}
 
 }

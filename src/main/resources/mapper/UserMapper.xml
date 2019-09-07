@@ -10,7 +10,7 @@
     <result column="CLASS_NUM" jdbcType="INTEGER" property="classNum" />
     <result column="U_EXP" jdbcType="INTEGER" property="uExp" />
     <result column="U_NAME" jdbcType="VARCHAR" property="uName" />
-    <result column="U_SEX" jdbcType="INTEGER" property="uSex" />
+    <result column="U_SEX" jdbcType="VARCHAR" property="uSex" />
     <result column="U_PHONE" jdbcType="VARCHAR" property="uPhone" />
     <result column="U_EMAIL" jdbcType="VARCHAR" property="uEmail" />
     <result column="U_ACC" jdbcType="VARCHAR" property="uAcc" />
@@ -116,7 +116,7 @@
       U_PWD)
     values (#{uId,jdbcType=INTEGER}, #{gNum,jdbcType=INTEGER}, #{checkNum,jdbcType=INTEGER}, 
       #{cStatus,jdbcType=INTEGER}, #{cNum,jdbcType=INTEGER}, #{classNum,jdbcType=INTEGER}, 
-      #{uExp,jdbcType=INTEGER}, #{uName,jdbcType=VARCHAR}, #{uSex,jdbcType=INTEGER}, 
+      #{uExp,jdbcType=INTEGER}, #{uName,jdbcType=VARCHAR}, #{uSex,jdbcType=VARCHAR}, 
       #{uPhone,jdbcType=VARCHAR}, #{uEmail,jdbcType=VARCHAR}, #{uAcc,jdbcType=VARCHAR}, 
       #{uPwd,jdbcType=VARCHAR})
   </insert>
@@ -189,7 +189,7 @@
         #{uName,jdbcType=VARCHAR},
       </if>
       <if test="uSex != null">
-        #{uSex,jdbcType=INTEGER},
+        #{uSex,jdbcType=VARCHAR},
       </if>
       <if test="uPhone != null">
         #{uPhone,jdbcType=VARCHAR},
@@ -239,7 +239,7 @@
         U_NAME = #{record.uName,jdbcType=VARCHAR},
       </if>
       <if test="record.uSex != null">
-        U_SEX = #{record.uSex,jdbcType=INTEGER},
+        U_SEX = #{record.uSex,jdbcType=VARCHAR},
       </if>
       <if test="record.uPhone != null">
         U_PHONE = #{record.uPhone,jdbcType=VARCHAR},
@@ -268,7 +268,7 @@
       CLASS_NUM = #{record.classNum,jdbcType=INTEGER},
       U_EXP = #{record.uExp,jdbcType=INTEGER},
       U_NAME = #{record.uName,jdbcType=VARCHAR},
-      U_SEX = #{record.uSex,jdbcType=INTEGER},
+      U_SEX = #{record.uSex,jdbcType=VARCHAR},
       U_PHONE = #{record.uPhone,jdbcType=VARCHAR},
       U_EMAIL = #{record.uEmail,jdbcType=VARCHAR},
       U_ACC = #{record.uAcc,jdbcType=VARCHAR},
@@ -302,7 +302,7 @@
         U_NAME = #{uName,jdbcType=VARCHAR},
       </if>
       <if test="uSex != null">
-        U_SEX = #{uSex,jdbcType=INTEGER},
+        U_SEX = #{uSex,jdbcType=VARCHAR},
       </if>
       <if test="uPhone != null">
         U_PHONE = #{uPhone,jdbcType=VARCHAR},
@@ -328,7 +328,7 @@
       CLASS_NUM = #{classNum,jdbcType=INTEGER},
       U_EXP = #{uExp,jdbcType=INTEGER},
       U_NAME = #{uName,jdbcType=VARCHAR},
-      U_SEX = #{uSex,jdbcType=INTEGER},
+      U_SEX = #{uSex,jdbcType=VARCHAR},
       U_PHONE = #{uPhone,jdbcType=VARCHAR},
       U_EMAIL = #{uEmail,jdbcType=VARCHAR},
       U_ACC = #{uAcc,jdbcType=VARCHAR},

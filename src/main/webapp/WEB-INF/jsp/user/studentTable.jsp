@@ -23,9 +23,21 @@
 		
 		function dodetail(uId){
 			window.location.href = "${pageContext.request.contextPath}/credit/creditDetail?uId="+uId;
-			
 		}
 	
+		function doSearch(){
+			var search = $("#search").val();
+			if(search == ""){
+				window.location.href = "${pageContext.request.contextPath}/user/studentTable";
+			}else{
+				window.location.href = "${pageContext.request.contextPath}/user/searchStudent?search="+search;
+			}
+		}
+		
+		function doAdd() {
+			window.location.href = "${pageContext.request.contextPath}/user/insertStudent";
+		}
+		
 	</script>
 	
 	<div class="table-responsive text-center">
@@ -60,14 +72,7 @@
 		  				<td>${students.uId}</td>
 		  				<td>${students.uName}</td>
 		  				<td>${students.uPhone}</td>
-		  				<td>
-		  					<c:if test="${students.uSex==1}">
-		  						男
-		  					</c:if>
-		  					<c:if test="${students.uSex==2}">
-		  						女
-		  					</c:if>
-		  				</td>
+		  				<td>${students.uSex}</td>
 		  				<td>${students.uEmail}</td>
 		  				<td>${students.credit}
 		  					<a class="btn btn-success btn-xs" role="button" href="javascript:;" onclick="dodetail('${students.uId}');">详&nbsp;情</a>

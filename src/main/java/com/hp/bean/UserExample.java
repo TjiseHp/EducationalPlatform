@@ -604,52 +604,62 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andUSexEqualTo(Integer value) {
+        public Criteria andUSexEqualTo(String value) {
             addCriterion("U_SEX =", value, "uSex");
             return (Criteria) this;
         }
 
-        public Criteria andUSexNotEqualTo(Integer value) {
+        public Criteria andUSexNotEqualTo(String value) {
             addCriterion("U_SEX <>", value, "uSex");
             return (Criteria) this;
         }
 
-        public Criteria andUSexGreaterThan(Integer value) {
+        public Criteria andUSexGreaterThan(String value) {
             addCriterion("U_SEX >", value, "uSex");
             return (Criteria) this;
         }
 
-        public Criteria andUSexGreaterThanOrEqualTo(Integer value) {
+        public Criteria andUSexGreaterThanOrEqualTo(String value) {
             addCriterion("U_SEX >=", value, "uSex");
             return (Criteria) this;
         }
 
-        public Criteria andUSexLessThan(Integer value) {
+        public Criteria andUSexLessThan(String value) {
             addCriterion("U_SEX <", value, "uSex");
             return (Criteria) this;
         }
 
-        public Criteria andUSexLessThanOrEqualTo(Integer value) {
+        public Criteria andUSexLessThanOrEqualTo(String value) {
             addCriterion("U_SEX <=", value, "uSex");
             return (Criteria) this;
         }
 
-        public Criteria andUSexIn(List<Integer> values) {
+        public Criteria andUSexLike(String value) {
+            addCriterion("U_SEX like", value, "uSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andUSexNotLike(String value) {
+            addCriterion("U_SEX not like", value, "uSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andUSexIn(List<String> values) {
             addCriterion("U_SEX in", values, "uSex");
             return (Criteria) this;
         }
 
-        public Criteria andUSexNotIn(List<Integer> values) {
+        public Criteria andUSexNotIn(List<String> values) {
             addCriterion("U_SEX not in", values, "uSex");
             return (Criteria) this;
         }
 
-        public Criteria andUSexBetween(Integer value1, Integer value2) {
+        public Criteria andUSexBetween(String value1, String value2) {
             addCriterion("U_SEX between", value1, value2, "uSex");
             return (Criteria) this;
         }
 
-        public Criteria andUSexNotBetween(Integer value1, Integer value2) {
+        public Criteria andUSexNotBetween(String value1, String value2) {
             addCriterion("U_SEX not between", value1, value2, "uSex");
             return (Criteria) this;
         }
