@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hp.dao.PowerMapper">
+  <resultMap id="BaseResultMap" type="com.hp.bean.Power">
+    <id column="P_NUM" jdbcType="INTEGER" property="pNum" />
+    <result column="M_NUM" jdbcType="INTEGER" property="mNum" />
+    <result column="R_NUM" jdbcType="INTEGER" property="rNum" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    P_NUM, M_NUM, R_NUM
+  </sql>
+  <select id="selectByExample" parameterType="com.hp.bean.PowerExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from e_power
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from e_power
+    where P_NUM = #{pNum,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from e_power
+    where P_NUM = #{pNum,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hp.bean.PowerExample">
+    delete from e_power
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hp.bean.Power">
+    insert into e_power (P_NUM, M_NUM, R_NUM
+      )
+    values (#{pNum,jdbcType=INTEGER}, #{mNum,jdbcType=INTEGER}, #{rNum,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hp.bean.Power">
+    insert into e_power
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pNum != null">
+        P_NUM,
+      </if>
+      <if test="mNum != null">
+        M_NUM,
+      </if>
+      <if test="rNum != null">
+        R_NUM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pNum != null">
+        #{pNum,jdbcType=INTEGER},
+      </if>
+      <if test="mNum != null">
+        #{mNum,jdbcType=INTEGER},
+      </if>
+      <if test="rNum != null">
+        #{rNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hp.bean.PowerExample" resultType="java.lang.Long">
+    select count(*) from e_power
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update e_power
+    <set>
+      <if test="record.pNum != null">
+        P_NUM = #{record.pNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.mNum != null">
+        M_NUM = #{record.mNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.rNum != null">
+        R_NUM = #{record.rNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update e_power
+    set P_NUM = #{record.pNum,jdbcType=INTEGER},
+      M_NUM = #{record.mNum,jdbcType=INTEGER},
+      R_NUM = #{record.rNum,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hp.bean.Power">
+    update e_power
+    <set>
+      <if test="mNum != null">
+        M_NUM = #{mNum,jdbcType=INTEGER},
+      </if>
+      <if test="rNum != null">
+        R_NUM = #{rNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where P_NUM = #{pNum,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hp.bean.Power">
+    update e_power
+    set M_NUM = #{mNum,jdbcType=INTEGER},
+      R_NUM = #{rNum,jdbcType=INTEGER}
+    where P_NUM = #{pNum,jdbcType=INTEGER}
+  </update>
+</mapper>

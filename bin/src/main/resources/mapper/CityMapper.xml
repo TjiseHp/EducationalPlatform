@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hp.dao.CityMapper">
+  <resultMap id="BaseResultMap" type="com.hp.bean.City">
+    <id column="C_NUM" jdbcType="INTEGER" property="cNum" />
+    <result column="C_PROVINCE" jdbcType="VARCHAR" property="cProvince" />
+    <result column="C_CITY" jdbcType="VARCHAR" property="cCity" />
+    <result column="C_COUNTY" jdbcType="VARCHAR" property="cCounty" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    C_NUM, C_PROVINCE, C_CITY, C_COUNTY
+  </sql>
+  <select id="selectByExample" parameterType="com.hp.bean.CityExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from e_city
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from e_city
+    where C_NUM = #{cNum,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from e_city
+    where C_NUM = #{cNum,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hp.bean.CityExample">
+    delete from e_city
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hp.bean.City">
+    insert into e_city (C_NUM, C_PROVINCE, C_CITY, 
+      C_COUNTY)
+    values (#{cNum,jdbcType=INTEGER}, #{cProvince,jdbcType=VARCHAR}, #{cCity,jdbcType=VARCHAR}, 
+      #{cCounty,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hp.bean.City">
+    insert into e_city
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cNum != null">
+        C_NUM,
+      </if>
+      <if test="cProvince != null">
+        C_PROVINCE,
+      </if>
+      <if test="cCity != null">
+        C_CITY,
+      </if>
+      <if test="cCounty != null">
+        C_COUNTY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cNum != null">
+        #{cNum,jdbcType=INTEGER},
+      </if>
+      <if test="cProvince != null">
+        #{cProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="cCity != null">
+        #{cCity,jdbcType=VARCHAR},
+      </if>
+      <if test="cCounty != null">
+        #{cCounty,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hp.bean.CityExample" resultType="java.lang.Long">
+    select count(*) from e_city
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update e_city
+    <set>
+      <if test="record.cNum != null">
+        C_NUM = #{record.cNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.cProvince != null">
+        C_PROVINCE = #{record.cProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cCity != null">
+        C_CITY = #{record.cCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cCounty != null">
+        C_COUNTY = #{record.cCounty,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update e_city
+    set C_NUM = #{record.cNum,jdbcType=INTEGER},
+      C_PROVINCE = #{record.cProvince,jdbcType=VARCHAR},
+      C_CITY = #{record.cCity,jdbcType=VARCHAR},
+      C_COUNTY = #{record.cCounty,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hp.bean.City">
+    update e_city
+    <set>
+      <if test="cProvince != null">
+        C_PROVINCE = #{cProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="cCity != null">
+        C_CITY = #{cCity,jdbcType=VARCHAR},
+      </if>
+      <if test="cCounty != null">
+        C_COUNTY = #{cCounty,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where C_NUM = #{cNum,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hp.bean.City">
+    update e_city
+    set C_PROVINCE = #{cProvince,jdbcType=VARCHAR},
+      C_CITY = #{cCity,jdbcType=VARCHAR},
+      C_COUNTY = #{cCounty,jdbcType=VARCHAR}
+    where C_NUM = #{cNum,jdbcType=INTEGER}
+  </update>
+</mapper>

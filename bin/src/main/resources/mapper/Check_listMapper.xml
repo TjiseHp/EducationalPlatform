@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hp.dao.Check_listMapper">
+  <resultMap id="BaseResultMap" type="com.hp.bean.Check_list">
+    <id column="LIST_ID" jdbcType="INTEGER" property="listId" />
+    <result column="U_ID" jdbcType="INTEGER" property="uId" />
+    <result column="U_ID2" jdbcType="INTEGER" property="uId2" />
+    <result column="LIST_NAME" jdbcType="VARCHAR" property="listName" />
+    <result column="LIST_S_TIME" jdbcType="TIMESTAMP" property="listSTime" />
+    <result column="LIST_E_TIME" jdbcType="TIMESTAMP" property="listETime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    LIST_ID, U_ID, U_ID2, LIST_NAME, LIST_S_TIME, LIST_E_TIME
+  </sql>
+  <select id="selectByExample" parameterType="com.hp.bean.Check_listExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from e_check_list
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from e_check_list
+    where LIST_ID = #{listId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from e_check_list
+    where LIST_ID = #{listId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hp.bean.Check_listExample">
+    delete from e_check_list
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hp.bean.Check_list">
+    insert into e_check_list (LIST_ID, U_ID, U_ID2, 
+      LIST_NAME, LIST_S_TIME, LIST_E_TIME
+      )
+    values (#{listId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, #{uId2,jdbcType=INTEGER}, 
+      #{listName,jdbcType=VARCHAR}, #{listSTime,jdbcType=TIMESTAMP}, #{listETime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hp.bean.Check_list">
+    insert into e_check_list
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="listId != null">
+        LIST_ID,
+      </if>
+      <if test="uId != null">
+        U_ID,
+      </if>
+      <if test="uId2 != null">
+        U_ID2,
+      </if>
+      <if test="listName != null">
+        LIST_NAME,
+      </if>
+      <if test="listSTime != null">
+        LIST_S_TIME,
+      </if>
+      <if test="listETime != null">
+        LIST_E_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="listId != null">
+        #{listId,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null">
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="uId2 != null">
+        #{uId2,jdbcType=INTEGER},
+      </if>
+      <if test="listName != null">
+        #{listName,jdbcType=VARCHAR},
+      </if>
+      <if test="listSTime != null">
+        #{listSTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="listETime != null">
+        #{listETime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hp.bean.Check_listExample" resultType="java.lang.Long">
+    select count(*) from e_check_list
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update e_check_list
+    <set>
+      <if test="record.listId != null">
+        LIST_ID = #{record.listId,jdbcType=INTEGER},
+      </if>
+      <if test="record.uId != null">
+        U_ID = #{record.uId,jdbcType=INTEGER},
+      </if>
+      <if test="record.uId2 != null">
+        U_ID2 = #{record.uId2,jdbcType=INTEGER},
+      </if>
+      <if test="record.listName != null">
+        LIST_NAME = #{record.listName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.listSTime != null">
+        LIST_S_TIME = #{record.listSTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.listETime != null">
+        LIST_E_TIME = #{record.listETime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update e_check_list
+    set LIST_ID = #{record.listId,jdbcType=INTEGER},
+      U_ID = #{record.uId,jdbcType=INTEGER},
+      U_ID2 = #{record.uId2,jdbcType=INTEGER},
+      LIST_NAME = #{record.listName,jdbcType=VARCHAR},
+      LIST_S_TIME = #{record.listSTime,jdbcType=TIMESTAMP},
+      LIST_E_TIME = #{record.listETime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hp.bean.Check_list">
+    update e_check_list
+    <set>
+      <if test="uId != null">
+        U_ID = #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="uId2 != null">
+        U_ID2 = #{uId2,jdbcType=INTEGER},
+      </if>
+      <if test="listName != null">
+        LIST_NAME = #{listName,jdbcType=VARCHAR},
+      </if>
+      <if test="listSTime != null">
+        LIST_S_TIME = #{listSTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="listETime != null">
+        LIST_E_TIME = #{listETime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where LIST_ID = #{listId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hp.bean.Check_list">
+    update e_check_list
+    set U_ID = #{uId,jdbcType=INTEGER},
+      U_ID2 = #{uId2,jdbcType=INTEGER},
+      LIST_NAME = #{listName,jdbcType=VARCHAR},
+      LIST_S_TIME = #{listSTime,jdbcType=TIMESTAMP},
+      LIST_E_TIME = #{listETime,jdbcType=TIMESTAMP}
+    where LIST_ID = #{listId,jdbcType=INTEGER}
+  </update>
+</mapper>
