@@ -76,5 +76,20 @@ public class CreditController {
 		modelAndView.setViewName("main");
 		return modelAndView;
 	}
+	
+	//删除积分信息
+		@RequestMapping("/deleteCredit")
+		public String deleteStudent(
+				HttpServletRequest httpServletRequest,
+				@RequestParam(required = true,value = "creditNum") Integer creditNum) {
+			System.out.println("deleteCredit:"+creditNum);		
+			int row = creditService.deleteByPrimaryKey(creditNum);
+			System.out.println("删除了"+row+"行数据");
+			return "redirect:creditDetail";
+		}
+		
+	//修改积分
+		
+	
 
 }

@@ -21,4 +21,6 @@ public interface UserDao {
 
 	List<User> queryStudentByExample(String search);
 
+	List<User> queryTeacherByExample(String search);
+
 }

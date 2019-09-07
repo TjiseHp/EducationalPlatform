@@ -169,13 +169,50 @@ public class UserCortroller  {
 		return "redirect: studentTable";
 	}
 	
-	//更新学生信息
-		@RequestMapping(value = "/doUpdateTeacher",produces = {"text/html;charset=utf-8"})
-		public String updateTeacher(User user,HttpServletRequest httpServletRequest) {
-			userService.updateByPrimaryKeySelective(user);
-			return "redirect: teacherTable";
-		}
+	//更新教师信息
+	@RequestMapping(value = "/doUpdateTeacher",produces = {"text/html;charset=utf-8"})
+	public String updateTeacher(User user,HttpServletRequest httpServletRequest) {
+		userService.updateByPrimaryKeySelective(user);
+		return "redirect: teacherTable";
+	}
+		
+	//教师模糊查询
+	@RequestMapping("/searchTeacher")
+	public ModelAndView searchTeacher
+		(		@RequestParam(defaultValue = "1",required = true,value = "pageNum") Integer pageNum,
+				@RequestParam(required = true,value = "search") String search,
+				HttpServletRequest httpServletRequest) {
+		Integer pageSize=PageUtil.getPageSize();
+		ModelAndView modelAndView = new ModelAndView();
+		HttpSession httpSession = httpServletRequest.getSession();
+		PageHelper.startPage(pageNum, pageSize);
+		List<User> users = userService.queryTeacherByExample(search);
+		PageInfo<User> pageInfo = new PageInfo<User>(users);
+		modelAndView.addObject("pageInfo", pageInfo);
+		modelAndView.addObject("httpSession",httpSession);
+		modelAndView.addObject("mainPage", "user/teacherTable.jsp");
+		modelAndView.setViewName("main");
+		return modelAndView;
+	}
+		
+	//插入教师信息--页面跳转
+	@RequestMapping("/insertTeacher")
+	public ModelAndView insertTeacher(HttpServletRequest httpServletRequest) {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("mainPage", "user/insertTeacher.jsp");
+		modelAndView.setViewName("main");
+		return modelAndView;
+	}
 	
+	//执行插入教师信息
+	@RequestMapping(value = "/doInsertTeacher",produces = {"text/html;charset=utf-8"})
+	public String doInsertTeacher(User user,HttpSession httpSession) {
+		user.setgNum(2);
+		userService.insertSelective(user);
+		return "redirect: teacherTable";
+	}
 	
+			
+		
 	
 }

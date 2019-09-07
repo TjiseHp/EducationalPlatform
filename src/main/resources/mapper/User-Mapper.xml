@@ -13,4 +13,15 @@
 		LIKE "%"#{search}"%"
 	</select>
 	
+	<select id="queryTeacherByExample" parameterType="String" resultType="com.hp.bean.User">
+		select * from e_user 
+		where CONCAT(			
+			IFNULL(U_ID,''),
+			IFNULL(U_NAME,''),
+			IFNULL(U_SEX,''),
+			IFNULL(U_PHONE,''),
+			IFNULL(U_EMAIL,''))
+		LIKE "%"#{search}"%"
+	</select>
+	
 </mapper>
