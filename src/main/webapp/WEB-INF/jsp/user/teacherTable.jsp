@@ -5,6 +5,24 @@
     		%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<script type="text/javascript">
+
+		function doDel(uId) {
+			layer.confirm('确认删除？', {
+				btn: ['确认','取消'] //按钮
+			}, function(){
+				window.location.href = "${pageContext.request.contextPath}/user/deleteTeacher?uId="+uId;
+			}, function(){
+			  
+			});
+		}
+		
+		function doUpdate(uId) {		
+			window.location.href = "${pageContext.request.contextPath}/user/updateTeacher?uId="+uId;
+		}
+	
+</script>
+	
 <div class="table-responsive text-center">
 				  		<form action="">
 				  			<div>
@@ -36,11 +54,19 @@
 						  				<td>${teacher.uId}</td>
 						  				<td>${teacher.uName}</td>
 						  				<td>${teacher.uPhone}</td>
-						  				<td>${teacher.uSex}</td>
+						  				<td>
+						  					<c:if test="${teacher.uSex==1}">
+						  						男
+						  					</c:if>
+						  					<c:if test="${teacher.uSex==2}">
+						  						女
+						  					</c:if>
+		  								</td>
+						  				
 						  				<td>${teacher.uEmail}</td>
 						  				<td>
-						  					<a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doUpdate('${couriers.courierNo}');">修改</a>
-						  					<a class="btn btn-danger btn-xs" role="button" href="javascript:;" onclick="doDel('${couriers.courierNo}');">删除</a>
+						  					<a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doUpdate('${teacher.uId}');">修改</a>
+	  										<a class="btn btn-danger btn-xs" role="button" href="javascript:;" onclick="doDel('${teacher.uId}');">删除</a>
 						  				</td>
 					  				</tr>
 					  			</c:forEach>

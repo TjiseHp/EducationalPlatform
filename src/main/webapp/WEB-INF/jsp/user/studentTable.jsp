@@ -20,6 +20,11 @@
 		function doUpdate(uId) {		
 			window.location.href = "${pageContext.request.contextPath}/user/updateStudent?uId="+uId;
 		}
+		
+		function dodetail(uId){
+			window.location.href = "${pageContext.request.contextPath}/credit/creditDetail?uId="+uId;
+			
+		}
 	
 	</script>
 	
@@ -45,7 +50,7 @@
 	  				<td>手机		</td>
 	  				<td>性别		</td>
 	  				<td>邮箱		</td>
-	  				<td>剩余积分	</td>
+	  				<td>剩余积分     </td>
 	  				<td>
 	  					<a class="btn btn-success btn-xs" role="button" href="javascript:;" onclick="doAdd();" >新&nbsp;增</a>
 	  				</td>
@@ -64,7 +69,9 @@
 		  					</c:if>
 		  				</td>
 		  				<td>${students.uEmail}</td>
-		  				<td>${students.credit}</td>
+		  				<td>${students.credit}
+		  					<a class="btn btn-success btn-xs" role="button" href="javascript:;" onclick="dodetail('${students.uId}');">详&nbsp;情</a>
+		  				</td>
 		  				<td>
 		  					<a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doUpdate('${students.uId}');">修改</a>
 		  					<a class="btn btn-danger btn-xs" role="button" href="javascript:;" onclick="doDel('${students.uId}');">删除</a>

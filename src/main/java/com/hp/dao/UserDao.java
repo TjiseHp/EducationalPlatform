@@ -16,6 +16,9 @@ public interface UserDao {
 	@Select("select * from e_user where U_ID = #{uId}")
 	User queryStudentByuId(Integer uId);
 
+	@Select("select * from e_user where U_ID = #{uId}")
+	User queryTeacherByuId(Integer uId);
+
 	
 	
 	

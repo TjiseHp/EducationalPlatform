@@ -58,4 +58,27 @@ public class CreditController {
 			modelAndView.setViewName("main");
 			return modelAndView;
 		}
+		
+		//积分详情查询
+		@RequestMapping("/creditDetail")
+		public ModelAndView creditDetail(@RequestParam(defaultValue = "1",required = true,value = "pageNum") Integer pageNum,HttpServletRequest httpServletRequest) {
+			Integer pageSize=PageUtil.getPageSize();
+			ModelAndView modelAndView = new ModelAndView();
+			HttpSession httpSession = httpServletRequest.getSession();
+			
+			PageHelper.startPage(pageNum, pageSize);
+			List<Credit> creditDetail=creditService.queryAllDetail();
+			PageInfo<Credit> pageInfo = new PageInfo<Credit>(creditDetail);
+			
+			modelAndView.addObject("pageInfo", pageInfo);
+			modelAndView.addObject("httpSession",httpSession);		
+			modelAndView.addObject("mainPage", "credit/creditDetail.jsp");
+			modelAndView.setViewName("main");
+			return modelAndView;
+		}
+		
+		
+		
+		
+		
 }

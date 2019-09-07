@@ -11,4 +11,6 @@ public interface CreditService {
 	List<Credit> queryAllConsumption() ;
 	   
 	List<Credit> queryAllBuy() ;
+
+	List<Credit> queryAllDetail();
 }

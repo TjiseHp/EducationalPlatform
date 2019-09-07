@@ -36,6 +36,11 @@ public class UserServiceImpl implements UserService {
 		userMapper.updateByPrimaryKeySelective(user);
 	}
 
+	public User queryTeacherByuId(Integer uId) {
+		// TODO Auto-generated method stub
+		return userDao.queryTeacherByuId(uId);
+	}
+
 	
 
 	

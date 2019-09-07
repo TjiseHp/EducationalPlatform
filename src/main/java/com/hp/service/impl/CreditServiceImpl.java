@@ -28,5 +28,10 @@ public class CreditServiceImpl implements CreditService {
 		// TODO Auto-generated method stub
 		return creditDao.queryAllBuy();
 	}
+
+	public List<Credit> queryAllDetail() {
+		// TODO Auto-generated method stub
+		return creditDao.queryAllDetail();
+	}
 	
 }
