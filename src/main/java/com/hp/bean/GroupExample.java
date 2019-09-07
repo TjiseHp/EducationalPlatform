@@ -223,6 +223,76 @@ public class GroupExample {
             addCriterion("R_NUM not between", value1, value2, "rNum");
             return (Criteria) this;
         }
+
+        public Criteria andGNameIsNull() {
+            addCriterion("G_NAME is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGNameIsNotNull() {
+            addCriterion("G_NAME is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGNameEqualTo(String value) {
+            addCriterion("G_NAME =", value, "gName");
+            return (Criteria) this;
+        }
+
+        public Criteria andGNameNotEqualTo(String value) {
+            addCriterion("G_NAME <>", value, "gName");
+            return (Criteria) this;
+        }
+
+        public Criteria andGNameGreaterThan(String value) {
+            addCriterion("G_NAME >", value, "gName");
+            return (Criteria) this;
+        }
+
+        public Criteria andGNameGreaterThanOrEqualTo(String value) {
+            addCriterion("G_NAME >=", value, "gName");
+            return (Criteria) this;
+        }
+
+        public Criteria andGNameLessThan(String value) {
+            addCriterion("G_NAME <", value, "gName");
+            return (Criteria) this;
+        }
+
+        public Criteria andGNameLessThanOrEqualTo(String value) {
+            addCriterion("G_NAME <=", value, "gName");
+            return (Criteria) this;
+        }
+
+        public Criteria andGNameLike(String value) {
+            addCriterion("G_NAME like", value, "gName");
+            return (Criteria) this;
+        }
+
+        public Criteria andGNameNotLike(String value) {
+            addCriterion("G_NAME not like", value, "gName");
+            return (Criteria) this;
+        }
+
+        public Criteria andGNameIn(List<String> values) {
+            addCriterion("G_NAME in", values, "gName");
+            return (Criteria) this;
+        }
+
+        public Criteria andGNameNotIn(List<String> values) {
+            addCriterion("G_NAME not in", values, "gName");
+            return (Criteria) this;
+        }
+
+        public Criteria andGNameBetween(String value1, String value2) {
+            addCriterion("G_NAME between", value1, value2, "gName");
+            return (Criteria) this;
+        }
+
+        public Criteria andGNameNotBetween(String value1, String value2) {
+            addCriterion("G_NAME not between", value1, value2, "gName");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

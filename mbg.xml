@@ -45,6 +45,7 @@
     </javaClientGenerator>
 	
 	<!-- 指定每个表的生成策略 -->	
+	<table tableName="e_group" 			domainObjectName="Group"></table>	
 	<table tableName="e_appraise" 		domainObjectName="Appraise"></table>	
 	<table tableName="e_chat" 			domainObjectName="Chat"></table>		
 	<table tableName="e_chat_status" 	domainObjectName="Chat_status"></table>			
@@ -53,8 +54,7 @@
 	<table tableName="e_city" 			domainObjectName="City"></table>			
 	<table tableName="e_class" 			domainObjectName="Class"></table>			
 	<table tableName="e_credit" 		domainObjectName="Credit"></table>			
-	<table tableName="e_exchange" 		domainObjectName="Exchange"></table>			
-	<table tableName="e_group" 			domainObjectName="Group"></table>		
+	<table tableName="e_exchange" 		domainObjectName="Exchange"></table>
 	<table tableName="e_main" 			domainObjectName="Main"></table>
 	<table tableName="e_pay" 			domainObjectName="Pay"></table>
 	<table tableName="e_power" 			domainObjectName="Power"></table>
@@ -75,7 +75,6 @@
     </table>
     -->
 	
-	<!--  -->
 	
 	
   </context>

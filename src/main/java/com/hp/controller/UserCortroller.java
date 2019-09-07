@@ -73,6 +73,38 @@ public class UserCortroller  {
 		return modelAndView;
 	}
 	
+	//删除学生
+	@RequestMapping("/deleteStudent")
+	public String deleteStudent(
+			HttpServletRequest httpServletRequest,
+			@RequestParam(required = true,value = "uId") Integer uId) {
+		System.out.println("deleteStudent:"+uId);		
+		int row = userService.deleteByPrimaryKey(uId);
+		System.out.println("删除了"+row+"行数据");
+		return "redirect:studentTable";
+	}
+	
+	//学生更新页面跳转
+	@RequestMapping("/updateStudent")
+	public ModelAndView updateCourier
+			(HttpServletRequest httpServletRequest,
+			@RequestParam(required = true,value = "uId") Integer uId) {
+		HttpSession httpSession = httpServletRequest.getSession();
+		User user = userService.queryStudentByuId(uId);
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("httpSession",httpSession);
+		modelAndView.addObject("user",user);
+		modelAndView.addObject("mainPage", "user/updateStudent.jsp");
+		modelAndView.setViewName("main");
+		return modelAndView;
+	}
+	
+	//更新学生信息
+	@RequestMapping(value = "/doUpdateStudent",produces = {"text/html;charset=utf-8"})
+	public String updateCourier(User user,HttpServletRequest httpServletRequest) {
+		userService.updateByPrimaryKeySelective(user);
+		return "redirect: studentTable";
+	}
 	
 	
 	

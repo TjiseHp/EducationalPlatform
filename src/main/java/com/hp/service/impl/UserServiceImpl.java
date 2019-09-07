@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.hp.bean.User;
 import com.hp.dao.UserDao;
+import com.hp.dao.UserMapper;
 import com.hp.service.UserService;
 
 @Service
@@ -12,14 +13,27 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	public UserDao userDao;
 	
+	@Autowired
+	public UserMapper userMapper;
+	
 	public List<User> queryAllStudent() {
-		// TODO Auto-generated method stub
 		return userDao.queryAllStudent();
 	}
 
 	public List<User> queryAllTeacher() {
-		// TODO Auto-generated method stub
 		return userDao.queryAllTeacher();
+	}
+
+	public int deleteByPrimaryKey(Integer uId) {
+		return userMapper.deleteByPrimaryKey(uId);
+	}
+
+	public User queryStudentByuId(Integer uId) {
+		return userDao.queryStudentByuId(uId);
+	}
+
+	public void updateByPrimaryKeySelective(User user) {
+		userMapper.updateByPrimaryKeySelective(user);
 	}
 
 	

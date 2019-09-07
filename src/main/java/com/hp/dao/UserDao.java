@@ -13,6 +13,9 @@ public interface UserDao {
 	@Select("select * from e_user where g_num = 2")
 	List<User> queryAllTeacher();
 
+	@Select("select * from e_user where U_ID = #{uId}")
+	User queryStudentByuId(Integer uId);
+
 	
 	
 	

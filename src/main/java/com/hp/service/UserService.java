@@ -8,4 +8,10 @@ public interface UserService {
 
 	List<User> queryAllTeacher();
 
+	int deleteByPrimaryKey(Integer uId);
+
+	User queryStudentByuId(Integer uId);
+
+	void updateByPrimaryKeySelective(User user);
+
 }
