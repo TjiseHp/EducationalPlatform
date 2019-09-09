@@ -20,12 +20,17 @@
 	  <script type="text/javascript" src="${pageContext.request.contextPath}/plug/jquery/jquery-2.1.1.min.js"></script>
 	  <script type="text/javascript" src="${pageContext.request.contextPath}/plug/layui/layui.js"></script>
 	  <script type="text/javascript" src="${pageContext.request.contextPath}/plug/bootstrap/js/bootstrap.min.js"></script>
+	  <script type="text/javascript" src="${pageContext.request.contextPath}/plug/bt/js/bootstrap-table.min.js"></script>
+	  <script type="text/javascript" src="${pageContext.request.contextPath}/plug/bt/js/bootstrap-table-zh-CN.min.js"></script>
+	  <script type="text/javascript" src="${pageContext.request.contextPath}/plug/datetime/js/bootstrap-datetimepicker.min.js"></script>
+	  <script type="text/javascript" src="${pageContext.request.contextPath}/plug/datetime/js/bootstrap-datetimepicker.zh-CN.js"></script>
 	  <script type="text/javascript" src="${pageContext.request.contextPath}/plug/layer/layer.js"></script>
 	  <script type="text/javascript" src="${pageContext.request.contextPath}/plug/zTree/js/jquery.ztree.all.min.js"></script>
 	  <link 	rel="stylesheet" 	href="${pageContext.request.contextPath}/plug/layer/skin/default/layer.css">
 	  <link 	rel="stylesheet" 	href="${pageContext.request.contextPath}/plug/bootstrap/css/bootstrap.min.css">
+	  <link 	rel="stylesheet" 	href="${pageContext.request.contextPath}/plug/bt/css/bootstrap-table.min.css">
+	  <link 	rel="stylesheet" 	href="${pageContext.request.contextPath}/plug/datetime/css/bootstrap-datetimepicker.min.css">
 	  <link 	rel="stylesheet" 	href="${pageContext.request.contextPath}/plug/layui/css/layui.css">
-	  <link 	rel="stylesheet" 	href="${pageContext.request.contextPath}/plug/css/font-awesome.min.css">
 	  <link		rel="stylesheet"	href="${pageContext.request.contextPath}/plug/zTree/css/zTreeStyle/zTreeStyle.css">
 	  <style 	type="text/css">
 	  	.layui-demo-maincard{

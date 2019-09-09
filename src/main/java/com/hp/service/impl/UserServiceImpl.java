@@ -48,4 +48,8 @@ public class UserServiceImpl implements UserService {
 		userMapper.insertSelective(user);
 	}
 
+	public List<User> queryTeacherByExample(String search) {
+		return userDao.queryTeacherByExample(search);
+	}
+
 }
