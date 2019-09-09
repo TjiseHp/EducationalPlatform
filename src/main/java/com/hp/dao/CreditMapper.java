@@ -14,7 +14,7 @@ public interface CreditMapper {
 
     int insert(Credit record);
 
-    int insertSelective(Credit record);
+    int insertSelective(Credit credit);
 
     List<Credit> selectByExample(CreditExample example);
 

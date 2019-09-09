@@ -20,4 +20,6 @@ public interface UserService {
 
 	void insertSelective(User user);
 
+	List<User> queryTeacherByExample(String search);
+
 }
