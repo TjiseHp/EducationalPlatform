@@ -15,9 +15,11 @@
 <a href="credit/creditConsumption">积分消费记录明细查询</a>
 <br/>
 <a href="credit/creditBuy">历史购买订单查询表</a>
-
-
-
-
+<br/>
+<a href="${pageContext.request.contextPath}/recruit/insertRecruit">招聘信息发布</a>
+<br/>
+<a href="${pageContext.request.contextPath}/recruit/recruitByCity">根据城市科目查询招聘信息</a>
+<br/>
+<a href="${pageContext.request.contextPath}/recruit/recruitTable">历史招聘信息</a>
 
 </div>
