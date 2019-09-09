@@ -42,5 +42,11 @@ public class CreditServiceImpl implements CreditService {
 		// TODO Auto-generated method stub
 		return creditMapper.deleteByPrimaryKey(creditNum);
 	}
+
+	public void insertSelective(Credit credit) {
+		// TODO Auto-generated method stub
+		creditMapper.insertSelective(credit);
+		
+	}
 	
 }

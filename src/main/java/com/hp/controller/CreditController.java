@@ -1,4 +1,7 @@
 package com.hp.controller;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hp.bean.Credit;
+import com.hp.bean.User;
 import com.hp.service.CreditService;
 import com.hp.util.PageUtil;
 
@@ -88,7 +92,25 @@ public class CreditController {
 			return "redirect:creditDetail";
 		}
 		
-	//修改积分
+	//插入积分奖惩信息--页面跳转
+		@RequestMapping("/creditInsert")
+		public ModelAndView insertCredit(HttpServletRequest httpServletRequest) {
+			ModelAndView modelAndView = new ModelAndView();
+			modelAndView.addObject("mainPage", "credit/creditInsert.jsp");
+			modelAndView.setViewName("main");
+			return modelAndView;
+		}
+		
+		//执行插入积分奖惩信息
+		@RequestMapping(value = "/doInsertCredit",produces = {"text/html;charset=utf-8"})
+		public String doInsertCredit(Credit credit,HttpSession httpSession) throws ParseException {
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+	        String date=df.format(new Date());// new Date()为获取当前系统时间
+	        Date date1 = df.parse(date);
+	        credit.setCreditDate(date1);
+			creditService.insertSelective(credit);
+			return "redirect: creditDetail";
+		}
 		
 	
 

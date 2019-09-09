@@ -16,6 +16,10 @@
 			});
 		}
 		
+		function doAdd(){
+			window.location.href = "${pageContext.request.contextPath}/credit/creditInsert";
+		}
+		
 		
 		
 	</script>
