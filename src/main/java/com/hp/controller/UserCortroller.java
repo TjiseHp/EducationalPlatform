@@ -2,10 +2,13 @@ package com.hp.controller;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -30,7 +33,7 @@ public class UserCortroller  {
 	public CreditService creditService;
 	
 	
-	//查询全部学生(会员)列表，包含积分总和
+	//查询全部学生(会员)列表,包含积分总和
 	@RequestMapping("/studentTable")
 	public ModelAndView studentTable(@RequestParam(defaultValue = "1",required = true,value = "pageNum") Integer pageNum,HttpServletRequest httpServletRequest) {
 		Integer pageSize=PageUtil.getPageSize();
@@ -128,13 +131,13 @@ public class UserCortroller  {
 	}
 	
 	//删除教师
-		@RequestMapping("/deleteTeacher")
-		public String deleteTeacher(
-				HttpServletRequest httpServletRequest,
-				@RequestParam(required = true,value = "uId") Integer uId) {
-			int row = userService.deleteByPrimaryKey(uId);
-			return "redirect:teacherTable";
-		}
+	@RequestMapping("/deleteTeacher")
+	public String deleteTeacher(
+			HttpServletRequest httpServletRequest,
+			@RequestParam(required = true,value = "uId") Integer uId) {
+		int row = userService.deleteByPrimaryKey(uId);
+		return "redirect:teacherTable";
+	}
 		
 
 	//插入学生信息--页面跳转
@@ -170,12 +173,49 @@ public class UserCortroller  {
 	}
 	
 	//更新学生信息
-		@RequestMapping(value = "/doUpdateTeacher",produces = {"text/html;charset=utf-8"})
-		public String updateTeacher(User user,HttpServletRequest httpServletRequest) {
-			userService.updateByPrimaryKeySelective(user);
-			return "redirect: teacherTable";
+	@RequestMapping(value = "/doUpdateTeacher",produces = {"text/html;charset=utf-8"})
+	public String updateTeacher(User user,HttpServletRequest httpServletRequest) {
+		userService.updateByPrimaryKeySelective(user);
+		return "redirect: teacherTable";
+	}
+	
+	//查询学生信息--页面跳转
+	@RequestMapping("/studentTable2")
+	public ModelAndView studentTable2(HttpServletRequest httpServletRequest) {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("mainPage", "user/studentTable2.jsp");
+		modelAndView.setViewName("main");
+		return modelAndView;
+	}
+	
+	//查询全部学生(会员)列表,包含积分总和
+	@ResponseBody
+	@RequestMapping("/queryAllStudent")
+	public List<User> queryAllStudent() {
+		List<User> students = userService.queryAllStudent();
+		for(User u:students) {
+			String credit = creditService.queryCreditSum(u.getuId());
+			if (credit==null||credit.equals("")) {
+				credit="0";
+			}
+			u.setCredit(credit);
 		}
+		return students;
+	}
 	
-	
+	@ResponseBody
+	@RequestMapping("/deleteStudent2")
+	public String deleteStudent2(User student) {
+		System.out.println("deleteStudent:"+student.getuId());
+		JSONObject json = new JSONObject();
+		int row = userService.deleteByPrimaryKey(student.getuId());
+		System.out.println("删除了"+row+"行数据");
+		if (row==1) {
+			json.put("result", true);
+		}else {
+			json.put("result", false);
+		}
+		return json.toString();
+	}
 	
 }
