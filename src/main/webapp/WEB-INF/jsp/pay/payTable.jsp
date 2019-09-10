@@ -74,8 +74,8 @@
 						  				<td>${pays.payDate}</td>
 						  				
 						  				<td>
-		  					<a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doUpdate('${pay.uId}');">修改</a>
-		  					<a class="btn btn-danger btn-xs" role="button" href="javascript:;" onclick="doDel('${pay.uId}');">删除</a>
+		  					<a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doUpdate('${pays.uId}');">修改</a>
+		  					<a class="btn btn-danger btn-xs" role="button" href="javascript:;" onclick="doDel('${pays.uId}');">删除</a>
 		  				</td>
 					  				</tr>
 					  			</c:forEach>

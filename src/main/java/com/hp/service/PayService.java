@@ -11,13 +11,13 @@ public interface PayService {
 
 	int deleteByPrimaryKey(Integer uId);
 
-	Pay queryPayByuId(Integer uId);
+	Pay queryPayBypayNum(Integer payNum);
 
-	void updateByPrimaryKeySelective(Pay pay);
+	int updateByPrimaryKeySelective(Pay pay);
 
 	List<Pay> queryPayByExample(String search);
 
-	void insertSelective(Pay pay);
+	int insertSelective(Pay pay);
 
 
 

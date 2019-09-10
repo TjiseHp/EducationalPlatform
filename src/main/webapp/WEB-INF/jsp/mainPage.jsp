@@ -21,5 +21,11 @@
 <a href="${pageContext.request.contextPath}/recruit/recruitByCity">根据城市科目查询招聘信息</a>
 <br/>
 <a href="${pageContext.request.contextPath}/recruit/recruitTable">历史招聘信息</a>
+<br/>
+<a href="${pageContext.request.contextPath}/exchange/exchangeTable2">积分记录</a>
+<br/>
+<a href="${pageContext.request.contextPath}/pay/payTable2">营收记录</a>
+<br/>
+
 
 </div>

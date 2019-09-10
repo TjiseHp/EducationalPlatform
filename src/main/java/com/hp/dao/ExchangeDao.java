@@ -8,7 +8,7 @@ import com.hp.bean.Exchange;
 
 public interface ExchangeDao {
 
-	@Select("select * from e_exchange where exchange_num = 1")
+	@Select("select * from e_exchange")
 	List<Exchange> queryAllExchange();
 
 	@Select("select * from e_exchange where exchange_num = #{exchangeNum}")

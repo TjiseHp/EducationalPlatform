@@ -29,20 +29,20 @@ public class PayServiceImpl implements PayService {
 		return payMapper.deleteByPrimaryKey(uId);
 	}
 
-	public Pay queryPaytByuId(Integer uId) {
-		return payDao.queryPayByuId(uId);
+	public Pay queryPayBypayNum(Integer payNum) {
+		return payDao.queryPayBypayNum(payNum);
 	}
 
-	public void updateByPrimaryKeySelective(Pay pay) {
-		payMapper.updateByPrimaryKeySelective(pay);
+	public int updateByPrimaryKeySelective(Pay pay) {
+		return payMapper.updateByPrimaryKeySelective(pay);
 	}
 
 	public List<Pay> queryPayByExample(String search) {
 		return payDao.queryPayByExample(search);
 	}
 
-	public void insertSelective(Pay pay) {
-		payMapper.insertSelective(pay);
+	public int insertSelective(Pay pay) {
+		return payMapper.insertSelective(pay);
 	}
 
 	public Pay queryPayByuId(Integer uId) {
