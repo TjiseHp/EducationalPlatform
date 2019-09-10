@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.hp.bean.Credit;
 import com.hp.dao.CreditDao;
+import com.hp.dao.CreditMapper;
 import com.hp.service.CreditService;
 
 @Service
@@ -13,6 +14,9 @@ public class CreditServiceImpl implements CreditService {
 
 	@Autowired
 	public CreditDao creditDao;
+	
+	@Autowired
+	public CreditMapper creditMapper;
 	
 	public String queryCreditSum(Integer integer) {
 		// TODO Auto-generated method stub
@@ -32,6 +36,17 @@ public class CreditServiceImpl implements CreditService {
 	public List<Credit> queryAllDetail() {
 		// TODO Auto-generated method stub
 		return creditDao.queryAllDetail();
+	}
+
+	public int deleteByPrimaryKey(Integer creditNum) {
+		// TODO Auto-generated method stub
+		return creditMapper.deleteByPrimaryKey(creditNum);
+	}
+
+	public void insertSelective(Credit credit) {
+		// TODO Auto-generated method stub
+		creditMapper.insertSelective(credit);
+		
 	}
 	
 }

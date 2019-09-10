@@ -20,6 +20,19 @@
 		function doUpdate(uId) {		
 			window.location.href = "${pageContext.request.contextPath}/user/updateTeacher?uId="+uId;
 		}
+		
+		function doSearch(){
+			var search = $("#search").val();
+			if(search == ""){
+				window.location.href = "${pageContext.request.contextPath}/user/teacherTable";
+			}else{
+				window.location.href = "${pageContext.request.contextPath}/user/searchTeacher?search="+search;
+			}
+		}
+		
+		function doAdd() {
+			window.location.href = "${pageContext.request.contextPath}/user/insertTeacher";
+		}
 	
 </script>
 	
@@ -54,15 +67,7 @@
 						  				<td>${teacher.uId}</td>
 						  				<td>${teacher.uName}</td>
 						  				<td>${teacher.uPhone}</td>
-						  				<td>
-						  					<c:if test="${teacher.uSex==1}">
-						  						男
-						  					</c:if>
-						  					<c:if test="${teacher.uSex==2}">
-						  						女
-						  					</c:if>
-		  								</td>
-						  				
+						  				<td>${teacher.uSex}</td>
 						  				<td>${teacher.uEmail}</td>
 						  				<td>
 						  					<a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doUpdate('${teacher.uId}');">修改</a>

@@ -52,5 +52,8 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userDao.queryTeacherByworking(user);
 	}
+	public List<User> queryTeacherByExample(String search) {
+		return userDao.queryTeacherByExample(search);
+	}
 
 }
