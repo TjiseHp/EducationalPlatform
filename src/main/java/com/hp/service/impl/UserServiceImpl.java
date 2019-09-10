@@ -56,4 +56,8 @@ public class UserServiceImpl implements UserService {
 		return userDao.queryTeacherByExample(search);
 	}
 
+	public User queryLoginByUser(User user) {
+		return userDao.queryLoginByUser(user);
+	}
+
 }
