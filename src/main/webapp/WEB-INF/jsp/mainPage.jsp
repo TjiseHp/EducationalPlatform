@@ -22,8 +22,13 @@
 <br/>
 <a href="${pageContext.request.contextPath}/recruit/recruitTable">历史招聘信息</a>
 <br/>
-<a href="${pageContext.request.contextPath}/user/teacherByworking">在职教师查询</a>
+
+<a href="${pageContext.request.contextPath}/exchange/exchangeTable2">积分记录</a>
 <br/>
-<a href="${pageContext.request.contextPath}/recruit/recruitTeacher">教师记录</a>
+<a href="${pageContext.request.contextPath}/pay/payTable2">营收记录</a>
+<br/>
+
+
+
 
 </div>

@@ -8,12 +8,11 @@
 
 <script type="text/javascript">
 	function doUpdate(){
-		var pNum = $("#pNum").val();
+		var payNum = $("#payNum").val();
 		var uId = $("#uId").val();
 		var pText = $("#pText").val();
-		var pDate = $("#pDate").val();
 		
-		if(pNum == ""||uId == ""||pText == ""||pDate == ""){
+		if(payNum == ""||uId == ""||pText == ""){
 			layer.msg("内容不能为空", {time:2000, icon:5, shift:6});
 			return false;
 		}else{
@@ -36,7 +35,7 @@
 					<strong>编号:</strong>
 				</td>
 				<td class="text-left">
-					<input class="form-control" type="text" id="pNum" name="pNum" value = "${pay.pNum }">
+					<input class="form-control" type="text" id="payNum" name="payNum" value = "${pay.payNum }">
 				</td>
 			</tr>
 			<tr>
@@ -52,16 +51,7 @@
 					<strong>金额:</strong>
 				</td>
 				<td class="text-left">
-					<input class="form-control" type="text" id="pText" name="pText" value = "${pay.pText}">
-				</td>
-			</tr>
-			
-			<tr>
-				<td class="text-right">
-					<strong>日期:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="pDate" name="pDate" value = "${pay.pDate}">
+					<input class="form-control" type="text" id="payText" name="payText" value = "${pay.payText}">
 				</td>
 			</tr>
 			

@@ -7,13 +7,12 @@
 
 
 <script type="text/javascript">
-	function doUpdate(){
-		var pNum = $("#pNum").val();
+	function doInsertPay(){
+		var payNum = $("#payNum").val();
 		var uId = $("#uId").val();
-		var pText = $("#pText").val();
-		var pDate = $("#pDate").val();
+		var payText = $("#payText").val();
 		
-		if(pNum == ""||uId == ""||pText == ""||pDate == ""){
+		if(uId == ""||payText == ""){
 			layer.msg("内容不能为空", {time:2000, icon:5, shift:6});
 			return false;
 		}else{
@@ -28,17 +27,10 @@
 
 <div align="center" style="padding-top: 50px;">
 	<h1>新增营收信息</h1><br/>
-	<form action="${pageContext.request.contextPath}/pay/doUpdatePay" method="post" accept-charset="utf-8" onsubmit="return doUpdate()">
+	<form action="${pageContext.request.contextPath}/pay/doInsertPay" method="post" accept-charset="utf-8" onsubmit="return doInsertPay()">
 		<table class="table table-bordered table-striped" style="width: 500px;" >
 		
-			<tr>
-				<td class="text-right">
-					<strong>编号:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="pNum" name="pNum" value = "${pay.pNum }">
-				</td>
-			</tr>
+			
 			<tr>
 				<td class="text-right">
 					<strong>用户ID:</strong>
@@ -52,16 +44,7 @@
 					<strong>金额:</strong>
 				</td>
 				<td class="text-left">
-					<input class="form-control" type="text" id="pText" name="pText" value = "${pay.pText}">
-				</td>
-			</tr>
-			
-			<tr>
-				<td class="text-right">
-					<strong>日期:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="pDate" name="pDate" value = "${pay.pDate}">
+					<input class="form-control" type="text" id="payText" name="payText" value = "${pay.payText}">
 				</td>
 			</tr>
 			
