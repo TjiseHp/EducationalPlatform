@@ -10,6 +10,8 @@ public interface RecruitService {
 
 	int insertSelective(Recruit record);
 	
-	List<Recruit> queryRecruitHistory();
+	List<Recruit> queryRecruitHistory(Integer uId);
+	
+	List<Integer> queryRecruitByuId(Integer uId);
 
 }

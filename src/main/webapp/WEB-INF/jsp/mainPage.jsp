@@ -21,5 +21,9 @@
 <a href="${pageContext.request.contextPath}/recruit/recruitByCity">根据城市科目查询招聘信息</a>
 <br/>
 <a href="${pageContext.request.contextPath}/recruit/recruitTable">历史招聘信息</a>
+<br/>
+<a href="${pageContext.request.contextPath}/user/teacherByworking">在职教师查询</a>
+<br/>
+<a href="${pageContext.request.contextPath}/recruit/recruitTeacher">教师记录</a>
 
 </div>

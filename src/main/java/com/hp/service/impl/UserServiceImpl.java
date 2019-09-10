@@ -48,4 +48,9 @@ public class UserServiceImpl implements UserService {
 		userMapper.insertSelective(user);
 	}
 
+	public List<User> queryTeacherByworking(User user) {
+		// TODO Auto-generated method stub
+		return userDao.queryTeacherByworking(user);
+	}
+
 }
