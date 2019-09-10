@@ -27,4 +27,7 @@ public interface UserDao {
 
 	List<User> queryTeacherByExample(String search);
 
+	@Select("select * from e_user where U_ACC = #{uAcc} and U_PWD = #{uPwd}")
+	User queryLoginByUser(User user);
+
 }

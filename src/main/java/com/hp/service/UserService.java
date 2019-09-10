@@ -24,4 +24,6 @@ public interface UserService {
 
 	List<User> queryTeacherByExample(String search);
 
+	User queryLoginByUser(User user);
+
 }

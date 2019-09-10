@@ -45,21 +45,16 @@
 	  </style>
 	  
 	  <%
-	  
-	  	/*
 		  if(session.getAttribute("loginUser")==null){
-				response.sendRedirect(request.getContextPath()+"/userLogin");
+				response.sendRedirect(request.getContextPath()+"/index");
 				return;
 			}
-	  	*/
-	  	
 	
 			String mainPage=(String)request.getAttribute("mainPage");
 	  		
 			if(mainPage==null || mainPage.equals("")){
 				mainPage="mainPage.jsp";
 			}
-			
 	  %>
 	  
 	</head>
@@ -80,7 +75,7 @@
 		        </a>
 		        
 		        <dl class="layui-nav-child">
-		          <dd><a href="${pageContext.request.contextPath}/worker/admin?uNo=${loginUser.uNo}">个人资料</a></dd>
+		          <dd><a href="${pageContext.request.contextPath}/worker/admin?uId=${loginUser.uId}">个人资料</a></dd>
 		          <dd style="margin-top:10px ;"><a onclick="loginOut()" >退出登录</a></dd>
 		        </dl>
 		        
