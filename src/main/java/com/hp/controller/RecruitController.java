@@ -1,5 +1,6 @@
 package com.hp.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +19,7 @@ import com.github.pagehelper.PageInfo;
 import com.hp.bean.Recruit;
 import com.hp.bean.User;
 import com.hp.service.RecruitService;
+import com.hp.service.UserService;
 import com.hp.util.PageUtil;
 
 @Controller
@@ -26,6 +28,9 @@ public class RecruitController {
 	
 	@Autowired
 	public RecruitService recruitService;
+	
+	@Autowired
+	public UserService userService;
 	
 	//增加招聘信息页面跳转	
 	@RequestMapping("/insertRecruit")
@@ -58,13 +63,17 @@ public class RecruitController {
 	
 	//查看历史招聘信息
 	@RequestMapping("/recruitTable")
-	public ModelAndView teacherTable(@RequestParam(defaultValue = "1",required = true,value = "pageNum")Integer pageNum, HttpServletRequest httpServletRequest) {
+	public ModelAndView teacherTable(@RequestParam(defaultValue = "1",required = true,value = "pageNum")Integer pageNum, HttpServletRequest httpServletRequest,Recruit recruit) {
 		Integer pageSize=PageUtil.getPageSize();
 		ModelAndView modelAndView = new ModelAndView();
 		HttpSession httpSession = httpServletRequest.getSession();
 		
 		PageHelper.startPage(pageNum, pageSize);
-		List<Recruit> recruits=recruitService.queryRecruitHistory();
+		
+		recruit.setuId(4);
+		Integer integer = recruit.getuId();
+		
+		List<Recruit> recruits=recruitService.queryRecruitHistory(integer);
 		PageInfo<Recruit> pageInfo = new PageInfo<Recruit>(recruits);
 		
 		modelAndView.addObject("pageInfo", pageInfo);
@@ -86,6 +95,34 @@ public class RecruitController {
 		modelAndView.addObject("recruit",recruit);
 		modelAndView.addObject("httpSession",httpSession);		
 		modelAndView.addObject("mainPage", "recruit/recruitText.jsp");
+		modelAndView.setViewName("main");
+		return modelAndView;
+	}
+	
+	//教师记录
+	@RequestMapping("/recruitTeacher")
+	public ModelAndView recruitTeacher(@RequestParam(defaultValue = "1",required = true,value = "pageNum")Integer pageNum,Recruit recruit, HttpServletRequest httpServletRequest) {
+		Integer pageSize=PageUtil.getPageSize();
+		ModelAndView modelAndView = new ModelAndView();
+		HttpSession httpSession = httpServletRequest.getSession();
+		
+		PageHelper.startPage(pageNum, pageSize);
+		
+		recruit.setuId(4);
+		Integer integer = recruit.getuId();
+		
+		List<Integer> recruits=recruitService.queryRecruitByuId(integer);
+		List<User> users2 = new ArrayList<User>();
+		for(int i=0;i<recruits.size();i++) {
+			Integer uId = recruits.get(i);
+			User users = userService.queryTeacherByuId(uId);
+			users2.add(users);
+		}		
+		PageInfo<User> pageInfo = new PageInfo<User>(users2);
+		
+		modelAndView.addObject("pageInfo", pageInfo);
+		modelAndView.addObject("httpSession",httpSession);		
+		modelAndView.addObject("mainPage", "recruit/recruitTeacher.jsp");
 		modelAndView.setViewName("main");
 		return modelAndView;
 	}

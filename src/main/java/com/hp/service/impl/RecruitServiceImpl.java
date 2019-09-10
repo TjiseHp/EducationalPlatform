@@ -29,9 +29,14 @@ public class RecruitServiceImpl implements RecruitService {
 		return recruitMapper.insertSelective(record);
 	}
 
-	public List<Recruit> queryRecruitHistory() {
+	public List<Recruit> queryRecruitHistory(Integer uId) {
 		// TODO Auto-generated method stub
-		return  recruitDao.queryRecruitHistory();
+		return  recruitDao.queryRecruitHistory(uId);
+	}
+
+	public List<Integer> queryRecruitByuId(Integer uId) {
+		// TODO Auto-generated method stub
+		return recruitDao.queryRecruitByuId(uId);
 	}
 
 

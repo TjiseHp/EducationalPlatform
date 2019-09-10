@@ -19,7 +19,11 @@ public interface UserService {
 	List<User> queryStudentByExample(String search);
 
 	void insertSelective(User user);
+	
+	List<User> queryTeacherByworking(User user);
 
 	List<User> queryTeacherByExample(String search);
+
+	User queryLoginByUser(User user);
 
 }
