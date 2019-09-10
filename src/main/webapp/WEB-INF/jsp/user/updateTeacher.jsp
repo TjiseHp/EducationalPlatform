@@ -54,6 +54,37 @@
 					<input class="form-control" type="text" id="uEmail" name="uEmail" value = "${user.uEmail}">
 				</td>
 			</tr>
+			<tr>
+				<td class="text-right">
+					<strong>邮箱:</strong>
+				</td>
+				<td class="text-left">
+					<input class="form-control" type="text" id="uEmail" name="uEmail" value = "${user.uEmail}">
+				</td>
+			</tr>
+			<tr>
+				<td class="text-right">
+					<strong>邮箱:</strong>
+				</td>
+				<td class="text-left">
+					<input class="form-control" type="text" id="uEmail" name="uEmail" value = "${user.uEmail}">
+				</td>
+			</tr>
+			<tr>
+				<td class="text-right">
+					<strong>邮箱:</strong>
+				</td>
+				<td class="text-left">
+					<input class="form-control" type="text" id="uEmail" name="uEmail" value = "${user.uEmail}">
+				</td>
+			</tr><tr>
+				<td class="text-right">
+					<strong>邮箱:</strong>
+				</td>
+				<td class="text-left">
+					<input class="form-control" type="text" id="uEmail" name="uEmail" value = "${user.uEmail}">
+				</td>
+			</tr>	
 			
 			<tr>
 				<td colspan="2" class="text-center">

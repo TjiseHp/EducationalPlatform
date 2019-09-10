@@ -19,4 +19,7 @@ public interface CreditDao {
 	
     @Select("select * from e_credit")
 	List<Credit> queryAllDetail();
+
+    @Select("select * from e_credit where U_ID = #{uId}")
+	List<Credit> queryAllConsumptionByID(Integer uId);
 }

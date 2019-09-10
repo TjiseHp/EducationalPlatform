@@ -10,10 +10,8 @@
 	function doPost(){
 		var creditSum = $("#creditSum").val();
 		var creditText = $("#creditText").val();
-		var creditPreson = $("#creditPreson").val();
-		var creditText2 = $("#creditText2").val();
-		
-		if(creditSum == ""||creditDate == ""||creditPreson == ""||creditText2 == ""){
+		var creditPreson = $("#creditPreson").val();		
+		if(creditSum == ""||creditDate == ""||creditPreson == ""){
 			layer.msg("内容不能为空", {time:2000, icon:5, shift:6});
 			return false;
 		}else{
@@ -55,14 +53,7 @@
 					<input class="form-control" type="text" id="creditPreson" name="creditPreson">
 				</td>
 			</tr>
-			<tr>
-				<td class="text-right">
-					<strong>备注:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="creditText2" name="creditText2">
-				</td>
-			</tr>
+			
 			
 			
 			

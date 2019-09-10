@@ -105,7 +105,7 @@ public class UserCortroller  {
 	@RequestMapping(value = "/doUpdateStudent",produces = {"text/html;charset=utf-8"})
 	public String doUpdateStudent(User user,HttpServletRequest httpServletRequest) {
 		userService.updateByPrimaryKeySelective(user);
-		return "redirect: studentTable";
+		return "redirect: studentTable2";
 	}
 	
 	//模糊查询
@@ -168,7 +168,7 @@ public class UserCortroller  {
 	public String doInsertStudent(User user,HttpSession httpSession) {
 		user.setgNum(1);
 		userService.insertSelective(user);
-		return "redirect: studentTable";
+		return "redirect: studentTable2";
 	}
 	
 	//查询学生信息--页面跳转
@@ -221,27 +221,9 @@ public class UserCortroller  {
 	@RequestMapping(value = "/doUpdateTeacher",produces = {"text/html;charset=utf-8"})
 	public String updateTeacher(User user,HttpServletRequest httpServletRequest) {
 		userService.updateByPrimaryKeySelective(user);
-		return "redirect: teacherTable";
+		return "redirect: teacherTable2";
 	}
 		
-	//教师模糊查询
-	@RequestMapping("/searchTeacher")
-	public ModelAndView searchTeacher
-		(		@RequestParam(defaultValue = "1",required = true,value = "pageNum") Integer pageNum,
-				@RequestParam(required = true,value = "search") String search,
-				HttpServletRequest httpServletRequest) {
-		Integer pageSize=PageUtil.getPageSize();
-		ModelAndView modelAndView = new ModelAndView();
-		HttpSession httpSession = httpServletRequest.getSession();
-		PageHelper.startPage(pageNum, pageSize);
-		List<User> users = userService.queryTeacherByExample(search);
-		PageInfo<User> pageInfo = new PageInfo<User>(users);
-		modelAndView.addObject("pageInfo", pageInfo);
-		modelAndView.addObject("httpSession",httpSession);
-		modelAndView.addObject("mainPage", "user/teacherTable.jsp");
-		modelAndView.setViewName("main");
-		return modelAndView;
-	}
 		
 	//插入教师信息--页面跳转
 	@RequestMapping("/insertTeacher")
@@ -273,7 +255,52 @@ public class UserCortroller  {
 	public String doInsertTeacher(User user,HttpSession httpSession) {
 		user.setgNum(2);
 		userService.insertSelective(user);
-		return "redirect: teacherTable";
+		return "redirect: teacherTable2";
+	}
+	
+	//查询教师信息--页面跳转
+	@RequestMapping("/teacherTable2")
+	public ModelAndView teacherTable2(HttpServletRequest httpServletRequest) {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("mainPage", "user/teacherTable2.jsp");
+		modelAndView.setViewName("main");
+		return modelAndView;
+	}
+		
+	//查询全部教师列表
+	@ResponseBody
+	@RequestMapping("/queryAllTeacher")
+	public List<User> queryAllTeacher() {
+		List<User> teacher = userService.queryAllTeacher();
+		for(User t:teacher) {
+			if (t.getuExp()==null) {
+				t.setuExp(0);
+			}
+			int exp1=t.getuExp();
+			int exp2=exp1/100;
+			t.setuExp(exp2);
+		}
+		
+		
+		
+		return teacher;
+	}
+	
+	
+	//删除教师信息2
+	@ResponseBody
+	@RequestMapping("/deleteTeacher2")
+	public String deleteTeacher2(User teacher) {
+		System.out.println("deleteTeacher2:"+teacher.getuId());
+		JSONObject json = new JSONObject();
+		int row = userService.deleteByPrimaryKey(teacher.getuId());
+		System.out.println("删除了"+row+"行数据");
+		if (row==1) {
+			json.put("result", true);
+		}else {
+			json.put("result", false);
+		}
+		return json.toString();
 	}
 	
 }
