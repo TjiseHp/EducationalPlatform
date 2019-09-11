@@ -8,9 +8,9 @@
 <div><h1>测试页面-主页</h1></div>
 
 <div>
-<a href="user/studentTable">学生列表</a>
+<a href="user/studentTable2">学生列表</a>
 <br/>
-<a href="user/teacherTable">教师列表</a>
+<a href="user/teacherTable2">教师列表</a>
 <br/>
 <a href="credit/creditConsumption">积分消费记录明细查询</a>
 <br/>
