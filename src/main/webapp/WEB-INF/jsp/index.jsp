@@ -159,9 +159,11 @@
 															</div>
 
 															<div class="row form-group">
-																<div class="col-md-12 text-center">
-																	<!--<input type="submit" class="btn btn-primary" value="Sign up">-->
-																	<button type="button" class="btn btn-danger" onclick="doReg()">注册</button>
+																<div class="col-md-6 text-center">
+																	<button type="button" class="btn btn-danger" onclick="doStudentReg()">学生注册</button>
+																</div>
+																<div class="col-md-6 text-center">
+																	<button type="button" class="btn btn-danger" onclick="doTeacherReg()">教师注册</button>
 																</div>
 															</div>
 														</form>
@@ -229,7 +231,7 @@
 			}
 			
 			
-			function doReg() {
+			function doStudentReg() {
 				var uAcc = $("#registerUname").val();
 				var uPwd = $("#registerPwd").val();
 				var uPwd2 = $("#registerPwd2").val();
@@ -248,12 +250,59 @@
 					return;
 				}
 				
+				var loadingIndex = null;
+				$.ajax({
+		        	type : "POST",
+		        	url  : "doStudentReg",
+		        	data : {
+		        		"uAcc" : uAcc,
+		        		"uPwd"  : uPwd
+		        	},
+		        	beforeSend : function(){
+		        		loadingIndex = layer.msg('处理中', {icon: 16});
+		        	},
+		        	success : function(result) {
+		        		layer.close(loadingIndex);
+		        		var resObj = JSON.parse(result);
+		        		
+		        		if (resObj.result) {
+							layer.msg("注册成功", {time:2000, icon:6, shift:6}, function(){
+		                    });
+		        		} else {
+		                    layer.msg("该账号已重复，请重新输入", {time:2000, icon:5, shift:6}, function(){
+		                    	
+		                    });
+		        		}
+		        	},
+		        	error : function(err){
+		        		
+		        	}
+		        });
+			}
 			
+			function doTeacherReg() {
+				var uAcc = $("#registerUname").val();
+				var uPwd = $("#registerPwd").val();
+				var uPwd2 = $("#registerPwd2").val();
+				
+				if(uAcc == null || uAcc == "") {
+					layer.msg("请输入账号！", {time:2000, icon:5, shift:6}, function(){
+	                });
+					return;
+				} else if(uPwd == null || uPwd == "") {
+					layer.msg("请输入密码！", {time:2000, icon:5, shift:6}, function(){
+	                });
+					return;
+				}else if (uPwd != uPwd2) {
+					layer.msg("两次输入的密码不同，请重新输入！", {time:2000, icon:5, shift:6}, function(){
+	                });
+					return;
+				}
 				
 				var loadingIndex = null;
 				$.ajax({
 		        	type : "POST",
-		        	url  : "doUserReg",
+		        	url  : "doTeacherReg",
 		        	data : {
 		        		"uAcc" : uAcc,
 		        		"uPwd"  : uPwd

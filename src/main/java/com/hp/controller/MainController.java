@@ -120,38 +120,47 @@ public class MainController {
 		return json.toString();
 	}
 	
-	//执行注册操作
+	//学生注册操作
 	@ResponseBody
-	@RequestMapping("/doUserReg")
-	public String doUserReg(HttpSession session,User user) {
+	@RequestMapping("/doStudentReg")
+	public String doStudentReg(HttpSession session,User user) {
 		System.out.println("注册："+user.getuAcc()+" "+user.getuPwd());
 		JSONObject json = new JSONObject();
-		/*
-		Account_num loginNum = loginService.queryLoginNumForUser(account_num);
-		if (loginNum == null) {
-			account_num.setAccState("正常");
-			int i = loginService.insertSelective(account_num);
-			if (i<=0) {
+		User regUser = userService.queryRegUser(user);
+		if (regUser == null) {
+			user.setgNum(1);
+			user.setuName("新用户");
+			int row = userService.insertUserSelective(user);
+			if (row<=0) {
 				json.put("result", false);
 			}else {
-				account_num = loginService.queryLoginNumForNumAndPwd(account_num);
-				User newUser = new User();
-				newUser.setAccNo(account_num.getAccNo());
-				String gName ="用户组";
-				newUser.setgNo(loginService.queryGnoFromGroupForGname(gName));
-				int j = loginService.insertSelective(newUser);
-				if (j<=0) {
-					json.put("result", false);
-					userService.deleteByPrimaryKey(account_num.getAccNo());
-				}else {
-					json.put("result", true);
-				}
-				}
-			
+				json.put("result", true);
+			}
 		}else {
 			json.put("result", false);
 		}
-		*/
+		return json.toString();
+	}
+	
+	//教师注册操作
+	@ResponseBody
+	@RequestMapping("/doTeacherReg")
+	public String doTeacherReg(HttpSession session,User user) {
+		System.out.println("注册："+user.getuAcc()+" "+user.getuPwd());
+		JSONObject json = new JSONObject();
+		User regUser = userService.queryRegUser(user);
+		if (regUser == null) {
+			user.setgNum(2);
+			user.setuName("新用户");
+			int row = userService.insertUserSelective(user);
+			if (row<=0) {
+				json.put("result", false);
+			}else {
+				json.put("result", true);
+			}
+		}else {
+			json.put("result", false);
+		}
 		return json.toString();
 	}
 	

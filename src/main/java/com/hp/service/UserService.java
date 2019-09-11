@@ -26,4 +26,8 @@ public interface UserService {
 
 	User queryLoginByUser(User user);
 
+	User queryRegUser(User user);
+
+	int insertUserSelective(User user);
+
 }
