@@ -29,13 +29,13 @@ public class CreditController {
 	
 	//积分消费记录明细查询
 	@RequestMapping("/creditConsumption")
-	public ModelAndView creditTable(@RequestParam(defaultValue = "1",required = true,value = "pageNum") Integer pageNum,HttpServletRequest httpServletRequest) {
+	public ModelAndView creditTable(@RequestParam(defaultValue = "1",required = true,value = "pageNum") Integer pageNum,Integer uId,HttpServletRequest httpServletRequest) {
 		Integer pageSize=PageUtil.getPageSize();
 		ModelAndView modelAndView = new ModelAndView();
 		HttpSession httpSession = httpServletRequest.getSession();
 		
 		PageHelper.startPage(pageNum, pageSize);
-		List<Credit> creditConsumption=creditService.queryAllConsumption();
+		List<Credit> creditConsumption=creditService.queryAllConsumptionByID(uId);
 		PageInfo<Credit> pageInfo = new PageInfo<Credit>(creditConsumption);
 		
 		modelAndView.addObject("pageInfo", pageInfo);

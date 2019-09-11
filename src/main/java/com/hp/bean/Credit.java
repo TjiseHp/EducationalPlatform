@@ -2,6 +2,8 @@ package com.hp.bean;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Credit {
     private Integer creditNum;
 
@@ -11,6 +13,7 @@ public class Credit {
 
     private String creditText;
 
+//    @DateTimeFormat(pattern = "yyyy-MM-dd")  
     private Date creditDate;
 
     private String creditPreson;

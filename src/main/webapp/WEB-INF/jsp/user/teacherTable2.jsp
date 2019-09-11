@@ -1,4 +1,4 @@
-﻿<%@ page 	language="java" 
+<%@ page 	language="java" 
 			contentType="text/html; charset=UTF-8"
     		pageEncoding="UTF-8"
     		deferredSyntaxAllowedAsLiteral="true"
@@ -9,7 +9,7 @@
 		
 		$(document).ready(function () {
 	        $('#table1').bootstrapTable({
-	            url: '${pageContext.request.contextPath}/user/queryAllStudent',
+	            url: '${pageContext.request.contextPath}/user/queryAllTeacher',
 	            method: 'post', 
 	            columns: [
 	                {
@@ -45,14 +45,17 @@
 	                    title: '城市',
 	                    align: "center"
 	                },
-	            
-	     
 	                {
-	                    sortable: "true",
-	                    field: 'credit',
-	                    title: '剩余积分',
+	                    field: 'classNum',
+	                    title: '学科',
 	                    align: "center"
 	                },
+	                {
+	                    field: 'uExp',
+	                    title: '等级',
+	                    align: "center"
+	                },
+	              
 	                {
 	                	field: 'option',
 	                    title: '操作',
@@ -95,8 +98,10 @@
 	            	uSex = row.uSex;
 	            	uPhone = row.uPhone;
 	            	uEmail = row.uEmail;
-	            	credit = row.credit;
-	            	cNum = row.cNum;	            	
+	            	cNum = row.cNum;
+	            	classNum = row.classNum;
+	            	uExp = row.uExp;
+       	
 	            }
 	        });
 	    })
@@ -117,7 +122,7 @@
 				}, function(){
 					$.ajax({
 	                    type: "post",
-	                    url: "${pageContext.request.contextPath}/user/deleteStudent2",
+	                    url: "${pageContext.request.contextPath}/user/deleteTeacher2",
 	                    data: {
 	                    	"uId": uId
                   			},
@@ -154,13 +159,13 @@
 	        },
 	        
 	        "click .updateBtn": function (e, value, row, index) {
-	        	window.location.href = "${pageContext.request.contextPath}/user/updateStudent?uId="+uId;
+	        	window.location.href = "${pageContext.request.contextPath}/user/updateTeacher?uId="+uId;
 	        }
 	    }
 		
 		function doAdd() {
 			console.info("ADD");
-			window.location.href = "${pageContext.request.contextPath}/user/insertStudent";
+			window.location.href = "${pageContext.request.contextPath}/user/insertTeacher";
 		}
 		
 	</script>

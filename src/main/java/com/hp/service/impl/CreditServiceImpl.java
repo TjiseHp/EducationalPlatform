@@ -48,5 +48,10 @@ public class CreditServiceImpl implements CreditService {
 		creditMapper.insertSelective(credit);
 		
 	}
+
+	public List<Credit> queryAllConsumptionByID(Integer uId) {
+		// TODO Auto-generated method stub
+		return creditDao.queryAllConsumptionByID(uId);
+	}
 	
 }

@@ -17,4 +17,6 @@ public interface CreditService {
 	int deleteByPrimaryKey(Integer creditNum);
 
 	void insertSelective(Credit credit);
+
+	List<Credit> queryAllConsumptionByID(Integer uId);
 }
