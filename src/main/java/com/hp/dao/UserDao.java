@@ -25,7 +25,12 @@ public interface UserDao {
 
 	List<User> queryTeacherByExample(String search);
 
+	//登录查询
 	@Select("select * from e_user where U_ACC = #{uAcc} and U_PWD = #{uPwd}")
 	User queryLoginByUser(User user);
+	
+	//注册查询
+	@Select("select * from e_user where U_ACC = #{uAcc}")
+	User queryRegUser(User user);
 
 }
