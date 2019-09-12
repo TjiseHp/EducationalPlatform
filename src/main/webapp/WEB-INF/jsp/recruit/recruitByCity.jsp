@@ -15,29 +15,17 @@
 	                {
 	                    sortable: "true",
 	                    field: 'uId',
-	                    title: 'ID',
+	                    title: '发布人',
 	                    align: "center"
 	                },
 	                {
-	                    sortable: "true",
-	                    field: 'uName',
-	                    title: '教师姓名',
+	                    field: 'recruitText',
+	                    title: '详细信息',
 	                    align: "center"
 	                },
 	                {
-	                    sortable: "true",
-	                    field: 'uSex',
-	                    title: '性别',
-	                    align: "center"
-	                },
-	                {
-	                    field: 'classNum',
-	                    title: '科目',
-	                    align: "center"
-	                },
-	                {
-	                    field: 'cNum',
-	                    title: '所在城市',
+	                    field: 'recruitSTime',
+	                    title: '发布时间',
 	                    align: "center"
 	                },
 	                {
@@ -78,17 +66,15 @@
 	            },
 	            onClickRow: function (row) {
 	            	uId = row.uId;
-	            	uName = row.uName;
-	            	uSex = row.uSex;
-	            	classNum = row.classNum;
-	            	cNum = row.cNum;
+	            	recruitText = row.recruitText;
+	            	recruitSTime = row.recruitSTime;
 	            }
 	        });
 	    })
 	    
 	    function operateFormatter(value, row, index) {
 			return [
-		        '<button class="btn btn-info btn-xs rightSize updateBtn" type="button"><i class="fa fa-paste"></i><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 评价</button>&nbsp;',
+		        '<button class="btn btn-info btn-xs rightSize updateBtn" type="button"><i class="fa fa-paste"></i><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 申请</button>&nbsp;',
 		        '<button class="btn btn-danger btn-xs rightSize deleteBtn" type="button"><i class="fa fa-envelope"></i><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 删除</button>'
 		    ].join('');
 	    }

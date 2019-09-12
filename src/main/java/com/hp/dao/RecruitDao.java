@@ -11,7 +11,7 @@ public interface RecruitDao {
 	@Select("select * from e_recruit where c_num = #{cNum} and CLASS_NUM = #{classNum}")
 	List<Recruit> queryAllBycNum(Recruit recruit);
 	
-	@Select("select * from e_recruit where (U_ID2 !='' and RECRUIT_E_DATE !='') and U_ID = #{uId}")
+	@Select("select * from e_recruit where U_ID2 !='' and U_ID = #{uId}")
 	List<Recruit> queryRecruitHistory(Integer uId);
 	
 	@Select("select distinct u_id2 from e_recruit where  U_ID = #{uId}")

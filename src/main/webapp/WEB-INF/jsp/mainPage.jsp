@@ -25,5 +25,6 @@
 <a href="${pageContext.request.contextPath}/user/teacherByworking">在职教师查询</a>
 <br/>
 <a href="${pageContext.request.contextPath}/recruit/recruitTeacher">教师记录</a>
-
+<br/>
+<a href="${pageContext.request.contextPath}/recruit/recruitByCity">招聘中心</a>
 </div>

@@ -195,26 +195,28 @@ public class UserCortroller  {
 		return students;
 	}
 		
-	//招聘中心在职教师查询
+	//招聘中心在职教师查询跳转
 	@RequestMapping("/teacherByworking")
-	public ModelAndView teacherByworking(@RequestParam(defaultValue = "1",required = true,value = "pageNum") Integer pageNum,User user,HttpServletRequest httpServletRequest) {
-		Integer pageSize=PageUtil.getPageSize();
+	public ModelAndView teacherByworking(HttpServletRequest httpServletRequest) {
 		ModelAndView modelAndView = new ModelAndView();
-		HttpSession httpSession = httpServletRequest.getSession();
-		
-		PageHelper.startPage(pageNum, pageSize);
-		
+		modelAndView.addObject("mainPage", "recruit/teacherByworking.jsp");
+		modelAndView.setViewName("main");
+		return modelAndView;
+	}
+	
+	//招聘中心在职教师查询
+	@ResponseBody
+	@RequestMapping("/queryTeacherByworking")
+	public List<User> queryTeacherByworking(User user) {
 		user.setClassNum(4);
 		user.setcNum(14);
 		
 		List<User> teacher=userService.queryTeacherByworking(user);
-		PageInfo<User> pageInfo = new PageInfo<User>(teacher);		
-		
-		modelAndView.addObject("pageInfo", pageInfo);
-		modelAndView.addObject("httpSession",httpSession);		
-		modelAndView.addObject("mainPage", "recruit/teacherByworking.jsp");
-		modelAndView.setViewName("main");
-		return modelAndView;
+		for(int i = 0;i<teacher.size();i++) {
+			int j = teacher.get(i).getuExp()/100;
+			teacher.get(i).setuExp(j);
+		}
+		return teacher;
 	}
 	
 	//更新教师信息
