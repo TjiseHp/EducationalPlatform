@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hp.bean.Exchange;
+import com.hp.bean.Pay;
 import com.hp.bean.User;
 import com.hp.service.ExchangeService;
 import com.hp.util.PageUtil;
@@ -64,8 +65,9 @@ public class ExchangeController {
 	//更新营收比例信息
 	@RequestMapping(value = "/doUpdateExchange",produces = {"text/html;charset=utf-8"})
 	public String doUpdateExchange(Exchange exchange,HttpServletRequest httpServletRequest) {
-		exchangeService.updateByPrimaryKeySelective(exchange);
-		return "redirect: exchangeTable";
+		int row = exchangeService.updateByPrimaryKeySelective(exchange);
+		System.out.println("更新了"+row+"行数据");
+		return "redirect: exchangeTable2";
 	}
 	
 	//模糊查询
@@ -88,8 +90,33 @@ public class ExchangeController {
 		modelAndView.setViewName("main");
 		return modelAndView;
 	}
+	
+	//执行插入积分比例信息
+		@RequestMapping(value = "/doInsertExchange",produces = {"text/html;charset=utf-8"})
+		public String doInsertExchange(Exchange exchange,HttpSession httpSession) {
+			
+			int row = exchangeService.insertSelective(exchange);
+			System.out.println("插入了"+row+"行数据");
+			return "redirect: exchangeTable2";
+		}
+	
+	//查询积分比例信息--页面跳转
+		@RequestMapping("/exchangeTable2")
+		public ModelAndView payTable2(HttpServletRequest httpServletRequest) {
+			ModelAndView modelAndView = new ModelAndView();
+			modelAndView.addObject("mainPage", "exchange/exchangeTable2.jsp");
+			modelAndView.setViewName("main");
+			return modelAndView;
+		}
 
 
+		//查询全部积分比例列表
+		@ResponseBody
+		@RequestMapping("/queryAllExchange")
+		public List<Exchange> queryAllExchange() {
+			List<Exchange> exchanges = exchangeService.queryAllExchange();
+			return exchanges;
+		}
 
 	
 	

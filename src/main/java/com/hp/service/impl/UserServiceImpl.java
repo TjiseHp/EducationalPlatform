@@ -49,11 +49,22 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public List<User> queryTeacherByworking(User user) {
-		// TODO Auto-generated method stub
 		return userDao.queryTeacherByworking(user);
 	}
 	public List<User> queryTeacherByExample(String search) {
 		return userDao.queryTeacherByExample(search);
+	}
+
+	public User queryLoginByUser(User user) {
+		return userDao.queryLoginByUser(user);
+	}
+
+	public User queryRegUser(User user) {
+		return userDao.queryRegUser(user);
+	}
+
+	public int insertUserSelective(User user) {
+		return userMapper.insertSelective(user);
 	}
 
 }

@@ -8,9 +8,9 @@
 <div><h1>测试页面-主页</h1></div>
 
 <div>
-<a href="user/studentTable">学生列表</a>
+<a href="user/studentTable2">学生列表</a>
 <br/>
-<a href="user/teacherTable">教师列表</a>
+<a href="user/teacherTable2">教师列表</a>
 <br/>
 <a href="credit/creditConsumption">积分消费记录明细查询</a>
 <br/>
@@ -22,9 +22,14 @@
 <br/>
 <a href="${pageContext.request.contextPath}/recruit/recruitTable">历史招聘信息</a>
 <br/>
-<a href="${pageContext.request.contextPath}/user/teacherByworking">在职教师查询</a>
+
+<a href="${pageContext.request.contextPath}/exchange/exchangeTable2">积分记录</a>
 <br/>
 <a href="${pageContext.request.contextPath}/recruit/recruitTeacher">教师记录</a>
 <br/>
 <a href="${pageContext.request.contextPath}/recruit/recruitByCity">招聘中心</a>
+<br/>
+<a href="${pageContext.request.contextPath}/pay/payTable2">营收记录</a>
+<br/>
+
 </div>

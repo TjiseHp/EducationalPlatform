@@ -2,6 +2,8 @@ package com.hp.bean;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Credit {
     private Integer creditNum;
 

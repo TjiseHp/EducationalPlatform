@@ -32,10 +32,10 @@ public class CreditServiceImpl implements CreditService {
 		// TODO Auto-generated method stub
 		return creditDao.queryAllBuy();
 	}
-
-	public List<Credit> queryAllDetail() {
+	
+	public List<Credit> queryAllDetailById(Integer uId) {
 		// TODO Auto-generated method stub
-		return creditDao.queryAllDetail();
+		return creditDao.queryAllDetailById(uId);
 	}
 
 	public int deleteByPrimaryKey(Integer creditNum) {
@@ -48,5 +48,10 @@ public class CreditServiceImpl implements CreditService {
 		creditMapper.insertSelective(credit);
 		
 	}
+
+
+
+
+
 	
 }

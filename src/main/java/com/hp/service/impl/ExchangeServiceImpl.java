@@ -28,16 +28,16 @@ public class ExchangeServiceImpl implements ExchangeService {
 		return exchangeDao.queryExchangeByexchangeNum(exchangeNum);
 	}
 
-	public void updateByPrimaryKeySelective(Exchange exchange) {
-		exchangeMapper.updateByPrimaryKeySelective(exchange);
+	public int updateByPrimaryKeySelective(Exchange exchange) {
+		return exchangeMapper.updateByPrimaryKeySelective(exchange);
 	}
 	
 	public List<Exchange> queryExchangeByExample(String search) {
 		return exchangeDao.queryExchangeByExample(search);
 	}
 	
-	public void insertSelective(Exchange exchange) {
-		exchangeMapper.insertSelective(exchange);
+	public int insertSelective(Exchange exchange) {
+		return exchangeMapper.insertSelective(exchange);
 	}
 
 

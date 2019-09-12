@@ -12,9 +12,10 @@ public interface CreditService {
 	   
 	List<Credit> queryAllBuy() ;
 
-	List<Credit> queryAllDetail();
+	List<Credit> queryAllDetailById(Integer uId);
 
 	int deleteByPrimaryKey(Integer creditNum);
 
 	void insertSelective(Credit credit);
+
 }

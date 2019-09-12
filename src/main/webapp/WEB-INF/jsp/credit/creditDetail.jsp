@@ -39,7 +39,6 @@
 					  				<td>明细	</td>
 					  				<td>时间	</td>
 					  				<td>操作人</td>
-					  				<td>备注</td>
 					  				<td>
 					  				    <a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doAdd('${creditDetail.uId}');">新增</a>					     
 					  				</td>
@@ -51,7 +50,6 @@
 						  				<td>${creditDetail.creditText}</td>
 						  				<td>${creditDetail.creditDate}</td>
 						  				<td>${creditDetail.creditPreson}</td>
-						  				<td>${creditDetail.creditText2}</td>
 						  				<td>
 			  					            <a class="btn btn-danger btn-xs" role="button" href="javascript:;" onclick="doDel('${creditDetail.creditNum}');">删除</a>
 						  				</td>

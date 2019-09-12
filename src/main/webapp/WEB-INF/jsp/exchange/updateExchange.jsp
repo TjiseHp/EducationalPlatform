@@ -8,10 +8,10 @@
 
 <script type="text/javascript">
 	function doUpdate(){
-		var eNum = $("#eNum").val();
-		var eE = $("#eE").val();
+		var exchangeNum = $("#exchangeNum").val();
+		var exchangeE = $("#exchangeE").val();
 		
-		if(eNum == ""||eE == ""){
+		if(exchangeNum == ""||exchangeE == ""){
 			layer.msg("内容不能为空", {time:2000, icon:5, shift:6});
 			return false;
 		}else{
