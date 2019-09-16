@@ -5,7 +5,7 @@
     		%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-	<form action="${pageContext.request.contextPath}/file/upload.chao" method="post" enctype="multipart/form-data">
+	<form action="${pageContext.request.contextPath}/file/upload?uId=${loginUser.uId}" method="post" enctype="multipart/form-data">
 		<input class="btn btn-default" type="file" name="file" width="120px" value="选择文件">
 		<input class="btn btn-info" type="submit" value="上传">
 	</form>
