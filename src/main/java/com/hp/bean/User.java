@@ -28,6 +28,26 @@ public class User {
     private String uPwd;
 
     private String credit;
+    
+    private City city;
+    
+    private Class uClass;
+    
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
+	}
+
+	public Class getuClass() {
+		return uClass;
+	}
+
+	public void setuClass(Class uClass) {
+		this.uClass = uClass;
+	}
 
 	public String getCredit() {
 		return credit;

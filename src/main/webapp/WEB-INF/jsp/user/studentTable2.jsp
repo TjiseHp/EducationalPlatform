@@ -41,12 +41,10 @@
 	                    align: "center"
 	                },
 	                {
-	                    field: 'cNum',
+	                    field: 'city.cCity',
 	                    title: '城市',
 	                    align: "center"
-	                },
-	            
-	     
+	                },	            
 	                {
 	                    sortable: "true",
 	                    field: 'credit',
@@ -96,13 +94,14 @@
 	            	uPhone = row.uPhone;
 	            	uEmail = row.uEmail;
 	            	credit = row.credit;
-	            	cNum = row.cNum;	            	
+	            	cCity = row.city.cCity;	            	
 	            }
 	        });
 	    })
 	    
 	    function operateFormatter(value, row, index) {
 			return [
+				'<button class="btn btn-primary btn-xs rightSize creditBtn" type="button"><i class="fa fa-paste"></i><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> 积分操作</button>&nbsp;',
 		        '<button class="btn btn-info btn-xs rightSize updateBtn" type="button"><i class="fa fa-paste"></i><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 修改</button>&nbsp;',
 		        '<button class="btn btn-danger btn-xs rightSize deleteBtn" type="button"><i class="fa fa-envelope"></i><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 删除</button>'
 		    ].join('');
@@ -155,7 +154,12 @@
 	        
 	        "click .updateBtn": function (e, value, row, index) {
 	        	window.location.href = "${pageContext.request.contextPath}/user/updateStudent?uId="+uId;
+	        },
+	        
+	        "click .creditBtn": function (e, value, row, index) {
+	        	window.location.href = "${pageContext.request.contextPath}/credit/creditDetail?uId="+uId;
 	        }
+	        
 	    }
 		
 		function doAdd() {

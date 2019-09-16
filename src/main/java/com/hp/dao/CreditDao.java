@@ -17,9 +17,8 @@ public interface CreditDao {
 	@Select("select * from e_credit where CREDIT_TEXT = \"充值\"")
 	List<Credit> queryAllBuy();
 	
-    @Select("select * from e_credit")
-	List<Credit> queryAllDetail();
-
     @Select("select * from e_credit where U_ID = #{uId}")
-	List<Credit> queryAllConsumptionByID(Integer uId);
+	List<Credit> queryAllDetailById(Integer uId);
+
+
 }

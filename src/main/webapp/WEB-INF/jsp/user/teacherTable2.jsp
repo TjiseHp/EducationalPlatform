@@ -41,12 +41,12 @@
 	                    align: "center"
 	                },
 	                {
-	                    field: 'cNum',
+	                    field: 'city.cCity',
 	                    title: '城市',
 	                    align: "center"
 	                },
 	                {
-	                    field: 'classNum',
+	                    field: 'uClass.classKind',
 	                    title: '学科',
 	                    align: "center"
 	                },
@@ -98,8 +98,8 @@
 	            	uSex = row.uSex;
 	            	uPhone = row.uPhone;
 	            	uEmail = row.uEmail;
-	            	cNum = row.cNum;
-	            	classNum = row.classNum;
+	            	cCity = row.city.cCity;
+	            	classKind = row.uClass.classKind;
 	            	uExp = row.uExp;
        	
 	            }

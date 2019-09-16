@@ -13,7 +13,6 @@ public class Credit {
 
     private String creditText;
 
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")  
     private Date creditDate;
 
     private String creditPreson;

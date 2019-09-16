@@ -11,6 +11,9 @@
 		var uPhone = $("#uPhone").val();
 		var uEmail = $("#uEmail").val();
 		var uSex = $("#uSex").val();
+		var cNum = $("#cNum").val();
+		var classNum = $("#classNum").val();
+		
 
 		
 		if(uName == ""||uPhone == ""||uEmail == ""||uSex == ""){
@@ -40,27 +43,42 @@
 			</tr>
 			<tr>
 				<td class="text-right">
-					<strong>手机:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="uPhone" name="uPhone">
-				</td>
-			</tr>
-			<tr>
-				<td class="text-right">
 					<strong>性别:</strong>
 				</td>
 				<td class="text-left">
 				    <input class="form-control" type="text" id="uSex" name="uSex">		
 				</td>
 			</tr>
-			
+			<tr>
+				<td class="text-right">
+					<strong>手机:</strong>
+				</td>
+				<td class="text-left">
+					<input class="form-control" type="text" id="uPhone" name="uPhone">
+				</td>
+			</tr>			
 			<tr>
 				<td class="text-right">
 					<strong>邮箱:</strong>
 				</td>
 				<td class="text-left">
 					<input class="form-control" type="text" id="uEmail" name="uEmail">
+				</td>
+			</tr>
+			<tr>
+				<td class="text-right">
+					<strong>学科:</strong>
+				</td>
+				<td class="text-left">
+					<input class="form-control" type="text" id="classNum" name="classNum" >
+				</td>
+			</tr>
+			<tr>
+				<td class="text-right">
+					<strong>城市:</strong>
+				</td>
+				<td class="text-left">
+					<input class="form-control" type="text" id="cNum" name="cNum" >
 				</td>
 			</tr>
 						

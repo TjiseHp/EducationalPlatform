@@ -29,13 +29,13 @@ public class CreditController {
 	
 	//积分消费记录明细查询
 	@RequestMapping("/creditConsumption")
-	public ModelAndView creditTable(@RequestParam(defaultValue = "1",required = true,value = "pageNum") Integer pageNum,Integer uId,HttpServletRequest httpServletRequest) {
+	public ModelAndView creditTable(@RequestParam(defaultValue = "1",required = true,value = "pageNum") Integer pageNum,HttpServletRequest httpServletRequest) {
 		Integer pageSize=PageUtil.getPageSize();
 		ModelAndView modelAndView = new ModelAndView();
 		HttpSession httpSession = httpServletRequest.getSession();
 		
 		PageHelper.startPage(pageNum, pageSize);
-		List<Credit> creditConsumption=creditService.queryAllConsumptionByID(uId);
+		List<Credit> creditConsumption=creditService.queryAllConsumption();
 		PageInfo<Credit> pageInfo = new PageInfo<Credit>(creditConsumption);
 		
 		modelAndView.addObject("pageInfo", pageInfo);
@@ -65,17 +65,17 @@ public class CreditController {
 		
 	//积分详情查询
 	@RequestMapping("/creditDetail")
-	public ModelAndView creditDetail(@RequestParam(defaultValue = "1",required = true,value = "pageNum") Integer pageNum,HttpServletRequest httpServletRequest) {
+	public ModelAndView creditDetail(@RequestParam(defaultValue = "1",required = true,value = "pageNum")Integer pageNum,Credit credit,HttpServletRequest httpServletRequest) {
 		Integer pageSize=PageUtil.getPageSize();
 		ModelAndView modelAndView = new ModelAndView();
 		HttpSession httpSession = httpServletRequest.getSession();
 		
 		PageHelper.startPage(pageNum, pageSize);
-		List<Credit> creditDetail=creditService.queryAllDetail();
+		List<Credit> creditDetail=creditService.queryAllDetailById(credit.getuId());
 		PageInfo<Credit> pageInfo = new PageInfo<Credit>(creditDetail);
-		
+
 		modelAndView.addObject("pageInfo", pageInfo);
-		modelAndView.addObject("httpSession",httpSession);		
+		modelAndView.addObject("httpSession",httpSession);	
 		modelAndView.addObject("mainPage", "credit/creditDetail.jsp");
 		modelAndView.setViewName("main");
 		return modelAndView;

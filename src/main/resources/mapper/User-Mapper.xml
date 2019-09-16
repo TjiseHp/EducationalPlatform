@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hp.dao.UserDao">
+
+	<resultMap id="BaseResultMap" type="com.hp.bean.User">
+	    <id column="U_ID" jdbcType="INTEGER" property="uId" />
+	    <result column="G_NUM" jdbcType="INTEGER" property="gNum" />
+	    <result column="CHECK_NUM" jdbcType="INTEGER" property="checkNum" />
+	    <result column="C_STATUS" jdbcType="INTEGER" property="cStatus" />
+	    <result column="C_NUM" jdbcType="INTEGER" property="cNum" />
+	    <result column="CLASS_NUM" jdbcType="INTEGER" property="classNum" />
+	    <result column="U_EXP" jdbcType="INTEGER" property="uExp" />
+	    <result column="U_NAME" jdbcType="VARCHAR" property="uName" />
+	    <result column="U_SEX" jdbcType="VARCHAR" property="uSex" />
+	    <result column="U_PHONE" jdbcType="VARCHAR" property="uPhone" />
+	    <result column="U_EMAIL" jdbcType="VARCHAR" property="uEmail" />
+	    <result column="U_ACC" jdbcType="VARCHAR" property="uAcc" />
+	    <result column="U_PWD" jdbcType="VARCHAR" property="uPwd" />
+	    <collection property="city" ofType="com.hp.bean.City">
+	    	<id column="C_NUM" jdbcType="INTEGER" property="cNum" />
+		    <result column="C_PROVINCE" jdbcType="VARCHAR" property="cProvince" />
+		    <result column="C_CITY" jdbcType="VARCHAR" property="cCity" />
+		    <result column="C_COUNTY" jdbcType="VARCHAR" property="cCounty" />	
+	    </collection>
+	    <collection property="uClass" ofType="com.hp.bean.Class">
+	    	<id column="CLASS_NUM" jdbcType="INTEGER" property="classNum" />
+    		<result column="CLASS_KIND" jdbcType="VARCHAR" property="classKind" />
+	    </collection>
+	</resultMap>
 	
 	<select id="queryStudentByExample" parameterType="String" resultType="com.hp.bean.User">
 		select * from e_user 
@@ -23,5 +49,23 @@
 			IFNULL(U_EMAIL,''))
 		LIKE "%"#{search}"%"
 	</select>
+	
+	<select id="queryAllTeacher" resultMap="BaseResultMap"> 
+			select * from e_user u 
+			  left join e_city c 
+			     on c.c_num=u.c_num 
+			  left join e_class s
+			     on s.class_num=u.class_num
+			where u.g_num = 2
+	</select>
+		
+	<select id="queryAllStudent" resultMap="BaseResultMap">
+	       select * from e_user u 
+			  left join e_city c 
+			     on c.c_num=u.c_num 
+			where u.g_num = 1
+	
+	</select>
+	
 	
 </mapper>

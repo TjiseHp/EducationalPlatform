@@ -10,6 +10,8 @@
 		var uName = $("#uName").val();
 		var uPhone = $("#uPhone").val();
 		var uEmail = $("#uEmail").val();
+		var uSex = $("#uSex").val();
+		var cNum = $("#cNum").val();
 		
 		if(uName == ""||uPhone == ""||uEmail == ""){
 			layer.msg("内容不能为空", {time:2000, icon:5, shift:6});
@@ -38,6 +40,14 @@
 			</tr>
 			<tr>
 				<td class="text-right">
+					<strong>性别:</strong>
+				</td>
+				<td class="text-left">
+					<input class="form-control" type="text" id="uSex" name="uSex" value = "${user.uSex}">
+				</td>
+			</tr>
+			<tr>
+				<td class="text-right">
 					<strong>手机:</strong>
 				</td>
 				<td class="text-left">
@@ -50,6 +60,14 @@
 				</td>
 				<td class="text-left">
 					<input class="form-control" type="text" id="uEmail" name="uEmail">
+				</td>
+			</tr>
+			<tr>
+				<td class="text-right">
+					<strong>城市:</strong>
+				</td>
+				<td class="text-left">
+					<input class="form-control" type="text" id="cNum" name="cNum" >
 				</td>
 			</tr>
 			

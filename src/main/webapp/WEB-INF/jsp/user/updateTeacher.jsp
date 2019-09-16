@@ -9,8 +9,12 @@
 <script type="text/javascript">
 	function doUpdate(){
 		var uName = $("#uName").val();
+		var uSex = $("#uSex").val();
 		var uPhone = $("#uPhone").val();
 		var uEmail = $("#uEmail").val();
+		var cNum = $("#cNum").val();
+		var classNum = $("#classNum").val();
+
 		
 		if(uName == ""||uPhone == ""||uEmail == ""){
 			layer.msg("内容不能为空", {time:2000, icon:5, shift:6});
@@ -40,6 +44,14 @@
 			</tr>
 			<tr>
 				<td class="text-right">
+					<strong>性别:</strong>
+				</td>
+				<td class="text-left">
+					<input class="form-control" type="text" id="uSex" name="uSex" value = "${user.uSex}">
+				</td>
+			</tr>
+			<tr>
+				<td class="text-right">
 					<strong>手机:</strong>
 				</td>
 				<td class="text-left">
@@ -53,39 +65,23 @@
 				<td class="text-left">
 					<input class="form-control" type="text" id="uEmail" name="uEmail" value = "${user.uEmail}">
 				</td>
-			</tr>
+			</tr>			
 			<tr>
 				<td class="text-right">
-					<strong>邮箱:</strong>
+					<strong>学科:</strong>
 				</td>
 				<td class="text-left">
-					<input class="form-control" type="text" id="uEmail" name="uEmail" value = "${user.uEmail}">
-				</td>
-			</tr>
-			<tr>
-				<td class="text-right">
-					<strong>邮箱:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="uEmail" name="uEmail" value = "${user.uEmail}">
+					<input class="form-control" type="text" id="classNum" name="classNum" value = "${user.classNum}">
 				</td>
 			</tr>
 			<tr>
 				<td class="text-right">
-					<strong>邮箱:</strong>
+					<strong>城市:</strong>
 				</td>
 				<td class="text-left">
-					<input class="form-control" type="text" id="uEmail" name="uEmail" value = "${user.uEmail}">
+					<input class="form-control" type="text" id="cNum" name="cNum" value = "${user.cNum}">
 				</td>
-			</tr><tr>
-				<td class="text-right">
-					<strong>邮箱:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="uEmail" name="uEmail" value = "${user.uEmail}">
-				</td>
-			</tr>	
-			
+			</tr>
 			<tr>
 				<td colspan="2" class="text-center">
 				<input type="hidden" id=courierNo name="uId" value="${user.uId }"/>
