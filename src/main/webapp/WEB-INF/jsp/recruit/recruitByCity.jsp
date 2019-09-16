@@ -9,7 +9,7 @@
 		
 		$(document).ready(function () {
 	        $('#table1').bootstrapTable({
-	            url: '${pageContext.request.contextPath}/recruit/queryRecruitTeacherTable',
+	            url: '${pageContext.request.contextPath}/recruit/queryRecruitByCity',
 	            method: 'post', 
 	            columns: [
 	                {
@@ -24,7 +24,7 @@
 	                    align: "center"
 	                },
 	                {
-	                    field: 'recruitSTime',
+	                    field: 'state',
 	                    title: '发布时间',
 	                    align: "center"
 	                },

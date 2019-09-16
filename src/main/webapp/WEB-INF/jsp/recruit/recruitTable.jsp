@@ -14,28 +14,28 @@
 	            columns: [
 	                {
 	                    sortable: "true",
-	                    field: 'uId',
+	                    field: 'user1.uName',
 	                    title: '发布人',
 	                    align: "center"
 	                },
 	                {
 	                    sortable: "true",
-	                    field: 'uId2',
+	                    field: 'user2.uName',
 	                    title: '教师',
 	                    align: "center"
 	                },
 	                {
-	                    field: 'cNum',
+	                    field: 'city.cCounty',
 	                    title: '所在城市',
 	                    align: "center"
 	                },
 	                {
-	                    field: 'classNum',
+	                    field: 'uClass.classKind',
 	                    title: '科目',
 	                    align: "center"
 	                },
 	                {
-	                    field: 'recruitEDate',
+	                    field: 'state',
 	                    title: '完成时间',
 	                    align: "center"
 	                },

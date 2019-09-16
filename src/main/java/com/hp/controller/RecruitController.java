@@ -1,6 +1,8 @@
 package com.hp.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,8 +18,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.hp.bean.City;
 import com.hp.bean.Recruit;
 import com.hp.bean.User;
+import com.hp.service.CityService;
+import com.hp.service.ClassService;
 import com.hp.service.RecruitService;
 import com.hp.service.UserService;
 import com.hp.util.PageUtil;
@@ -31,6 +36,12 @@ public class RecruitController {
 	
 	@Autowired
 	public UserService userService;
+	
+	@Autowired
+	public CityService cityService;
+	
+	@Autowired
+	public ClassService classService;
 	
 	//增加招聘信息页面跳转	
 	@RequestMapping("/insertRecruit")
@@ -55,9 +66,15 @@ public class RecruitController {
 	@RequestMapping("/queryRecruitByCity")
 	public List<Recruit> queryRecruitByCity(Recruit recruit) {
 		recruit.setClassNum(3);
-		recruit.setcNum(14);
-		
+		recruit.setcNum(23);
 		List<Recruit> recruits = recruitService.queryAllBycNum(recruit);
+		for (int j = 0; j < recruits.size(); j++) {
+			Date date = recruits.get(j).getRecruitEDate();
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String dateString = simpleDateFormat.format(date);
+			recruits.get(j).setState(dateString);
+		}
+		
 		return recruits;
 	}
 	
@@ -89,8 +106,26 @@ public class RecruitController {
 		List<Recruit> recruits=recruitService.queryRecruitHistory(integer);
 		for (int i = 0; i < recruits.size(); i++) {
 			String uName = userService.queryUnameByUid(recruits.get(i).getuId());
+			String uName2 = userService.queryUnameByUid(recruits.get(i).getuId2());
+			City city = cityService.queryCityByCnum(recruits.get(i).getcNum());
+			com.hp.bean.Class class1 = classService.queryAllByClassNum(recruits.get(i).getClassNum());
+			User userTest = new User();
+			User userTest2 = new User();
+			userTest.setuName(uName);
+			userTest2.setuName(uName2);
+			recruits.get(i).setUser1(userTest);
+			recruits.get(i).setUser2(userTest2);
+			recruits.get(i).setCity(city);
+			recruits.get(i).setuClass(class1);
+			if (recruits.get(i).getRecruitEDate()==null) {
+				recruits.get(i).setState("未完成");
+			}else {
+				Date date = recruits.get(i).getRecruitEDate();
+				SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				String dateString = simpleDateFormat.format(date);
+				recruits.get(i).setState(dateString);
+			}
 		}
-		
 		
 		return recruits;
 	}
@@ -121,16 +156,20 @@ public class RecruitController {
 	//教师招聘记录查询
 	@ResponseBody
 	@RequestMapping("/queryRecruitTeacherTable")
-	public List<User> queryRecruitTeacherTable(Recruit recruit) {
+	public List<Recruit> queryRecruitTeacherTable(Recruit recruit) {
 		recruit.setuId(4);
+		
 		Integer integer = recruit.getuId();
-		List<Integer> recruits=recruitService.queryRecruitByuId(integer);
-		List<User> users2 = new ArrayList<User>();
+		List<Recruit> recruits=recruitService.queryRecruitByuId(integer);
 		for(int i=0;i<recruits.size();i++) {
-			Integer uId = recruits.get(i);
+			Integer uId = recruits.get(i).getuId2();
 			User users = userService.queryTeacherByuId(uId);
-			users2.add(users);
+			recruits.get(i).setUser2(users);
+			City city = cityService.queryCityByCnum(recruits.get(i).getcNum());
+			com.hp.bean.Class class1 = classService.queryAllByClassNum(recruits.get(i).getClassNum());
+			recruits.get(i).setCity(city);
+			recruits.get(i).setuClass(class1);
 		}
-		return users2;
+		return recruits;
 	}
 }

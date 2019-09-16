@@ -34,6 +34,6 @@ public interface UserDao {
 	@Select("select * from e_user where U_ACC = #{uAcc}")
 	User queryRegUser(User user);
 
-	@Select("select uNmame from e_user where u_id = #{}")
+	@Select("select u_Name from e_user where u_id = #{uId}")
 	String queryUnameByUid(Integer uId);
 }

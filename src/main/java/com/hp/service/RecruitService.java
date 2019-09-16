@@ -12,6 +12,6 @@ public interface RecruitService {
 	
 	List<Recruit> queryRecruitHistory(Integer uId);
 	
-	List<Integer> queryRecruitByuId(Integer uId);
+	List<Recruit> queryRecruitByuId(Integer uId);
 
 }

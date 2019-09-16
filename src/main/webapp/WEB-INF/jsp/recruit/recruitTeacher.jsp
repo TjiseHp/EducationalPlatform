@@ -20,23 +20,23 @@
 	                },
 	                {
 	                    sortable: "true",
-	                    field: 'uName',
+	                    field: 'user2.uName',
 	                    title: '教师姓名',
 	                    align: "center"
 	                },
 	                {
 	                    sortable: "true",
-	                    field: 'uSex',
+	                    field: 'user2.uSex',
 	                    title: '性别',
 	                    align: "center"
 	                },
 	                {
-	                    field: 'classNum',
+	                    field: 'uClass.classKind',
 	                    title: '科目',
 	                    align: "center"
 	                },
 	                {
-	                    field: 'cNum',
+	                    field: 'city.cCounty',
 	                    title: '所在城市',
 	                    align: "center"
 	                },
