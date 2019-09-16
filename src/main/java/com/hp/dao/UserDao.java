@@ -3,6 +3,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Select;
 
 import com.hp.bean.Credit;
+import com.hp.bean.Recruit;
 import com.hp.bean.User;
 
 public interface UserDao {
@@ -33,4 +34,6 @@ public interface UserDao {
 	@Select("select * from e_user where U_ACC = #{uAcc}")
 	User queryRegUser(User user);
 
+	@Select("select uNmame from e_user where u_id = #{}")
+	String queryUnameByUid(Integer uId);
 }

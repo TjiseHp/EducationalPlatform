@@ -1,5 +1,7 @@
 package com.hp.service;
 import java.util.List;
+
+import com.hp.bean.Recruit;
 import com.hp.bean.User;
 
 public interface UserService {
@@ -30,4 +32,5 @@ public interface UserService {
 
 	int insertUserSelective(User user);
 
+	String queryUnameByUid(Integer uId);
 }

@@ -87,7 +87,11 @@ public class RecruitController {
 		recruit.setuId(4);
 		Integer integer = recruit.getuId();
 		List<Recruit> recruits=recruitService.queryRecruitHistory(integer);
-		System.out.println(recruits.get(1).getRecruitEDate());
+		for (int i = 0; i < recruits.size(); i++) {
+			String uName = userService.queryUnameByUid(recruits.get(i).getuId());
+		}
+		
+		
 		return recruits;
 	}
 	

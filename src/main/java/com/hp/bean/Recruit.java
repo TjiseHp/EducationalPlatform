@@ -18,8 +18,8 @@ public class Recruit {
     private Date recruitEDate;
 
     private String recruitText;
-
-    public Integer getRecruitNum() {
+    
+	public Integer getRecruitNum() {
         return recruitNum;
     }
 
