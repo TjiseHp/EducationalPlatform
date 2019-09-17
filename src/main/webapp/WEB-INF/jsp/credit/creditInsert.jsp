@@ -27,7 +27,7 @@
 <div align="center" style="padding-top: 50px;">
 	<form action="${pageContext.request.contextPath}/credit/doInsertCredit" method="post" accept-charset="utf-8" onsubmit="return doPost()">
 		<table class="table table-bordered table-striped" style="width: 500px;">
-			
+		
 			<tr>
 				<td class="text-right">
 					<strong>积分操作:</strong>

@@ -1,4 +1,4 @@
-﻿<%@ page 	language="java" 
+<%@ page 	language="java" 
 			contentType="text/html; charset=UTF-8"
     		pageEncoding="UTF-8"
     		deferredSyntaxAllowedAsLiteral="true"
@@ -7,50 +7,38 @@
 	
 	<script type="text/javascript">
 		
+	
 		$(document).ready(function () {
+			var uId = window.location.search.substring(window.location.search.indexOf("=")+1);
+			console.info(uId);
 	        $('#table1').bootstrapTable({
-	            url: '${pageContext.request.contextPath}/user/queryAllStudent',
+	            url: '${pageContext.request.contextPath}/credit/queryAllDetailById?uId='+uId,
 	            method: 'post', 
 	            columns: [
+            	  
 	                {
 	                    sortable: "true",
-	                    field: 'uId',
-	                    title: 'ID',
-	                    align: "center"
-	                },
-	                {
-	                    sortable: "true",
-	                    field: 'uName',
-	                    title: '用户名',
+	                    field: 'creditDate',
+	                    title: '时间',
 	                    align: "center"
 	                },
 	                {
 	                    sortable: "true",
-	                    field: 'uSex',
-	                    title: '性别',
+	                    field: 'creditSum',
+	                    title: '积分',
 	                    align: "center"
 	                },
-	                {
-	                    field: 'uPhone',
-	                    title: '手机号',
+	                {	          
+	                    field: 'creditText',
+	                    title: '明细',
 	                    align: "center"
 	                },
+	
 	                {
-	                    field: 'uEmail',
-	                    title: '邮箱',
+	                    field: 'creditPreson',
+	                    title: '操作人',
 	                    align: "center"
-	                },
-	                {
-	                    field: 'city.cCity',
-	                    title: '城市',
-	                    align: "center"
-	                },	            
-	                {
-	                    sortable: "true",
-	                    field: 'credit',
-	                    title: '剩余积分',
-	                    align: "center"
-	                },
+	                },	                
 	                {
 	                	field: 'option',
 	                    title: '操作',
@@ -88,37 +76,33 @@
 	                console.info("加载数据失败");
 	            },
 	            onClickRow: function (row) {
-	            	uId = row.uId;
-	            	uName = row.uName;
-	            	uSex = row.uSex;
-	            	uPhone = row.uPhone;
-	            	uEmail = row.uEmail;
-	            	credit = row.credit;
-	            	cCity = row.city.cCity;	            	
+	            	creditNum = row.creditNum;
+	            	creditSum = row.creditSum;
+	            	creditText = row.creditText;
+	            	creditDate = row.creditDate;
+	            	creditPreson = row.creditPreson;        	
 	            }
 	        });
 	    })
 	    
 	    function operateFormatter(value, row, index) {
 			return [
-				'<button class="btn btn-primary btn-xs rightSize creditBtn" type="button"><i class="fa fa-paste"></i><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> 积分操作</button>&nbsp;',
-		        '<button class="btn btn-info btn-xs rightSize updateBtn" type="button"><i class="fa fa-paste"></i><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 修改</button>&nbsp;',
 		        '<button class="btn btn-danger btn-xs rightSize deleteBtn" type="button"><i class="fa fa-envelope"></i><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 删除</button>'
 		    ].join('');
 	    }
 		
 		window.operateEvents1 = {
 	        "click .deleteBtn": function (e, value, row, index) {
-	        	uId = row.uId;
-	        	console.info(uId);
+            	creditNum = row.creditNum;	
+	        	console.info(creditNum);
 	        	layer.confirm('确认删除？', {
 					btn: ['确认','取消'] 
 				}, function(){
 					$.ajax({
 	                    type: "post",
-	                    url: "${pageContext.request.contextPath}/user/deleteStudent2",
+	                    url: "${pageContext.request.contextPath}/credit/deleteCredit2",
 	                    data: {
-	                    	"uId": uId
+	                    	"creditNum": creditNum
                   			},
                   			beforeSend : function(){
        		        		loadingIndex = layer.msg('处理中', {icon: 16});
@@ -152,19 +136,11 @@
 	            $("#table1").bootstrapTable('refresh');
 	        },
 	        
-	        "click .updateBtn": function (e, value, row, index) {
-	        	window.location.href = "${pageContext.request.contextPath}/user/updateStudent?uId="+uId;
-	        },
-	        
-	        "click .creditBtn": function (e, value, row, index) {
-	        	window.location.href = "${pageContext.request.contextPath}/credit/creditDetail1?uId="+uId;
-	        }
-	        
 	    }
 		
 		function doAdd() {
 			console.info("ADD");
-			window.location.href = "${pageContext.request.contextPath}/user/insertStudent";
+			window.location.href = "${pageContext.request.contextPath}/credit/creditInsert";
 		}
 		
 	</script>

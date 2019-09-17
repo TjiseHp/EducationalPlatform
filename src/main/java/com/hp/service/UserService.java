@@ -12,7 +12,7 @@ public interface UserService {
 
 	User queryStudentByuId(Integer uId);
 
-	void updateByPrimaryKeySelective(User user);
+	int updateByPrimaryKeySelective(User user);
 
 	User queryTeacherByuId(Integer uId);
 	

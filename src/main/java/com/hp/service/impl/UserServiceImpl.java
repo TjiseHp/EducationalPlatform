@@ -32,8 +32,8 @@ public class UserServiceImpl implements UserService {
 		return userDao.queryStudentByuId(uId);
 	}
 
-	public void updateByPrimaryKeySelective(User user) {
-		userMapper.updateByPrimaryKeySelective(user);
+	public int updateByPrimaryKeySelective(User user) {
+		return userMapper.updateByPrimaryKeySelective(user);
 	}
 
 	public User queryTeacherByuId(Integer uId) {
