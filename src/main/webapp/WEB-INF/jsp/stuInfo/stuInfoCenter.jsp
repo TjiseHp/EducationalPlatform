@@ -14,9 +14,7 @@
 	
 </script>
 
-
-<div align="center" style="padding-top: 50px;">
-  		
+<div class="table-responsive text-center">  		
 	<form >
 		<table class="table table-bordered table-striped" style="width: 500px;" >
 		    <tr>
@@ -89,6 +87,13 @@
                       <a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doUpdate('${user.uId}');">修改个人信息</a>			
                 </td>
 			</tr>
+			<tr>
+				<td colspan="2" class="text-center">
+                      <input type="hidden" id=uPwd name="uPwd" value="${user.uPwd}"/> 
+                      <a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doUpdate('${user.uPwd}');">修改密码</a>			
+                </td>
+			</tr>
+			
 			
 		</table>
 		
