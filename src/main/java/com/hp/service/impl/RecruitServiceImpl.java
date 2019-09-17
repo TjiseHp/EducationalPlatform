@@ -34,7 +34,7 @@ public class RecruitServiceImpl implements RecruitService {
 		return  recruitDao.queryRecruitHistory(uId);
 	}
 
-	public List<Integer> queryRecruitByuId(Integer uId) {
+	public List<Recruit> queryRecruitByuId(Integer uId) {
 		// TODO Auto-generated method stub
 		return recruitDao.queryRecruitByuId(uId);
 	}

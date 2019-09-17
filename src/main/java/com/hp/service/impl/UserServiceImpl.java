@@ -2,6 +2,8 @@ package com.hp.service.impl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.hp.bean.Recruit;
 import com.hp.bean.User;
 import com.hp.dao.UserDao;
 import com.hp.dao.UserMapper;
@@ -65,6 +67,11 @@ public class UserServiceImpl implements UserService {
 
 	public int insertUserSelective(User user) {
 		return userMapper.insertSelective(user);
+	}
+
+	public String queryUnameByUid(Integer uId) {
+		// TODO Auto-generated method stub
+		return userDao.queryUnameByUid(uId);
 	}
 
 }

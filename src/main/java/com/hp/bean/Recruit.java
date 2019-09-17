@@ -19,7 +19,57 @@ public class Recruit {
 
     private String recruitText;
 
-    public Integer getRecruitNum() {
+    private User user1;
+    
+    private User user2;
+    
+    private Class uClass;
+    
+    private City city;
+    
+    private String state;
+
+    public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public User getUser1() {
+		return user1;
+	}
+
+	public void setUser1(User user1) {
+		this.user1 = user1;
+	}
+
+	public User getUser2() {
+		return user2;
+	}
+
+	public void setUser2(User user2) {
+		this.user2 = user2;
+	}
+
+	public Class getuClass() {
+		return uClass;
+	}
+
+	public void setuClass(Class uClass) {
+		this.uClass = uClass;
+	}
+
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
+	}
+
+	public Integer getRecruitNum() {
         return recruitNum;
     }
 

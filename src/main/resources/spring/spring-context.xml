@@ -34,6 +34,7 @@
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer" >
         <property name="basePackage" value="com.hp.dao" />
     </bean>
+
     
     <!-- 	为了保证数据操作的一致性，
 			必须在程序中增加事务处理。
