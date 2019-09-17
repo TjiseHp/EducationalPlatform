@@ -31,6 +31,7 @@
 <br/>
 <a href="${pageContext.request.contextPath}/pay/payTable2">营收记录</a>
 <br/>
-
+<a href="${pageContext.request.contextPath}/file/uploadTest">审核测试</a>
+<br/>
 
 </div>
