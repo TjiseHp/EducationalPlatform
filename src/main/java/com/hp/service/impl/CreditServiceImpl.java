@@ -23,9 +23,9 @@ public class CreditServiceImpl implements CreditService {
 		return creditDao.queryCreditSum(integer);
 	}
 	
-	public List<Credit> queryAllConsumption() {
+	public List<Credit> queryAllConsumptionByuId(Integer uId) {
 		// TODO Auto-generated method stub
-		return creditDao.queryAllConsumption();
+		return creditDao.queryAllConsumptionByuId(uId);
 	}
 
 	public List<Credit> queryAllBuy() {
@@ -33,10 +33,6 @@ public class CreditServiceImpl implements CreditService {
 		return creditDao.queryAllBuy();
 	}
 	
-	public List<Credit> queryAllDetailById(Integer uId) {
-		// TODO Auto-generated method stub
-		return creditDao.queryAllDetailById(uId);
-	}
 
 	public int deleteByPrimaryKey(Integer creditNum) {
 		// TODO Auto-generated method stub
@@ -47,6 +43,11 @@ public class CreditServiceImpl implements CreditService {
 		// TODO Auto-generated method stub
 		creditMapper.insertSelective(credit);
 		
+	}
+
+	public List<Credit> queryAllDetailById(Integer uId) {
+		// TODO Auto-generated method stub
+		return creditDao.queryAllDetailById(uId);
 	}
 
 
