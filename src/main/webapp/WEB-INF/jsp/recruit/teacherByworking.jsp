@@ -41,12 +41,12 @@
 	                    align: "center"
 	                },
 	                {
-	                    field: 'cNum',
+	                    field: 'city.cCounty',
 	                    title: '所在城市',
 	                    align: "center"
 	                },
 	                {
-	                    field: 'classNum',
+	                    field: 'uClass.classKind',
 	                    title: '科目',
 	                    align: "center"
 	                },

@@ -23,6 +23,7 @@
 	  			</tr>
 	  			<tr>
 	  				<td>
+	  				${recruit.recruitText}
 	  				
 	  				</td>	 
 	  			 </tr>

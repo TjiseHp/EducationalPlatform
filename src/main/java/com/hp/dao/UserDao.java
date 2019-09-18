@@ -20,8 +20,8 @@ public interface UserDao {
 	List<User> queryStudentByExample(String search);
 
 	//在职教师分类查询
-	@Select("select * from e_user where g_num = 2 and c_num = #{cNum} and class_num = #{classNum} ORDER BY u_exp DESC")
-	List<User> queryTeacherByworking(User user);
+	@Select("select * from e_user where g_num = 2  ORDER BY u_exp DESC")
+	List<User> queryTeacherByworking();
 
 	List<User> queryTeacherByExample(String search);
 
