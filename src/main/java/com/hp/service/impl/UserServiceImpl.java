@@ -50,8 +50,8 @@ public class UserServiceImpl implements UserService {
 		userMapper.insertSelective(user);
 	}
 
-	public List<User> queryTeacherByworking(User user) {
-		return userDao.queryTeacherByworking(user);
+	public List<User> queryTeacherByworking() {
+		return userDao.queryTeacherByworking();
 	}
 	public List<User> queryTeacherByExample(String search) {
 		return userDao.queryTeacherByExample(search);
