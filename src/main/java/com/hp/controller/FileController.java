@@ -3,7 +3,6 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -63,6 +62,7 @@ public class FileController {
         Timestamp timestamp = new Timestamp(date.getTime());
         check_list.setListSTime(timestamp);
         int row = fileService.insertSelective(check_list);
+        System.out.println("insert  "+row);
         return fileName2;
     }  
 	

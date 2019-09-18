@@ -36,4 +36,6 @@ public interface UserDao {
 
 	@Select("select u_Name from e_user where u_id = #{uId}")
 	String queryUnameByUid(Integer uId);
+	
+	
 }

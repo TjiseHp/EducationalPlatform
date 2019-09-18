@@ -8,7 +8,7 @@ public interface CreditService {
 
 	String queryCreditSum(Integer integer);
 	
-	List<Credit> queryAllConsumption() ;
+	List<Credit> queryAllConsumptionByuId(Integer uId) ;
 	   
 	List<Credit> queryAllBuy() ;
 
@@ -17,5 +17,6 @@ public interface CreditService {
 	int deleteByPrimaryKey(Integer creditNum);
 
 	void insertSelective(Credit credit);
+
 
 }
