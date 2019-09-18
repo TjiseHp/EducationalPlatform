@@ -28,9 +28,9 @@ public class CreditServiceImpl implements CreditService {
 		return creditDao.queryAllConsumptionByuId(uId);
 	}
 
-	public List<Credit> queryAllBuy() {
+	public List<Credit> queryHistoryBuyByuId(Integer uId) {
 		// TODO Auto-generated method stub
-		return creditDao.queryAllBuy();
+		return creditDao.queryHistoryBuyByuId(uId);
 	}
 	
 
