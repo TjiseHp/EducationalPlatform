@@ -11,7 +11,7 @@
 			var uId = window.location.search.substring(window.location.search.indexOf("=")+1);
 			console.info(uId);
 	        $('#table1').bootstrapTable({
-	            url: '${pageContext.request.contextPath}/credit/queryAllConsumptionByuId?uId='+uId,
+	            url: '${pageContext.request.contextPath}/credit/queryHistoryBuyByuId?uId='+uId,
 	            method: 'post', 
 	            columns: [
 	            	{
@@ -31,6 +31,7 @@
 	                    title: '明细',
 	                    align: "center"
 	                }
+	        
 	    
 	            ],
 	            height: 580,

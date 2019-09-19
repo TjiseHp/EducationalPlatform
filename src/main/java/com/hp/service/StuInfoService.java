@@ -6,4 +6,5 @@ public interface StuInfoService {
 
 	User queryStudentInfoById(Integer uId);
 
+
 }

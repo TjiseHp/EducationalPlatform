@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.hp.bean.City;
 import com.hp.bean.User;
+import com.hp.service.CityService;
+import com.hp.service.ClassService;
 import com.hp.service.CreditService;
 import com.hp.service.UserService;
 import com.hp.util.PageUtil;
@@ -30,6 +33,12 @@ public class UserCortroller  {
 	
 	@Autowired
 	public CreditService creditService;
+	
+	@Autowired
+	public ClassService classService;
+	
+	@Autowired
+	public CityService cityService;
 	
 	//查询全部学生(会员)列表,包含积分总和
 	@ResponseBody
@@ -209,14 +218,17 @@ public class UserCortroller  {
 	@ResponseBody
 	@RequestMapping("/queryTeacherByworking")
 	public List<User> queryTeacherByworking(User user) {
-		user.setClassNum(4);
-		user.setcNum(14);
 		
-		List<User> teacher=userService.queryTeacherByworking(user);
+		List<User> teacher=userService.queryTeacherByworking();
 		for(int i = 0;i<teacher.size();i++) {
 			int j = teacher.get(i).getuExp()/100;
 			teacher.get(i).setuExp(j);
+			City city = cityService.queryCityByCnum(teacher.get(i).getcNum());
+			com.hp.bean.Class class1 = classService.queryAllByClassNum(teacher.get(i).getClassNum());
+			teacher.get(i).setCity(city);
+			teacher.get(i).setuClass(class1);
 		}
+		
 		return teacher;
 	}
 	

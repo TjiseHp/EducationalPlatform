@@ -63,9 +63,17 @@
 	       select * from e_user u 
 			  left join e_city c 
 			     on c.c_num=u.c_num 
-			where u.g_num = 1
-	
+			where u.g_num = 1	
 	</select>
+	
+	<select id="queryStudentByuId" resultMap="BaseResultMap">
+	       select * from e_user u 
+			  left join e_city c 
+			     on c.c_num=u.c_num 
+			  where u.g_num = 1 
+			  and u.u_id = #{uId}
+	</select>
+	
 	
 	
 </mapper>

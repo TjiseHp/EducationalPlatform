@@ -19,4 +19,5 @@ public class StuInfoServiceImpl  implements StuInfoService{
 		return userDao.queryStudentByuId(uId);
 	}
 
+
 }

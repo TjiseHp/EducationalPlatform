@@ -11,25 +11,40 @@
 			window.location.href = "${pageContext.request.contextPath}/stuInfo/updateStuInfo?uId="+uId;
 		}
 		
+		function doUpdateUpwd(uId){
+			window.location.href = "${pageContext.request.contextPath}/stuInfo/updateUpwd?uId="+uId;		
+		}
+		
+		function doCredit(uId){
+			window.location.href = "${pageContext.request.contextPath}/credit/sCreditDetail?uId="+uId;		
+		}
 	
 </script>
 
-
 <div align="center" style="padding-top: 50px;">
-  		
 	<form >
 		<table class="table table-bordered table-striped" style="width: 500px;" >
 		    <tr>
 				<td colspan="2" class="text-center">
 				 <h1>个人信息</h1>
                 </td>
+			</tr>
+				
+		    <tr>
+				<td class="text-right">
+					<strong>账号:</strong>
+				</td>
+				<td class="text-left">
+				   <strong>${user.uAcc}</strong>
+					
+				</td>
 			</tr>		
 			<tr>
 				<td class="text-right">
 					<strong>姓名:</strong>
 				</td>
 				<td class="text-left">
-					<input class="form-control" type="text" id="uName" name="uName" value = "${user.uName }">
+				    <strong>${user.uName }</strong>
 				</td>
 			</tr>
 			<tr>
@@ -37,7 +52,7 @@
 					<strong>性别:</strong>
 				</td>
 				<td class="text-left">
-					<input class="form-control" type="text" id="uSex" name="uSex" value = "${user.uSex}">
+				    <strong>${user.uSex}</strong>
 				</td>
 			</tr>
 			<tr>
@@ -45,7 +60,7 @@
 					<strong>手机:</strong>
 				</td>
 				<td class="text-left">
-					<input class="form-control" type="text" id="uPhone" name="uPhone" value = "${user.uPhone}">
+				    <strong>${user.uPhone}</strong>
 				</td>
 			</tr>
 			
@@ -54,7 +69,7 @@
 					<strong>邮箱:</strong>
 				</td>
 				<td class="text-left">
-					<input class="form-control" type="text" id="uEmail" name="uEmail" value = "${user.uEmail}">
+				    <strong>${user.uEmail}</strong>
 				</td>
 			</tr>
 			<tr>
@@ -62,33 +77,25 @@
 					<strong>城市:</strong>
 				</td>
 				<td class="text-left">
-					<input class="form-control" type="text" id="cNum" name="cNum" value = "${user.cNum}">
-				</td>
-			</tr>
-		<!-- 	<tr>
-				<td class="text-right">
-					<strong>账号:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="uAcc" name="uAcc" value = "${user.uAcc}">
+				    <strong>${user.city.cCity}</strong>
 				</td>
 			</tr>
 			<tr>
 				<td class="text-right">
-					<strong>密码:</strong>
+					<strong>剩余积分:</strong>
 				</td>
 				<td class="text-left">
-					<input class="form-control" type="text" id="uPwd" name="uPwd" value = "${user.uPwd}">
+				    <strong>${user.credit}</strong>
+       	            <a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doCredit('${user.uId}');">积分详情</a>			                                 				    
 				</td>
-			</tr>
-			 -->
-			
+			</tr>			
 			<tr>
 				<td colspan="2" class="text-center">
-                      <input type="hidden" id=uId name="uId" value="${user.uId}"/> 
-                      <a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doUpdate('${user.uId}');">修改个人信息</a>			
+                      <a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doUpdate('${user.uId}');">修改个人信息</a>			                                 
+                      <a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doUpdateUpwd('${user.uId}');">修改密码</a>			
                 </td>
 			</tr>
+			
 			
 		</table>
 		

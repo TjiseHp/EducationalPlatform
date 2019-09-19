@@ -37,7 +37,8 @@
         		"uEmail" : uEmail,
         		"uSex" : uSex,
         		"uName" : uName,
-        		"uPhone"  : uPhone
+        		"uPhone"  : uPhone,
+        		"cNum" : cNum
         	},
         	beforeSend : function(){
         		loadingIndex = layer.msg('处理中', {icon: 16});
@@ -70,7 +71,7 @@
 	<h1>修改个人信息</h1><br/>
 	<form action="${pageContext.request.contextPath}/stuInfo/doUpdateStuInfo" method="post" accept-charset="utf-8" onsubmit="return doUpdate()">
 		<table class="table table-bordered table-striped" style="width: 500px;" >
-		
+
 			<tr>
 				<td class="text-right">
 					<strong>姓名:</strong>
@@ -109,14 +110,14 @@
 					<strong>城市:</strong>
 				</td>
 				<td class="text-left">
-					<input class="form-control" type="text" id="cNum" name="cNum" value = "${user.cNum}">
+					<input class="form-control" type="text" id="cCity" name="cCity" value = "${user.city.cCity}">
 				</td>
 			</tr>
 			
 			<tr>
 				<td colspan="2" class="text-center">				
 				<input type="hidden" id="uId" name="uId" value="${user.uId}"/> 
-				<button type="button" class="btn btn-danger" onclick="doUpdate()">提交</button>
+				<button type="button" class="btn btn-danger" onclick="doUpdate();">提交</button>
 				</td>
 			</tr>
 			

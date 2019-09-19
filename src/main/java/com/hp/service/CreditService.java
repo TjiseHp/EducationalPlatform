@@ -10,7 +10,7 @@ public interface CreditService {
 	
 	List<Credit> queryAllConsumptionByuId(Integer uId) ;
 	   
-	List<Credit> queryAllBuy() ;
+	List<Credit> queryHistoryBuyByuId(Integer uId) ;
 
 	List<Credit> queryAllDetailById(Integer uId);
 

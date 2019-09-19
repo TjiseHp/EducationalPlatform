@@ -14,12 +14,6 @@
 	            columns: [
 	                {
 	                    sortable: "true",
-	                    field: 'uId',
-	                    title: 'ID',
-	                    align: "center"
-	                },
-	                {
-	                    sortable: "true",
 	                    field: 'user2.uName',
 	                    title: '教师姓名',
 	                    align: "center"
@@ -36,8 +30,8 @@
 	                    align: "center"
 	                },
 	                {
-	                    field: 'city.cCounty',
-	                    title: '所在城市',
+	                    field: 'user2.uPhone',
+	                    title: '手机号',
 	                    align: "center"
 	                },
 	                {
@@ -80,8 +74,6 @@
 	            	uId = row.uId;
 	            	uName = row.uName;
 	            	uSex = row.uSex;
-	            	classNum = row.classNum;
-	            	cNum = row.cNum;
 	            }
 	        });
 	    })
@@ -139,9 +131,44 @@
 	        },
 	        
 	        "click .updateBtn": function (e, value, row, index) {
-	        	window.location.href = "${pageContext.request.contextPath}/";
-	        }
-	    }
+	        	recruitNum = row.recruitNum;	        	
+	        	uId2 = row.uId2;
+	        	uId = row.uId;
+	        	console.info(uId);
+	        	console.info(uId2);
+	        	$.ajax({
+                    type: "post",
+                    url: "${pageContext.request.contextPath}/appraise/appraiseApply",
+                    data: {
+                    	"uId": uId,
+                    	"uId2": uId2
+              			},
+              			beforeSend : function(){
+   		        		loadingIndex = layer.msg('处理中', {icon: 16});
+   		        	},
+                    success: function (result) {
+                    	layer.close(loadingIndex);
+                    	var resObj = JSON.parse(result);
+                    	if (resObj.result) {
+                    		window.location.href = "${pageContext.request.contextPath}/recruit/appraiseTeacherTable?recruitNum="+recruitNum;
+			                
+		        		} else {
+		                    layer.msg("已评价", {time:2000, icon:5, shift:6}, function(){
+		                    	
+		                    });
+		        		}
+                        $("#table1").bootstrapTable('refresh');
+                    },
+                    error: function () {
+                    	layer.msg("评价失败！", {time:2000, icon:5, shift:6}, function(){
+	                    	
+	                    });
+                    }
+                })
+			}
+		}
+	        	
+			
 		
 		function doAdd() {
 			console.info("ADD");

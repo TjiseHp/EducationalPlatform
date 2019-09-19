@@ -29,61 +29,56 @@ public class CreditController {
 	@Autowired
 	public CreditService creditService;
 	
-	//积分消费记录明细查询
-	@RequestMapping("/creditConsumption")
-	public ModelAndView creditTable(@RequestParam(defaultValue = "1",required = true,value = "pageNum") Integer pageNum,
+	//积分消费记录明细查询表--页面跳转
+	@RequestMapping("/creditConsumption1")
+	public ModelAndView creditConsumption1(
 			HttpServletRequest httpServletRequest,
-			@RequestParam(defaultValue = "1",required = true,value = "uId") Integer uId,Credit credit) {
-		Integer pageSize=PageUtil.getPageSize();
+			@RequestParam(required = true,value = "uId") Integer uId) {
 		ModelAndView modelAndView = new ModelAndView();
-		HttpSession httpSession = httpServletRequest.getSession();
-		
-		PageHelper.startPage(pageNum, pageSize);
-		List<Credit> creditConsumption=creditService.queryAllConsumptionByuId(uId);
-		PageInfo<Credit> pageInfo = new PageInfo<Credit>(creditConsumption);
-		
-		modelAndView.addObject("pageInfo", pageInfo);
-		modelAndView.addObject("httpSession",httpSession);		
-		modelAndView.addObject("mainPage", "credit/creditConsumption.jsp");
+		modelAndView.addObject("uId",uId);
+		modelAndView.addObject("mainPage", "credit/creditConsumption1.jsp");
 		modelAndView.setViewName("main");
 		return modelAndView;
 	}
-		
-	//查询历史购买订单
-	@RequestMapping("/creditBuy")
-	public ModelAndView creditBuyTable(@RequestParam(defaultValue = "1",required = true,value = "pageNum") Integer pageNum,HttpServletRequest httpServletRequest) {
-		Integer pageSize=PageUtil.getPageSize();
+	
+	//查询积分消费记录明细查询表
+	@ResponseBody
+	@RequestMapping("/queryAllConsumptionByuId")
+	public List<Credit> queryAllConsumptionByuId(
+			HttpServletRequest httpServletRequest,
+			@RequestParam(required = true,value = "uId") Integer uId,Credit credit) {
+		System.out.println("fhsgd");
+		List<Credit> creditDetail=creditService.queryAllConsumptionByuId(uId);
+		System.out.println("123");
+		return creditDetail;
+	}		
+	
+	//查询历史购买订单--页面跳转
+	@RequestMapping("/creditHistoryBuy")
+	public ModelAndView creditHistoryBuy(
+			HttpServletRequest httpServletRequest,
+			@RequestParam(required = true,value = "uId") Integer uId) {
 		ModelAndView modelAndView = new ModelAndView();
-		HttpSession httpSession = httpServletRequest.getSession();
-		
-		PageHelper.startPage(pageNum, pageSize);
-		List<Credit> creditBuy=creditService.queryAllBuy();
-		PageInfo<Credit> pageInfo = new PageInfo<Credit>(creditBuy);
-		
-		modelAndView.addObject("pageInfo", pageInfo);
-		modelAndView.addObject("httpSession",httpSession);		
-		modelAndView.addObject("mainPage", "credit/creditBuy.jsp");
+		modelAndView.addObject("uId",uId);
+		modelAndView.addObject("mainPage", "credit/creditHistoryBuy.jsp");
 		modelAndView.setViewName("main");
 		return modelAndView;
 	}
-		
-	//积分详情查询
-	@RequestMapping("/creditDetail")
-	public ModelAndView creditDetail(@RequestParam(defaultValue = "1",required = true,value = "pageNum")Integer pageNum,Credit credit,HttpServletRequest httpServletRequest) {
-		Integer pageSize=PageUtil.getPageSize();
-		ModelAndView modelAndView = new ModelAndView();
-		HttpSession httpSession = httpServletRequest.getSession();
-		
-		PageHelper.startPage(pageNum, pageSize);
-		List<Credit> creditDetail=creditService.queryAllDetailById(credit.getuId());
-		PageInfo<Credit> pageInfo = new PageInfo<Credit>(creditDetail);
-
-		modelAndView.addObject("pageInfo", pageInfo);
-		modelAndView.addObject("httpSession",httpSession);	
-		modelAndView.addObject("mainPage", "credit/creditDetail.jsp");
-		modelAndView.setViewName("main");
-		return modelAndView;
-	}
+	
+	//查询历史购买订单表
+		@ResponseBody
+		@RequestMapping("/queryHistoryBuyByuId")
+		public List<Credit> queryHistoryBuyByuId(HttpServletRequest httpServletRequest,
+				@RequestParam(required = true,value = "uId") Integer uId,Credit credit) {
+			System.out.println("fhsgd");
+			List<Credit> creditDetail=creditService.queryHistoryBuyByuId(uId);
+			System.out.println("123");
+			return creditDetail;
+		}
+	
+	
+	
+	
 	
 	  //查询积分详情信息--页面跳转
 		@RequestMapping("/creditDetail1")
@@ -146,6 +141,21 @@ public class CreditController {
 			creditService.insertSelective(credit);
 			return "redirect: creditDetail1";
 		}
+		
+		
+		
+		//学生查看个人积分详情页面跳转
+		@RequestMapping("/sCreditDetail")
+		public ModelAndView sCreditDetail(
+				HttpServletRequest httpServletRequest,
+				@RequestParam(required = true,value = "uId") Integer uId) {
+			ModelAndView modelAndView = new ModelAndView();
+			modelAndView.addObject("uId",uId);
+			modelAndView.addObject("mainPage", "credit/sCreditDetail.jsp");
+			modelAndView.setViewName("main");
+			return modelAndView;
+		}
+		
 		
 	
 
