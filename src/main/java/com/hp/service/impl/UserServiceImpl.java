@@ -73,5 +73,15 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userDao.queryUnameByUid(uId);
 	}
+	
+	public User queryAllTeacherByuId(Integer uId) {
+		// TODO Auto-generated method stub
+		return userDao.queryAllTeacherByuId(uId);
+	}
+
+	public User queryTeacherByInfo(Integer uId) {
+		// TODO Auto-generated method stub
+		return userDao.queryTeacherByInfo(uId);
+	}
 
 }

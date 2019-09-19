@@ -33,4 +33,8 @@ public interface UserService {
 	int insertUserSelective(User user);
 
 	String queryUnameByUid(Integer uId);
+	
+	User queryAllTeacherByuId(Integer uId);
+
+	User queryTeacherByInfo(Integer uId);
 }

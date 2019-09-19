@@ -27,7 +27,7 @@ public class StuInfoController {
 	
 	//查询学生个人信息
 	@RequestMapping("/stuInfoCenter")
-	public User PersonalInfo(HttpServletRequest httpServletRequest,
+	public ModelAndView  PersonalInfo(HttpServletRequest httpServletRequest,
 			@RequestParam(required = true,value = "uId") Integer uId) {
 		HttpSession httpSession = httpServletRequest.getSession();
 		User user = stuInfoService.queryStudentInfoById(uId);
@@ -36,7 +36,7 @@ public class StuInfoController {
 		modelAndView.addObject("user",user);
 		modelAndView.addObject("mainPage", "stuInfo/stuInfoCenter.jsp");
 		modelAndView.setViewName("main");		
-		return user;		
+		return modelAndView ;		
 	}
 	
 	//修改个人信息页面跳转
