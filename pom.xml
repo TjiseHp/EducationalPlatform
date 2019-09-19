@@ -236,11 +236,6 @@
             <artifactId>commons-fileupload</artifactId>
             <version>1.3.1</version>
         </dependency>
-<<<<<<< HEAD
-		
-=======
-			
->>>>>>> branch 'master' of https://github.com/TjiseHp/EducationalPlatform.git
   	</dependencies>  	
   	
 </project>

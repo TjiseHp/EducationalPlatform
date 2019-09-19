@@ -31,11 +31,7 @@ public class StuInfoController {
 	
 	//查询学生个人信息
 	@RequestMapping("/stuInfoCenter")
-<<<<<<< HEAD
 	public ModelAndView  PersonalInfo(HttpServletRequest httpServletRequest,
-=======
-	public ModelAndView PersonalInfo(HttpServletRequest httpServletRequest,
->>>>>>> branch 'master' of https://github.com/TjiseHp/EducationalPlatform.git
 			@RequestParam(required = true,value = "uId") Integer uId) {
 		HttpSession httpSession = httpServletRequest.getSession();
 		User user = stuInfoService.queryStudentInfoById(uId);
@@ -52,11 +48,7 @@ public class StuInfoController {
 		modelAndView.addObject("user",user);
 		modelAndView.addObject("mainPage", "stuInfo/stuInfoCenter.jsp");
 		modelAndView.setViewName("main");		
-<<<<<<< HEAD
 		return modelAndView ;		
-=======
-		return modelAndView;		
->>>>>>> branch 'master' of https://github.com/TjiseHp/EducationalPlatform.git
 	}
 	
 	//修改个人信息页面跳转
