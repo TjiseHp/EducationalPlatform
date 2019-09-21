@@ -88,7 +88,7 @@
 	    function operateFormatter(value, row, index) {
 			return [
 		        '<button class="btn btn-info btn-xs rightSize updateBtn" type="button"><i class="fa fa-paste"></i><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 详细要求</button>&nbsp;',
-		        '<button class="btn btn-danger btn-xs rightSize deleteBtn" type="button"><i class="fa fa-envelope"></i><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 删除</button>'
+		        '<button class="btn btn-danger btn-xs rightSize deleteBtn" type="button"><i class="fa fa-envelope"></i><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 结束课程</button>'
 		    ].join('');
 	    }
 		
@@ -96,38 +96,11 @@
 	        "click .deleteBtn": function (e, value, row, index) {
 	        	uId = row.uId;
 	        	console.info(uId);
-	        	layer.confirm('确认删除？', {
+	        	layer.confirm('确认结束？', {
 					btn: ['确认','取消'] 
 				}, function(){
-					$.ajax({
-	                    type: "post",
-	                    url: "${pageContext.request.contextPath}/",
-	                    data: {
-	                    	"uId": uId
-                  			},
-                  			beforeSend : function(){
-       		        		loadingIndex = layer.msg('处理中', {icon: 16});
-       		        	},
-	                    success: function (result) {
-	                    	layer.close(loadingIndex);
-	                    	var resObj = JSON.parse(result);
-	                    	if (resObj.result) {
-	                    		 layer.msg("删除成功", {time:2000, icon:6, shift:6}, function(){
-				                    	
-			                    });
-			        		} else {
-			                    layer.msg("删除失败", {time:2000, icon:5, shift:6}, function(){
-			                    	
-			                    });
-			        		}
-	                        $("#table1").bootstrapTable('refresh');
-	                    },
-	                    error: function () {
-	                    	layer.msg("删除失败！", {time:2000, icon:5, shift:6}, function(){
-		                    	
-		                    });
-	                    }
-	                })
+	            	recruitNum = row.recruitNum;
+					window.location.href = "${pageContext.request.contextPath}/recruit/endTeacher?recruitNum="+recruitNum;
 				}, function(){
 				  
 				});
@@ -137,8 +110,9 @@
 	            $("#table1").bootstrapTable('refresh');
 	        },
 	        
-	        "click .updateBtn": function (e, value, row, index) {	        	
-	        	window.location.href = "${pageContext.request.contextPath}/recruit/recruitTextInfo?recruitText="+recruitText;
+	        "click .updateBtn": function (e, value, row, index) {
+            	recruitNum = row.recruitNum;
+	        	window.location.href = "${pageContext.request.contextPath}/recruit/recruitTextInfo?recruitNum="+recruitNum;
 	        }
 	    }
 		

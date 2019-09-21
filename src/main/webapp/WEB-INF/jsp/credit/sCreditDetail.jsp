@@ -7,14 +7,16 @@
 	
 	<script type="text/javascript">
 		
+	
 		$(document).ready(function () {
 			var uId = window.location.search.substring(window.location.search.indexOf("=")+1);
 			console.info(uId);
 	        $('#table1').bootstrapTable({
-	            url: '${pageContext.request.contextPath}/credit/queryAllConsumptionByuId?uId='+uId,
+	            url: '${pageContext.request.contextPath}/credit/queryAllDetailById?uId='+uId,
 	            method: 'post', 
 	            columns: [
-	            	{
+            	  
+	                {
 	                    sortable: "true",
 	                    field: 'creditDate',
 	                    title: '时间',
@@ -31,7 +33,6 @@
 	                    title: '明细',
 	                    align: "center"
 	                }
-	    
 	            ],
 	            height: 580,
 	            pagination: true,
@@ -62,23 +63,27 @@
 	                console.info("加载数据失败");
 	            },
 	            onClickRow: function (row) {
+	            	creditNum = row.creditNum;
 	            	creditSum = row.creditSum;
 	            	creditText = row.creditText;
 	            	creditDate = row.creditDate;
 	            }
 	        });
 	    })
-	    	
-		function doback(){
-			console.info("back");
+	
+		
+		
+		function doConsumtion() {
 			var uId = window.location.search.substring(window.location.search.indexOf("=")+1);
-			console.info(uId);
-	    	window.location.href = "${pageContext.request.contextPath}/credit/sCreditDetail?uId="+uId;
+			console.info("uId");
+			window.location.href = "${pageContext.request.contextPath}/credit/creditConsumption1?uId="+uId;
 		}
-	        
-	       
-		
-		
+		function doHistory() {
+			var uId = window.location.search.substring(window.location.search.indexOf("=")+1);
+			console.info("uId");
+			console.info("doHistory");
+			window.location.href = "${pageContext.request.contextPath}/credit/creditHistoryBuy?uId="+uId;
+		}
 		
 	</script>
 	
@@ -89,9 +94,13 @@
             </div>
         </div>
     </div>
-	
 	<div id="toolbar" class="btn-group">
-		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doback();" >
-			<span >返回</span>
+		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doConsumtion();" >
+			<span >消费记录明细</span>
+		</a>
+		&nbsp;&nbsp;&nbsp;&nbsp;		
+		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doHistory();" >
+			<span >历史购买订单</span>
 		</a>
 	</div>
+	

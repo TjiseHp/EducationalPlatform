@@ -22,7 +22,7 @@ public interface UserService {
 
 	void insertSelective(User user);
 	
-	List<User> queryTeacherByworking(User user);
+	List<User> queryTeacherByworking();
 
 	List<User> queryTeacherByExample(String search);
 
@@ -33,4 +33,8 @@ public interface UserService {
 	int insertUserSelective(User user);
 
 	String queryUnameByUid(Integer uId);
+	
+	User queryAllTeacherByuId(Integer uId);
+
+	User queryTeacherByInfo(Integer uId);
 }

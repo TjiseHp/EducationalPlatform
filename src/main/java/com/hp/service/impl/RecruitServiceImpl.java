@@ -39,6 +39,21 @@ public class RecruitServiceImpl implements RecruitService {
 		return recruitDao.queryRecruitByuId(uId);
 	}
 
+	public String queryRecruitTextByRecruitNum(Integer recruitNum) {
+		// TODO Auto-generated method stub
+		return recruitDao.queryRecruitTextByRecruitNum(recruitNum);
+	}
+
+	public Recruit queryAllByRecruitNum(Integer recruitNum) {
+		// TODO Auto-generated method stub
+		return recruitDao.queryAllByRecruitNum(recruitNum);
+	}
+
+	public int updateByPrimaryKeySelective(Recruit record) {
+		// TODO Auto-generated method stub
+		return recruitMapper.updateByPrimaryKeySelective(record);
+	}
+
 
 
 	

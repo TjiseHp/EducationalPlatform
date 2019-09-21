@@ -50,8 +50,8 @@ public class UserServiceImpl implements UserService {
 		userMapper.insertSelective(user);
 	}
 
-	public List<User> queryTeacherByworking(User user) {
-		return userDao.queryTeacherByworking(user);
+	public List<User> queryTeacherByworking() {
+		return userDao.queryTeacherByworking();
 	}
 	public List<User> queryTeacherByExample(String search) {
 		return userDao.queryTeacherByExample(search);
@@ -72,6 +72,16 @@ public class UserServiceImpl implements UserService {
 	public String queryUnameByUid(Integer uId) {
 		// TODO Auto-generated method stub
 		return userDao.queryUnameByUid(uId);
+	}
+	
+	public User queryAllTeacherByuId(Integer uId) {
+		// TODO Auto-generated method stub
+		return userDao.queryAllTeacherByuId(uId);
+	}
+
+	public User queryTeacherByInfo(Integer uId) {
+		// TODO Auto-generated method stub
+		return userDao.queryTeacherByInfo(uId);
 	}
 
 }

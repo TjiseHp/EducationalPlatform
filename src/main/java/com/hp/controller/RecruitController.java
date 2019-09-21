@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.hp.bean.Appraise;
 import com.hp.bean.City;
 import com.hp.bean.Recruit;
 import com.hp.bean.User;
@@ -69,10 +70,14 @@ public class RecruitController {
 		recruit.setcNum(23);
 		List<Recruit> recruits = recruitService.queryAllBycNum(recruit);
 		for (int j = 0; j < recruits.size(); j++) {
-			Date date = recruits.get(j).getRecruitEDate();
+			Date date = recruits.get(j).getRecruitSTime();
 			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			String dateString = simpleDateFormat.format(date);
 			recruits.get(j).setState(dateString);
+			User user1 = new User();
+			String uNameString = userService.queryUnameByUid(recruits.get(j).getuId());
+			user1.setuName(uNameString);
+			recruits.get(j).setUser1(user1);
 		}
 		
 		return recruits;
@@ -133,11 +138,10 @@ public class RecruitController {
 	//招聘历史详细信息
 	@RequestMapping("/recruitTextInfo")
 	public ModelAndView recruitText(Recruit recruit, HttpServletRequest httpServletRequest) {
-		System.out.println(recruit.getRecruitText());
 		ModelAndView modelAndView = new ModelAndView();	
-		Recruit recruit2 = new Recruit();
-		recruit.setRecruitText(recruit.getRecruitText());
-		modelAndView.addObject("recruit",recruit2);	
+		String recruit2 = recruitService.queryRecruitTextByRecruitNum(recruit.getRecruitNum());
+		recruit.setRecruitText(recruit2);
+		modelAndView.addObject("recruit",recruit);	
 		modelAndView.addObject("mainPage", "recruit/recruitTextInfo.jsp");
 		modelAndView.setViewName("main");
 		return modelAndView;
@@ -172,4 +176,49 @@ public class RecruitController {
 		}
 		return recruits;
 	}
+	
+	//教师申请发布信息
+	@RequestMapping("/teacherApplyRecruit")
+	public ModelAndView teacherApplyRecruit(Recruit recruit,HttpServletRequest httpServletRequest) {
+		ModelAndView modelAndView = new ModelAndView();
+		Integer integer = recruit.getRecruitNum();
+		recruit = recruitService.queryAllByRecruitNum(integer);
+		java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
+		recruit.setuId2(101);
+		recruitService.updateByPrimaryKeySelective(recruit);
+		modelAndView.addObject("mainPage", "mainPage.jsp");
+		modelAndView.setViewName("main");
+		return modelAndView;
+	}
+	
+	//结束课程
+	@RequestMapping("/endTeacher")
+	public ModelAndView endTeacher(Recruit recruit,HttpServletRequest httpServletRequest) {
+		ModelAndView modelAndView = new ModelAndView();
+		Integer integer = recruit.getRecruitNum();
+		recruit = recruitService.queryAllByRecruitNum(integer);
+		java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
+		recruit.setRecruitEDate(currentDate);
+		recruitService.updateByPrimaryKeySelective(recruit);
+		modelAndView.addObject("mainPage", "recruit/recruitTable.jsp");
+		modelAndView.setViewName("main");
+		return modelAndView;
+	}
+	
+	//教师记录评价跳转
+	@RequestMapping("/appraiseTeacherTable")
+	public ModelAndView appraiseTeacherTable(Recruit recruit,HttpServletRequest httpServletRequest) {
+		ModelAndView modelAndView = new ModelAndView();
+		Integer integer = recruit.getRecruitNum();
+		recruit = recruitService.queryAllByRecruitNum(integer);
+		User user = userService.queryTeacherByuId(recruit.getuId2());
+		recruit.setUser2(user);
+		modelAndView.addObject("recruit",recruit);
+		modelAndView.addObject("mainPage", "recruit/appraiesTeacher.jsp");
+		modelAndView.setViewName("main");
+		return modelAndView;
+	}
+	
+
+	
 }

@@ -14,7 +14,7 @@
 	            columns: [
 	                {
 	                    sortable: "true",
-	                    field: 'uId',
+	                    field: 'user1.uName',
 	                    title: '发布人',
 	                    align: "center"
 	                },
@@ -68,6 +68,7 @@
 	            	uId = row.uId;
 	            	recruitText = row.recruitText;
 	            	recruitSTime = row.recruitSTime;
+	            	recruitNum = row.recruitNum;
 	            }
 	        });
 	    })
@@ -125,7 +126,15 @@
 	        },
 	        
 	        "click .updateBtn": function (e, value, row, index) {
-	        	window.location.href = "${pageContext.request.contextPath}/";
+	        	layer.confirm('确认申请？', {
+					btn: ['确认','取消'] 
+				}, function(){
+	            	recruitNum = row.recruitNum;
+					window.location.href = "${pageContext.request.contextPath}/recruit/teacherApplyRecruit?recruitNum="+recruitNum;
+				}, function(){
+				  
+				});
+	        	
 	        }
 	    }
 		

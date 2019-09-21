@@ -18,8 +18,6 @@
 <br/>
 <a href="${pageContext.request.contextPath}/recruit/insertRecruit">招聘信息发布</a>
 <br/>
-<a href="${pageContext.request.contextPath}/recruit/recruitByCity">根据城市科目查询招聘信息</a>
-<br/>
 <a href="${pageContext.request.contextPath}/recruit/recruitTable">历史招聘信息</a>
 <br/>
 
@@ -27,7 +25,9 @@
 <br/>
 <a href="${pageContext.request.contextPath}/recruit/recruitTeacher">教师记录</a>
 <br/>
-<a href="${pageContext.request.contextPath}/recruit/recruitByCity">招聘中心</a>
+<a href="${pageContext.request.contextPath}/recruit/recruitByCity">招聘中心通过城市科目查询</a>
+<br/>
+<a href="${pageContext.request.contextPath}/user/teacherByworking">在职教师查询</a>
 <br/>
 <a href="${pageContext.request.contextPath}/pay/payTable2">营收记录</a>
 <br/>
