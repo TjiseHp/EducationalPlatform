@@ -33,5 +33,7 @@
 <br/>
 <a href="${pageContext.request.contextPath}/file/uploadTest">审核测试</a>
 <br/>
+<a href="${pageContext.request.contextPath}/alipay/payMenu">支付测试</a>
+<br/>
 
 </div>
