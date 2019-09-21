@@ -13,7 +13,7 @@ public class Chat {
 
     private String chatText;
 
-    private Date chatDate;
+    private Date chatDate;   
 
     public Integer getChatNum() {
         return chatNum;

@@ -43,7 +43,8 @@
 					<strong>性别:</strong>
 				</td>
 				<td class="text-left">
-					<input class="form-control" type="text" id="uSex" name="uSex" value = "${user.uSex}">
+					<lable><input class="form-control" type="radio" id="uSex1" name="uSex" value = "${user.uSex}">男</lable>
+					<lable><input class="form-control" type="radio" id="uSex2" name="uSex" value = "${user.uSex}">女</lable>			    
 				</td>
 			</tr>
 			<tr>

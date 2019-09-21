@@ -33,5 +33,8 @@
 <br/>
 <a href="${pageContext.request.contextPath}/file/uploadTest">审核测试</a>
 <br/>
+<a href="${pageContext.request.contextPath}/chat/stuMessageCenter">学生消息中心</a>
+<br/>
+
 
 </div>
