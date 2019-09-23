@@ -74,90 +74,80 @@
 </script>
 
 <div align="center" style="padding-top: 50px;">
-	<h1>修改个人信息</h1><br/>
+	
+	<div>
+	<h1>修改信息</h1>
+	</div>
+	<br/>
+	<hr/>
+	<br/>
+	<br/>
+	<div class="col-md-offset-3">
 	<form action="${pageContext.request.contextPath}/user/doUpdateTeacherInfo" method="post" accept-charset="utf-8" onsubmit="return doUpdate()">
-		<table class="table table-bordered table-striped" style="width: 500px;" >
 		
-		    <tr>
-				<td class="text-right">
-					<strong>城市:</strong>
-				</td>
-				<td class="text-left">
+		    <div class="row form-group">
+                <label class="control-label col-lg-2" for="name">城市：</label>
+                <div class="col-md-6">
 					<input class="form-control" type="text" id="cNum" name="cNum" value = "${user.cNum}">
-				</td>
-			</tr>
-		    
-		    <tr>
-				<td class="text-right">
-					<strong>学科：</strong>
-				</td>
-				<td class="text-left">
+                </div>
+            </div>
+		
+		    <div class="row form-group">
+                <label class="control-label col-lg-2" for="name">学科：</label>
+                <div class="col-md-6">
 					<input class="form-control" type="text" id="classNum" name="classNum" value = "${user.classNum }">
-				</td>
-			</tr>
+                </div>
+            </div>
 		    
-			<tr>
-				<td class="text-right">
-					<strong>姓名:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="uName" name="uName" value = "${user.uName }">
-				</td>
-			</tr>
-			<tr>
-				<td class="text-right">
-					<strong>性别:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="uSex" name="uSex" value = "${user.uSex}">
-				</td>
-			</tr>
-			<tr>
-				<td class="text-right">
-					<strong>手机:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="uPhone" name="uPhone" value = "${user.uPhone}">
-				</td>
-			</tr>
-			
-			<tr>
-				<td class="text-right">
-					<strong>邮箱:</strong>
-				</td>
-				<td class="text-left">
+    		<div class="row form-group">
+                <label class="control-label col-lg-2" for="name">姓名：</label>
+                <div class="col-md-6">
+                	<input class="form-control" type="text" id="uName" name="uName" value = "${user.uName }">
+                </div>
+            </div>
+            
+			<div class="row form-group">
+                <label class="control-label col-lg-2" for="name">性别：</label>
+                <div class="col-md-6">
+                  	<input class="form-control" type="text" id="uSex" name="uSex" value = "${user.uSex}">
+            	</div>
+            </div>
+            
+            <div class="row form-group">
+                <label class="control-label col-lg-2" for="name">手机：</label>
+                <div class="col-md-6">
+                  	<input class="form-control" type="text" id="uPhone" name="uPhone" value = "${user.uPhone}">
+                </div>
+            </div>
+            
+ 			<div class="row form-group">
+                <label class="control-label col-lg-2" for="name">邮箱：</label>
+                <div class="col-md-6">
 					<input class="form-control" type="text" id="uEmail" name="uEmail" value = "${user.uEmail}">
-				</td>
-			</tr>
-			
-			<tr>
-				<td class="text-right">
-					<strong>修改密码:</strong>
-				</td>
-				<td class="text-left">
+                </div>
+            </div>
+
+			<div class="row form-group">
+                <label class="control-label col-lg-2" for="name">修改密码：</label>
+                <div class="col-md-6">
 					<input class="form-control" type="text" id="uPwd" name="uPwd" value = "${user.uPwd}">
-				</td>
-			</tr>
-			
-			<tr>
-				<td class="text-right">
-					<strong>确认密码:</strong>
-				</td>
-				<td class="text-left">
+                </div>
+            </div>
+            
+			<div class="row form-group">
+                <label class="control-label col-lg-2" for="name">确认密码：</label>
+                <div class="col-md-6">
 					<input class="form-control" type="text" id="uPwd" name="uPwd" value = "">
-				</td>
-			</tr>
+                </div>
+            </div>
+
+			<div class="col-md-8">
+	            <div class="row form-group">
+	            	<input type="hidden" id=courierNo name="uId" value="${user.uId }"/>
+					<button type="button" class="btn btn-danger" onclick="doUpdate()">提交</button>
+	            </div>
+	        </div>
 			
-			<tr>
-				<td colspan="2" class="text-center">				
-				<input type="hidden" id="uId" name="uId" value="${user.uId}"/> 
-				<button type="button" class="btn btn-danger" onclick="doUpdate()">提交</button>
-				</td>
-			</tr>
-			
-		</table>
-		
-		
-		
 	</form>
+	</div>
 </div>
