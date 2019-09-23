@@ -9,9 +9,9 @@ public interface PayService {
 	
 	List<Pay> queryAllPay();
 
-//	int deleteByPrimaryKey(String payNum);
+	int deleteByPrimaryKey(String payNum);
 
-	Pay queryPayBypayNum(Integer payNum);
+	Pay queryPayBypayNum(String payNum);
 
 	int updateByPrimaryKeySelective(Pay pay);
 

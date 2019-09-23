@@ -41,6 +41,9 @@
 		function doUpdate(uId) {		
 			window.location.href = "${pageContext.request.contextPath}/user/updateTeacherInfo?uId="+uId;
 		}
+
+		
+		
 </script>
 
 
@@ -60,6 +63,23 @@
 				</td>
 				<td class="text-left">
 					<p>${user.uId}</p>
+				</td>
+			</tr>
+			
+			<tr>
+				<td class="text-right">
+					<strong>状态:</strong>
+				</td>
+				<td class="text-left">
+			      <script type="text/javascript">
+			      var exp = null;
+			      if (isNull(exp))
+			      {
+			      alert("请认证");
+			      }
+                   </script>
+					
+									
 				</td>
 			</tr>
 			
@@ -86,30 +106,7 @@
 					<strong>经验值:</strong>
 				</td>
 				<td class="text-left">
-				<script>
-        function updataProgressBar(){                                //更新进度条信息
-            //进度条设置
-            var $color=$('.progress_bar').attr('#ff6600');            //data-color 为进度条颜色 例#ff6600
-            $('.progress_bar').each(function () {
-                var per=$(this).attr('100');                         //data-per 为进度条 进度值  1-100
-                var barWidth=$(this).attr('10px');                //data-width 为进度条宽度 值自定义 单位自动填充px
-                $(this)
-                    .find('span').css({'#ff6600' : $color , '10px' : per + '%'})//修改进度条颜色和进度条占比
-                    .parent().css({'width' : barWidth})//修改进度整体宽度
-                    .next().text(per + '%');//修改进度条文字
-            })
-        }
- 
-        $(function () {
-            updataProgressBar();
-        })
-    </script>
-				
-				
-				<div class="progress_bar" data-color="#f60" data-per="90" data-width="300">
-                 </div>
-                  <label class="progress_bar_label">${user.uExp }</label>
-                      	
+				<p>${user.uExp}</p>      	
 				</td>
 			</tr>
 					
