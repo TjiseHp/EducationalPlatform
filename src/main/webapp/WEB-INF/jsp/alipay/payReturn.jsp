@@ -49,6 +49,39 @@
 		</table>
 	</c:if>
 	<c:if test="${result==false}">
-		<h1>支付失败</h1>
+		<div class="col-md-offset-5">
+			<div class="point">
+        		<div class="expression">
+           				 o(╥﹏╥)o
+        		</div>
+	        	<div>
+	        	啊哦~支付失败了~
+	        	</div>
+			</div>
+		</div>
 	</c:if>
 </div>
+<style>
+.middle{
+	margin:0 auto;
+}
+.point {
+    text-align: center;
+    width: 252px;
+    color: #5c5c5c;
+}
+
+.point {
+    width: 300px!important;
+}
+.point .text {
+    font-size: 36px;
+    line-height: 72px;
+    font-weight: 700;
+}
+.point .expression {
+    font-size: 48px;
+    line-height: 50px;
+    margin-bottom: 50px;
+}
+</style>
