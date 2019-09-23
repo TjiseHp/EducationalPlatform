@@ -104,183 +104,183 @@ public class PowerExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andPNumIsNull() {
-            addCriterion("P_NUM is null");
+        public Criteria andPowerNoIsNull() {
+            addCriterion("POWER_NO is null");
             return (Criteria) this;
         }
 
-        public Criteria andPNumIsNotNull() {
-            addCriterion("P_NUM is not null");
+        public Criteria andPowerNoIsNotNull() {
+            addCriterion("POWER_NO is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPNumEqualTo(Integer value) {
-            addCriterion("P_NUM =", value, "pNum");
+        public Criteria andPowerNoEqualTo(Integer value) {
+            addCriterion("POWER_NO =", value, "powerNo");
             return (Criteria) this;
         }
 
-        public Criteria andPNumNotEqualTo(Integer value) {
-            addCriterion("P_NUM <>", value, "pNum");
+        public Criteria andPowerNoNotEqualTo(Integer value) {
+            addCriterion("POWER_NO <>", value, "powerNo");
             return (Criteria) this;
         }
 
-        public Criteria andPNumGreaterThan(Integer value) {
-            addCriterion("P_NUM >", value, "pNum");
+        public Criteria andPowerNoGreaterThan(Integer value) {
+            addCriterion("POWER_NO >", value, "powerNo");
             return (Criteria) this;
         }
 
-        public Criteria andPNumGreaterThanOrEqualTo(Integer value) {
-            addCriterion("P_NUM >=", value, "pNum");
+        public Criteria andPowerNoGreaterThanOrEqualTo(Integer value) {
+            addCriterion("POWER_NO >=", value, "powerNo");
             return (Criteria) this;
         }
 
-        public Criteria andPNumLessThan(Integer value) {
-            addCriterion("P_NUM <", value, "pNum");
+        public Criteria andPowerNoLessThan(Integer value) {
+            addCriterion("POWER_NO <", value, "powerNo");
             return (Criteria) this;
         }
 
-        public Criteria andPNumLessThanOrEqualTo(Integer value) {
-            addCriterion("P_NUM <=", value, "pNum");
+        public Criteria andPowerNoLessThanOrEqualTo(Integer value) {
+            addCriterion("POWER_NO <=", value, "powerNo");
             return (Criteria) this;
         }
 
-        public Criteria andPNumIn(List<Integer> values) {
-            addCriterion("P_NUM in", values, "pNum");
+        public Criteria andPowerNoIn(List<Integer> values) {
+            addCriterion("POWER_NO in", values, "powerNo");
             return (Criteria) this;
         }
 
-        public Criteria andPNumNotIn(List<Integer> values) {
-            addCriterion("P_NUM not in", values, "pNum");
+        public Criteria andPowerNoNotIn(List<Integer> values) {
+            addCriterion("POWER_NO not in", values, "powerNo");
             return (Criteria) this;
         }
 
-        public Criteria andPNumBetween(Integer value1, Integer value2) {
-            addCriterion("P_NUM between", value1, value2, "pNum");
+        public Criteria andPowerNoBetween(Integer value1, Integer value2) {
+            addCriterion("POWER_NO between", value1, value2, "powerNo");
             return (Criteria) this;
         }
 
-        public Criteria andPNumNotBetween(Integer value1, Integer value2) {
-            addCriterion("P_NUM not between", value1, value2, "pNum");
+        public Criteria andPowerNoNotBetween(Integer value1, Integer value2) {
+            addCriterion("POWER_NO not between", value1, value2, "powerNo");
             return (Criteria) this;
         }
 
-        public Criteria andMNumIsNull() {
-            addCriterion("M_NUM is null");
+        public Criteria andMenuNoIsNull() {
+            addCriterion("MENU_NO is null");
             return (Criteria) this;
         }
 
-        public Criteria andMNumIsNotNull() {
-            addCriterion("M_NUM is not null");
+        public Criteria andMenuNoIsNotNull() {
+            addCriterion("MENU_NO is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMNumEqualTo(Integer value) {
-            addCriterion("M_NUM =", value, "mNum");
+        public Criteria andMenuNoEqualTo(Integer value) {
+            addCriterion("MENU_NO =", value, "menuNo");
             return (Criteria) this;
         }
 
-        public Criteria andMNumNotEqualTo(Integer value) {
-            addCriterion("M_NUM <>", value, "mNum");
+        public Criteria andMenuNoNotEqualTo(Integer value) {
+            addCriterion("MENU_NO <>", value, "menuNo");
             return (Criteria) this;
         }
 
-        public Criteria andMNumGreaterThan(Integer value) {
-            addCriterion("M_NUM >", value, "mNum");
+        public Criteria andMenuNoGreaterThan(Integer value) {
+            addCriterion("MENU_NO >", value, "menuNo");
             return (Criteria) this;
         }
 
-        public Criteria andMNumGreaterThanOrEqualTo(Integer value) {
-            addCriterion("M_NUM >=", value, "mNum");
+        public Criteria andMenuNoGreaterThanOrEqualTo(Integer value) {
+            addCriterion("MENU_NO >=", value, "menuNo");
             return (Criteria) this;
         }
 
-        public Criteria andMNumLessThan(Integer value) {
-            addCriterion("M_NUM <", value, "mNum");
+        public Criteria andMenuNoLessThan(Integer value) {
+            addCriterion("MENU_NO <", value, "menuNo");
             return (Criteria) this;
         }
 
-        public Criteria andMNumLessThanOrEqualTo(Integer value) {
-            addCriterion("M_NUM <=", value, "mNum");
+        public Criteria andMenuNoLessThanOrEqualTo(Integer value) {
+            addCriterion("MENU_NO <=", value, "menuNo");
             return (Criteria) this;
         }
 
-        public Criteria andMNumIn(List<Integer> values) {
-            addCriterion("M_NUM in", values, "mNum");
+        public Criteria andMenuNoIn(List<Integer> values) {
+            addCriterion("MENU_NO in", values, "menuNo");
             return (Criteria) this;
         }
 
-        public Criteria andMNumNotIn(List<Integer> values) {
-            addCriterion("M_NUM not in", values, "mNum");
+        public Criteria andMenuNoNotIn(List<Integer> values) {
+            addCriterion("MENU_NO not in", values, "menuNo");
             return (Criteria) this;
         }
 
-        public Criteria andMNumBetween(Integer value1, Integer value2) {
-            addCriterion("M_NUM between", value1, value2, "mNum");
+        public Criteria andMenuNoBetween(Integer value1, Integer value2) {
+            addCriterion("MENU_NO between", value1, value2, "menuNo");
             return (Criteria) this;
         }
 
-        public Criteria andMNumNotBetween(Integer value1, Integer value2) {
-            addCriterion("M_NUM not between", value1, value2, "mNum");
+        public Criteria andMenuNoNotBetween(Integer value1, Integer value2) {
+            addCriterion("MENU_NO not between", value1, value2, "menuNo");
             return (Criteria) this;
         }
 
-        public Criteria andRNumIsNull() {
-            addCriterion("R_NUM is null");
+        public Criteria andRoNoIsNull() {
+            addCriterion("RO_NO is null");
             return (Criteria) this;
         }
 
-        public Criteria andRNumIsNotNull() {
-            addCriterion("R_NUM is not null");
+        public Criteria andRoNoIsNotNull() {
+            addCriterion("RO_NO is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRNumEqualTo(Integer value) {
-            addCriterion("R_NUM =", value, "rNum");
+        public Criteria andRoNoEqualTo(Integer value) {
+            addCriterion("RO_NO =", value, "roNo");
             return (Criteria) this;
         }
 
-        public Criteria andRNumNotEqualTo(Integer value) {
-            addCriterion("R_NUM <>", value, "rNum");
+        public Criteria andRoNoNotEqualTo(Integer value) {
+            addCriterion("RO_NO <>", value, "roNo");
             return (Criteria) this;
         }
 
-        public Criteria andRNumGreaterThan(Integer value) {
-            addCriterion("R_NUM >", value, "rNum");
+        public Criteria andRoNoGreaterThan(Integer value) {
+            addCriterion("RO_NO >", value, "roNo");
             return (Criteria) this;
         }
 
-        public Criteria andRNumGreaterThanOrEqualTo(Integer value) {
-            addCriterion("R_NUM >=", value, "rNum");
+        public Criteria andRoNoGreaterThanOrEqualTo(Integer value) {
+            addCriterion("RO_NO >=", value, "roNo");
             return (Criteria) this;
         }
 
-        public Criteria andRNumLessThan(Integer value) {
-            addCriterion("R_NUM <", value, "rNum");
+        public Criteria andRoNoLessThan(Integer value) {
+            addCriterion("RO_NO <", value, "roNo");
             return (Criteria) this;
         }
 
-        public Criteria andRNumLessThanOrEqualTo(Integer value) {
-            addCriterion("R_NUM <=", value, "rNum");
+        public Criteria andRoNoLessThanOrEqualTo(Integer value) {
+            addCriterion("RO_NO <=", value, "roNo");
             return (Criteria) this;
         }
 
-        public Criteria andRNumIn(List<Integer> values) {
-            addCriterion("R_NUM in", values, "rNum");
+        public Criteria andRoNoIn(List<Integer> values) {
+            addCriterion("RO_NO in", values, "roNo");
             return (Criteria) this;
         }
 
-        public Criteria andRNumNotIn(List<Integer> values) {
-            addCriterion("R_NUM not in", values, "rNum");
+        public Criteria andRoNoNotIn(List<Integer> values) {
+            addCriterion("RO_NO not in", values, "roNo");
             return (Criteria) this;
         }
 
-        public Criteria andRNumBetween(Integer value1, Integer value2) {
-            addCriterion("R_NUM between", value1, value2, "rNum");
+        public Criteria andRoNoBetween(Integer value1, Integer value2) {
+            addCriterion("RO_NO between", value1, value2, "roNo");
             return (Criteria) this;
         }
 
-        public Criteria andRNumNotBetween(Integer value1, Integer value2) {
-            addCriterion("R_NUM not between", value1, value2, "rNum");
+        public Criteria andRoNoNotBetween(Integer value1, Integer value2) {
+            addCriterion("RO_NO not between", value1, value2, "roNo");
             return (Criteria) this;
         }
     }

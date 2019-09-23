@@ -3,8 +3,8 @@
 <mapper namespace="com.hp.dao.GroupMapper">
   <resultMap id="BaseResultMap" type="com.hp.bean.Group">
     <id column="G_NUM" jdbcType="INTEGER" property="gNum" />
-    <result column="R_NUM" jdbcType="INTEGER" property="rNum" />
     <result column="G_NAME" jdbcType="VARCHAR" property="gName" />
+    <result column="RO_NO" jdbcType="INTEGER" property="roNo" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    G_NUM, R_NUM, G_NAME
+    G_NUM, G_NAME, RO_NO
   </sql>
   <select id="selectByExample" parameterType="com.hp.bean.GroupExample" resultMap="BaseResultMap">
     select
@@ -98,9 +98,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.hp.bean.Group">
-    insert into e_group (G_NUM, R_NUM, G_NAME
+    insert into e_group (G_NUM, G_NAME, RO_NO
       )
-    values (#{gNum,jdbcType=INTEGER}, #{rNum,jdbcType=INTEGER}, #{gName,jdbcType=VARCHAR}
+    values (#{gNum,jdbcType=INTEGER}, #{gName,jdbcType=VARCHAR}, #{roNo,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.hp.bean.Group">
@@ -109,22 +109,22 @@
       <if test="gNum != null">
         G_NUM,
       </if>
-      <if test="rNum != null">
-        R_NUM,
-      </if>
       <if test="gName != null">
         G_NAME,
+      </if>
+      <if test="roNo != null">
+        RO_NO,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="gNum != null">
         #{gNum,jdbcType=INTEGER},
       </if>
-      <if test="rNum != null">
-        #{rNum,jdbcType=INTEGER},
-      </if>
       <if test="gName != null">
         #{gName,jdbcType=VARCHAR},
+      </if>
+      <if test="roNo != null">
+        #{roNo,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -140,11 +140,11 @@
       <if test="record.gNum != null">
         G_NUM = #{record.gNum,jdbcType=INTEGER},
       </if>
-      <if test="record.rNum != null">
-        R_NUM = #{record.rNum,jdbcType=INTEGER},
-      </if>
       <if test="record.gName != null">
         G_NAME = #{record.gName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roNo != null">
+        RO_NO = #{record.roNo,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -154,8 +154,8 @@
   <update id="updateByExample" parameterType="map">
     update e_group
     set G_NUM = #{record.gNum,jdbcType=INTEGER},
-      R_NUM = #{record.rNum,jdbcType=INTEGER},
-      G_NAME = #{record.gName,jdbcType=VARCHAR}
+      G_NAME = #{record.gName,jdbcType=VARCHAR},
+      RO_NO = #{record.roNo,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -163,19 +163,19 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hp.bean.Group">
     update e_group
     <set>
-      <if test="rNum != null">
-        R_NUM = #{rNum,jdbcType=INTEGER},
-      </if>
       <if test="gName != null">
         G_NAME = #{gName,jdbcType=VARCHAR},
+      </if>
+      <if test="roNo != null">
+        RO_NO = #{roNo,jdbcType=INTEGER},
       </if>
     </set>
     where G_NUM = #{gNum,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hp.bean.Group">
     update e_group
-    set R_NUM = #{rNum,jdbcType=INTEGER},
-      G_NAME = #{gName,jdbcType=VARCHAR}
+    set G_NAME = #{gName,jdbcType=VARCHAR},
+      RO_NO = #{roNo,jdbcType=INTEGER}
     where G_NUM = #{gNum,jdbcType=INTEGER}
   </update>
 </mapper>
