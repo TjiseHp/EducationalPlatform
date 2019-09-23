@@ -33,5 +33,6 @@
 <br/>
 <a href="${pageContext.request.contextPath}/file/uploadTest">审核测试</a>
 <br/>
-
+<a href="${pageContext.request.contextPath}/file/fileList">审核列表</a>
+<br/>
 </div>
