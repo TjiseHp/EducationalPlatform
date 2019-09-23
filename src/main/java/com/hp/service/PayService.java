@@ -9,7 +9,7 @@ public interface PayService {
 	
 	List<Pay> queryAllPay();
 
-	int deleteByPrimaryKey(Integer uId);
+//	int deleteByPrimaryKey(String payNum);
 
 	Pay queryPayBypayNum(Integer payNum);
 

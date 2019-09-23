@@ -40,6 +40,10 @@ public class ExchangeServiceImpl implements ExchangeService {
 		return exchangeMapper.insertSelective(exchange);
 	}
 
+	public double queryExchange() {
+		return exchangeDao.queryExchange();
+	}
+
 
 
 

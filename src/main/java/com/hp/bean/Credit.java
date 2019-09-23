@@ -2,7 +2,6 @@ package com.hp.bean;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 
@@ -55,7 +54,6 @@ public class Credit {
         this.creditText = creditText == null ? null : creditText.trim();
     }
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     public Date getCreditDate() {
         return creditDate;
     }

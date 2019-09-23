@@ -104,203 +104,203 @@ public class RoleExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andRNumIsNull() {
-            addCriterion("R_NUM is null");
+        public Criteria andRoNoIsNull() {
+            addCriterion("RO_NO is null");
             return (Criteria) this;
         }
 
-        public Criteria andRNumIsNotNull() {
-            addCriterion("R_NUM is not null");
+        public Criteria andRoNoIsNotNull() {
+            addCriterion("RO_NO is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRNumEqualTo(Integer value) {
-            addCriterion("R_NUM =", value, "rNum");
+        public Criteria andRoNoEqualTo(Integer value) {
+            addCriterion("RO_NO =", value, "roNo");
             return (Criteria) this;
         }
 
-        public Criteria andRNumNotEqualTo(Integer value) {
-            addCriterion("R_NUM <>", value, "rNum");
+        public Criteria andRoNoNotEqualTo(Integer value) {
+            addCriterion("RO_NO <>", value, "roNo");
             return (Criteria) this;
         }
 
-        public Criteria andRNumGreaterThan(Integer value) {
-            addCriterion("R_NUM >", value, "rNum");
+        public Criteria andRoNoGreaterThan(Integer value) {
+            addCriterion("RO_NO >", value, "roNo");
             return (Criteria) this;
         }
 
-        public Criteria andRNumGreaterThanOrEqualTo(Integer value) {
-            addCriterion("R_NUM >=", value, "rNum");
+        public Criteria andRoNoGreaterThanOrEqualTo(Integer value) {
+            addCriterion("RO_NO >=", value, "roNo");
             return (Criteria) this;
         }
 
-        public Criteria andRNumLessThan(Integer value) {
-            addCriterion("R_NUM <", value, "rNum");
+        public Criteria andRoNoLessThan(Integer value) {
+            addCriterion("RO_NO <", value, "roNo");
             return (Criteria) this;
         }
 
-        public Criteria andRNumLessThanOrEqualTo(Integer value) {
-            addCriterion("R_NUM <=", value, "rNum");
+        public Criteria andRoNoLessThanOrEqualTo(Integer value) {
+            addCriterion("RO_NO <=", value, "roNo");
             return (Criteria) this;
         }
 
-        public Criteria andRNumIn(List<Integer> values) {
-            addCriterion("R_NUM in", values, "rNum");
+        public Criteria andRoNoIn(List<Integer> values) {
+            addCriterion("RO_NO in", values, "roNo");
             return (Criteria) this;
         }
 
-        public Criteria andRNumNotIn(List<Integer> values) {
-            addCriterion("R_NUM not in", values, "rNum");
+        public Criteria andRoNoNotIn(List<Integer> values) {
+            addCriterion("RO_NO not in", values, "roNo");
             return (Criteria) this;
         }
 
-        public Criteria andRNumBetween(Integer value1, Integer value2) {
-            addCriterion("R_NUM between", value1, value2, "rNum");
+        public Criteria andRoNoBetween(Integer value1, Integer value2) {
+            addCriterion("RO_NO between", value1, value2, "roNo");
             return (Criteria) this;
         }
 
-        public Criteria andRNumNotBetween(Integer value1, Integer value2) {
-            addCriterion("R_NUM not between", value1, value2, "rNum");
+        public Criteria andRoNoNotBetween(Integer value1, Integer value2) {
+            addCriterion("RO_NO not between", value1, value2, "roNo");
             return (Criteria) this;
         }
 
-        public Criteria andRNameIsNull() {
-            addCriterion("R_NAME is null");
+        public Criteria andRoNameIsNull() {
+            addCriterion("RO_NAME is null");
             return (Criteria) this;
         }
 
-        public Criteria andRNameIsNotNull() {
-            addCriterion("R_NAME is not null");
+        public Criteria andRoNameIsNotNull() {
+            addCriterion("RO_NAME is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRNameEqualTo(String value) {
-            addCriterion("R_NAME =", value, "rName");
+        public Criteria andRoNameEqualTo(String value) {
+            addCriterion("RO_NAME =", value, "roName");
             return (Criteria) this;
         }
 
-        public Criteria andRNameNotEqualTo(String value) {
-            addCriterion("R_NAME <>", value, "rName");
+        public Criteria andRoNameNotEqualTo(String value) {
+            addCriterion("RO_NAME <>", value, "roName");
             return (Criteria) this;
         }
 
-        public Criteria andRNameGreaterThan(String value) {
-            addCriterion("R_NAME >", value, "rName");
+        public Criteria andRoNameGreaterThan(String value) {
+            addCriterion("RO_NAME >", value, "roName");
             return (Criteria) this;
         }
 
-        public Criteria andRNameGreaterThanOrEqualTo(String value) {
-            addCriterion("R_NAME >=", value, "rName");
+        public Criteria andRoNameGreaterThanOrEqualTo(String value) {
+            addCriterion("RO_NAME >=", value, "roName");
             return (Criteria) this;
         }
 
-        public Criteria andRNameLessThan(String value) {
-            addCriterion("R_NAME <", value, "rName");
+        public Criteria andRoNameLessThan(String value) {
+            addCriterion("RO_NAME <", value, "roName");
             return (Criteria) this;
         }
 
-        public Criteria andRNameLessThanOrEqualTo(String value) {
-            addCriterion("R_NAME <=", value, "rName");
+        public Criteria andRoNameLessThanOrEqualTo(String value) {
+            addCriterion("RO_NAME <=", value, "roName");
             return (Criteria) this;
         }
 
-        public Criteria andRNameLike(String value) {
-            addCriterion("R_NAME like", value, "rName");
+        public Criteria andRoNameLike(String value) {
+            addCriterion("RO_NAME like", value, "roName");
             return (Criteria) this;
         }
 
-        public Criteria andRNameNotLike(String value) {
-            addCriterion("R_NAME not like", value, "rName");
+        public Criteria andRoNameNotLike(String value) {
+            addCriterion("RO_NAME not like", value, "roName");
             return (Criteria) this;
         }
 
-        public Criteria andRNameIn(List<String> values) {
-            addCriterion("R_NAME in", values, "rName");
+        public Criteria andRoNameIn(List<String> values) {
+            addCriterion("RO_NAME in", values, "roName");
             return (Criteria) this;
         }
 
-        public Criteria andRNameNotIn(List<String> values) {
-            addCriterion("R_NAME not in", values, "rName");
+        public Criteria andRoNameNotIn(List<String> values) {
+            addCriterion("RO_NAME not in", values, "roName");
             return (Criteria) this;
         }
 
-        public Criteria andRNameBetween(String value1, String value2) {
-            addCriterion("R_NAME between", value1, value2, "rName");
+        public Criteria andRoNameBetween(String value1, String value2) {
+            addCriterion("RO_NAME between", value1, value2, "roName");
             return (Criteria) this;
         }
 
-        public Criteria andRNameNotBetween(String value1, String value2) {
-            addCriterion("R_NAME not between", value1, value2, "rName");
+        public Criteria andRoNameNotBetween(String value1, String value2) {
+            addCriterion("RO_NAME not between", value1, value2, "roName");
             return (Criteria) this;
         }
 
-        public Criteria andRRemarksIsNull() {
-            addCriterion("R_REMARKS is null");
+        public Criteria andRoTextIsNull() {
+            addCriterion("RO_TEXT is null");
             return (Criteria) this;
         }
 
-        public Criteria andRRemarksIsNotNull() {
-            addCriterion("R_REMARKS is not null");
+        public Criteria andRoTextIsNotNull() {
+            addCriterion("RO_TEXT is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRRemarksEqualTo(String value) {
-            addCriterion("R_REMARKS =", value, "rRemarks");
+        public Criteria andRoTextEqualTo(String value) {
+            addCriterion("RO_TEXT =", value, "roText");
             return (Criteria) this;
         }
 
-        public Criteria andRRemarksNotEqualTo(String value) {
-            addCriterion("R_REMARKS <>", value, "rRemarks");
+        public Criteria andRoTextNotEqualTo(String value) {
+            addCriterion("RO_TEXT <>", value, "roText");
             return (Criteria) this;
         }
 
-        public Criteria andRRemarksGreaterThan(String value) {
-            addCriterion("R_REMARKS >", value, "rRemarks");
+        public Criteria andRoTextGreaterThan(String value) {
+            addCriterion("RO_TEXT >", value, "roText");
             return (Criteria) this;
         }
 
-        public Criteria andRRemarksGreaterThanOrEqualTo(String value) {
-            addCriterion("R_REMARKS >=", value, "rRemarks");
+        public Criteria andRoTextGreaterThanOrEqualTo(String value) {
+            addCriterion("RO_TEXT >=", value, "roText");
             return (Criteria) this;
         }
 
-        public Criteria andRRemarksLessThan(String value) {
-            addCriterion("R_REMARKS <", value, "rRemarks");
+        public Criteria andRoTextLessThan(String value) {
+            addCriterion("RO_TEXT <", value, "roText");
             return (Criteria) this;
         }
 
-        public Criteria andRRemarksLessThanOrEqualTo(String value) {
-            addCriterion("R_REMARKS <=", value, "rRemarks");
+        public Criteria andRoTextLessThanOrEqualTo(String value) {
+            addCriterion("RO_TEXT <=", value, "roText");
             return (Criteria) this;
         }
 
-        public Criteria andRRemarksLike(String value) {
-            addCriterion("R_REMARKS like", value, "rRemarks");
+        public Criteria andRoTextLike(String value) {
+            addCriterion("RO_TEXT like", value, "roText");
             return (Criteria) this;
         }
 
-        public Criteria andRRemarksNotLike(String value) {
-            addCriterion("R_REMARKS not like", value, "rRemarks");
+        public Criteria andRoTextNotLike(String value) {
+            addCriterion("RO_TEXT not like", value, "roText");
             return (Criteria) this;
         }
 
-        public Criteria andRRemarksIn(List<String> values) {
-            addCriterion("R_REMARKS in", values, "rRemarks");
+        public Criteria andRoTextIn(List<String> values) {
+            addCriterion("RO_TEXT in", values, "roText");
             return (Criteria) this;
         }
 
-        public Criteria andRRemarksNotIn(List<String> values) {
-            addCriterion("R_REMARKS not in", values, "rRemarks");
+        public Criteria andRoTextNotIn(List<String> values) {
+            addCriterion("RO_TEXT not in", values, "roText");
             return (Criteria) this;
         }
 
-        public Criteria andRRemarksBetween(String value1, String value2) {
-            addCriterion("R_REMARKS between", value1, value2, "rRemarks");
+        public Criteria andRoTextBetween(String value1, String value2) {
+            addCriterion("RO_TEXT between", value1, value2, "roText");
             return (Criteria) this;
         }
 
-        public Criteria andRRemarksNotBetween(String value1, String value2) {
-            addCriterion("R_REMARKS not between", value1, value2, "rRemarks");
+        public Criteria andRoTextNotBetween(String value1, String value2) {
+            addCriterion("RO_TEXT not between", value1, value2, "roText");
             return (Criteria) this;
         }
     }

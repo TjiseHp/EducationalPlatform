@@ -115,53 +115,133 @@ public class PayExample {
             return (Criteria) this;
         }
 
-        public Criteria andPayNumEqualTo(Integer value) {
+        public Criteria andPayNumEqualTo(String value) {
             addCriterion("PAY_NUM =", value, "payNum");
             return (Criteria) this;
         }
 
-        public Criteria andPayNumNotEqualTo(Integer value) {
+        public Criteria andPayNumNotEqualTo(String value) {
             addCriterion("PAY_NUM <>", value, "payNum");
             return (Criteria) this;
         }
 
-        public Criteria andPayNumGreaterThan(Integer value) {
+        public Criteria andPayNumGreaterThan(String value) {
             addCriterion("PAY_NUM >", value, "payNum");
             return (Criteria) this;
         }
 
-        public Criteria andPayNumGreaterThanOrEqualTo(Integer value) {
+        public Criteria andPayNumGreaterThanOrEqualTo(String value) {
             addCriterion("PAY_NUM >=", value, "payNum");
             return (Criteria) this;
         }
 
-        public Criteria andPayNumLessThan(Integer value) {
+        public Criteria andPayNumLessThan(String value) {
             addCriterion("PAY_NUM <", value, "payNum");
             return (Criteria) this;
         }
 
-        public Criteria andPayNumLessThanOrEqualTo(Integer value) {
+        public Criteria andPayNumLessThanOrEqualTo(String value) {
             addCriterion("PAY_NUM <=", value, "payNum");
             return (Criteria) this;
         }
 
-        public Criteria andPayNumIn(List<Integer> values) {
+        public Criteria andPayNumLike(String value) {
+            addCriterion("PAY_NUM like", value, "payNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayNumNotLike(String value) {
+            addCriterion("PAY_NUM not like", value, "payNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayNumIn(List<String> values) {
             addCriterion("PAY_NUM in", values, "payNum");
             return (Criteria) this;
         }
 
-        public Criteria andPayNumNotIn(List<Integer> values) {
+        public Criteria andPayNumNotIn(List<String> values) {
             addCriterion("PAY_NUM not in", values, "payNum");
             return (Criteria) this;
         }
 
-        public Criteria andPayNumBetween(Integer value1, Integer value2) {
+        public Criteria andPayNumBetween(String value1, String value2) {
             addCriterion("PAY_NUM between", value1, value2, "payNum");
             return (Criteria) this;
         }
 
-        public Criteria andPayNumNotBetween(Integer value1, Integer value2) {
+        public Criteria andPayNumNotBetween(String value1, String value2) {
             addCriterion("PAY_NUM not between", value1, value2, "payNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andTradeNoIsNull() {
+            addCriterion("TRADE_NO is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTradeNoIsNotNull() {
+            addCriterion("TRADE_NO is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTradeNoEqualTo(String value) {
+            addCriterion("TRADE_NO =", value, "tradeNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andTradeNoNotEqualTo(String value) {
+            addCriterion("TRADE_NO <>", value, "tradeNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andTradeNoGreaterThan(String value) {
+            addCriterion("TRADE_NO >", value, "tradeNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andTradeNoGreaterThanOrEqualTo(String value) {
+            addCriterion("TRADE_NO >=", value, "tradeNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andTradeNoLessThan(String value) {
+            addCriterion("TRADE_NO <", value, "tradeNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andTradeNoLessThanOrEqualTo(String value) {
+            addCriterion("TRADE_NO <=", value, "tradeNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andTradeNoLike(String value) {
+            addCriterion("TRADE_NO like", value, "tradeNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andTradeNoNotLike(String value) {
+            addCriterion("TRADE_NO not like", value, "tradeNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andTradeNoIn(List<String> values) {
+            addCriterion("TRADE_NO in", values, "tradeNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andTradeNoNotIn(List<String> values) {
+            addCriterion("TRADE_NO not in", values, "tradeNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andTradeNoBetween(String value1, String value2) {
+            addCriterion("TRADE_NO between", value1, value2, "tradeNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andTradeNoNotBetween(String value1, String value2) {
+            addCriterion("TRADE_NO not between", value1, value2, "tradeNo");
             return (Criteria) this;
         }
 
@@ -235,52 +315,62 @@ public class PayExample {
             return (Criteria) this;
         }
 
-        public Criteria andPayTextEqualTo(Integer value) {
+        public Criteria andPayTextEqualTo(String value) {
             addCriterion("PAY_TEXT =", value, "payText");
             return (Criteria) this;
         }
 
-        public Criteria andPayTextNotEqualTo(Integer value) {
+        public Criteria andPayTextNotEqualTo(String value) {
             addCriterion("PAY_TEXT <>", value, "payText");
             return (Criteria) this;
         }
 
-        public Criteria andPayTextGreaterThan(Integer value) {
+        public Criteria andPayTextGreaterThan(String value) {
             addCriterion("PAY_TEXT >", value, "payText");
             return (Criteria) this;
         }
 
-        public Criteria andPayTextGreaterThanOrEqualTo(Integer value) {
+        public Criteria andPayTextGreaterThanOrEqualTo(String value) {
             addCriterion("PAY_TEXT >=", value, "payText");
             return (Criteria) this;
         }
 
-        public Criteria andPayTextLessThan(Integer value) {
+        public Criteria andPayTextLessThan(String value) {
             addCriterion("PAY_TEXT <", value, "payText");
             return (Criteria) this;
         }
 
-        public Criteria andPayTextLessThanOrEqualTo(Integer value) {
+        public Criteria andPayTextLessThanOrEqualTo(String value) {
             addCriterion("PAY_TEXT <=", value, "payText");
             return (Criteria) this;
         }
 
-        public Criteria andPayTextIn(List<Integer> values) {
+        public Criteria andPayTextLike(String value) {
+            addCriterion("PAY_TEXT like", value, "payText");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayTextNotLike(String value) {
+            addCriterion("PAY_TEXT not like", value, "payText");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayTextIn(List<String> values) {
             addCriterion("PAY_TEXT in", values, "payText");
             return (Criteria) this;
         }
 
-        public Criteria andPayTextNotIn(List<Integer> values) {
+        public Criteria andPayTextNotIn(List<String> values) {
             addCriterion("PAY_TEXT not in", values, "payText");
             return (Criteria) this;
         }
 
-        public Criteria andPayTextBetween(Integer value1, Integer value2) {
+        public Criteria andPayTextBetween(String value1, String value2) {
             addCriterion("PAY_TEXT between", value1, value2, "payText");
             return (Criteria) this;
         }
 
-        public Criteria andPayTextNotBetween(Integer value1, Integer value2) {
+        public Criteria andPayTextNotBetween(String value1, String value2) {
             addCriterion("PAY_TEXT not between", value1, value2, "payText");
             return (Criteria) this;
         }

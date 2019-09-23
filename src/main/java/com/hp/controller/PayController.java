@@ -51,7 +51,7 @@ public class PayController {
 		return modelAndView;
 	}
 	
-	
+	/*
 	//删除营收
 	@RequestMapping("/deletePay")
 	public String deleteSPay(
@@ -62,6 +62,7 @@ public class PayController {
 		System.out.println("删除了"+row+"行数据");
 		return "redirect:payTable2";
 	}
+	*/
 		
 	//营收更新页面跳转
 	@RequestMapping("/updatePay")
@@ -146,21 +147,21 @@ public class PayController {
 	}
 	
 	
-	//删除营收信息2
-	@ResponseBody
-	@RequestMapping("/deletePay2")
-	public String deleteStudent2(Pay pay) {
-		System.out.println("deletePay:"+pay.getPayNum());
-		JSONObject json = new JSONObject();
-		int row = payService.deleteByPrimaryKey(pay.getPayNum());
-		System.out.println("删除了"+row+"行数据");
-		if (row==1) {
-			json.put("result", true);
-		}else {
-			json.put("result", false);
-		}
-		return json.toString();
-	}
+//	//删除营收信息2
+//	@ResponseBody
+//	@RequestMapping("/deletePay2")
+//	public String deleteStudent2(Pay pay) {
+//		System.out.println("deletePay:"+pay.getPayNum());
+//		JSONObject json = new JSONObject();
+//		int row = payService.deleteByPrimaryKey(pay.getPayNum());
+//		System.out.println("删除了"+row+"行数据");
+//		if (row==1) {
+//			json.put("result", true);
+//		}else {
+//			json.put("result", false);
+//		}
+//		return json.toString();
+//	}
 		
 
 }

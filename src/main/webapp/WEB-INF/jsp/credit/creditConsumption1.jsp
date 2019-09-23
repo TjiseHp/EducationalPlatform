@@ -8,49 +8,29 @@
 	<script type="text/javascript">
 		
 		$(document).ready(function () {
+			var uId = window.location.search.substring(window.location.search.indexOf("=")+1);
+			console.info(uId);
 	        $('#table1').bootstrapTable({
-	            url: '${pageContext.request.contextPath}/credit/queryAllConsumptionByuId',
+	            url: '${pageContext.request.contextPath}/credit/queryAllConsumptionByuId?uId='+uId,
 	            method: 'post', 
 	            columns: [
-	                {
+	            	{
 	                    sortable: "true",
-	                    field: 'uId',
-	                    title: 'ID',
-	                    align: "center"
-	                },
-	                {
-	                    sortable: "true",
-	                    field: 'uName',
-	                    title: '用户名',
+	                    field: 'creditDate',
+	                    title: '时间',
 	                    align: "center"
 	                },
 	                {
 	                    sortable: "true",
-	                    field: 'uSex',
-	                    title: '性别',
+	                    field: 'creditSum',
+	                    title: '积分',
 	                    align: "center"
 	                },
-	                {
-	                    field: 'uPhone',
-	                    title: '手机号',
+	                {	          
+	                    field: 'creditText',
+	                    title: '明细',
 	                    align: "center"
-	                },
-	                {
-	                    field: 'uEmail',
-	                    title: '邮箱',
-	                    align: "center"
-	                },
-	                {
-	                    field: 'city.cCity',
-	                    title: '城市',
-	                    align: "center"
-	                },	            
-	                {
-	                    sortable: "true",
-	                    field: 'credit',
-	                    title: '剩余积分',
-	                    align: "center"
-	                },
+	                }
 	    
 	            ],
 	            height: 580,
@@ -82,21 +62,21 @@
 	                console.info("加载数据失败");
 	            },
 	            onClickRow: function (row) {
-	            	uId = row.uId;
-	            	uName = row.uName;
-	            	uSex = row.uSex;
-	            	uPhone = row.uPhone;
-	            	uEmail = row.uEmail;
-	            	credit = row.credit;
-	            	cCity = row.city.cCity;	            	
+	            	creditSum = row.creditSum;
+	            	creditText = row.creditText;
+	            	creditDate = row.creditDate;
 	            }
 	        });
 	    })
 	    	
-		
+		function doback(){
+			console.info("back");
+			var uId = window.location.search.substring(window.location.search.indexOf("=")+1);
+			console.info(uId);
+	    	window.location.href = "${pageContext.request.contextPath}/credit/sCreditDetail?uId="+uId;
+		}
 	        
 	       
-	    }
 		
 		
 		
@@ -110,3 +90,8 @@
         </div>
     </div>
 	
+	<div id="toolbar" class="btn-group">
+		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doback();" >
+			<span >返回</span>
+		</a>
+	</div>

@@ -2,9 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hp.dao.PayMapper">
   <resultMap id="BaseResultMap" type="com.hp.bean.Pay">
-    <id column="PAY_NUM" jdbcType="INTEGER" property="payNum" />
+    <id column="PAY_NUM" jdbcType="VARCHAR" property="payNum" />
+    <result column="TRADE_NO" jdbcType="VARCHAR" property="tradeNo" />
     <result column="U_ID" jdbcType="INTEGER" property="uId" />
-    <result column="PAY_TEXT" jdbcType="INTEGER" property="payText" />
+    <result column="PAY_TEXT" jdbcType="VARCHAR" property="payText" />
     <result column="PAY_DATE" jdbcType="TIMESTAMP" property="payDate" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -66,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    PAY_NUM, U_ID, PAY_TEXT, PAY_DATE
+    PAY_NUM, TRADE_NO, U_ID, PAY_TEXT, PAY_DATE
   </sql>
   <select id="selectByExample" parameterType="com.hp.bean.PayExample" resultMap="BaseResultMap">
     select
@@ -82,15 +83,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from e_pay
-    where PAY_NUM = #{payNum,jdbcType=INTEGER}
+    where PAY_NUM = #{payNum,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from e_pay
-    where PAY_NUM = #{payNum,jdbcType=INTEGER}
+    where PAY_NUM = #{payNum,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.hp.bean.PayExample">
     delete from e_pay
@@ -99,16 +100,19 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.hp.bean.Pay">
-    insert into e_pay (PAY_NUM, U_ID, PAY_TEXT, 
-      PAY_DATE)
-    values (#{payNum,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, #{payText,jdbcType=INTEGER}, 
-      #{payDate,jdbcType=TIMESTAMP})
+    insert into e_pay (PAY_NUM, TRADE_NO, U_ID, 
+      PAY_TEXT, PAY_DATE)
+    values (#{payNum,jdbcType=VARCHAR}, #{tradeNo,jdbcType=VARCHAR}, #{uId,jdbcType=INTEGER}, 
+      #{payText,jdbcType=VARCHAR}, #{payDate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.hp.bean.Pay">
     insert into e_pay
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="payNum != null">
         PAY_NUM,
+      </if>
+      <if test="tradeNo != null">
+        TRADE_NO,
       </if>
       <if test="uId != null">
         U_ID,
@@ -122,13 +126,16 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="payNum != null">
-        #{payNum,jdbcType=INTEGER},
+        #{payNum,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeNo != null">
+        #{tradeNo,jdbcType=VARCHAR},
       </if>
       <if test="uId != null">
         #{uId,jdbcType=INTEGER},
       </if>
       <if test="payText != null">
-        #{payText,jdbcType=INTEGER},
+        #{payText,jdbcType=VARCHAR},
       </if>
       <if test="payDate != null">
         #{payDate,jdbcType=TIMESTAMP},
@@ -145,13 +152,16 @@
     update e_pay
     <set>
       <if test="record.payNum != null">
-        PAY_NUM = #{record.payNum,jdbcType=INTEGER},
+        PAY_NUM = #{record.payNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tradeNo != null">
+        TRADE_NO = #{record.tradeNo,jdbcType=VARCHAR},
       </if>
       <if test="record.uId != null">
         U_ID = #{record.uId,jdbcType=INTEGER},
       </if>
       <if test="record.payText != null">
-        PAY_TEXT = #{record.payText,jdbcType=INTEGER},
+        PAY_TEXT = #{record.payText,jdbcType=VARCHAR},
       </if>
       <if test="record.payDate != null">
         PAY_DATE = #{record.payDate,jdbcType=TIMESTAMP},
@@ -163,9 +173,10 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update e_pay
-    set PAY_NUM = #{record.payNum,jdbcType=INTEGER},
+    set PAY_NUM = #{record.payNum,jdbcType=VARCHAR},
+      TRADE_NO = #{record.tradeNo,jdbcType=VARCHAR},
       U_ID = #{record.uId,jdbcType=INTEGER},
-      PAY_TEXT = #{record.payText,jdbcType=INTEGER},
+      PAY_TEXT = #{record.payText,jdbcType=VARCHAR},
       PAY_DATE = #{record.payDate,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -174,23 +185,27 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hp.bean.Pay">
     update e_pay
     <set>
+      <if test="tradeNo != null">
+        TRADE_NO = #{tradeNo,jdbcType=VARCHAR},
+      </if>
       <if test="uId != null">
         U_ID = #{uId,jdbcType=INTEGER},
       </if>
       <if test="payText != null">
-        PAY_TEXT = #{payText,jdbcType=INTEGER},
+        PAY_TEXT = #{payText,jdbcType=VARCHAR},
       </if>
       <if test="payDate != null">
         PAY_DATE = #{payDate,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where PAY_NUM = #{payNum,jdbcType=INTEGER}
+    where PAY_NUM = #{payNum,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hp.bean.Pay">
     update e_pay
-    set U_ID = #{uId,jdbcType=INTEGER},
-      PAY_TEXT = #{payText,jdbcType=INTEGER},
+    set TRADE_NO = #{tradeNo,jdbcType=VARCHAR},
+      U_ID = #{uId,jdbcType=INTEGER},
+      PAY_TEXT = #{payText,jdbcType=VARCHAR},
       PAY_DATE = #{payDate,jdbcType=TIMESTAMP}
-    where PAY_NUM = #{payNum,jdbcType=INTEGER}
+    where PAY_NUM = #{payNum,jdbcType=VARCHAR}
   </update>
 </mapper>

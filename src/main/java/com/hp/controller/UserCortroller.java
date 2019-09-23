@@ -232,6 +232,52 @@ public class UserCortroller  {
 		return teacher;
 	}
 	
+	//用户(老师）个人信息页
+		@RequestMapping("/teacherInfo")
+		public ModelAndView teacherInfo(HttpServletRequest httpServletRequest,
+				@RequestParam(required = true,value = "uId") Integer uId) {
+			HttpSession httpSession = httpServletRequest.getSession();
+			ModelAndView modelAndView = new ModelAndView();
+			User user = userService.queryTeacherByInfo(uId);
+			
+			modelAndView.addObject("httpSession",httpSession);
+			modelAndView.addObject("user",user);
+			modelAndView.addObject("mainPage", "user/teacherInfo.jsp");
+			modelAndView.setViewName("main");
+			return modelAndView;
+
+		}
+		
+		@RequestMapping("/updateTeacherInfo")
+		public ModelAndView updateTeacherInfo(HttpServletRequest httpServletRequest,
+				@RequestParam(required = true,value = "uId") Integer uId) {
+			HttpSession httpSession = httpServletRequest.getSession();
+			User user = userService.queryTeacherByInfo(uId);
+			ModelAndView modelAndView = new ModelAndView();
+			modelAndView.addObject("httpSession",httpSession);
+			modelAndView.addObject("user",user);
+			modelAndView.addObject("mainPage", "user/updateTeacherInfo.jsp");
+			modelAndView.setViewName("main");
+			System.out.println("456");
+			return modelAndView;
+		}
+
+		//更新老师信息
+				@ResponseBody
+				@RequestMapping("/doUpdateTeacherInfo")
+				public String doUpdateTeacherInfo(HttpSession session,User user) {
+					System.out.println("update："+user.getuId());
+					JSONObject json = new JSONObject();
+					int row = userService.updateByPrimaryKeySelective(user);		
+					if(row==1) {
+						System.out.println("成功");
+						json.put("result", true);
+					}else {
+						json.put("result", false);
+					}
+					return json.toString();
+				}
+	
 
 	
 }

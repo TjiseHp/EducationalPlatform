@@ -12,7 +12,6 @@ public interface UserDao {
 
 	List<User> queryAllTeacher();
 
-	@Select("select * from e_user where U_ID = #{uId}")
 	User queryStudentByuId(Integer uId);
 
 	@Select("select * from e_user where U_ID = #{uId}")
@@ -37,5 +36,11 @@ public interface UserDao {
 	@Select("select u_Name from e_user where u_id = #{uId}")
 	String queryUnameByUid(Integer uId);
 	
-	
+	int insertUserSelective(User user);
+
+	@Select("select * from e_user where U_ID = #{uId}")
+	User queryAllTeacherByuId(Integer uId);
+
+	@Select("select * from e_user where U_ID = #{uId}")
+	User queryTeacherByInfo(Integer uId);
 }
