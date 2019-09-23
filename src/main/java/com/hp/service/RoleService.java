@@ -1,9 +1,6 @@
 package com.hp.service;
-
 import java.util.List;
-
 import com.hp.bean.Role;
-
 
 public interface RoleService {
 
@@ -12,7 +9,5 @@ public interface RoleService {
 	List<Role> queryAllRole();
 
 	Role queryRoleByrNum(Integer rNum);
-
-
 
 }

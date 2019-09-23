@@ -1,33 +1,33 @@
 package com.hp.bean;
 
 public class Power {
-    private Integer pNum;
+    private Integer powerNo;
 
-    private Integer mNum;
+    private Integer menuNo;
 
-    private Integer rNum;
+    private Integer roNo;
 
-    public Integer getpNum() {
-        return pNum;
+    public Integer getPowerNo() {
+        return powerNo;
     }
 
-    public void setpNum(Integer pNum) {
-        this.pNum = pNum;
+    public void setPowerNo(Integer powerNo) {
+        this.powerNo = powerNo;
     }
 
-    public Integer getmNum() {
-        return mNum;
+    public Integer getMenuNo() {
+        return menuNo;
     }
 
-    public void setmNum(Integer mNum) {
-        this.mNum = mNum;
+    public void setMenuNo(Integer menuNo) {
+        this.menuNo = menuNo;
     }
 
-    public Integer getrNum() {
-        return rNum;
+    public Integer getRoNo() {
+        return roNo;
     }
 
-    public void setrNum(Integer rNum) {
-        this.rNum = rNum;
+    public void setRoNo(Integer roNo) {
+        this.roNo = roNo;
     }
 }

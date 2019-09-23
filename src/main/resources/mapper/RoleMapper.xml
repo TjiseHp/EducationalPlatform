@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hp.dao.RoleMapper">
   <resultMap id="BaseResultMap" type="com.hp.bean.Role">
-    <id column="R_NUM" jdbcType="INTEGER" property="rNum" />
-    <result column="R_NAME" jdbcType="VARCHAR" property="rName" />
-    <result column="R_REMARKS" jdbcType="VARCHAR" property="rRemarks" />
+    <id column="RO_NO" jdbcType="INTEGER" property="roNo" />
+    <result column="RO_NAME" jdbcType="VARCHAR" property="roName" />
+    <result column="RO_TEXT" jdbcType="VARCHAR" property="roText" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    R_NUM, R_NAME, R_REMARKS
+    RO_NO, RO_NAME, RO_TEXT
   </sql>
   <select id="selectByExample" parameterType="com.hp.bean.RoleExample" resultMap="BaseResultMap">
     select
@@ -85,11 +85,11 @@
     select 
     <include refid="Base_Column_List" />
     from e_role
-    where R_NUM = #{rNum,jdbcType=INTEGER}
+    where RO_NO = #{roNo,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from e_role
-    where R_NUM = #{rNum,jdbcType=INTEGER}
+    where RO_NO = #{roNo,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.hp.bean.RoleExample">
     delete from e_role
@@ -98,33 +98,33 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.hp.bean.Role">
-    insert into e_role (R_NUM, R_NAME, R_REMARKS
+    insert into e_role (RO_NO, RO_NAME, RO_TEXT
       )
-    values (#{rNum,jdbcType=INTEGER}, #{rName,jdbcType=VARCHAR}, #{rRemarks,jdbcType=VARCHAR}
+    values (#{roNo,jdbcType=INTEGER}, #{roName,jdbcType=VARCHAR}, #{roText,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.hp.bean.Role">
     insert into e_role
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="rNum != null">
-        R_NUM,
+      <if test="roNo != null">
+        RO_NO,
       </if>
-      <if test="rName != null">
-        R_NAME,
+      <if test="roName != null">
+        RO_NAME,
       </if>
-      <if test="rRemarks != null">
-        R_REMARKS,
+      <if test="roText != null">
+        RO_TEXT,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="rNum != null">
-        #{rNum,jdbcType=INTEGER},
+      <if test="roNo != null">
+        #{roNo,jdbcType=INTEGER},
       </if>
-      <if test="rName != null">
-        #{rName,jdbcType=VARCHAR},
+      <if test="roName != null">
+        #{roName,jdbcType=VARCHAR},
       </if>
-      <if test="rRemarks != null">
-        #{rRemarks,jdbcType=VARCHAR},
+      <if test="roText != null">
+        #{roText,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -137,14 +137,14 @@
   <update id="updateByExampleSelective" parameterType="map">
     update e_role
     <set>
-      <if test="record.rNum != null">
-        R_NUM = #{record.rNum,jdbcType=INTEGER},
+      <if test="record.roNo != null">
+        RO_NO = #{record.roNo,jdbcType=INTEGER},
       </if>
-      <if test="record.rName != null">
-        R_NAME = #{record.rName,jdbcType=VARCHAR},
+      <if test="record.roName != null">
+        RO_NAME = #{record.roName,jdbcType=VARCHAR},
       </if>
-      <if test="record.rRemarks != null">
-        R_REMARKS = #{record.rRemarks,jdbcType=VARCHAR},
+      <if test="record.roText != null">
+        RO_TEXT = #{record.roText,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -153,9 +153,9 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update e_role
-    set R_NUM = #{record.rNum,jdbcType=INTEGER},
-      R_NAME = #{record.rName,jdbcType=VARCHAR},
-      R_REMARKS = #{record.rRemarks,jdbcType=VARCHAR}
+    set RO_NO = #{record.roNo,jdbcType=INTEGER},
+      RO_NAME = #{record.roName,jdbcType=VARCHAR},
+      RO_TEXT = #{record.roText,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -163,19 +163,19 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hp.bean.Role">
     update e_role
     <set>
-      <if test="rName != null">
-        R_NAME = #{rName,jdbcType=VARCHAR},
+      <if test="roName != null">
+        RO_NAME = #{roName,jdbcType=VARCHAR},
       </if>
-      <if test="rRemarks != null">
-        R_REMARKS = #{rRemarks,jdbcType=VARCHAR},
+      <if test="roText != null">
+        RO_TEXT = #{roText,jdbcType=VARCHAR},
       </if>
     </set>
-    where R_NUM = #{rNum,jdbcType=INTEGER}
+    where RO_NO = #{roNo,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hp.bean.Role">
     update e_role
-    set R_NAME = #{rName,jdbcType=VARCHAR},
-      R_REMARKS = #{rRemarks,jdbcType=VARCHAR}
-    where R_NUM = #{rNum,jdbcType=INTEGER}
+    set RO_NAME = #{roName,jdbcType=VARCHAR},
+      RO_TEXT = #{roText,jdbcType=VARCHAR}
+    where RO_NO = #{roNo,jdbcType=INTEGER}
   </update>
 </mapper>

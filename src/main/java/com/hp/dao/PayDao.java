@@ -16,6 +16,9 @@ public interface PayDao {
 
 	List<Pay> queryPayByExample(String search);
 
+	@Select("select * from e_pay where PAY_NUM = #{payNum}")
+	Pay queryPay(String payNum);
+
 
 
 	

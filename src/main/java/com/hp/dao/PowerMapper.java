@@ -10,7 +10,7 @@ public interface PowerMapper {
 
     int deleteByExample(PowerExample example);
 
-    int deleteByPrimaryKey(Integer pNum);
+    int deleteByPrimaryKey(Integer powerNo);
 
     int insert(Power record);
 
@@ -18,7 +18,7 @@ public interface PowerMapper {
 
     List<Power> selectByExample(PowerExample example);
 
-    Power selectByPrimaryKey(Integer pNum);
+    Power selectByPrimaryKey(Integer powerNo);
 
     int updateByExampleSelective(@Param("record") Power record, @Param("example") PowerExample example);
 

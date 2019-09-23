@@ -33,7 +33,10 @@
 <br/>
 <a href="${pageContext.request.contextPath}/file/uploadTest">审核测试</a>
 <br/>
+<a href="${pageContext.request.contextPath}/file/fileList">审核列表</a>
+<br/>
 <a href="${pageContext.request.contextPath}/alipay/payMenu">支付测试</a>
 <br/>
-
+<a href="${pageContext.request.contextPath}/role/assignTable?roNo=4">权限回调</a>
+<br/>
 </div>

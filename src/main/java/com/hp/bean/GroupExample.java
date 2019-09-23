@@ -164,66 +164,6 @@ public class GroupExample {
             return (Criteria) this;
         }
 
-        public Criteria andRNumIsNull() {
-            addCriterion("R_NUM is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andRNumIsNotNull() {
-            addCriterion("R_NUM is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andRNumEqualTo(Integer value) {
-            addCriterion("R_NUM =", value, "rNum");
-            return (Criteria) this;
-        }
-
-        public Criteria andRNumNotEqualTo(Integer value) {
-            addCriterion("R_NUM <>", value, "rNum");
-            return (Criteria) this;
-        }
-
-        public Criteria andRNumGreaterThan(Integer value) {
-            addCriterion("R_NUM >", value, "rNum");
-            return (Criteria) this;
-        }
-
-        public Criteria andRNumGreaterThanOrEqualTo(Integer value) {
-            addCriterion("R_NUM >=", value, "rNum");
-            return (Criteria) this;
-        }
-
-        public Criteria andRNumLessThan(Integer value) {
-            addCriterion("R_NUM <", value, "rNum");
-            return (Criteria) this;
-        }
-
-        public Criteria andRNumLessThanOrEqualTo(Integer value) {
-            addCriterion("R_NUM <=", value, "rNum");
-            return (Criteria) this;
-        }
-
-        public Criteria andRNumIn(List<Integer> values) {
-            addCriterion("R_NUM in", values, "rNum");
-            return (Criteria) this;
-        }
-
-        public Criteria andRNumNotIn(List<Integer> values) {
-            addCriterion("R_NUM not in", values, "rNum");
-            return (Criteria) this;
-        }
-
-        public Criteria andRNumBetween(Integer value1, Integer value2) {
-            addCriterion("R_NUM between", value1, value2, "rNum");
-            return (Criteria) this;
-        }
-
-        public Criteria andRNumNotBetween(Integer value1, Integer value2) {
-            addCriterion("R_NUM not between", value1, value2, "rNum");
-            return (Criteria) this;
-        }
-
         public Criteria andGNameIsNull() {
             addCriterion("G_NAME is null");
             return (Criteria) this;
@@ -291,6 +231,66 @@ public class GroupExample {
 
         public Criteria andGNameNotBetween(String value1, String value2) {
             addCriterion("G_NAME not between", value1, value2, "gName");
+            return (Criteria) this;
+        }
+
+        public Criteria andRoNoIsNull() {
+            addCriterion("RO_NO is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRoNoIsNotNull() {
+            addCriterion("RO_NO is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRoNoEqualTo(Integer value) {
+            addCriterion("RO_NO =", value, "roNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andRoNoNotEqualTo(Integer value) {
+            addCriterion("RO_NO <>", value, "roNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andRoNoGreaterThan(Integer value) {
+            addCriterion("RO_NO >", value, "roNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andRoNoGreaterThanOrEqualTo(Integer value) {
+            addCriterion("RO_NO >=", value, "roNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andRoNoLessThan(Integer value) {
+            addCriterion("RO_NO <", value, "roNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andRoNoLessThanOrEqualTo(Integer value) {
+            addCriterion("RO_NO <=", value, "roNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andRoNoIn(List<Integer> values) {
+            addCriterion("RO_NO in", values, "roNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andRoNoNotIn(List<Integer> values) {
+            addCriterion("RO_NO not in", values, "roNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andRoNoBetween(Integer value1, Integer value2) {
+            addCriterion("RO_NO between", value1, value2, "roNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andRoNoNotBetween(Integer value1, Integer value2) {
+            addCriterion("RO_NO not between", value1, value2, "roNo");
             return (Criteria) this;
         }
     }
