@@ -16,6 +16,8 @@ public interface ExchangeService {
 
 	int insertSelective(Exchange exchange);
 
+	double queryExchange();
+
 	
 
 
