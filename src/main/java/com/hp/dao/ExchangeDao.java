@@ -15,7 +15,8 @@ public interface ExchangeDao {
 	Exchange queryExchangeByexchangeNum(Integer exchangeNum);
 
 	List<Exchange> queryExchangeByExample(String search);
-
-
+	
+	@Select("select EXCHANGE_E from e_exchange where EXCHANGE_NUM = 1")
+	double queryExchange();
 
 }

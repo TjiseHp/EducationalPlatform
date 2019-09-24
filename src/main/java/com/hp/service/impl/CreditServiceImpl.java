@@ -39,9 +39,9 @@ public class CreditServiceImpl implements CreditService {
 		return creditMapper.deleteByPrimaryKey(creditNum);
 	}
 
-	public void insertSelective(Credit credit) {
+	public int insertSelective(Credit credit) {
 		// TODO Auto-generated method stub
-		creditMapper.insertSelective(credit);
+		return creditMapper.insertSelective(credit);
 		
 	}
 

@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hp.dao.PowerMapper">
-  <resultMap id="BaseResultMap" type="com.hp.bean.Power">
-    <id column="POWER_NO" jdbcType="INTEGER" property="powerNo" />
-    <result column="MENU_NO" jdbcType="INTEGER" property="menuNo" />
-    <result column="RO_NO" jdbcType="INTEGER" property="roNo" />
+<mapper namespace="com.hp.dao.MenuMapper">
+  <resultMap id="BaseResultMap" type="com.hp.bean.Menu">
+    <id column="MENU_NO" jdbcType="INTEGER" property="menuNo" />
+    <result column="MENU_NAME" jdbcType="VARCHAR" property="menuName" />
+    <result column="MENU_URL" jdbcType="VARCHAR" property="menuUrl" />
+    <result column="MENU_UPPER_NO" jdbcType="INTEGER" property="menuUpperNo" />
+    <result column="MENU_IMG" jdbcType="VARCHAR" property="menuImg" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,15 +68,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    POWER_NO, MENU_NO, RO_NO
+    MENU_NO, MENU_NAME, MENU_URL, MENU_UPPER_NO, MENU_IMG, icon
   </sql>
-  <select id="selectByExample" parameterType="com.hp.bean.PowerExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.hp.bean.MenuExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from e_power
+    from e_menu
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,67 +87,96 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from e_power
-    where POWER_NO = #{powerNo,jdbcType=INTEGER}
+    from e_menu
+    where MENU_NO = #{menuNo,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from e_power
-    where POWER_NO = #{powerNo,jdbcType=INTEGER}
+    delete from e_menu
+    where MENU_NO = #{menuNo,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.hp.bean.PowerExample">
-    delete from e_power
+  <delete id="deleteByExample" parameterType="com.hp.bean.MenuExample">
+    delete from e_menu
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.hp.bean.Power">
-    insert into e_power (POWER_NO, MENU_NO, RO_NO
+  <insert id="insert" parameterType="com.hp.bean.Menu">
+    insert into e_menu (MENU_NO, MENU_NAME, MENU_URL, 
+      MENU_UPPER_NO, MENU_IMG, icon
       )
-    values (#{powerNo,jdbcType=INTEGER}, #{menuNo,jdbcType=INTEGER}, #{roNo,jdbcType=INTEGER}
+    values (#{menuNo,jdbcType=INTEGER}, #{menuName,jdbcType=VARCHAR}, #{menuUrl,jdbcType=VARCHAR}, 
+      #{menuUpperNo,jdbcType=INTEGER}, #{menuImg,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.hp.bean.Power">
-    insert into e_power
+  <insert id="insertSelective" parameterType="com.hp.bean.Menu">
+    insert into e_menu
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="powerNo != null">
-        POWER_NO,
-      </if>
       <if test="menuNo != null">
         MENU_NO,
       </if>
-      <if test="roNo != null">
-        RO_NO,
+      <if test="menuName != null">
+        MENU_NAME,
+      </if>
+      <if test="menuUrl != null">
+        MENU_URL,
+      </if>
+      <if test="menuUpperNo != null">
+        MENU_UPPER_NO,
+      </if>
+      <if test="menuImg != null">
+        MENU_IMG,
+      </if>
+      <if test="icon != null">
+        icon,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="powerNo != null">
-        #{powerNo,jdbcType=INTEGER},
-      </if>
       <if test="menuNo != null">
         #{menuNo,jdbcType=INTEGER},
       </if>
-      <if test="roNo != null">
-        #{roNo,jdbcType=INTEGER},
+      <if test="menuName != null">
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuUrl != null">
+        #{menuUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="menuUpperNo != null">
+        #{menuUpperNo,jdbcType=INTEGER},
+      </if>
+      <if test="menuImg != null">
+        #{menuImg,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.hp.bean.PowerExample" resultType="java.lang.Long">
-    select count(*) from e_power
+  <select id="countByExample" parameterType="com.hp.bean.MenuExample" resultType="java.lang.Long">
+    select count(*) from e_menu
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update e_power
+    update e_menu
     <set>
-      <if test="record.powerNo != null">
-        POWER_NO = #{record.powerNo,jdbcType=INTEGER},
-      </if>
       <if test="record.menuNo != null">
         MENU_NO = #{record.menuNo,jdbcType=INTEGER},
       </if>
-      <if test="record.roNo != null">
-        RO_NO = #{record.roNo,jdbcType=INTEGER},
+      <if test="record.menuName != null">
+        MENU_NAME = #{record.menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.menuUrl != null">
+        MENU_URL = #{record.menuUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.menuUpperNo != null">
+        MENU_UPPER_NO = #{record.menuUpperNo,jdbcType=INTEGER},
+      </if>
+      <if test="record.menuImg != null">
+        MENU_IMG = #{record.menuImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.icon != null">
+        icon = #{record.icon,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -152,30 +184,45 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update e_power
-    set POWER_NO = #{record.powerNo,jdbcType=INTEGER},
-      MENU_NO = #{record.menuNo,jdbcType=INTEGER},
-      RO_NO = #{record.roNo,jdbcType=INTEGER}
+    update e_menu
+    set MENU_NO = #{record.menuNo,jdbcType=INTEGER},
+      MENU_NAME = #{record.menuName,jdbcType=VARCHAR},
+      MENU_URL = #{record.menuUrl,jdbcType=VARCHAR},
+      MENU_UPPER_NO = #{record.menuUpperNo,jdbcType=INTEGER},
+      MENU_IMG = #{record.menuImg,jdbcType=VARCHAR},
+      icon = #{record.icon,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hp.bean.Power">
-    update e_power
+  <update id="updateByPrimaryKeySelective" parameterType="com.hp.bean.Menu">
+    update e_menu
     <set>
-      <if test="menuNo != null">
-        MENU_NO = #{menuNo,jdbcType=INTEGER},
+      <if test="menuName != null">
+        MENU_NAME = #{menuName,jdbcType=VARCHAR},
       </if>
-      <if test="roNo != null">
-        RO_NO = #{roNo,jdbcType=INTEGER},
+      <if test="menuUrl != null">
+        MENU_URL = #{menuUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="menuUpperNo != null">
+        MENU_UPPER_NO = #{menuUpperNo,jdbcType=INTEGER},
+      </if>
+      <if test="menuImg != null">
+        MENU_IMG = #{menuImg,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        icon = #{icon,jdbcType=VARCHAR},
       </if>
     </set>
-    where POWER_NO = #{powerNo,jdbcType=INTEGER}
+    where MENU_NO = #{menuNo,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hp.bean.Power">
-    update e_power
-    set MENU_NO = #{menuNo,jdbcType=INTEGER},
-      RO_NO = #{roNo,jdbcType=INTEGER}
-    where POWER_NO = #{powerNo,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="com.hp.bean.Menu">
+    update e_menu
+    set MENU_NAME = #{menuName,jdbcType=VARCHAR},
+      MENU_URL = #{menuUrl,jdbcType=VARCHAR},
+      MENU_UPPER_NO = #{menuUpperNo,jdbcType=INTEGER},
+      MENU_IMG = #{menuImg,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR}
+    where MENU_NO = #{menuNo,jdbcType=INTEGER}
   </update>
 </mapper>

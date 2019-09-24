@@ -1,33 +1,33 @@
 package com.hp.bean;
 
 public class Role {
-    private Integer rNum;
+    private Integer roNo;
 
-    private String rName;
+    private String roName;
 
-    private String rRemarks;
+    private String roText;
 
-    public Integer getrNum() {
-        return rNum;
+    public Integer getRoNo() {
+        return roNo;
     }
 
-    public void setrNum(Integer rNum) {
-        this.rNum = rNum;
+    public void setRoNo(Integer roNo) {
+        this.roNo = roNo;
     }
 
-    public String getrName() {
-        return rName;
+    public String getRoName() {
+        return roName;
     }
 
-    public void setrName(String rName) {
-        this.rName = rName == null ? null : rName.trim();
+    public void setRoName(String roName) {
+        this.roName = roName == null ? null : roName.trim();
     }
 
-    public String getrRemarks() {
-        return rRemarks;
+    public String getRoText() {
+        return roText;
     }
 
-    public void setrRemarks(String rRemarks) {
-        this.rRemarks = rRemarks == null ? null : rRemarks.trim();
+    public void setRoText(String roText) {
+        this.roText = roText == null ? null : roText.trim();
     }
 }

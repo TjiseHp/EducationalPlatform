@@ -16,7 +16,7 @@ public interface CreditService {
 
 	int deleteByPrimaryKey(Integer creditNum);
 
-	void insertSelective(Credit credit);
+	int insertSelective(Credit credit);
 
 
 }

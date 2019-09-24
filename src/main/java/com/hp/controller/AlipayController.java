@@ -20,7 +20,12 @@ import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.internal.util.AlipaySignature;
 import com.alipay.api.request.AlipayTradePagePayRequest;
+import com.hp.bean.Credit;
 import com.hp.bean.Pay;
+import com.hp.bean.User;
+import com.hp.service.AlipayService;
+import com.hp.service.CreditService;
+import com.hp.service.ExchangeService;
 import com.hp.service.PayService;
 import com.hp.util.AlipayConfig;
 /***
@@ -34,6 +39,15 @@ public class AlipayController {
 	
 	@Autowired
 	public PayService payService;
+	
+	@Autowired
+	public AlipayService alipayService;
+	
+	@Autowired
+	public ExchangeService exchangeService;
+	
+	@Autowired
+	public CreditService creditService;
 
 	@RequestMapping("/payMenu")
 	public ModelAndView payMenu(HttpServletRequest httpServletRequest) {
@@ -62,8 +76,10 @@ public class AlipayController {
 			HttpServletRequest response,
 			@RequestParam(required = true,value = "uId") Integer uId) throws Exception , UnsupportedEncodingException {
 		System.out.println("doPay模块--uId:"+uId+"\n");
-		String urlEncode = URLEncoder.encode("uId="+uId,"UTF-8");
-		System.out.println("urlEncode: "+urlEncode);
+		
+		String urlEncode = URLEncoder.encode("uId="+uId,"UTF-8");	//本地服务器无法解析信息，暂停本服务
+		System.out.println("urlEncode: "+urlEncode);				//本地服务器无法解析信息，暂停本服务
+		
 		AlipayClient alipayClient = new DefaultAlipayClient(
 				AlipayConfig.gatewayUrl, 
 				AlipayConfig.app_id, 
@@ -90,12 +106,20 @@ public class AlipayController {
 				request.getParameter("WIDbody").getBytes("ISO-8859-1"),
 				"UTF-8");
 		
+		/* 本地服务器无法解析信息，暂停本服务,使用下方功能
 		alipayRequest.setBizContent("{\"out_trade_no\":\""+ out_trade_no +"\","
 				+ "\"total_amount\":\""+ total_amount +"\","
 				+ "\"subject\":\""+ subject +"\","
 				+ "\"body\":\""+ body +"\","
 				+ "\"product_code\":\"FAST_INSTANT_TRADE_PAY\","
 				+ "\"passback_params\":\""+ urlEncode +"\"}");
+		*/
+		
+		alipayRequest.setBizContent("{\"out_trade_no\":\""+ out_trade_no +"\"," 
+				+ "\"total_amount\":\""+ total_amount +"\"," 
+				+ "\"subject\":\""+ subject +"\"," 
+				+ "\"body\":\""+ body +"\"," 
+				+ "\"product_code\":\"FAST_INSTANT_TRADE_PAY\"}");
 		
 		//封装用户信息,暂无支付宝账号及积分修改
 		Pay pay = new Pay();
@@ -105,7 +129,7 @@ public class AlipayController {
         Timestamp timestamp = new Timestamp(date.getTime());
         pay.setPayDate(timestamp);
         pay.setuId(uId);
-        int row = payService.insertSelective(pay);
+        int row = alipayService.insertSelective(pay);
         System.out.println("交易记录更新了 "+row+" 条");
 		
 		String result = alipayClient.pageExecute(alipayRequest).getBody();
@@ -152,6 +176,23 @@ public class AlipayController {
 			//输出验证信息
 			System.out.println("同步信息回显："+"trade_no :"+trade_no+"\nout_trade_no :"+out_trade_no+"\ntotal_amount :"+total_amount);
 			
+			Pay pay = alipayService.queryPay(out_trade_no);
+			System.out.println(pay);
+			pay.setTradeNo(trade_no);
+			int row = alipayService.updateByPrimaryKeySelective(pay);
+			System.out.println("更新了支付的用户数据"+row);
+			
+			Credit credit = new Credit();
+			credit.setuId(pay.getuId());
+			credit.setCreditText("充值");
+	        Date date = new Date();
+	        Timestamp timestamp = new Timestamp(date.getTime());
+	        credit.setCreditDate(timestamp);
+			credit.setCreditSum(Integer.valueOf((int)(Double.parseDouble(total_amount)*exchangeService.queryExchange())));
+			row = creditService.insertSelective(credit);
+			System.out.println("新增了用户积分");
+			
+			/*
 			if (out_trade_no!=null && trade_no!=null && total_amount!=null) {
 				Pay pay = new Pay();
 				pay.setPayNum(out_trade_no);
@@ -166,20 +207,24 @@ public class AlipayController {
 			}else {
 				modelAndView.addObject("result",false);
 			}
+			*/
+			modelAndView.addObject("result",true);
 			modelAndView.addObject("out_trade_no",out_trade_no);
 			modelAndView.addObject("trade_no",trade_no);
 			modelAndView.addObject("total_amount",total_amount);
-			modelAndView.addObject("mainPage", "alipay/payMenu.jsp");
-			modelAndView.setViewName("main");
-			
+			modelAndView.addObject("pay",pay);
+			modelAndView.addObject("credit",credit);
+			modelAndView.addObject("creditSum", credit.getCreditSum());
 		}else {	//验证失败
 			System.out.println("验签失败");
 			modelAndView.addObject("result",false);
 		}
+		modelAndView.addObject("mainPage", "alipay/payReturn.jsp");
+		modelAndView.setViewName("main");
 		return modelAndView;
 	}
 	
-	/*
+	/*	本地服务器无法解析，暂停此服务
 	@ResponseBody
 	@RequestMapping("/notifyUrl")
 	public String notifyUrl(

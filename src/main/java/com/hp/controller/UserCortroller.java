@@ -248,6 +248,7 @@ public class UserCortroller  {
 
 		}
 		
+		
 		@RequestMapping("/updateTeacherInfo")
 		public ModelAndView updateTeacherInfo(HttpServletRequest httpServletRequest,
 				@RequestParam(required = true,value = "uId") Integer uId) {
