@@ -32,16 +32,6 @@ public class User {
     private City city;
     
     private Class uClass;
-    
-    private Chat chat;
-    
-	public Chat getChat() {
-		return chat;
-	}
-
-	public void setChat(Chat chat) {
-		this.chat = chat;
-	}
 
 	public City getCity() {
 		return city;

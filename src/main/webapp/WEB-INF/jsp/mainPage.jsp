@@ -8,13 +8,13 @@
 <div><h1>测试页面-主页</h1></div>
 
 <div>
-<a href="${pageContext.request.contextPath}user/studentTable2">学生列表</a>
+<a href="${pageContext.request.contextPath}/user/studentTable2">学生列表</a>
 <br/>
-<a href="${pageContext.request.contextPath}user/teacherTable2">教师列表</a>
+<a href="${pageContext.request.contextPath}/user/teacherTable2">教师列表</a>
 <br/>
-<a href="${pageContext.request.contextPath}credit/creditConsumption">积分消费记录明细查询</a>
+<a href="${pageContext.request.contextPath}/credit/creditConsumption">积分消费记录明细查询</a>
 <br/>
-<a href="${pageContext.request.contextPath}credit/creditBuy">历史购买订单查询表</a>
+<a href="${pageContext.request.contextPath}/credit/creditBuy">历史购买订单查询表</a>
 <br/>
 <a href="${pageContext.request.contextPath}/recruit/insertRecruit">招聘信息发布</a>
 <br/>
@@ -43,5 +43,7 @@
 <a href="${pageContext.request.contextPath}/user/stuInfoCenter?uId=${loginUser.uId}">学生个人资料</a>
 <br/>
 <a href="${pageContext.request.contextPath}/role/assignTable2?roNo=4">权限回调</a>
+<br/>
+<a href="${pageContext.request.contextPath}/user/returnTest">跳转测试</a>
 <br/>
 </div>
