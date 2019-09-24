@@ -32,9 +32,15 @@
 <br/>
 <a href="${pageContext.request.contextPath}/file/uploadTest">审核测试</a>
 <br/>
+<a href="${pageContext.request.contextPath}/chat/stuMessageCenter?uId=${loginUser.uId}">学生消息中心</a>
+<br/>
+<a href="${pageContext.request.contextPath}/alipay/payMenu">支付测试</a><br/>
+<br/>
 <a href="${pageContext.request.contextPath}/file/fileList">审核列表</a>
 <br/>
-<a href="${pageContext.request.contextPath}/alipay/payMenu">支付测试</a>
+<a href="${pageContext.request.contextPath}/user/teacherInfo?uId=${loginUser.uId}">教师个人资料</a>
+<br/>
+<a href="${pageContext.request.contextPath}/user/stuInfoCenter?uId=${loginUser.uId}">学生个人资料</a>
 <br/>
 <a href="${pageContext.request.contextPath}/role/assignTable2?roNo=4">权限回调</a>
 <br/>

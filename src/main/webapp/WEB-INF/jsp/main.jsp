@@ -75,7 +75,9 @@
 		        </a>
 		        
 		        <dl class="layui-nav-child">
-		          <dd><a href="${pageContext.request.contextPath}/user/teacherInfo?uId=${loginUser.uId}">个人资料</a></dd>
+		          <dd><a href="${pageContext.request.contextPath}/user/teacherInfo?uId=${loginUser.uId}">教师个人资料</a></dd>
+		          <dd><a href="${pageContext.request.contextPath}/user/stuInfoCenter?uId=${loginUser.uId}">学生个人资料</a></dd>
+		   		          <dd><a href="${pageContext.request.contextPath}/user/teacherInfo?uId=${loginUser.uId}">管理员个人资料</a></dd> 
 		          <dd style="margin-top:10px ;"><a onclick="loginOut()" >退出登录</a></dd>
 		        </dl>
 		        

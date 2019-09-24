@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hp.dao.ChatDao">
+	<resultMap id="BaseResultMap" type="com.hp.bean.Chat">
+	    <id column="CHAT_NUM" jdbcType="INTEGER" property="chatNum" />
+	    <result column="U_ID" jdbcType="INTEGER" property="uId" />
+	    <result column="U_ID2" jdbcType="INTEGER" property="uId2" />
+	    <result column="C_S_NUM" jdbcType="INTEGER" property="cSNum" />
+	    <result column="CHAT_TEXT" jdbcType="VARCHAR" property="chatText" />
+	    <result column="CHAT_DATE" jdbcType="TIMESTAMP" property="chatDate" />
+		    <collection property="user1" ofType="com.hp.bean.User">
+		    	<id column="U_ID" jdbcType="INTEGER" property="uId" />
+			    <result column="G_NUM" jdbcType="INTEGER" property="gNum" />
+			    <result column="CHECK_NUM" jdbcType="INTEGER" property="checkNum" />
+			    <result column="C_STATUS" jdbcType="INTEGER" property="cStatus" />
+			    <result column="C_NUM" jdbcType="INTEGER" property="cNum" />
+			    <result column="CLASS_NUM" jdbcType="INTEGER" property="classNum" />
+			    <result column="U_EXP" jdbcType="INTEGER" property="uExp" />
+			    <result column="U_NAME" jdbcType="VARCHAR" property="uName" />
+			    <result column="U_SEX" jdbcType="VARCHAR" property="uSex" />
+			    <result column="U_PHONE" jdbcType="VARCHAR" property="uPhone" />
+			    <result column="U_EMAIL" jdbcType="VARCHAR" property="uEmail" />
+			    <result column="U_ACC" jdbcType="VARCHAR" property="uAcc" />
+			    <result column="U_PWD" jdbcType="VARCHAR" property="uPwd" />
+		    </collection>
+		     <collection property="user2" ofType="com.hp.bean.User">
+		    	<id column="U_ID" jdbcType="INTEGER" property="uId" />
+			    <result column="G_NUM" jdbcType="INTEGER" property="gNum" />
+			    <result column="CHECK_NUM" jdbcType="INTEGER" property="checkNum" />
+			    <result column="C_STATUS" jdbcType="INTEGER" property="cStatus" />
+			    <result column="C_NUM" jdbcType="INTEGER" property="cNum" />
+			    <result column="CLASS_NUM" jdbcType="INTEGER" property="classNum" />
+			    <result column="U_EXP" jdbcType="INTEGER" property="uExp" />
+			    <result column="U_NAME" jdbcType="VARCHAR" property="uName" />
+			    <result column="U_SEX" jdbcType="VARCHAR" property="uSex" />
+			    <result column="U_PHONE" jdbcType="VARCHAR" property="uPhone" />
+			    <result column="U_EMAIL" jdbcType="VARCHAR" property="uEmail" />
+			    <result column="U_ACC" jdbcType="VARCHAR" property="uAcc" />
+			    <result column="U_PWD" jdbcType="VARCHAR" property="uPwd" />
+		    </collection>
+	  </resultMap>
+	  
+	  <select id="queryAllReceiveInfoByuId" resultMap="BaseResultMap">
+	       select * from e_chat c
+			  left join e_user u1 
+			     on c.u_id=u1.u_id
+			   left join e_user u2
+			      on c.u_id2=u2.u_id
+			  where  u2.u_id = #{uId}
+	 </select>
+	 
+	 <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+	      select * from e_chat c
+			  left join e_user u1 
+			     on c.u_id=u1.u_id
+			   left join e_user u2
+			      on c.u_id2=u2.u_id
+			  where  c.CHAT_NUM = #{chatNum}
+			  and  u2.u_id = #{uId}
+			   
+	   
+	 </select>
+
+
+</mapper>

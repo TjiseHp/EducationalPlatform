@@ -5,15 +5,15 @@ import java.util.Date;
 public class Chat {
     private Integer chatNum;
 
-    private Integer uId;
+    private Integer uId;//发件人
 
-    private Integer uId2;
+    private Integer uId2;//收件人
 
     private Integer cSNum;
 
     private String chatText;
 
-    private Date chatDate;
+    private Date chatDate;   
     
     private User user1;
     
