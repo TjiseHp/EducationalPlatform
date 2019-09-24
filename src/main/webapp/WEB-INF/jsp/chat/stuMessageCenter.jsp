@@ -8,7 +8,7 @@
 	<script type="text/javascript">
 		
 		$(document).ready(function () {
-			var uId = window.location.search.substring(window.location.search.indexOf("=")+1);
+			var uId=${loginUser.uId};
 			console.info(uId);
 	        $('#table1').bootstrapTable({
 	            url: '${pageContext.request.contextPath}/chat/queryAllReceiveInfoByuId?uId='+uId,
@@ -139,8 +139,8 @@
 	        },
 	        
 	        "click .chatBtn": function (e, value, row, index) {
-	        	var uId = window.location.search.substring(window.location.search.indexOf("=")+1);
-				console.info(uId);
+				var uId=${loginUser.uId};
+	        	console.info(uId);
 	            chatNum = row.chatNum;
 				console.info("chatNum");
 	        	window.location.href = "${pageContext.request.contextPath}/chat/showReceiveInfo?chatNum="+chatNum+"&uId="+uId;
