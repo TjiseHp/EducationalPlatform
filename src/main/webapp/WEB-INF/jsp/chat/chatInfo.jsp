@@ -53,7 +53,7 @@
 	function doback(){
 		var uId = $("#uId").val();
 		console.info(uId);
-    	window.location.href = "${pageContext.request.contextPath}/stuInfo/stuInfoCenter?uId="+uId;
+    	window.location.href = "${pageContext.request.contextPath}/chat/showReceiveInfo?uId="+uId;
 	}
 		
 	
@@ -71,7 +71,7 @@
 					<strong>收件人:</strong>
 				</td>
 				<td class="text-left">
- 					<strong>${user.uId}</strong>                    
+ 					<strong>${chat.user1.uId}</strong>                    
 				</td>
 			</tr>	
 			<tr>

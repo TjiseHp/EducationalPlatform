@@ -8,20 +8,37 @@
 	<script type="text/javascript">
 		
 		$(document).ready(function () {
+			var uId = window.location.search.substring(window.location.search.indexOf("=")+1);
+			console.info(uId);
 	        $('#table1').bootstrapTable({
-	            url: '${pageContext.request.contextPath}/chat/queryAllTeacher',
+	            url: '${pageContext.request.contextPath}/chat/queryAllReceiveInfoByuId?uId='+uId,
 	            method: 'post', 
 	            columns: [
 	                {
+	                    field: 'user1.uName',
+	                    title: '发件人',
+	                    align: "center"
+	                },
+	                {
+	                    field: 'user1.uEmail',
+	                    title: '邮箱',
+	                    align: "left"
+	                },
+	                {
+	                    field: 'chatText',
+	                    title: '内容',
+	                    align: "left"
+	                },
+	                {
 	                    sortable: "true",
-	                    field: 'uId',
-	                    title: 'ID',
+	                    field: 'chatDate',
+	                    title: '时间',
 	                    align: "center"
 	                },
 	                {
 	                    sortable: "true",
-	                    field: 'uAcc',
-	                    title: '昵称',
+	                    field: 'cSNum',
+	                    title: '状态',
 	                    align: "center"
 	                },
 	                {
@@ -61,29 +78,82 @@
 	                console.info("加载数据失败");
 	            },
 	            onClickRow: function (row) {
-	            	uId = row.uId;
-	            	uAcc = row.uAcc;
-	            		            	
+	            	user1.uName = row.user1.uName;
+	            	user1.uEmail = row.user1.uEmail;	            	
+	            	chatText=row.chatText;
+	            	chatDate = row.chatDate;
+	            	cSNum = row.cSNum;
+	            		            		            	
 	            }
 	        });
 	    })
-	    
 	    function operateFormatter(value, row, index) {
 			return [
-				'<button class="btn btn-primary btn-xs rightSize chatBtn" type="button"><i class="fa fa-paste"></i><span class="glyphicon glyphicon-tag" aria-hidden="true"></span>聊天</button>&nbsp;',
+				'<button class="btn btn-primary btn-xs rightSize chatBtn" type="button"><i class="fa fa-paste"></i><span class="glyphicon glyphicon-tag" aria-hidden="true"></span>查看</button>&nbsp;',
+		        '<button class="btn btn-danger btn-xs rightSize deleteBtn" type="button"><i class="fa fa-envelope"></i><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 删除</button>'
 		    ].join('');
 	    }
 		
 		window.operateEvents1 = {
-	       <!--聊天跳转页面-->
+	        "click .deleteBtn": function (e, value, row, index) {
+	        	chatNum = row.chatNum;
+	        	console.info(chatNum);
+	        	layer.confirm('确认删除？', {
+					btn: ['确认','取消'] 
+				}, function(){
+					$.ajax({
+	                    type: "post",
+	                    url: "${pageContext.request.contextPath}/chat/deleteChatInfo",
+	                    data: {
+	                    	"chatNum": chatNum
+                  			},
+                  			beforeSend : function(){
+       		        		loadingIndex = layer.msg('处理中', {icon: 16});
+       		        	},
+	                    success: function (result) {
+	                    	layer.close(loadingIndex);
+	                    	var resObj = JSON.parse(result);
+	                    	if (resObj.result) {
+	                    		 layer.msg("删除成功", {time:2000, icon:6, shift:6}, function(){
+				                    	
+			                    });
+			        		} else {
+			                    layer.msg("删除失败", {time:2000, icon:5, shift:6}, function(){
+			                    	
+			                    });
+			        		}
+	                        $("#table1").bootstrapTable('refresh');
+	                    },
+	                    error: function () {
+	                    	layer.msg("删除失败！", {time:2000, icon:5, shift:6}, function(){
+		                    	
+		                    });
+	                    }
+	                })
+				}, function(){
+				  
+				});
+	                      
+                operateFormatter();
+	            $("#table1").bootstrapTable('refresh');
+	        },
+	        
 	        "click .chatBtn": function (e, value, row, index) {
-	        	window.location.href = "${pageContext.request.contextPath}/chat/chatInfo?uId="+uId;
+	        	var uId = window.location.search.substring(window.location.search.indexOf("=")+1);
+				console.info(uId);
+	            chatNum = row.chatNum;
+				console.info("chatNum");
+	        	window.location.href = "${pageContext.request.contextPath}/chat/showReceiveInfo?chatNum="+chatNum+"&uId="+uId;
 	        }
 	        
 	    }
 		
-		function doAdd() {
-			console.info("ADD");
+		function doCreate() {
+			console.info("Create");
+			window.location.href = "${pageContext.request.contextPath}/user/insertStudent";
+		}
+		function deSend() {
+			console.info("Send");
 			window.location.href = "${pageContext.request.contextPath}/user/insertStudent";
 		}
 		
@@ -97,7 +167,12 @@
         </div>
     </div>
 	<div id="toolbar" class="btn-group">
-		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doAdd();" >
-			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>历史消息
+		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doCreate();" >
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新建信息
+		</a>
+	</div>
+	<div id="toolbar" class="btn-group">
+		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doSend();" >
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发件箱
 		</a>
 	</div>
