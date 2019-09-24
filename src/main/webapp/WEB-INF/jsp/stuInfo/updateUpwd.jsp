@@ -61,38 +61,42 @@
 </script>
 
 <div align="center" style="padding-top: 50px;">
-	<h1>修改密码</h1><br/>
+	
+	<div>
+	<h1>修改密码</h1>
+	</div>
+	<br/>
+	<hr/>
+	<br/>
+	<br/>
+	<div class="col-md-offset-3">
 	<form action="${pageContext.request.contextPath}/stuInfo/doUpdateUpwd" method="post" accept-charset="utf-8" onsubmit="return doUpdate()">
-		<table class="table table-bordered table-striped" style="width: 500px;" >
-		
-			<tr>
-				<td class="text-right">
-					<strong>原密码:</strong>
-				</td>
-				<td class="text-left">
-					<strong>${user.uPwd}</strong>			
-				</td>
-			</tr>
-			<tr>
-				<td class="text-right">
-					<strong>新密码:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="uPwd" name="uPwd" value = "${user.uPwd}">
-				</td>
-			</tr>
 			
-			<tr>
-				<td colspan="2" class="text-center">				
-					<input type="hidden" id="uId" name="uId" value="${user.uId}"/> 
+			<div class="row form-group">
+                <label class="control-label col-lg-2" for="name">原密码：</label>
+                <div class="col-md-6">
+                	<input class="form-control" type="text" id="uName" name="uName" value = "${user.uPwd}">
+                </div>
+            </div>
+            
+            <div class="row form-group">
+                <label class="control-label col-lg-2" for="name">新密码：</label>
+                <div class="col-md-6">
+                	<input class="form-control" type="text" id="uPwd" name="uPwd" value = "${user.uPwd}">
+                </div>
+            </div>
+            
+			<br/>
+            
+            <div class="col-md-7">
+            <div class="row form-group">
+            	<input type="hidden" id="uId" name="uId" value="${user.uId}"/> 
 					<button type="button" class="btn btn-danger" onclick="doUpdate();">确认</button>
-					<button type="button" class="btn btn-danger" onclick="doback();">返回</button>										
-				</td >
-			</tr>
-			
-		</table>
-		
-		
+					<button type="button" class="btn btn-danger" onclick="doback();">返回</button>				
+            </div>
+            </div>
+
 		
 	</form>
+	</div>
 </div>

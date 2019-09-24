@@ -27,46 +27,53 @@
 </script>
 
 <div align="center" style="padding-top: 50px;">
+	<div>
+	<h1>添加信息</h1>
+	</div>
+	<br/>
+	<hr/>
+	<br/>
+	<br/>
+	<div class="col-md-offset-3">
 	<form action="${pageContext.request.contextPath}/recruit/add" method="post" accept-charset="utf-8" onsubmit="return doPost()">
-		<table class="table table-bordered table-striped" style="width: 500px;">				
-			<tr>
-				<td class="text-right">
-					<strong>家长姓名:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="uId" name="uId" value="填id,仅做功能测试，之后再改">
-				</td>
-			</tr>
-			<tr>
-				<td class="text-right">
-					<strong>所在城市:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="cNum" name="cNum" value="同上">
-				</td>
-			</tr>
-			<tr>
-				<td class="text-right">
-					<strong>辅导科目:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="classNum" name="classNum" value="同上">
-				</td>
-			</tr>
-			<tr>
-				<td class="text-right">
-					<strong>具体需求:</strong>
-				</td>				
-				<td class="text-left">
-					<textarea class="form-control"  cols="1"   rows="20"  type="text" id="recruitText" name="recruitText"></textarea>
-				</td>
-			</tr>							
-			<tr>
-				<td colspan="2" class="text-center">
-					<input class="form-control" type="hidden" id="uId" name="uId" value="1">
+			
+			<div class="row form-group">
+                <label class="control-label col-lg-2" for="name">家长姓名：</label>
+                <div class="col-md-6">
+                	<input class="form-control" type="text" id="uId" name="uId" value="填id,仅做功能测试，之后再改">
+                </div>
+            </div>
+            
+			<div class="row form-group">
+                <label class="control-label col-lg-2" for="name">所在城市：</label>
+                <div class="col-md-6">
+                	<input class="form-control" type="text" id="cNum" name="cNum" value="同上">
+                </div>
+            </div>
+
+			<div class="row form-group">
+                <label class="control-label col-lg-2" for="name">辅导科目：</label>
+                <div class="col-md-6">
+                	<input class="form-control" type="text" id="classNum" name="classNum" value="同上">
+                </div>
+            </div>
+
+			<div class="row form-group">
+                <label class="control-label col-lg-2" for="name">具体需求：</label>
+                <div class="col-md-6">
+                	<textarea class="form-control"  cols="1"   rows="20"  type="text" id="recruitText" name="recruitText"></textarea>
+                </div>
+            </div>
+            			
+            <br/>
+            
+            <div class="col-md-8">
+            <div class="row form-group">
+            		<input class="form-control" type="hidden" id="uId" name="uId" value="">
 					<input class="btn btn-default" type="submit" value="提交"/>
-				</td>
-			</tr>
-		</table>
+            </div>
+            </div>
+            				
 	</form>
+	</div>
 </div>
