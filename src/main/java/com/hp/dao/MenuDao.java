@@ -26,7 +26,7 @@ public interface MenuDao {
 	List<Integer> queryMenuNosByRoNo(Integer roNo);
 
 	//根据账号查询权限
-	@Select("SELECT * from e_menu where MENU_NO in (select MENU_NO from e_power where RO_NO = (select RO_NO from e_group where G_NO = #{gNo}))")
+	@Select("SELECT * from e_menu where MENU_NO in (select MENU_NO from e_power where RO_NO = (select RO_NO from e_group where G_NUM = #{gNum}))")
 	List<Menu> queryMenuByUser(User loginUser);
 	
 }
