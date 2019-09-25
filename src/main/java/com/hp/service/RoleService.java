@@ -8,7 +8,15 @@ public interface RoleService {
 
 	List<Role> queryAllRole();
 
-	Role queryRoleByrNum(Integer roNo);
+	List<Role> roleTable();
+
+	Role queryRoleByroNo(Integer roNo);
+
+	int updateByPrimaryKeySelective(Role role);
+
+	int insertSelective(Role role);
+
+	int deleteByPrimaryKey(Integer roNo);
 	
 	public void insertRoleAssign(Map<String, Object> paramMap);
 	
@@ -16,19 +24,10 @@ public interface RoleService {
 	
 	public List<Role> queryRoleByExample(String search);
 	
-	//删除
-	int deleteByPrimaryKey(Integer roNo);
-	
 	//主键查询
 	Role queryAllRolesByroNo(Integer roNo);
 	
 	//删除用户组
 	int deleteGroupByroNo(Integer roNo);
 	
-	//增加
-	int insertSelective(Role record);
-	
-	//更新
-	int updateByPrimaryKeySelective(Role record);
-
 }

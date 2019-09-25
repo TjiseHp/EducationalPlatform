@@ -12,9 +12,9 @@ public interface GroupMapper {
 
     int deleteByPrimaryKey(Integer gNum);
 
-    int insert(Group record);
+    int insert(Integer gNum);
 
-    int insertSelective(Group record);
+    int insertSelective(Group group);
 
     List<Group> selectByExample(GroupExample example);
 
@@ -24,7 +24,7 @@ public interface GroupMapper {
 
     int updateByExample(@Param("record") Group record, @Param("example") GroupExample example);
 
-    int updateByPrimaryKeySelective(Group record);
+    int updateByPrimaryKeySelective(Group group);
 
-    int updateByPrimaryKey(Group record);
+    int updateByPrimaryKey(Integer gNum);
 }

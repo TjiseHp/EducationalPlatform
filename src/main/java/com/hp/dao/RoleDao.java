@@ -15,7 +15,8 @@ public interface RoleDao {
 	List<Role> queryAllRole();
 
 	@Select("select * from e_role where RO_NO = #{roNo}")
-	Role queryRoleByrNum(Integer roNo);
+	Role queryRoleByroNo(Integer roNo);
+
 
 	@Select("select * from e_role")
 	List<Role> queryAllRoles();

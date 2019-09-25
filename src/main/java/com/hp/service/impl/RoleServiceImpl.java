@@ -10,7 +10,7 @@ import com.hp.dao.RoleMapper;
 import com.hp.service.RoleService;
 
 @Service
-public class RoleServiceImpl implements RoleService {
+public  class RoleServiceImpl implements RoleService {
 	
 	@Autowired
 	public RoleDao roleDao;
@@ -22,10 +22,10 @@ public class RoleServiceImpl implements RoleService {
 		return roleDao.queryAllRole();
 	}
 
-	public Role queryRoleByrNum(Integer roNo) {
-		return roleDao.queryRoleByrNum(roNo);
+	public Role queryRoleByroNo(Integer roNo) {
+		return roleDao.queryRoleByroNo(roNo);
 	}
-	
+
 	public List<Role> queryAllRoles(){
 		return roleDao.queryAllRoles();
 	}
@@ -56,6 +56,10 @@ public class RoleServiceImpl implements RoleService {
 
 	public int updateByPrimaryKeySelective(Role record) {
 		return roleMapper.updateByPrimaryKeySelective(record);
+	}
+
+	public List<Role> roleTable() {
+		return null;
 	}
 
 }

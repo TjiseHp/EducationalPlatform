@@ -24,7 +24,10 @@
         		layer.close(loadingIndex);
         		var resObj = JSON.parse(result);
         		console.info(resObj.result);
-        		if (resObj.result) {      			
+        		if (resObj.result) {  
+        			  for(var i=0;i<result.length;i++ ){
+						   $("#s1").append("<option value='"+result[i].cProvince+"'>"+result[i].cProvince+"</option>");
+					   }
     	        	window.location.href = "${pageContext.request.contextPath}/index?uId="+uId;
         			
         		} else {
