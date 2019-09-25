@@ -11,13 +11,17 @@
 
 <div class="table-responsive text-center">
   		<form action="">
-  			<div>
+  			<div align="center" style="padding-top: 50px;">
   				<div>
-  					<h1>会员列表</h1>
+  					<h1 class="title1">会员列表</h1>
   				</div>
   			</div>
-  			<div>
-  				<table class="table table-striped table-bordered">
+  			<br />
+			<hr />
+			<br />
+			<br />
+
+  				<table class="table table-striped table-bordered elegant-aero">
 	  			<tr class="demo-table-hover">
 	  				<td>详细信息</td>	  								
 	  			</tr>
@@ -28,6 +32,16 @@
 	  				</td>	 
 	  			 </tr>
   				</table>
-  			</div>  		
   		</form>
   </div>
+<style>
+.elegant-aero {
+margin-left: auto;
+margin-right: auto;
+max-width: 500px;
+background: #D2E9FF;
+padding: 20px 20px 20px 20px;
+font: 12px Arial, Helvetica, sans-serif;
+color: #666;
+}
+</style>
