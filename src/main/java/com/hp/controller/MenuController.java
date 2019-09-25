@@ -19,7 +19,7 @@ public class MenuController {
 	@Autowired
 	public MenuService menuService;
 	
-	//AJAX对应角色的权限菜单回显
+	//AJAX对应角色的权限回显
 	@ResponseBody
 	@RequestMapping("/loadAssignData")
 	public Object loadAssignData(Integer roNo) {

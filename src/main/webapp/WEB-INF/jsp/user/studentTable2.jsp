@@ -7,7 +7,7 @@
 		$('#table1').bootstrapTable({
 			url : '${pageContext.request.contextPath}/user/queryAllStudent',
 			method : 'post',
-			columns : [ {
+			columns : [ { 
 				sortable : "true",
 				field : 'uId',
 				title : 'ID',

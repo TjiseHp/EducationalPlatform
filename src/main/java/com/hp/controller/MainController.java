@@ -10,7 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.hp.bean.Menu;
 import com.hp.bean.User;
+import com.hp.service.MenuService;
 import com.hp.service.UserService;
 
 /**
@@ -23,6 +26,9 @@ public class MainController {
 	
 	@Autowired
 	public UserService userService;
+	
+	@Autowired
+	public MenuService menuService;
 	
 	//退出登录
 	@RequestMapping("/loginOut")
@@ -67,12 +73,30 @@ public class MainController {
 			System.out.println("登录用户正常："+loginUser.getuName());
 			session.setAttribute("loginUser", loginUser);
 			json.put("result", true);
-			//之后务必记得在这里添加权限信息!!!!!!!!!!!!!
+			
+			List<Menu> menus = menuService.queryMenuByUser(loginUser);
+			Menu rootMenu=null;
+			Map<Integer, Menu> menuMap = new HashMap<Integer, Menu>();
+			for(Menu m: menus) {
+				menuMap.put(m.getMenuNo(),m);
+			}
+			for(Menu m: menus) {
+				Menu child= m;
+				if(child.getMenuUpperNo()==-1) {
+					rootMenu=child;
+				}else {
+					Menu parent=menuMap.get(child.getMenuUpperNo());
+					parent.getChildren().add(child);
+				}
+			}
+			session.setAttribute("rootMenu", rootMenu);
+			
 		}else {
 			System.out.println("登录用户不正常");
 			json.put("result", false);
 		}
 		
+
 		/*
 		Account_num loginNum = loginService.queryLoginNumForUser(account_num);
 		if (loginNum != null) {

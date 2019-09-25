@@ -90,9 +90,8 @@
 		    <div class="layui-side-scroll">
 		    	<ul class="layui-nav layui-nav-tree"  lay-filter="test">
 		    	<!-- 动态权限菜单 -->
-		    	<li class="layui-nav-item"><a href="${pageContext.request.contextPath }/main">主页</a></li>
+		    	<li class="layui-nav-item"><a href="${pageContext.request.contextPath}/main">主页</a></li>
 		    	
-		    	<!-- 【由于暂时没做权限模型，9.6日更新后暂时废弃，后续增加权限后再进行修改】
 		    	<c:forEach items="${rootMenu.children}" var="menu">
 		    	
 		    		<c:if test="${empty menu.children}">
@@ -113,7 +112,6 @@
 				        </li>
 		    		</c:if>
 		    	</c:forEach>
-		    	 -->
 		    	 
 		    	</ul>
 		    	

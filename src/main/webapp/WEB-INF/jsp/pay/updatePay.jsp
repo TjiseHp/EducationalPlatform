@@ -26,44 +26,46 @@
 </script>
 
 <div align="center" style="padding-top: 50px;">
-	<h1>修改营收信息</h1><br/>
+
+	<div>
+	<h1>修改营收信息</h1>
+	</div>
+	<br/>
+	<hr/>
+	<br/>
+	<br/>
+	<div class="col-md-offset-3">
 	<form action="${pageContext.request.contextPath}/pay/doUpdatePay" method="post" accept-charset="utf-8" onsubmit="return doUpdate()">
-		<table class="table table-bordered table-striped" style="width: 500px;" >
 		
-			<tr>
-				<td class="text-right">
-					<strong>编号:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="payNum" name="payNum" value = "${pay.payNum }">
-				</td>
-			</tr>
-			<tr>
-				<td class="text-right">
-					<strong>用户ID:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="uId" name="uId" value = "${pay.uId}">
-				</td>
-			</tr>
-			<tr>
-				<td class="text-right">
-					<strong>金额:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="payText" name="payText" value = "${pay.payText}">
-				</td>
-			</tr>
-			
-			<tr>
-				<td colspan="2" class="text-center">
-					<input class="btn btn-default" type="submit" value="提交"/>
-				</td>
-			</tr>
-			
-		</table>
-		
-		
+			<div class="row form-group">
+                <label class="control-label col-lg-2" for="name">编号：</label>
+                <div class="col-md-6">
+                	<input class="form-control" type="text" id="payNum" name="payNum" value = "${pay.payNum }">
+                </div>
+            </div>
+
+			<div class="row form-group">
+                <label class="control-label col-lg-2" for="name">用户ID：</label>
+                <div class="col-md-6">
+                	<input class="form-control" type="text" id="uId" name="uId" value = "${pay.uId}">
+                </div>
+            </div>
+            
+            <div class="row form-group">
+                <label class="control-label col-lg-2" for="name">金额：</label>
+                <div class="col-md-6">
+                	<input class="form-control" type="text" id="payText" name="payText" value = "${pay.payText}">
+                </div>
+            </div>
+            
+			<br/>
+            
+            <div class="col-md-8">
+            <div class="row form-group">
+				<input class="btn btn-default" type="submit" value="提交"/>
+            </div>
+            </div>
 		
 	</form>
+	</div>
 </div>

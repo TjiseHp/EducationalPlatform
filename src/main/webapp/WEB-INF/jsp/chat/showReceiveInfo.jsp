@@ -3,7 +3,8 @@
     		pageEncoding="UTF-8"
     		deferredSyntaxAllowedAsLiteral="true"
     		%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="c" 	uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <script type="text/javascript">
 		
@@ -39,7 +40,7 @@
 					<strong>时间:</strong>
 				</td>
 				<td class="text-left">
-				    <strong>${chat.chatDate}</strong>
+					<fmt:formatDate value="${chat.chatDate}" pattern="yyyy-MM-dd HH:mm:ss" />
 				</td>
 			</tr>
 			<tr>
