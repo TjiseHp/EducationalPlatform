@@ -57,27 +57,37 @@
 </script>
 
 <div align="center" style="padding-top: 50px;">
-	<h1>修改积分比例</h1><br/>
+	<div>
+	<h1>修改积分比例</h1>
+	</div>
+	<br/>
+	<hr/>
+	<br/>
+	<br/>
+	<div class="col-md-offset-3">
 	<form action="${pageContext.request.contextPath}/exchange/doUpdateExchange" method="post" accept-charset="utf-8" onsubmit="return doUpdate()">
-		<table class="table table-bordered table-striped" style="width: 500px;" >
 		
-			<tr>
-				<td class="text-right">
-					<strong>编号</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="exchangeNum" name="exchangeNum" value = "${exchange.exchangeNum }">
-				</td>
-			</tr>
-			<tr>
-				<td class="text-right">
-					<strong>比例</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="exchangeE" name="exchangeE" value = "${exchange.exchangeE}">
-				</td>
-			</tr>
-			
+			<div class="row form-group">
+                <label class="control-label col-lg-2" for="name">编号：</label>
+                <div class="col-md-6">
+                	<input class="form-control" type="text" id="exchangeNum" name="exchangeNum" value = "${exchange.exchangeNum }">
+                </div>
+            </div>
+            
+			<div class="row form-group">
+                <label class="control-label col-lg-2" for="name">比例：</label>
+                <div class="col-md-6">
+                	input class="form-control" type="text" id="exchangeE" name="exchangeE" value = "${exchange.exchangeE}">
+                </div>
+            </div>
+            
+			<br/>
+            
+            <div class="col-md-8">
+            <div class="row form-group">
+				<input class="btn btn-default" type="submit" value="提交"/>
+            </div>
+            </div>
 			<tr>
 				<td colspan="2" class="text-center">
 				<input type="hidden" id=courierNo name="exchangeNum" value="${exchange.exchangeNum }" />
@@ -86,8 +96,6 @@
 			</tr>
 			
 		</table>
-		
-		
-		
-	</form>
+		</form>
+	</div>
 </div>

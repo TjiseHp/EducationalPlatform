@@ -54,8 +54,18 @@
 </script>
 
 <div align="center" style="padding-top: 50px;">
-	<h1>新增营收信息</h1><br/>
+	
+	<div>
+	<h1>新增营收信息</h1>
+	</div>
+	<br/>
+	<hr/>
+	<br/>
+	<br/>
+	
+	<div class="col-md-offset-3">
 	<form action="${pageContext.request.contextPath}/pay/doInsertPay" method="post" accept-charset="utf-8" onsubmit="return doInsertPay()">
+
 		<table class="table table-bordered table-striped" style="width: 500px;" >
 
 			<tr>
@@ -76,7 +86,6 @@
 			
 		</table>
 		
-		
-		
 	</form>
+	</div>
 </div>

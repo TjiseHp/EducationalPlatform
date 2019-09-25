@@ -1,5 +1,7 @@
 package com.hp.service.impl;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.hp.bean.Role;
@@ -24,23 +26,40 @@ public  class RoleServiceImpl implements RoleService {
 		return roleDao.queryRoleByroNo(roNo);
 	}
 
-	public List<Role> roleTable() {
-		return null;
+	public List<Role> queryAllRoles(){
+		return roleDao.queryAllRoles();
 	}
 
-	public int updateByPrimaryKeySelective(Role role) {
-		return roleMapper.updateByPrimaryKeySelective(role);
+	public void insertRoleAssign(Map<String, Object> paramMap) {
+		roleDao.insertRoleAssign(paramMap);
 	}
 
-	public int insertSelective(Role role) {
-		return roleMapper.insertSelective(role);
-		
+	public List<Role> queryRoleByExample(String search) {
+		return roleDao.queryRoleByExample(search);
 	}
 
 	public int deleteByPrimaryKey(Integer roNo) {
 		return roleMapper.deleteByPrimaryKey(roNo);
 	}
 
+	public Role queryAllRolesByroNo(Integer roNo) {
+		return roleDao.queryAllRolesByroNo(roNo);
+	}
 
+	public int deleteGroupByroNo(Integer roNo) {
+		return roleDao.deleteGroupByroNo(roNo);
+	}
+
+	public int insertSelective(Role record) {
+		return roleMapper.insertSelective(record);
+	}
+
+	public int updateByPrimaryKeySelective(Role record) {
+		return roleMapper.updateByPrimaryKeySelective(record);
+	}
+
+	public List<Role> roleTable() {
+		return null;
+	}
 
 }

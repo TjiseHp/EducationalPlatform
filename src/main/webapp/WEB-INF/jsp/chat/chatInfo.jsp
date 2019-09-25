@@ -4,8 +4,7 @@
     		deferredSyntaxAllowedAsLiteral="true"
     		%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
+	
 <script type="text/javascript">
 	
 	function doUpdate() {
@@ -54,49 +53,42 @@
 	function doback(){
 		var uId = $("#uId").val();
 		console.info(uId);
-    	window.location.href = "${pageContext.request.contextPath}/stuInfo/stuInfoCenter?uId="+uId;
+    	window.location.href = "${pageContext.request.contextPath}/chat/showReceiveInfo?uId="+uId;
 	}
 		
 	
 </script>
-
 <div align="center" style="padding-top: 50px;">
-	
-	<div>
-	<h1>修改密码</h1>
-	</div>
-	<br/>
-	<hr/>
-	<br/>
-	<br/>
-	<div class="col-md-offset-3">
-	<form action="${pageContext.request.contextPath}/stuInfo/doUpdateUpwd" method="post" accept-charset="utf-8" onsubmit="return doUpdate()">
-			
-			<div class="row form-group">
-                <label class="control-label col-lg-2" for="name">原密码：</label>
-                <div class="col-md-6">
-                	<input class="form-control" type="text" id="uName" name="uName" value = "${user.uPwd}">
-                </div>
-            </div>
-            
-            <div class="row form-group">
-                <label class="control-label col-lg-2" for="name">新密码：</label>
-                <div class="col-md-6">
-                	<input class="form-control" type="text" id="uPwd" name="uPwd" value = "${user.uPwd}">
-                </div>
-            </div>
-            
-			<br/>
-            
-            <div class="col-md-7">
-            <div class="row form-group">
-            	<input type="hidden" id="uId" name="uId" value="${user.uId}"/> 
-					<button type="button" class="btn btn-danger" onclick="doUpdate();">确认</button>
-					<button type="button" class="btn btn-danger" onclick="doback();">返回</button>				
-            </div>
-            </div>
-
-		
+	<form action="${pageContext.request.contextPath}/user/doInsertChatInfo" method="post" accept-charset="utf-8" onsubmit="return doPost()">
+		<table class="table table-bordered table-striped" style="width: 500px;">
+			<tr>
+				<td colspan="2" class="text-right">
+					<strong>发送信息</strong>
+				</td>
+			</tr>
+			<tr>
+				<td class="text-right">
+					<strong>收件人:</strong>
+				</td>
+				<td class="text-left">
+ 					<strong>${chat.user1.uId}</strong>                    
+				</td>
+			</tr>	
+			<tr>
+				<td class="text-right">
+					<strong>内容:</strong>
+				</td>
+				<td class="text-left">
+					<input class="form-control" type="chatText" id="chatText" name="chatText">
+				</td>
+			</tr>							
+			<tr>
+				<td colspan="2" class="text-center">				
+					<input type="hidden" id="uId" name="uId" value="${user.uId}"/> 
+					<button type="button" class="btn btn-danger" onclick="doUpdate();">发送</button>
+					<button type="button" class="btn btn-danger" onclick="doback();">取消</button>										
+				</td >
+			</tr>
+		</table>
 	</form>
-	</div>
 </div>

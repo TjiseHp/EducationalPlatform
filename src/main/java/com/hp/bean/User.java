@@ -32,7 +32,7 @@ public class User {
     private City city;
     
     private Class uClass;
-    
+
 	public City getCity() {
 		return city;
 	}

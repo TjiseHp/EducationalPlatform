@@ -1,5 +1,11 @@
 package com.hp.controller;
+
 import java.util.List;
+
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,6 +23,10 @@ import com.hp.bean.Role;
 import com.hp.bean.User;
 import com.hp.service.GroupService;
 import com.hp.service.RoleService;
+import com.hp.service.PowerService;
+import com.hp.service.RoleService;
+import com.hp.util.LogicUtil;
+
 
 @Controller
 @RequestMapping("/role")
@@ -28,6 +38,11 @@ public class RoleController {
 	@Autowired
 	public GroupService groupService;
 	
+	@Autowired
+	public PowerService powerService;
+	
+	//权限修改页面跳转
+
 	@RequestMapping("/assignTable")
 	public ModelAndView assignTable(
 			HttpServletRequest httpServletRequest,
@@ -37,7 +52,7 @@ public class RoleController {
 		modelAndView.addObject("roNo",roNo);
 		modelAndView.addObject("httpSession",httpSession);
 		modelAndView.addObject("mainPage", "role/assignTable.jsp");
-		modelAndView.setViewName("Main");
+		modelAndView.setViewName("main");
 		return modelAndView;
 	}
 
@@ -47,8 +62,9 @@ public class RoleController {
 	public ModelAndView roleTable(HttpServletRequest httpServletRequest) {
 		HttpSession httpSession = httpServletRequest.getSession();
 		ModelAndView modelAndView = new ModelAndView();
+
 //		List<Role> role =  roleService.queryAllRole();
-		
+
 		modelAndView.addObject("httpSession",httpSession);
 //		modelAndView.addObject("role",role);
 		modelAndView.addObject("mainPage", "role/roleTable.jsp");
@@ -78,6 +94,7 @@ public class RoleController {
 		return modelAndView;
 	}
 	
+
 	//更新角色列表
 		@RequestMapping(value = "/doUpdateRole",produces = {"text/html;charset=utf-8"})
 		public String doUpdateRole(Role role,HttpServletRequest httpServletRequest) {
@@ -204,5 +221,25 @@ public class RoleController {
 		
 		
 		
+
+	@ResponseBody
+	@RequestMapping("/doAjaxAssign")
+	public Object doAjaxAssign( Integer roNo,Integer[] menuNo) {
+		LogicUtil result = new LogicUtil();
+		try {
+			int row = powerService.DeletePowerForRoNo(roNo);
+			System.out.println("删除了"+roNo+"号角色的"+row+"条权限。");
+			Map<String, Object> paramMap = new HashMap<String, Object>();
+			paramMap.put("roNo", roNo);
+			paramMap.put("menuNo", menuNo);
+			roleService.insertRoleAssign(paramMap);
+			result.setLogic(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.setLogic(false);
+		}
+		return result;
+	}
+
 	
 }
