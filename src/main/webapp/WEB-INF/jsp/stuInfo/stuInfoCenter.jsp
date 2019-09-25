@@ -22,13 +22,14 @@
 </script>
 
 <div align="center" style="padding-top: 50px;">
+	<div>
+	<h1 class="title1">个人信息</h1>
+	</div>
+	<br />
+	<hr />
+	<br /> <br />
 	<form >
-		<table class="table table-bordered table-striped" style="width: 500px;" >
-		    <tr>
-				<td colspan="2" class="text-center">
-				 <h1>个人信息</h1>
-                </td>
-			</tr>
+		<table class="table table-bordered table-striped elegant-aero" style="width: 500px;" >
 				
 		    <tr>
 				<td class="text-right">
@@ -103,3 +104,14 @@
 		
 	</form>
   	</div>
+<style>
+.elegant-aero {
+margin-left: auto;
+margin-right: auto;
+max-width: 500px;
+background: #D2E9FF;
+padding: 20px 20px 20px 20px;
+font: 12px Arial, Helvetica, sans-serif;
+color: #666;
+}
+</style>
