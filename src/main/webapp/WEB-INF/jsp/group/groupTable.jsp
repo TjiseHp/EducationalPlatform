@@ -5,22 +5,22 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#table1').bootstrapTable({
-			url : '${pageContext.request.contextPath}/role/queryAllRole',
+			url : '${pageContext.request.contextPath}/group/queryAllGroup',
 			method : 'post',
 			columns : [ {
 				sortable : "true",
-				field : 'roNo',
-				title : '角色编号',
+				field : 'gNum',
+				title : '角色组编号',
 				align : "center"
 			}, {
 				sortable : "true",
-				field : 'roName',
+				field : 'gName',
 				title : '角色组名',
 				align : "center"
 			}, {
 				sortable : "true",
-				field : 'roText',
-				title : '注释',
+				field : 'roNo',
+				title : '角色编号',
 				align : "center"
 			}, 
 
@@ -61,8 +61,8 @@
 			},
 			onClickRow : function(row) {
 				roNo = row.roNo;
-				roName = row.roName;
-				roText = row.roText;
+				gName = row.gName;
+				gNum = row.gNum;
 
 			}
 		});
@@ -77,8 +77,8 @@
 
 	window.operateEvents1 = {
 		"click .deleteBtn" : function(e, value, row, index) {
-			roNo = row.roNo;
-			console.info(roNo);
+			gNum = row.gNum;
+			console.info(gNum);
 			layer
 					.confirm(
 							'确认删除？',
@@ -89,9 +89,9 @@
 								$
 										.ajax({
 											type : "post",
-											url : "${pageContext.request.contextPath}/role/deleteRole",
+											url : "${pageContext.request.contextPath}/group/deleteGroup",
 											data : {
-												"roNo" : roNo
+												"gNum" : gNum
 											},
 											beforeSend : function() {
 												loadingIndex = layer.msg('处理中',
@@ -141,13 +141,13 @@
 		},
 
 		"click .updateBtn" : function(e, value, row, index) {
-			window.location.href = "${pageContext.request.contextPath}/role/updateRole?roNo="+ roNo;
+			window.location.href = "${pageContext.request.contextPath}/group/updateGroup?gNum="+ gNum;
 		}
 	}
 
 	function doAdd() {
 		console.info("ADD");
-		window.location.href = "${pageContext.request.contextPath}/role/insertRole";
+		window.location.href = "${pageContext.request.contextPath}/group/insertgroup";
 	}
 </script>
 

@@ -3,34 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <style>
-/* 进度条样式设置 开始 */
-.progress_bar {
-	display: inline-block;
-	width: 200px;
-	height: 20px;
-	border-radius: 8px;
-	border: 1px solid #eee;
-	overflow: hidden;
-	box-shadow: 0 0 1px #ccc;
-	margin: 0px 10px;
-}
 
-.progress_bar span {
-	display: inline-block;
-	height: 100%;
-	width: 0;
-	line-height: 20px;
-	vertical-align: top;
-	transition: all .6s;
-}
-
-.progress_bar_label {
-	font-size: 14px;
-	font-weight: bold;
-	vertical-align: top;
-	margin: 0 5px;
-}
-/* 进度条样式设置 结束 */
 </style>
 
 
@@ -65,16 +38,55 @@
 			
 			<tr>
 				<td class="text-right">
+					<strong>用户身份:</strong>
+				</td>
+				<td class="text-left">
+					
+					<script type="text/javascript">
+					function getuId($uId){
+					    $uText = "";
+					    if($uId) {
+					        switch($uId){
+					            case 1:
+					                $uText = "";
+					                break;
+					            case 2:
+					                $uText = "教师";
+					                break;
+					            case 3:
+					                $uText = "大学生";
+					                break;
+					        }
+					    }
+					    return uText;
+					}
+					</script>
+					
+				</td>
+			</tr>
+			
+			
+			<tr>
+				<td class="text-right">
 					<strong>状态:</strong>
 				</td>
 				<td class="text-left">
-			      <script type="text/javascript">
-			      var exp = null;
-			      if (isNull(exp))
-			      {
-			      alert("请认证");
-			      }
-                   </script>
+			   <script type="text/javascript">
+					function getCheckNum($checkNum){
+					    $cStatus = "";
+					    if($checkNum) {
+					        switch($checkNum){
+					            case 1:
+					                $cStatus = "未通过";
+					                break;
+					            case 2:
+					                $cStatus = "已通过";
+					                break;
+					        }
+					    }
+					    return cStatus;
+					}
+					</script>
 					
 									
 				</td>

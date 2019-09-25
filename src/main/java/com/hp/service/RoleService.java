@@ -4,10 +4,20 @@ import com.hp.bean.Role;
 
 public interface RoleService {
 
-	Role queryAllRole(Integer rNum);
-
 	List<Role> queryAllRole();
 
-	Role queryRoleByrNum(Integer rNum);
+	List<Role> roleTable();
+
+	Role queryRoleByroNo(Integer roNo);
+
+	int updateByPrimaryKeySelective(Role role);
+
+	int insertSelective(Role role);
+
+	int deleteByPrimaryKey(Integer roNo);
+
+	
+
+
 
 }

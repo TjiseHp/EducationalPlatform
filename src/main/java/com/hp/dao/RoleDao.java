@@ -9,10 +9,13 @@ import com.hp.bean.Role;
 
 public interface RoleDao {
 
+	@Select("select * from e_role ")
 	List<Role> queryAllRole();
 
-	@Select("select * from e_role where RO_NO = #{rNum}")
-	Role queryRoleByrNum(Integer rNum);
+	@Select("select * from e_role where RO_NO = #{roNo}")
+	Role queryRoleByroNo(Integer roNo);
+
+
 
 
 	

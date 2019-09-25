@@ -39,4 +39,10 @@
 <br/>
 <a href="${pageContext.request.contextPath}/role/assignTable?roNo=4">权限回调</a>
 <br/>
+<a href="${pageContext.request.contextPath}/role/roleTable">角色列表</a>
+<br/>
+<a href="${pageContext.request.contextPath}/exchange/exchangeTable2">积分比例</a>
+<br/>
+<a href="${pageContext.request.contextPath}/group/groupTable">角色组列表</a>
+<br/>
 </div>

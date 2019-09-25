@@ -8,16 +8,43 @@
 
 <script type="text/javascript">
 	function doUpdate(){
-		var payNum = $("#payNum").val();
-		var uId = $("#uId").val();
 		var pText = $("#pText").val();
-		
+		console.info(pTex);
 		if(payNum == ""||uId == ""||pText == ""){
 			layer.msg("内容不能为空", {time:2000, icon:5, shift:6});
-			return false;
+			return;
 		}else{
-			return true;
+			console.info("OK");
 		}
+		
+		var loadingIndex = null;
+		$.ajax({
+        	type : "POST",
+        	url  : "${pageContext.request.contextPath}/pay/doUpdatePay",
+        	data : {        		
+        		"pText" : pText
+        	},
+        	beforeSend : function(){
+        		loadingIndex = layer.msg('处理中', {icon: 16});
+        	},
+        	success : function(result) {
+        		layer.close(loadingIndex);
+        		var resObj = JSON.parse(result);
+        		console.info(resObj.result);
+        		if (resObj.result) {
+        			
+    	        	window.location.href = "${pageContext.request.contextPath}/pay/payTable2?payNum="+payNum;
+        			
+        		} else {
+                    layer.msg("用户登录账号或密码不正确，请重新输入", {time:2000, icon:5, shift:6}, function(){
+                    	
+                    });
+        		}
+        	},
+        	error : function(err){
+        		layer.close("err");
+        	}
+        });
 		
     }
 		
@@ -32,22 +59,6 @@
 		
 			<tr>
 				<td class="text-right">
-					<strong>编号:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="payNum" name="payNum" value = "${pay.payNum }">
-				</td>
-			</tr>
-			<tr>
-				<td class="text-right">
-					<strong>用户ID:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="uId" name="uId" value = "${pay.uId}">
-				</td>
-			</tr>
-			<tr>
-				<td class="text-right">
 					<strong>金额:</strong>
 				</td>
 				<td class="text-left">
@@ -57,6 +68,7 @@
 			
 			<tr>
 				<td colspan="2" class="text-center">
+				<input type="hidden" id=courierNo name="payNum" value="${pay.payNum }" />
 					<input class="btn btn-default" type="submit" value="提交"/>
 				</td>
 			</tr>
