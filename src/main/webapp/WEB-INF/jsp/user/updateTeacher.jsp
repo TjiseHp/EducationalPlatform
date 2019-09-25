@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" deferredSyntaxAllowedAsLiteral="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ page language="java" import="com.hp.bean.User" %>
 
 <script type="text/javascript">
 	function doUpdate() {
@@ -50,9 +50,9 @@
 				<label class="control-label col-lg-3" for="name"><span>性别：</span></label>
 				<div class="col-md-7">
 					<div style="padding:5px">
-						<lable class="radio-inline"><input class="form-control" type="radio" id="uSex1" name="uSex" value="${user.uSex}"><span>男</span></lable>
+						<lable class="radio-inline"><input class="form-control" type="radio" id="uSex1" name="uSex" value="${user.uSex}"  ${user.uSex=="男"?"checked":""}><span>男</span></lable>
 						&nbsp;&nbsp;&nbsp;
-						<lable class="radio-inline"><input class="form-control" type="radio" id="uSex2" name="uSex" value="${user.uSex}"><span>女</span></lable>
+						<lable class="radio-inline"><input class="form-control" type="radio" id="uSex2" name="uSex" value="${user.uSex}"  ${user.uSex=="女"?"checked":""}><span>女</span></lable>
 					</div>
 				</div>
 			</div>
