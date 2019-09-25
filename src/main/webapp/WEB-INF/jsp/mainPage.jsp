@@ -8,19 +8,18 @@
 <div><h1>测试页面-主页</h1></div>
 
 <div>
-<a href="user/studentTable2">学生列表</a>
+<a href="${pageContext.request.contextPath}/user/studentTable2">学生列表</a>
 <br/>
-<a href="user/teacherTable2">教师列表</a>
+<a href="${pageContext.request.contextPath}/user/teacherTable2">教师列表</a>
 <br/>
-<a href="credit/creditConsumption">积分消费记录明细查询</a>
+<a href="${pageContext.request.contextPath}/credit/creditConsumption">积分消费记录明细查询</a>
 <br/>
-<a href="credit/creditBuy">历史购买订单查询表</a>
+<a href="${pageContext.request.contextPath}/credit/creditBuy">历史购买订单查询表</a>
 <br/>
 <a href="${pageContext.request.contextPath}/recruit/insertRecruit">招聘信息发布</a>
 <br/>
 <a href="${pageContext.request.contextPath}/recruit/recruitTable">历史招聘信息</a>
 <br/>
-
 <a href="${pageContext.request.contextPath}/exchange/exchangeTable2">积分记录</a>
 <br/>
 <a href="${pageContext.request.contextPath}/recruit/recruitTeacher">教师记录</a>
@@ -39,12 +38,12 @@
 <br/>
 <a href="${pageContext.request.contextPath}/file/fileList">审核列表</a>
 <br/>
-<a href="${pageContext.request.contextPath}/alipay/payMenu">支付测试</a>
+<a href="${pageContext.request.contextPath}/user/teacherReturn">教师个人资料</a>
 <br/>
-<a href="${pageContext.request.contextPath}/user/teacherInfo">教师个人资料</a>
+<a href="${pageContext.request.contextPath}/user/studentReturn">学生个人资料</a>
 <br/>
-<a href="${pageContext.request.contextPath}/user/stuInfoCenter">学生个人资料</a>
+<a href="${pageContext.request.contextPath}/role/assignTable2?roNo=4">权限回调</a>
 <br/>
-<a href="${pageContext.request.contextPath}/role/assignTable?roNo=4">权限回调</a>
+<a href="${pageContext.request.contextPath}/user/returnTest">跳转测试</a>
 <br/>
 </div>
