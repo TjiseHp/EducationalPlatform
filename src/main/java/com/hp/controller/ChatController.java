@@ -45,6 +45,7 @@ public class ChatController {
 		System.out.println("1888");
 		List<Chat> ReceiveInfo = chatService.queryAllReceiveInfoByuId(uId2);
 		for(Chat text1 : ReceiveInfo) {
+			System.out.println(text1.getChatDate());
 			String text=text1.getChatText();
 			if(text.length()<=12) {
 				text1.setChatText(text);

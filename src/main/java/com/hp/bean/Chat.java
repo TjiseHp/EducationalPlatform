@@ -2,6 +2,8 @@ package com.hp.bean;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Chat {
     private Integer chatNum;
 
@@ -75,6 +77,7 @@ public class Chat {
         this.chatText = chatText == null ? null : chatText.trim();
     }
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     public Date getChatDate() {
         return chatDate;
     }
