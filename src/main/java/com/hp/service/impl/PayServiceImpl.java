@@ -25,11 +25,11 @@ public class PayServiceImpl implements PayService {
 		return payDao.queryAllPay();
 	}
 
-//	public int deleteByPrimaryKey(String payNum) {
-//		return payMapper.deleteByPrimaryKey(uId);
-//	}
+	public int deleteByPrimaryKey(String payNum) {
+		return payMapper.deleteByPrimaryKey(payNum);
+	}
 
-	public Pay queryPayBypayNum(Integer payNum) {
+	public Pay queryPayBypayNum(String payNum) {
 		return payDao.queryPayBypayNum(payNum);
 	}
 

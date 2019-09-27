@@ -36,101 +36,125 @@
 
 
 <script type="text/javascript">
-	function doUpdate(uId) {
-		window.location.href = "${pageContext.request.contextPath}/user/updateTeacherInfo?uId="
-				+ uId;
-	}
+		
+		function doUpdate(uId) {		
+			window.location.href = "${pageContext.request.contextPath}/user/updateTeacherInfo?uId="+uId;
+		}
+
 </script>
 
 
 <div align="center" style="padding-top: 50px;">
-	<div>
-		<h1>个人信息</h1>
+  	<div>
+	<h1 class="title1">个人信息</h1>
 	</div>
 	<br />
 	<hr />
 	<br /> <br />
-	<div class="col-md-offset-3">
-		<form>
+	<form >
+		<table class="table table-bordered table-striped elegant-aero" style="width: 500px;" >
 
-			<div class="row form-group">
-				<label class="control-label col-lg-2" for="name">用户ID：</label>
-				<div class="col-md-6">
-					<label class="form-control" type="text" id="uId" name="uId"
-						value="">${user.uId }</label>
-				</div>
-			</div>
+			<tr>
+				<td class="text-right">
+					<strong>用户ID:</strong>
+				</td>
+				<td class="text-left">
+					<p>${user.uId}</p>
+				</td>
+			</tr>
+			
+			<tr>
+				<td class="text-right">
+					<strong>状态:</strong>
+				</td>
+				<td class="text-left">
+			      <script type="text/javascript">
+			      var exp = null;
+			      if (isNull(exp))
+			      {
+			      alert("请认证");
+			      }
+                   </script>
+					
+									
+				</td>
+			</tr>
+			
+			<tr>
+				<td class="text-right">
+					<strong>城市:</strong>
+				</td>
+				<td class="text-left">
+					<p>${user.cNum}</p>
+				</td>
+			</tr>
+			
+			<tr>
+				<td class="text-right">
+					<strong>学科:</strong>
+				</td>
+				<td class="text-left">
+					<p>${user.classNum}</p>
+				</td>
+			</tr>
+			
+			<tr>
+				<td class="text-right">
+					<strong>经验值:</strong>
+				</td>
+				<td class="text-left">
+				<p>${user.uExp}</p>      	
+				</td>
+			</tr>
+					
+			<tr>
+				<td class="text-right">
+					<strong>姓名:</strong>
+				</td>
+				<td class="text-left">
+					<p>${user.uName }</p>
+				</td>
+			</tr>
+			
+			<tr>
+				<td class="text-right">
+					<strong>性别:</strong>
+				</td>
+				<td class="text-left">
+					<p>${user.uSex}</p>
+				</td>
+			</tr>
+			
+			<tr>
+				<td class="text-right">
+					<strong>手机:</strong>
+				</td>
+				<td class="text-left">
+					<p>${user.uPhone}</p>
+				</td>
+			</tr>
+			
+			<tr>
+				<td class="text-right">
+					<strong>邮箱:</strong>
+				</td>
+				<td class="text-left">
+				<p>	${user.uEmail}</p>
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2" class="text-center">
+                      <input type="hidden" id=uId name="uId" value="${user.uId}"/> 
+                      <a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doUpdate('${user.uId}');">修改个人信息</a>			
+                </td>
+			</tr>
+			
+		</table>
+		
+	</form>
+  	</div>
 
-			<div class="row form-group">
-				<label class="control-label col-lg-2" for="name">城市：</label>
-				<div class="col-md-6">
-					<label class="form-control" type="text" id="cNum" name="cNum"
-						value="${user.cNum}">${user.cNum}</label>
-				</div>
-			</div>
-
-			<div class="row form-group">
-				<label class="control-label col-lg-2" for="name">学科：</label>
-				<div class="col-md-6">
-					<label class="form-control" type="text" id="classNum"
-						name="classNum" value="${user.classNum}">${user.classNum}</label>
-				</div>
-			</div>
-
-
-			<div class="row form-group">
-				<label class="control-label col-lg-2" for="name">经验值：</label>
-				<div class="col-md-6">
-					<div class="progress_bar" data-color="#f60" data-per="90"
-						data-width="300"></div>
-					<label class="progress_bar_label">${user.uExp }</label>
-				</div>
-			</div>
-
-			<div class="row form-group">
-				<label class="control-label col-lg-2" for="name">姓名：</label>
-				<div class="col-md-6">
-					<label class="form-control" type="text" id="uName" name="uName"
-						value="">${user.uName }</label>
-				</div>
-			</div>
-
-			<div class="row form-group">
-				<label class="control-label col-lg-2" for="name">性别：</label>
-				<div class="col-md-6">
-					<label class="form-control" type="text" id="uSex" name="uSex"
-						value="">${user.uSex}</label>
-				</div>
-			</div>
-
-			<div class="row form-group">
-				<label class="control-label col-lg-2" for="name">手机：</label>
-				<div class="col-md-6">
-					<label class="form-control" type="text" id="uPhone" name="uPhone"
-						value="">${user.uPhone}</label>
-				</div>
-			</div>
-
-			<div class="row form-group">
-				<label class="control-label col-lg-2" for="name">邮箱：</label>
-				<div class="col-md-6">
-					<label class="form-control" type="text" id="uEmail" name="uEmail"
-						value="">${user.uEmail}</label>
-				</div>
-			</div>
-
-
-			<div class="row form-group">
-				<div class="col-md-10">
-					<input type="hidden" id=uId name="uId" value="${user.uId}" /> <a
-						class="btn btn-primary btn-xs" role="button" href="javascript:;"
-						onclick="doUpdate('${user.uId}');">修改个人信息</a>
-				</div>
-			</div>
-
-		</form>
-	</div>
-</div>
 <script>
 	function updataProgressBar() { //更新进度条信息
 		//进度条设置
@@ -153,3 +177,14 @@
 		updataProgressBar();
 	})
 </script>
+<style>
+.elegant-aero {
+margin-left: auto;
+margin-right: auto;
+max-width: 500px;
+background: #D2E9FF;
+padding: 20px 20px 20px 20px;
+font: 12px Arial, Helvetica, sans-serif;
+color: #666;
+}
+</style>

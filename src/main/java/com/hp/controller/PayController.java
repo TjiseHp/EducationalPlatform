@@ -68,7 +68,7 @@ public class PayController {
 	@RequestMapping("/updatePay")
 	public ModelAndView updatePay
 			(HttpServletRequest httpServletRequest,
-			@RequestParam(required = true,value = "payNum") Integer payNum) {
+			@RequestParam(required = true,value = "payNum") String payNum) {
 		HttpSession httpSession = httpServletRequest.getSession();
 		Pay pay = payService.queryPayBypayNum(payNum);
 		ModelAndView modelAndView = new ModelAndView();

@@ -12,7 +12,7 @@ public interface PayDao {
 	List<Pay> queryAllPay();
 
 	@Select("select * from e_pay where PAY_NUM = #{payNum}")
-	Pay queryPayBypayNum(Integer payNum);
+	Pay queryPayBypayNum(String payNum);
 
 	List<Pay> queryPayByExample(String search);
 

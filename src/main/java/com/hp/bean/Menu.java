@@ -1,5 +1,8 @@
 package com.hp.bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Menu {
     private Integer menuNo;
 
@@ -12,8 +15,38 @@ public class Menu {
     private String menuImg;
 
     private String icon;
+    
+    private boolean open = true;
+    
+    private boolean checked = false;
+    
+	private List<Menu> children = new ArrayList<Menu>();
 
-    public Integer getMenuNo() {
+    public List<Menu> getChildren() {
+		return children;
+	}
+
+	public void setChildren(List<Menu> children) {
+		this.children = children;
+	}
+
+	public boolean isOpen() {
+		return open;
+	}
+
+	public void setOpen(boolean open) {
+		this.open = open;
+	}
+
+	public boolean isChecked() {
+		return checked;
+	}
+
+	public void setChecked(boolean checked) {
+		this.checked = checked;
+	}
+
+	public Integer getMenuNo() {
         return menuNo;
     }
 
