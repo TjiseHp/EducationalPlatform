@@ -207,7 +207,7 @@ public class AlipayController {
 			}else {
 				modelAndView.addObject("result",false);
 			}
-			*/
+			*/  
 			modelAndView.addObject("result",true);
 			modelAndView.addObject("out_trade_no",out_trade_no);
 			modelAndView.addObject("trade_no",trade_no);

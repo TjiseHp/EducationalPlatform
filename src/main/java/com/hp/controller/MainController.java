@@ -34,7 +34,7 @@ public class MainController {
 	@RequestMapping("/loginOut")
 	public String logingOut(HttpSession session) {
 		session.invalidate();	
-		return "redirect:userLogin";	
+		return "redirect:index";	
 	}
 	
 	//控制主页跳转
