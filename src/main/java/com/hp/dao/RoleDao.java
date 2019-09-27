@@ -30,5 +30,11 @@ public interface RoleDao {
 	
 	@Delete("delete from e_group where RO_NO = #{roNo}")
 	int deleteGroupByroNo(Integer roNo);
+
+	@Select("select * from e_role where RO_NAME = #{roName} ")
+	Role queryRoleByRole(Role role);
+
+	@Select("select * from e_role where RO_NAME = #{roName} ")
+	Role queryRoleByUpdate(Role role);
 	
 }

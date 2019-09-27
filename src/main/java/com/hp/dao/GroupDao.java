@@ -11,9 +11,7 @@ public interface GroupDao {
 	@Select("select * from e_group ")
 	List<Group> queryAllGroup();
 
-	@Select("select * from e_group where RO_NO = #{roNo}")
+	@Select("select * from e_group where G_Num = #{gNum}")
 	Group queryGroupBygNum(Integer gNum);
-
-
 
 }

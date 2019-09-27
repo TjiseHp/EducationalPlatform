@@ -34,7 +34,10 @@
 	                	sortable: "true",
 	                    field: 'payDate',
 	                    title: '日期',
-	                    align: "center"
+	                    align: "center",
+	                    formatter: function (value, row, index) {
+	                        return changeDateFormat(value)
+	                    }
 	                },
 	                {
 	                	field: 'option',
@@ -87,6 +90,21 @@
 		        '<button class="btn btn-danger btn-xs rightSize deleteBtn" type="button"><i class="fa fa-envelope"></i><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 删除</button>'
 		    ].join('');
 	    }
+		
+		function changeDateFormat(cellval) {
+		    var dateVal = cellval + "";
+		    if (cellval != null) {
+		        var date = new Date(parseInt(dateVal.replace("/Date(", "").replace(")/", ""), 10));
+		        var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+		        var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+		 
+		        var hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+		        var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+		        var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+		 
+		        return date.getFullYear() + "-" + month + "-" + currentDate + " " + hours + ":" + minutes + ":" + seconds;
+		    }
+		}
 		
 		window.operateEvents1 = {
 	        "click .deleteBtn": function (e, value, row, index) {

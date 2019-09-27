@@ -29,5 +29,9 @@ public interface RoleService {
 	
 	//删除用户组
 	int deleteGroupByroNo(Integer roNo);
+
+	Role queryRoleByRole(Role role);
+
+	Role queryRoleByUpdate(Role role);
 	
 }

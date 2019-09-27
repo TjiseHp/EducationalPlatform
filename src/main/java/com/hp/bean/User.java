@@ -32,6 +32,17 @@ public class User {
     private City city;
     
     private Class uClass;
+    
+    private Group group;
+    
+
+	public Group getGroup() {
+		return group;
+	}
+
+	public void setGroup(Group group) {
+		this.group = group;
+	}
 
 	public City getCity() {
 		return city;

@@ -41,27 +41,7 @@
 					<strong>用户身份:</strong>
 				</td>
 				<td class="text-left">
-					
-					<script type="text/javascript">
-					function getuId($uId){
-					    $uText = "";
-					    if($uId) {
-					        switch($uId){
-					            case 1:
-					                $uText = "";
-					                break;
-					            case 2:
-					                $uText = "教师";
-					                break;
-					            case 3:
-					                $uText = "大学生";
-					                break;
-					        }
-					    }
-					    return uText;
-					}
-					</script>
-					
+					<p>${user.group.role.roName }</p>
 				</td>
 			</tr>
 			
@@ -71,22 +51,6 @@
 					<strong>状态:</strong>
 				</td>
 				<td class="text-left">
-			   <script type="text/javascript">
-					function getCheckNum($checkNum){
-					    $cStatus = "";
-					    if($checkNum) {
-					        switch($checkNum){
-					            case 1:
-					                $cStatus = "未通过";
-					                break;
-					            case 2:
-					                $cStatus = "已通过";
-					                break;
-					        }
-					    }
-					    return cStatus;
-					}
-					</script>
 					
 									
 				</td>

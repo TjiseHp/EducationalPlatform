@@ -14,7 +14,7 @@
 		console.info(roName);
 		console.info(roText);
 		
-		if(roNo == ""||roName == ""||roText == ""){
+		if(roName == ""||roText == ""){
 			layer.msg("内容不能为空", {time:2000, icon:5, shift:6});
 			return;
 		}else{
@@ -75,7 +75,7 @@
 					<strong>注释:</strong>
 				</td>
 				<td class="text-left">
-					<input class="form-control" type="text" id="roleText" name="roleText" value = "${role.roText}">
+					<input class="form-control" type="text" id="roText" name="roText" value = "${role.roText}">
 				</td>
 			</tr>
 			

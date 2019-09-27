@@ -62,4 +62,12 @@ public  class RoleServiceImpl implements RoleService {
 		return null;
 	}
 
+	public Role queryRoleByRole(Role role) {
+		return roleDao.queryRoleByRole(role);
+	}
+
+	public Role queryRoleByUpdate(Role role) {
+		return roleDao.queryRoleByUpdate( role);
+	}
+
 }

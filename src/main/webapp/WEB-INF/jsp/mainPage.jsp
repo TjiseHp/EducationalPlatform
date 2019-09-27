@@ -38,7 +38,7 @@
 <br/>
 <a href="${pageContext.request.contextPath}/exchange/exchangeTable2">积分比例</a>
 <br/>
-<a href="${pageContext.request.contextPath}/group/groupTable">角色组列表</a>
+<a href="${pageContext.request.contextPath}/role/groupTable">角色组列表</a>
 <br/>
 <a href="${pageContext.request.contextPath}/chat/stuMessageCenter?uId=${loginUser.uId}">学生消息中心</a>
 <br/>

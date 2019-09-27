@@ -12,10 +12,14 @@ import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hp.bean.City;
+import com.hp.bean.Group;
+import com.hp.bean.Role;
 import com.hp.bean.User;
 import com.hp.service.CityService;
 import com.hp.service.ClassService;
 import com.hp.service.CreditService;
+import com.hp.service.GroupService;
+import com.hp.service.RoleService;
 import com.hp.service.UserService;
 import com.hp.util.PageUtil;
 
@@ -39,6 +43,12 @@ public class UserCortroller  {
 	
 	@Autowired
 	public CityService cityService;
+	
+	@Autowired
+	public GroupService groupService;
+	
+	@Autowired
+	public RoleService roleService;
 	
 	//查询全部学生(会员)列表,包含积分总和
 	@ResponseBody
@@ -239,6 +249,14 @@ public class UserCortroller  {
 		HttpSession httpSession = httpServletRequest.getSession();
 		ModelAndView modelAndView = new ModelAndView();
 		User user = userService.queryTeacherByInfo(uId);
+		Group group =  groupService.queryGroupBygNum(user.getgNum());
+		if(group!=null) {
+			Role role = roleService.queryRoleByroNo(group.getRoNo());
+			if(role!=null) {
+				group.setRole(role);
+				user.setGroup(group);
+			}
+		}
 		
 		modelAndView.addObject("httpSession",httpSession);
 		modelAndView.addObject("user",user);
