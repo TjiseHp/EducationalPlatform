@@ -37,4 +37,14 @@
 <br/>
 <a href="${pageContext.request.contextPath}/alipay/payMenu">支付测试</a>
 <br/>
+<a href="${pageContext.request.contextPath}/echart/test3">我带你们打</a>
+<br/>
+<a href="${pageContext.request.contextPath}/echart/test">ajaxecharttest</a>
+<br/>
+<a href="${pageContext.request.contextPath}/echart/creditEchart">积分充值图表</a>
+<br/>
+<a href="${pageContext.request.contextPath}/echart/payEchart">积分消费图表</a>
+<br/>
+<a href="${pageContext.request.contextPath}/echart/adminLookPay">查看积分充值</a>
+<br/>
 </div>
