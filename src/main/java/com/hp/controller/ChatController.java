@@ -30,7 +30,7 @@ public class ChatController {
 	@Autowired
 	public UserService userService;
 	
-	//学生消息中心页面跳转
+	//学生消息中心页面跳转--收件箱
 	@RequestMapping("/stuMessageCenter")
 	public ModelAndView stuMessageCenter(HttpServletRequest httpServletRequest) {
 		ModelAndView modelAndView = new ModelAndView();
@@ -38,12 +38,13 @@ public class ChatController {
 		modelAndView.setViewName("main");
 		return modelAndView;
 	}
-	//查询消息列表
+	//查询收件箱消息列表
 	@ResponseBody
 	@RequestMapping("/queryAllReceiveInfoByuId")
 	public List<Chat> queryAllReceiveInfoByuId(HttpServletRequest httpServletRequest,Chat chat,@RequestParam(required = true,value = "uId") Integer uId2) {
 		System.out.println("1888");
 		List<Chat> ReceiveInfo = chatService.queryAllReceiveInfoByuId(uId2);
+		System.out.println(uId2);
 		for(Chat text1 : ReceiveInfo) {
 			System.out.println(text1.getChatDate());
 			String text=text1.getChatText();
@@ -90,7 +91,7 @@ public class ChatController {
 			return modelAndView;
 		}
 	
-	//聊天界面跳转
+	//回复界面跳转
 	@RequestMapping("/chatInfo")
 	public ModelAndView chatInfo(HttpServletRequest httpServletRequest) {
 		ModelAndView modelAndView = new ModelAndView();
@@ -100,20 +101,65 @@ public class ChatController {
 	}
 	
 	//插入聊天信息
-	@RequestMapping("/doInsertChatInfo")
-	public String doInsertChatInfo(Chat chat,HttpSession httpSession) throws ParseException {
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-        String date=df.format(new Date());// new Date()为获取当前系统时间
-        Date date1 = df.parse(date);
-        System.out.println("系统当前时间"+date1);
-		chat.setChatDate(date1);
+//	@RequestMapping("/doInsertChatInfo")
+//	public String doInsertChatInfo(Chat chat,HttpSession httpSession) throws ParseException {
+//		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+//        String date=df.format(new Date());// new Date()为获取当前系统时间
+//        Date date1 = df.parse(date);
+//        System.out.println("系统当前时间"+date1);
+//		chat.setChatDate(date1);
+//		
+//		
+////		chatService.insertSelective(chat);
+//		return "redirect: Inbox";
+//	}
+	
+	  //页面跳转--发件箱
+		@RequestMapping("/Inbox")
+		public ModelAndView Inbox(HttpServletRequest httpServletRequest) {
+			ModelAndView modelAndView = new ModelAndView();
+			modelAndView.addObject("mainPage", "chat/Inbox.jsp");
+			modelAndView.setViewName("main");
+			return modelAndView;
+		}
+		//查询发件箱消息列表
+		@ResponseBody
+		@RequestMapping("/queryAllSendInfoByuId")
+		public List<Chat> queryAllSendInfoByuId(HttpServletRequest httpServletRequest,Chat chat,@RequestParam(required = true,value = "uId") Integer uId2) {
+			System.out.println("查询发件箱消息列表");
+			List<Chat> ReceiveInfo = chatService.queryAllReceiveInfoByuId(uId2);
+			System.out.println(uId2);
+			for(Chat text1 : ReceiveInfo) {
+				String text=text1.getChatText();
+				if(text.length()<=12) {
+					text1.setChatText(text);
+					continue;
+				}
+				String showText=text.substring(0,12);
+				text1.setChatText(showText+"……");
+				
+			}
+			return ReceiveInfo;
+		}
 		
 		
-//		chatService.insertSelective(chat);
-		return "redirect: ";
-	}
-	
-	
+		//新建信息页面跳转
+		@RequestMapping("/createMessage")
+		public ModelAndView createMessage(HttpServletRequest httpServletRequest) {
+			ModelAndView modelAndView = new ModelAndView();
+			modelAndView.addObject("mainPage", "chat/createMessage.jsp");
+			modelAndView.setViewName("main");
+			return modelAndView;
+		}
+		
+		//查看发件信息页面跳转
+		@RequestMapping("/showSendInfo")
+		public ModelAndView showSendInfo(HttpServletRequest httpServletRequest) {
+			ModelAndView modelAndView = new ModelAndView();
+			modelAndView.addObject("mainPage", "chat/showSendInfo.jsp");
+			modelAndView.setViewName("main");
+			return modelAndView;
+		}
 	
 	
 

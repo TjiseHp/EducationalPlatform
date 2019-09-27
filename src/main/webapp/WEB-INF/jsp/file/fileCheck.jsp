@@ -30,7 +30,7 @@
 	                    	layer.close(loadingIndex);
 	                    	var resObj = JSON.parse(result);
 	                    	if(resObj.result){
-	                    		layer.msg("审核成功", {time:2000, icon:5, shift:6}, function(){
+	                    		layer.msg("审核成功", {time:2000, icon:6, shift:6}, function(){
 	                    			window.location.href = "${pageContext.request.contextPath}/file/fileList";
 			                    });
 	                    		

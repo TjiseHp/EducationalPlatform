@@ -11,16 +11,16 @@
 			var uId=${loginUser.uId};
 			console.info(uId);
 	        $('#table1').bootstrapTable({
-	            url: '${pageContext.request.contextPath}/chat/queryAllReceiveInfoByuId?uId='+uId,
+	            url: '${pageContext.request.contextPath}/chat/queryAllSendInfoByuId?uId='+uId,
 	            method: 'post', 
 	            columns: [
 	                {
-	                    field: 'user1.uName',
-	                    title: '发件人',
+	                    field: 'user2.uName',
+	                    title: '收件人',
 	                    align: "center"
 	                },
 	                {
-	                    field: 'user1.uEmail',
+	                    field: 'user2.uEmail',
 	                    title: '邮箱',
 	                    align: "left"
 	                },
@@ -33,15 +33,6 @@
 	                    sortable: "true",
 	                    field: 'chatDate',
 	                    title: '时间',
-	                    align: "center",
-	                    formatter: function (value, row, index) {
-	                        return changeDateFormat(value)
-	                    }
-	                },
-	                {
-	                    sortable: "true",
-	                    field: 'cSNum',
-	                    title: '状态',
 	                    align: "center"
 	                },
 	                {
@@ -81,12 +72,10 @@
 	                console.info("加载数据失败");
 	            },
 	            onClickRow: function (row) {
-	            	user1.uName = row.user1.uName;
-	            	user1.uEmail = row.user1.uEmail;	            	
+	            	user2.uName = row.user2.uName;
+	            	user2.uEmail = row.user2.uEmail;	            	
 	            	chatText=row.chatText;
-	            	chatDate = row.chatDate;
-	            	cSNum = row.cSNum;
-	            		            		            	
+	            	chatDate = row.chatDate;	            		            		            	
 	            }
 	        });
 	    })
@@ -96,22 +85,6 @@
 		        '<button class="btn btn-danger btn-xs rightSize deleteBtn" type="button"><i class="fa fa-envelope"></i><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 删除</button>'
 		    ].join('');
 	    }
-		
-
-		function changeDateFormat(cellval) {
-		    var dateVal = cellval + "";
-		    if (cellval != null) {
-		        var date = new Date(parseInt(dateVal.replace("/Date(", "").replace(")/", ""), 10));
-		        var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
-		        var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
-		 
-		        var hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
-		        var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
-		        var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
-		 
-		        return date.getFullYear() + "-" + month + "-" + currentDate + " " + hours + ":" + minutes + ":" + seconds;
-		    }
-		}
 		
 		window.operateEvents1 = {
 	        "click .deleteBtn": function (e, value, row, index) {
@@ -162,25 +135,19 @@
 	        	console.info(uId);
 	            chatNum = row.chatNum;
 				console.info("chatNum");
-	        	window.location.href = "${pageContext.request.contextPath}/chat/showReceiveInfo?chatNum="+chatNum+"&uId="+uId;
+	        	window.location.href = "${pageContext.request.contextPath}/chat/showSendInfo?chatNum="+chatNum+"&uId="+uId;
 	        }
 	        
 	    }
 		
 		function doCreate() {
-			var uId=${loginUser.uId};
-			console.info(uId);
 			console.info("Create");
-			window.location.href = "${pageContext.request.contextPath}/chat/createMessage?uId="+uId;
+			window.location.href = "${pageContext.request.contextPath}/chat/createMessage";
 		}
-		function doSend() {
-			var uId=${loginUser.uId};
-			console.info(uId);
-			console.info("Send");
-			window.location.href = "${pageContext.request.contextPath}/chat/Inbox?uId="+uId;
+		function doReceive() {
+			console.info("Receive");
+			window.location.href = "${pageContext.request.contextPath}/chat/stuMessageCenter";
 		}
-		
-		
 		
 	</script>
 	
@@ -197,7 +164,7 @@
 		</a>
 	</div>
 	<div id="toolbar" class="btn-group">
-		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doSend();">
-			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发件箱
+		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doReceive();" >
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>收件箱
 		</a>
 	</div>

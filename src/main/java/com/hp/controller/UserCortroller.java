@@ -305,4 +305,22 @@ public class UserCortroller  {
 		return modelAndView;
 	}
 	
+
+	@RequestMapping("/studentReturn")
+	public ModelAndView studentReturn(HttpServletRequest httpServletRequest) {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("mainPage", "user/studentReturn.jsp");
+		modelAndView.setViewName("main");
+		return modelAndView;
+	}
+	
+
+	@RequestMapping("/teacherReturn")
+	public ModelAndView teacherReturn(HttpServletRequest httpServletRequest) {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("mainPage", "user/teacherReturn.jsp");
+		modelAndView.setViewName("main");
+		return modelAndView;
+	}
+	
 }

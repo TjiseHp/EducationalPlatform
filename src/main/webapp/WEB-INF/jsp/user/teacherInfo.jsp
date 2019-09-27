@@ -3,7 +3,34 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <style>
+/* 进度条样式设置 开始 */
+.progress_bar {
+	display: inline-block;
+	width: 200px;
+	height: 20px;
+	border-radius: 8px;
+	border: 1px solid #eee;
+	overflow: hidden;
+	box-shadow: 0 0 1px #ccc;
+	margin: 0px 10px;
+}
 
+.progress_bar span {
+	display: inline-block;
+	height: 100%;
+	width: 0;
+	line-height: 20px;
+	vertical-align: top;
+	transition: all .6s;
+}
+
+.progress_bar_label {
+	font-size: 14px;
+	font-weight: bold;
+	vertical-align: top;
+	margin: 0 5px;
+}
+/* 进度条样式设置 结束 */
 </style>
 
 
@@ -18,15 +45,15 @@
 
 
 <div align="center" style="padding-top: 50px;">
-  		
+  	<div>
+	<h1 class="title1">个人信息</h1>
+	</div>
+	<br />
+	<hr />
+	<br /> <br />
 	<form >
-		<table class="table table-bordered table-striped" style="width: 500px;" >
-		    <tr>
-				<td colspan="2" class="text-center">
-				 <h1>个人信息</h1>
-                </td>
-			</tr>
-			
+		<table class="table table-bordered table-striped elegant-aero" style="width: 500px;" >
+
 			<tr>
 				<td class="text-right">
 					<strong>用户ID:</strong>
@@ -38,6 +65,7 @@
 			
 			<tr>
 				<td class="text-right">
+
 					<strong>用户身份:</strong>
 				</td>
 				<td class="text-left">
@@ -48,9 +76,19 @@
 			
 			<tr>
 				<td class="text-right">
+
 					<strong>状态:</strong>
 				</td>
 				<td class="text-left">
+
+			      <script type="text/javascript">
+			      var exp = null;
+			      if (isNull(exp))
+			      {
+			      alert("请认证");
+			      }
+                   </script>
+
 					
 									
 				</td>
@@ -153,3 +191,14 @@
 		updataProgressBar();
 	})
 </script>
+<style>
+.elegant-aero {
+margin-left: auto;
+margin-right: auto;
+max-width: 500px;
+background: #D2E9FF;
+padding: 20px 20px 20px 20px;
+font: 12px Arial, Helvetica, sans-serif;
+color: #666;
+}
+</style>
