@@ -14,4 +14,10 @@ public interface ChatService {
 
 	Chat queryChatByChatNum(Integer chatNum);
 
+	int insertSelective(Chat chat);
+
+	List<Chat> queryAllSendInfoByuId(Integer uId);
+
+	List<Chat> queryChatListByuId(Integer uId);
+
 }

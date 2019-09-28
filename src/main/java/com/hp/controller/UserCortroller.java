@@ -1,4 +1,5 @@
 package com.hp.controller;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -304,5 +305,28 @@ public class UserCortroller  {
 		modelAndView.setViewName("main");
 		return modelAndView;
 	}
+	
+	
+	@ResponseBody
+	@RequestMapping("/city")
+	public List<City> city(){	
+		List<City> clist = userService.queryAllCity();	
+		return clist;
+	}
+	
+
+	@ResponseBody
+	@RequestMapping("/cCity")
+	public List<City> cCity(Integer cNum){
+	    System.out.println("cNum"+cNum);
+		City ccity = userService.queryAllCityBycNum(cNum);
+		System.out.println(ccity.getcCity());
+		List<City> list = new ArrayList<City>();
+		list.add(ccity);
+		System.out.println(list.get(0).getcCity());
+		return list;
+	}
+	
+	
 	
 }

@@ -1,16 +1,19 @@
 package com.hp.controller;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.hp.bean.Chat;
 import com.hp.bean.User;
 import com.hp.service.ChatService;
+import com.hp.service.CreditService;
 import com.hp.service.UserService;
 
 @Controller
@@ -29,6 +33,9 @@ public class ChatController {
 	
 	@Autowired
 	public UserService userService;
+	
+	@Autowired
+	public CreditService creditService;
 	
 	//学生消息中心页面跳转--收件箱
 	@RequestMapping("/stuMessageCenter")
@@ -41,9 +48,9 @@ public class ChatController {
 	//查询收件箱消息列表
 	@ResponseBody
 	@RequestMapping("/queryAllReceiveInfoByuId")
-	public List<Chat> queryAllReceiveInfoByuId(HttpServletRequest httpServletRequest,Chat chat,@RequestParam(required = true,value = "uId") Integer uId2) {
-		System.out.println("1888");
-		List<Chat> ReceiveInfo = chatService.queryAllReceiveInfoByuId(uId2);
+	public List<Chat> queryAllReceiveInfoByuId(HttpServletRequest httpServletReques,@RequestParam(required = true,value = "uId") Integer uId2) {
+		System.out.println("###查询收件箱消息列表###");
+		List<Chat> ReceiveInfo = chatService.queryAllReceiveInfoByuId(uId2);	
 		System.out.println(uId2);
 		for(Chat text1 : ReceiveInfo) {
 			System.out.println(text1.getChatDate());
@@ -100,19 +107,13 @@ public class ChatController {
 		return modelAndView;
 	}
 	
-	//插入聊天信息
-//	@RequestMapping("/doInsertChatInfo")
-//	public String doInsertChatInfo(Chat chat,HttpSession httpSession) throws ParseException {
-//		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-//        String date=df.format(new Date());// new Date()为获取当前系统时间
-//        Date date1 = df.parse(date);
-//        System.out.println("系统当前时间"+date1);
-//		chat.setChatDate(date1);
-//		
-//		
-////		chatService.insertSelective(chat);
-//		return "redirect: Inbox";
-//	}
+	//回复发件人信息
+	@RequestMapping(value = "/doInsertChatInfo",produces = {"text/html;charset=utf-8"})
+	public String doInsertChatInfo(Chat chat,HttpSession httpSession)  {
+		return "redirect: Inbox";
+	}
+	
+	
 	
 	  //页面跳转--发件箱
 		@RequestMapping("/Inbox")
@@ -125,21 +126,25 @@ public class ChatController {
 		//查询发件箱消息列表
 		@ResponseBody
 		@RequestMapping("/queryAllSendInfoByuId")
-		public List<Chat> queryAllSendInfoByuId(HttpServletRequest httpServletRequest,Chat chat,@RequestParam(required = true,value = "uId") Integer uId2) {
-			System.out.println("查询发件箱消息列表");
-			List<Chat> ReceiveInfo = chatService.queryAllReceiveInfoByuId(uId2);
-			System.out.println(uId2);
-			for(Chat text1 : ReceiveInfo) {
+		public List<Chat> queryAllSendInfoByuId(HttpServletRequest httpServletRequest,@RequestParam(required = true,value = "uId") Integer uId) {
+			System.out.println("***查询发件箱消息列表***");
+			User user=userService.queryStudentByuId(uId);
+			
+			List<Chat> sendInfo = chatService.queryChatListByuId(uId);
+			
+			System.out.println(uId);
+			for(Chat text1 : sendInfo) {
 				String text=text1.getChatText();
 				if(text.length()<=12) {
 					text1.setChatText(text);
-					continue;
-				}
-				String showText=text.substring(0,12);
-				text1.setChatText(showText+"……");
-				
+				}else {
+					String showText=text.substring(0,12);
+					text1.setChatText(showText+"……");
+				}								
+				text1.setUser2(userService.queryStudentByuId(text1.getuId2()));
+				System.out.println(text1.getuId2()+" "+text1.getUser2().getuName());
 			}
-			return ReceiveInfo;
+			return sendInfo;
 		}
 		
 		
@@ -159,6 +164,60 @@ public class ChatController {
 			modelAndView.addObject("mainPage", "chat/showSendInfo.jsp");
 			modelAndView.setViewName("main");
 			return modelAndView;
+		}
+		
+		
+		
+		@ResponseBody
+		@RequestMapping("/docheck")
+		public String docheck(HttpSession session,
+				HttpServletRequest request) {
+			JSONObject json = new JSONObject();
+			String uId2 = request.getParameter("uId");
+			String uEmail = request.getParameter("uEmail");
+			String chatText = request.getParameter("chatText");
+			System.out.println(uId2+" "+uEmail+" "+chatText);
+			if(uId2.equals("") || uId2==null || uEmail.equals("") || uEmail==null || chatText.equals("") || chatText==null) {
+				json.put("result", 1);
+				return json.toString();
+			}
+			Integer uId = Integer.valueOf(uId2);
+			System.out.println("uId:"+uId);
+			User user=userService.queryStudentByuId(uId);
+	        Date date = new Date();
+	        Timestamp timestamp = new Timestamp(date.getTime());
+			if(user.getgNum()==1) {
+				String credit = creditService.queryCreditSum(user.getuId());
+				if (credit==null||credit.equals("")) {
+					credit="0";
+				}
+				int a = Integer.valueOf(credit);
+				System.out.println("积分："+a);
+				if(a<200) {
+					json.put("result", 2);
+					return json.toString();	       
+				}			
+			}
+			
+	        User user1=userService.queryUserByEmail(uEmail);
+	        if(user1==null) {
+				json.put("result", 3);
+				return json.toString();
+	        }else {
+	        	Chat chat=new Chat();
+	        	chat.setuId2(user1.getuId());
+	        	chat.setuId(uId);
+	        	chat.setcSNum(1);
+	        	chat.setChatText(chatText);
+	        	chat.setChatDate(timestamp);
+	        	int row = chatService.insertSelective(chat);
+	        	if(row!=1) {
+	        		json.put("result", 1);
+					return json.toString();
+	        	}
+	        }
+	        json.put("result", 0);
+			return json.toString();
 		}
 	
 	

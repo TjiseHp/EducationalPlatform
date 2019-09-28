@@ -2,6 +2,7 @@ package com.hp.dao;
 import java.util.List;
 import org.apache.ibatis.annotations.Select;
 
+import com.hp.bean.City;
 import com.hp.bean.Credit;
 import com.hp.bean.Recruit;
 import com.hp.bean.User;
@@ -43,4 +44,13 @@ public interface UserDao {
 
 	@Select("select * from e_user where U_ID = #{uId}")
 	User queryTeacherByInfo(Integer uId);
+
+	@Select("select * from e_user where u_Email=#{uEmail}")
+	User queryUserByEmail(String uEmail);
+
+	@Select("select * from e_city")
+	List<City> queryAllCity();
+
+	@Select("select * from e_city where c_num = #{cNum}")
+	City queryAllCityBycNum(Integer cNum);
 }

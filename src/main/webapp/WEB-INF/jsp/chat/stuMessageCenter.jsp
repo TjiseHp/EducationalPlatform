@@ -195,9 +195,14 @@
 		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doCreate();" >
 			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新建信息
 		</a>
+		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doSend();">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发件箱
+		</a>
 	</div>
+	<!-- 
 	<div id="toolbar" class="btn-group">
 		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doSend();">
 			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发件箱
 		</a>
 	</div>
+	 -->

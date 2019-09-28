@@ -23,7 +23,7 @@
 			    <result column="U_ACC" jdbcType="VARCHAR" property="uAcc" />
 			    <result column="U_PWD" jdbcType="VARCHAR" property="uPwd" />
 		    </collection>
-		     <collection property="user2" ofType="com.hp.bean.User">
+		     <collection property="user2" ofType="com.hp.bean.User" >
 		    	<id column="U_ID" jdbcType="INTEGER" property="uId" />
 			    <result column="G_NUM" jdbcType="INTEGER" property="gNum" />
 			    <result column="CHECK_NUM" jdbcType="INTEGER" property="checkNum" />
@@ -46,7 +46,17 @@
 			     on c.u_id=u1.u_id
 			   left join e_user u2
 			      on c.u_id2=u2.u_id
-			  where  u2.u_id = #{uId}
+			  where  u2.u_id = #{uId2}
+			   order by c.c_s_num
+	 </select>
+	 
+	 <select id="queryAllSendInfoByuId" resultMap="BaseResultMap">
+	       select * from e_chat c
+			  left join e_user u1 
+			     on c.u_id=u1.u_id
+			   left join e_user u2
+			      on c.u_id2=u2.u_id
+			  where  u1.u_id = #{uId}
 	 </select>
 	 
 	 <select id="selectByPrimaryKey" resultMap="BaseResultMap">

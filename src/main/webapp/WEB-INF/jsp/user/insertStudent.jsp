@@ -24,10 +24,77 @@
 	}
 </script>
 
+<script type="text/javascript">
+
+		$(".sex").change(function() {
+		    var val = $('input:radio[name="uSex"]:checked').val();
+		    console.log(val);
+		    if(val == "男") {
+		        return "男";
+		    } else if(val == "女") {
+		        return "女";
+		    }
+		})
+		
+		
+		
+		$(function(){
+			$.ajax({
+				   type:"post",
+				   url:"${pageContext.request.contextPath}/user/city",
+				   dataType:"json",
+				   success:function(result){
+					   for(var i=0;i<result.length;i++ ){
+						   $("#s1").append("<option value='"+result[i].cNum+"'>"+result[i].cNum+"</option>");
+					   }
+				   }
+			   });
+			
+			$("#s1").change(function(){
+				   $("#s2 option:gt(0)").remove();
+				   var cNum = $("#s1 option:selected").val();
+						$.ajax({
+						type:"post",
+					   url:"${pageContext.request.contextPath}/user/cCity",
+					   data:{"cNum":cNum},
+					   dataType:"json",
+					   success:function(result){
+					   for(var i=0;i<result.length;i++ ){
+							   $("#s2").append("<option value='"+result[i].cCity+"'>"+result[i].cCity+"</option>");
+					   }
+				   }
+				  })
+			})
+		})
+		
+			  /*  $("#s1").change(function(){
+				$("#s2 option:gt(0)").remove();   
+			   var cNum = $("#s1 option:selected").val();
+			   console.log(cNum);
+					$.ajax({
+					type:"post",
+				   url:"${pageContext.request.contextPath}/user/cCity",
+				   data:{"cNum":cNum},
+				   dataType:"json",
+				   success:function(result){
+				   for(var i=0;i<result.length;i++ ){
+						   $("#s2").append("<option value='"+result[i].cCity+"'>"+result[i].cCity+"</option>");
+				   }
+			   }
+			  })
+		}) */
+		 
+			
+
+
+
+</script>
 <div align="center" style="padding-top: 50px;">
 	<form action="${pageContext.request.contextPath}/user/doInsertStudent" method="post" accept-charset="utf-8" onsubmit="return doPost()">
 		<table class="table table-bordered table-striped" style="width: 500px;">
-			
+		<div>
+		<h1>新增信息</h1>
+	    </div>	
 			<tr>
 				<td class="text-right">
 					<strong>姓名:</strong>
@@ -40,10 +107,12 @@
 				<td class="text-right">
 					<strong>性别:</strong>
 				</td>
-				<td class="text-left">
-					<lable><input class="form-control" type="radio" id="uSex1" name="uSex" value = "${user.uSex}">男</lable>
-					<lable><input class="form-control" type="radio" id="uSex2" name="uSex" value = "${user.uSex}">女</lable>			    
-				</td>
+				<td class="text-left"  >
+				    <lable class="sex">
+				    <input id="man" type="radio" value="男" checked="checked" name="uSex" />男   &nbsp;&nbsp;&nbsp;
+				    <input id="woman" type="radio"  value="女" name="uSex"/>女
+				    </lable>
+				</td>				
 			</tr>
 			<tr>
 				<td class="text-right">
@@ -66,7 +135,13 @@
 					<strong>城市:</strong>
 				</td>
 				<td class="text-left">
-					<input class="form-control" type="text" id="cNum" name="cNum" >
+				<!--  	<input class="form-control" type="text" id="cNum" name="cNum" >-->
+					<select style="width: 100px" id="s1">
+				        <option >--请选择--</option>
+				    </select>
+				     <select style="width: 100px" id="s2">
+				        <option >--请选择--</option>
+				    </select>
 				</td>
 			</tr>
 			
@@ -79,61 +154,4 @@
 			</tr>
 		</table>
 	</form>
-	<div>
-		<h1>新增信息</h1>
-	</div>
-	<br />
-	<hr />
-	<br /> <br />
-	<div class="col-md-offset-3">
-		<form action="${pageContext.request.contextPath}/user/doInsertStudent"
-			method="post" accept-charset="utf-8" onsubmit="return doPost()">
-
-			<div class="row form-group">
-				<label class="control-label col-lg-2" for="name">姓名：</label>
-				<div class="col-md-6">
-					<input class="form-control" type="text" id="uName" name="uName"
-						value="${user.uName }">
-				</div>
-			</div>
-			<div class="row form-group">
-				<label class="control-label col-lg-2" for="name">性别：</label>
-				<div class="col-md-6">
-					<input class="form-control" type="text" id="uSex" name="uSex"
-						value="${user.uSex}">
-				</div>
-			</div>
-			<div class="row form-group">
-				<label class="control-label col-lg-2" for="name">手机：</label>
-				<div class="col-md-6">
-					<input class="form-control" type="text" id="uPhone" name="uPhone"
-						value="${user.uPhone}">
-				</div>
-			</div>
-			<div class="row form-group">
-				<label class="control-label col-lg-2" for="name">邮箱：</label>
-				<div class="col-md-6">
-					<input class="form-control" type="text" id="uEmail" name="uEmail"
-						value="${user.uEmail}">
-				</div>
-			</div>
-
-			<div class="row form-group">
-				<label class="control-label col-lg-2" for="name">城市：</label>
-				<div class="col-md-6">
-					<input class="form-control" type="text" id="cNum" name="cNum"
-						value="${user.cNum}">
-				</div>
-			</div>
-
-			<br />
-
-			<div class="col-md-8">
-				<div class="row form-group">
-					<input type="hidden" id=courierNo name="uId" value="${user.uId }" />
-					<input class="btn btn-default" type="submit" value="提交" />
-				</div>
-			</div>
-		</form>
-	</div>
 </div>

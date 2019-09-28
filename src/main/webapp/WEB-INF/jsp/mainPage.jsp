@@ -34,9 +34,8 @@
 <br/>
 <a href="${pageContext.request.contextPath}/role/assignTable?roNo=4">权限回调</a>
 <br/>
-<<<<<<< HEAD
 <a href="${pageContext.request.contextPath}/chat/stuMessageCenter">学生消息中心</a>
-=======
+<br/>
 <a href="${pageContext.request.contextPath}/role/roleTable">角色列表</a>
 <br/>
 <a href="${pageContext.request.contextPath}/exchange/exchangeTable2">积分比例</a>
@@ -44,9 +43,8 @@
 <a href="${pageContext.request.contextPath}/group/groupTable">角色组列表</a>
 <br/>
 <a href="${pageContext.request.contextPath}/chat/stuMessageCenter?uId=${loginUser.uId}">学生消息中心</a>
->>>>>>> branch 'master' of https://github.com/TjiseHp/EducationalPlatform.git
 <br/>
-<a href="${pageContext.request.contextPath}/alipay/payMenu">支付测试</a><br/>
+<a href="${pageContext.request.contextPath}/alipay/payMenu">支付测试</a>
 <br/>
 <a href="${pageContext.request.contextPath}/file/fileList">审核列表</a>
 <br/>
