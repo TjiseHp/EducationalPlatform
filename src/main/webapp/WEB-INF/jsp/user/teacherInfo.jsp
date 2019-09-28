@@ -257,7 +257,7 @@ margin-left: auto;
 margin-right: auto;
 max-width: 500px;
 background: #D2E9FF;
-padding: 20px 20px 20px 90px;
+padding: 20px 20px 20px 60px;
 font: 12px Arial, Helvetica, sans-serif;
 color: #666;
 }
@@ -285,5 +285,8 @@ font-weight: bold;
 }
 .spanstyle{
 	padding-top:7px;
+	text-align:left;
+	font-weight: normal;
 }
+
 </style>
