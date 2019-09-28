@@ -1,9 +1,9 @@
 package com.hp.bean;
 
-public class CheckKey {
+public class Check {
     private Integer checkNum;
 
-    private Integer cStatus;
+    private String cStatus;
 
     public Integer getCheckNum() {
         return checkNum;
@@ -13,11 +13,11 @@ public class CheckKey {
         this.checkNum = checkNum;
     }
 
-    public Integer getcStatus() {
+    public String getcStatus() {
         return cStatus;
     }
 
-    public void setcStatus(Integer cStatus) {
-        this.cStatus = cStatus;
+    public void setcStatus(String cStatus) {
+        this.cStatus = cStatus == null ? null : cStatus.trim();
     }
 }

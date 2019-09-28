@@ -133,7 +133,7 @@ public class FileController {
 		check_list2.setuId2(check_list.getuId2());
 		fileService.updateByPrimaryKeySelective(check_list2);
 		User user = userService.queryTeacherByuId(check_list2.getuId2());
-		user.setcStatus(2);
+		user.setCheckNum(2);
 		userService.updateByPrimaryKeySelective(user);
 		JSONObject json = new JSONObject();
 		if (check_list2.getListName()!=null) {
@@ -155,8 +155,8 @@ public class FileController {
 		System.out.println(check_list2.getuId2());
 		fileService.updateByPrimaryKeySelective(check_list2);
 		User user = userService.queryTeacherByuId(check_list2.getuId2());
-		user.setcStatus(1);
-		System.out.println(user.getuName()+user.getuId()+" wdnmd "+user.getcStatus());
+		user.setCheckNum(1);
+		System.out.println(user.getuName()+user.getuId()+" wdnmd "+user.getCheckNum());
 		userService.updateByPrimaryKeySelective(user);
 		JSONObject json = new JSONObject();
 		if (check_list2.getListName()!=null) {

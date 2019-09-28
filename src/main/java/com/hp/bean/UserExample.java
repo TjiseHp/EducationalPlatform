@@ -284,66 +284,6 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andCStatusIsNull() {
-            addCriterion("C_STATUS is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCStatusIsNotNull() {
-            addCriterion("C_STATUS is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCStatusEqualTo(Integer value) {
-            addCriterion("C_STATUS =", value, "cStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andCStatusNotEqualTo(Integer value) {
-            addCriterion("C_STATUS <>", value, "cStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andCStatusGreaterThan(Integer value) {
-            addCriterion("C_STATUS >", value, "cStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andCStatusGreaterThanOrEqualTo(Integer value) {
-            addCriterion("C_STATUS >=", value, "cStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andCStatusLessThan(Integer value) {
-            addCriterion("C_STATUS <", value, "cStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andCStatusLessThanOrEqualTo(Integer value) {
-            addCriterion("C_STATUS <=", value, "cStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andCStatusIn(List<Integer> values) {
-            addCriterion("C_STATUS in", values, "cStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andCStatusNotIn(List<Integer> values) {
-            addCriterion("C_STATUS not in", values, "cStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andCStatusBetween(Integer value1, Integer value2) {
-            addCriterion("C_STATUS between", value1, value2, "cStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andCStatusNotBetween(Integer value1, Integer value2) {
-            addCriterion("C_STATUS not between", value1, value2, "cStatus");
-            return (Criteria) this;
-        }
-
         public Criteria andCNumIsNull() {
             addCriterion("C_NUM is null");
             return (Criteria) this;

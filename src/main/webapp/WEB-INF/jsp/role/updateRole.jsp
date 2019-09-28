@@ -68,27 +68,7 @@
 	<div class="col-md-offset-0">
 	<div class="elegant-aero">
 	<form action="${pageContext.request.contextPath}/role/doUpdateRole" method="post" accept-charset="utf-8" onsubmit="return doUpdate()">
-
-		<table class="table table-bordered table-striped" style="width: 500px;" >
 	
-			<tr>
-				<td class="text-right">
-					<strong>角色名称:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="roName" name="roName" value = "${role.roName}">
-				</td>
-			</tr>
-			<tr>
-				<td class="text-right">
-					<strong>注释:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="roText" name="roText" value = "${role.roText}">
-				</td>
-			</tr>
-
-		
 		<div class="row form-group">
 		<label class="control-label col-lg-3" for="name"><span>角色名称：</span></label>
 			<div class="col-md-7">
@@ -99,7 +79,7 @@
 		<div class="row form-group">
 		<label class="control-label col-lg-3" for="name"><span>注释：</span></label>
 			<div class="col-md-7">
-			<input class="form-control" type="text" id="roleText" name="roleText" value = "${role.roText}">
+			<input class="form-control" type="text" id="roText" name="roText" value = "${role.roText}">
 			</div>
 		</div>
 		
@@ -107,7 +87,7 @@
 
 		<div class="row form-group">
 			<input type="hidden" id=courierNo name="roNo" value="${role.roNo }" />
-			<input class="btn btn-default" type="submit" value="提交"/>
+			<input class="btn btn-danger" type="submit" value="提交"/>
 		</div>
 
 			
@@ -115,6 +95,7 @@
 	</div>
 	</div>
 </div>
+
 <style type="text/css">
 input[type=radio] {
 margin-right: 5px;

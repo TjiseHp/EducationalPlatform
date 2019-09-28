@@ -29,7 +29,7 @@
 	<hr />
 	<br /> <br />
 	<form >
-		<table class="table table-bordered table-striped elegant-aero" style="width: 500px;" >
+		<table class="table elegant-aero" style="width: 500px;" >
 				
 		    <tr>
 				<td class="text-right">
@@ -113,5 +113,10 @@ background: #D2E9FF;
 padding: 20px 20px 20px 20px;
 font: 12px Arial, Helvetica, sans-serif;
 color: #666;
+}
+td{border: 1px solid transparent !important;}
+.layui-card.layui-demo-maincard{
+	width:auto;
+	height:auto;
 }
 </style>
