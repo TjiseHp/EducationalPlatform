@@ -10,7 +10,7 @@
 			style="width: 500px; margin-top: 100px; text-align: center;">
 			<tr>
 				<td colspan="2">
-					<strong>支付成功ヽ(✿ﾟ▽ﾟ)ノ</strong>
+					<strong>（づ￣3￣）づ╭❤～支付成功ヽ(✿ﾟ▽ﾟ)ノ</strong>
 				</td>
 			</tr>
 			<tr>
