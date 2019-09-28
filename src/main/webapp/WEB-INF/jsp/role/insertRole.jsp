@@ -86,7 +86,7 @@
 		
 		<div class="row form-group">
 			<input type="hidden" id=courierNo name="roNo" value="${role.roNo }" />
-			<input class="btn btn-default" type="submit" value="提交"/>
+			<input class="btn btn-danger" type="submit" value="提交"/>
 		</div>
 		
 	</form>
