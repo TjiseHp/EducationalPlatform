@@ -45,6 +45,7 @@
     </javaClientGenerator>
 	
 	<!-- 指定每个表的生成策略 -->
+	<!-- 
 	<table tableName="e_group" 			domainObjectName="Group"></table>	
 	<table tableName="e_appraise" 		domainObjectName="Appraise"></table>	
 	<table tableName="e_chat" 			domainObjectName="Chat"></table>		
@@ -62,7 +63,9 @@
 	<table tableName="e_role" 			domainObjectName="Role"></table>
 	<table tableName="e_user" 			domainObjectName="User"></table>
 	<table tableName="e_menu" 			domainObjectName="Menu"></table>
-	
+	-->
+	<table tableName="e_user" 			domainObjectName="User"></table>
+	<table tableName="e_check" 			domainObjectName="Check"></table>	
 	
 	<!--  
     <table 	schema="DB2ADMIN" 

@@ -1,7 +1,7 @@
 package com.hp.dao;
 
+import com.hp.bean.Check;
 import com.hp.bean.CheckExample;
-import com.hp.bean.CheckKey;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -10,15 +10,21 @@ public interface CheckMapper {
 
     int deleteByExample(CheckExample example);
 
-    int deleteByPrimaryKey(CheckKey key);
+    int deleteByPrimaryKey(Integer checkNum);
 
-    int insert(CheckKey record);
+    int insert(Check record);
 
-    int insertSelective(CheckKey record);
+    int insertSelective(Check record);
 
-    List<CheckKey> selectByExample(CheckExample example);
+    List<Check> selectByExample(CheckExample example);
 
-    int updateByExampleSelective(@Param("record") CheckKey record, @Param("example") CheckExample example);
+    Check selectByPrimaryKey(Integer checkNum);
 
-    int updateByExample(@Param("record") CheckKey record, @Param("example") CheckExample example);
+    int updateByExampleSelective(@Param("record") Check record, @Param("example") CheckExample example);
+
+    int updateByExample(@Param("record") Check record, @Param("example") CheckExample example);
+
+    int updateByPrimaryKeySelective(Check record);
+
+    int updateByPrimaryKey(Check record);
 }
