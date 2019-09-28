@@ -21,7 +21,7 @@
 			<br />
 			<br />
 
-  				<table class="table table-striped table-bordered elegant-aero">
+  				<table class="table elegant-aero">
 	  			<tr class="demo-table-hover">
 	  				<td>详细信息</td>	  								
 	  			</tr>
@@ -44,4 +44,5 @@ padding: 20px 20px 20px 20px;
 font: 12px Arial, Helvetica, sans-serif;
 color: #666;
 }
+td{border: 1px solid transparent !important;}
 </style>
