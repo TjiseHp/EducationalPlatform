@@ -78,13 +78,13 @@
                 <label class="control-label col-lg-3" for="name"><span class="spanstyle">剩余积分：</span></label>
                 <div class="col-md-7">
                 	<label class="form-control" type="text" id="uID" name="uID" value = "${user.credit}"><span>${user.credit}</span>
-                	<a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doCredit('${user.uId}');">积分详情</a>
+                	<a style="margin-left:250px;margin-top: -43px;" class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doCredit('${user.uId}');">积分详情</a>
                 	</label>
                 </div>
             </div>
 			
 			<div class="row form-group">
-                 <div style="padding-right:95px;">
+                 <div style="padding-right:10px;">
                  <a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doUpdate('${user.uId}');">修改个人信息</a>			                                 
                       <a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doUpdateUpwd('${user.uId}');">修改密码</a>			
 				 </div>

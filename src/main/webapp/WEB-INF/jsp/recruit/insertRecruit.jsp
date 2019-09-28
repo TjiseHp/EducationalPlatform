@@ -34,7 +34,8 @@
 	<hr/>
 	<br/>
 	<br/>
-	<div class="col-md-offset-3">
+	<div class="col-md-offset-0">
+	<div class="elegant-aero">
 	<form action="${pageContext.request.contextPath}/recruit/add" method="post" accept-charset="utf-8" onsubmit="return doPost()">
 			
 			<div class="row form-group">
@@ -74,7 +75,9 @@
             		
 	</form>
 	</div>
-<style type="text/css">
+	</div>
+	</div>
+<style>
 input[type=radio] {
 margin-right: 5px;
 cursor: pointer;
@@ -185,5 +188,8 @@ padding-right: 15px;
 margin-top: 10px;
 font-weight: bold;
 }
+.layui-card.layui-demo-maincard{
+	width:auto;
+	height:auto;
+}
 </style>
-</div>
