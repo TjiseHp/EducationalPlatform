@@ -266,4 +266,8 @@ padding-right: 15px;
 margin-top: 10px;
 font-weight: bold;
 }
+.layui-card.layui-demo-maincard{
+	width:auto;
+	height:auto;
+}
 </style>

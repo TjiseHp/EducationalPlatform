@@ -93,7 +93,7 @@
 			<br/>
 			
 				<div class="row form-group">
-					<input class="btn btn-default" type="submit" value="提交" />
+					<input class="btn btn-danger" type="submit" value="提交" />
 				</div>
 			
 		</form>
@@ -210,5 +210,9 @@ text-align: right;
 padding-right: 15px;
 margin-top: 10px;
 font-weight: bold;
+}
+.layui-card.layui-demo-maincard{
+	width:auto;
+	height:auto;
 }
 </style>

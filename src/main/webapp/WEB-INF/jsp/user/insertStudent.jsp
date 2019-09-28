@@ -83,7 +83,7 @@
 
 			<div class="row form-group">
 				<input type="hidden" id=courierNo name="uId" value="${user.uId }" />
-				<input class="btn btn-default" type="submit" value="提交" />
+				<input class="btn btn-danger" type="submit" value="提交" />
 			</div>
 		</form>
 		</div>
@@ -190,5 +190,9 @@ input[type=text] {
 	padding-right: 15px;
 	margin-top: 10px;
 	font-weight: bold;
+}
+.layui-card.layui-demo-maincard{
+	width:auto;
+	height:auto;
 }
 </style>
