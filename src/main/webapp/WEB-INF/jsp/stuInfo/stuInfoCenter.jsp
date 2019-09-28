@@ -28,81 +28,71 @@
 	<br />
 	<hr />
 	<br /> <br />
-	<form >
-		<table class="table elegant-aero" style="width: 500px;" >
+	<div class="col-md-offset-0">
+	<div class="elegant-aero">
+	<form>
+	
+			<div class="row form-group">
+                <label class="control-label col-lg-3" for="name"><span class="spanstyle">账号：</span></label>
+                <div class="col-md-7">
+                	<label class="form-control" type="text" id="uID" name="uID" value = "${user.uAcc}"><span>${user.uAcc}</span></label>
+                </div>
+            </div>
 				
-		    <tr>
-				<td class="text-right">
-					<strong>账号:</strong>
-				</td>
-				<td class="text-left">
-				   <strong>${user.uAcc}</strong>
-					
-				</td>
-			</tr>		
-			<tr>
-				<td class="text-right">
-					<strong>姓名:</strong>
-				</td>
-				<td class="text-left">
-				    <strong>${user.uName }</strong>
-				</td>
-			</tr>
-			<tr>
-				<td class="text-right">
-					<strong>性别:</strong>
-				</td>
-				<td class="text-left">
-				    <strong>${user.uSex}</strong>
-				</td>
-			</tr>
-			<tr>
-				<td class="text-right">
-					<strong>手机:</strong>
-				</td>
-				<td class="text-left">
-				    <strong>${user.uPhone}</strong>
-				</td>
-			</tr>
+			<div class="row form-group">
+                <label class="control-label col-lg-3" for="name"><span class="spanstyle">姓名：</span></label>
+                <div class="col-md-7">
+                	<label class="form-control" type="text" id="uID" name="uID" value = "${user.uName }"><span>${user.uName }</span></label>
+                </div>
+            </div>
+            
+			<div class="row form-group">
+                <label class="control-label col-lg-3" for="name"><span class="spanstyle">性别：</span></label>
+                <div class="col-md-7">
+                	<label class="form-control" type="text" id="uID" name="uID" value = "${user.uSex}"><span>${user.uSex}</span></label>
+                </div>
+            </div>
+            
+			<div class="row form-group">
+                <label class="control-label col-lg-3" for="name"><span class="spanstyle">手机：</span></label>
+                <div class="col-md-7">
+                	<label class="form-control" type="text" id="uID" name="uID" value = "${user.uPhone}"><span>${user.uPhone}</span></label>
+                </div>
+            </div>
+
+			<div class="row form-group">
+                <label class="control-label col-lg-3" for="name"><span class="spanstyle">邮箱：</span></label>
+                <div class="col-md-7">
+                	<label class="form-control" type="text" id="uID" name="uID" value = "${user.uEmail}"><span>${user.uEmail}</span></label>
+                </div>
+            </div>
 			
-			<tr>
-				<td class="text-right">
-					<strong>邮箱:</strong>
-				</td>
-				<td class="text-left">
-				    <strong>${user.uEmail}</strong>
-				</td>
-			</tr>
-			<tr>
-				<td class="text-right">
-					<strong>城市:</strong>
-				</td>
-				<td class="text-left">
-				    <strong>${user.city.cCity}</strong>
-				</td>
-			</tr>
-			<tr>
-				<td class="text-right">
-					<strong>剩余积分:</strong>
-				</td>
-				<td class="text-left">
-				    <strong>${user.credit}</strong>
-       	            <a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doCredit('${user.uId}');">积分详情</a>			                                 				    
-				</td>
-			</tr>			
-			<tr>
-				<td colspan="2" class="text-center">
-                      <a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doUpdate('${user.uId}');">修改个人信息</a>			                                 
+			<div class="row form-group">
+                <label class="control-label col-lg-3" for="name"><span class="spanstyle">城市：</span></label>
+                <div class="col-md-7">
+                	<label class="form-control" type="text" id="uID" name="uID" value = "${user.city.cCity}"><span>${user.city.cCity}</span></label>
+                </div>
+            </div>
+            
+			<div class="row form-group">
+                <label class="control-label col-lg-3" for="name"><span class="spanstyle">剩余积分：</span></label>
+                <div class="col-md-7">
+                	<label class="form-control" type="text" id="uID" name="uID" value = "${user.credit}"><span>${user.credit}</span>
+                	<a style="margin-left:250px;margin-top: -43px;" class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doCredit('${user.uId}');">积分详情</a>
+                	</label>
+                </div>
+            </div>
+			
+			<div class="row form-group">
+                 <div style="padding-right:10px;">
+                 <a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doUpdate('${user.uId}');">修改个人信息</a>			                                 
                       <a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doUpdateUpwd('${user.uId}');">修改密码</a>			
-                </td>
-			</tr>
-			
-			
-		</table>
-		
-		
-		
+				 </div>
+			</div>
+
 	</form>
+  	</div>
+  	</div>
   	</div>
 <style>
 .elegant-aero {
@@ -114,9 +104,49 @@ padding: 20px 20px 20px 20px;
 font: 12px Arial, Helvetica, sans-serif;
 color: #666;
 }
+.elegant-aero label>span {
+float: left;
+color: #5E5E5E;
+}
+
+.elegant-aero label {
+display: block;
+margin: 0px 0px 5px;
+}
+
+.elegant-aero label>span {
+float: left;
+width: 100%;
+text-align: left;
+padding-right: 15px;
+font-weight: bold;
+}
+.layui-card.layui-demo-maincard{
+	width:auto;
+	height:auto;
+}
+.spanstyle{
+	padding-top:7px;
+	text-align:left;
+	font-weight: normal;
+}
 td{border: 1px solid transparent !important;}
 .layui-card.layui-demo-maincard{
 	width:auto;
 	height:auto;
+}
+
+.title1 {
+
+background: #EEE url(data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAAHklEQVQImWNkYGBgYGD4//8/A5wF5SBYyAr+//8PAPOCFO0Q2zq7AAAAAElFTkSuQmCC) repeat;
+
+text-shadow: 3px -3px black, 2px -2px white;
+
+font-weight: bold;
+
+-webkit-text-fill-color: transparent;
+
+-webkit-background-clip: text;
+
 }
 </style>

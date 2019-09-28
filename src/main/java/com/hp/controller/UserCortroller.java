@@ -287,7 +287,7 @@ public class UserCortroller  {
 		modelAndView.addObject("user",user);
 		modelAndView.addObject("mainPage", "user/updateTeacherInfo.jsp");
 		modelAndView.setViewName("main");
-		System.out.println("456");
+		System.out.println("进入教师个人中心");
 		return modelAndView;
 	}
 
