@@ -68,7 +68,7 @@
 			<div class="row form-group">
 				<input type="hidden" id=uId name="uId" value="${recruit.uId }"/>
 				<input class="form-control" type="hidden" id="uId2" name="uId2" value="${recruit.uId2 }">
-				<input class="btn btn-default" type="submit" value="提交"/>
+				<input class="btn btn-danger" type="submit" value="提交"/>
 			
 			</div>
 

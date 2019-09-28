@@ -8,7 +8,7 @@
 	</div>
 	<form name="alipayment" id="alipayment" action="${pageContext.request.contextPath}/alipay/doPay?uId=${loginUser.uId}" method="post" accept-charset="utf-8" onsubmit="return doPay()">
 		<div align="center">
-			<table class="table table-bordered table-striped elegant-aero"
+			<table class="table elegant-aero"
 				style="width: 500px; margin-top: 100px; text-align: center;">
 				<tr>
 					<td><strong>商户订单号 ：</strong></td>
@@ -88,4 +88,5 @@ padding: 20px 20px 20px 20px;
 font: 12px Arial, Helvetica, sans-serif;
 color: #666;
 }
+td{border: 1px solid transparent !important;}
 </style>

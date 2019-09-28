@@ -69,12 +69,12 @@
             
             <div class="row form-group">
             		<input class="form-control" type="hidden" id="uId" name="uId" value="">
-					<input class="btn btn-default" type="submit" value="提交"/>
+					<input class="btn btn-danger" type="submit" value="提交"/>
             </div>
             		
 	</form>
 	</div>
-	<style type="text/css">
+<style type="text/css">
 input[type=radio] {
 margin-right: 5px;
 cursor: pointer;
