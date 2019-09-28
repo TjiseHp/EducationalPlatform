@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hp.dao.CheckMapper">
-  <resultMap id="BaseResultMap" type="com.hp.bean.CheckKey">
+  <resultMap id="BaseResultMap" type="com.hp.bean.Check">
     <id column="CHECK_NUM" jdbcType="INTEGER" property="checkNum" />
-    <id column="C_STATUS" jdbcType="INTEGER" property="cStatus" />
+    <result column="C_STATUS" jdbcType="VARCHAR" property="cStatus" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -80,10 +80,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="com.hp.bean.CheckKey">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from e_check
+    where CHECK_NUM = #{checkNum,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from e_check
     where CHECK_NUM = #{checkNum,jdbcType=INTEGER}
-      and C_STATUS = #{cStatus,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.hp.bean.CheckExample">
     delete from e_check
@@ -91,11 +96,11 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.hp.bean.CheckKey">
+  <insert id="insert" parameterType="com.hp.bean.Check">
     insert into e_check (CHECK_NUM, C_STATUS)
-    values (#{checkNum,jdbcType=INTEGER}, #{cStatus,jdbcType=INTEGER})
+    values (#{checkNum,jdbcType=INTEGER}, #{cStatus,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.hp.bean.CheckKey">
+  <insert id="insertSelective" parameterType="com.hp.bean.Check">
     insert into e_check
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="checkNum != null">
@@ -110,7 +115,7 @@
         #{checkNum,jdbcType=INTEGER},
       </if>
       <if test="cStatus != null">
-        #{cStatus,jdbcType=INTEGER},
+        #{cStatus,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -127,7 +132,7 @@
         CHECK_NUM = #{record.checkNum,jdbcType=INTEGER},
       </if>
       <if test="record.cStatus != null">
-        C_STATUS = #{record.cStatus,jdbcType=INTEGER},
+        C_STATUS = #{record.cStatus,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -137,9 +142,23 @@
   <update id="updateByExample" parameterType="map">
     update e_check
     set CHECK_NUM = #{record.checkNum,jdbcType=INTEGER},
-      C_STATUS = #{record.cStatus,jdbcType=INTEGER}
+      C_STATUS = #{record.cStatus,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hp.bean.Check">
+    update e_check
+    <set>
+      <if test="cStatus != null">
+        C_STATUS = #{cStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CHECK_NUM = #{checkNum,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hp.bean.Check">
+    update e_check
+    set C_STATUS = #{cStatus,jdbcType=VARCHAR}
+    where CHECK_NUM = #{checkNum,jdbcType=INTEGER}
   </update>
 </mapper>

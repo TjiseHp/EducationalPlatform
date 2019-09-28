@@ -5,7 +5,6 @@
     <id column="U_ID" jdbcType="INTEGER" property="uId" />
     <result column="G_NUM" jdbcType="INTEGER" property="gNum" />
     <result column="CHECK_NUM" jdbcType="INTEGER" property="checkNum" />
-    <result column="C_STATUS" jdbcType="INTEGER" property="cStatus" />
     <result column="C_NUM" jdbcType="INTEGER" property="cNum" />
     <result column="CLASS_NUM" jdbcType="INTEGER" property="classNum" />
     <result column="U_EXP" jdbcType="INTEGER" property="uExp" />
@@ -75,8 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    U_ID, G_NUM, CHECK_NUM, C_STATUS, C_NUM, CLASS_NUM, U_EXP, U_NAME, U_SEX, U_PHONE, 
-    U_EMAIL, U_ACC, U_PWD
+    U_ID, G_NUM, CHECK_NUM, C_NUM, CLASS_NUM, U_EXP, U_NAME, U_SEX, U_PHONE, U_EMAIL, 
+    U_ACC, U_PWD
   </sql>
   <select id="selectByExample" parameterType="com.hp.bean.UserExample" resultMap="BaseResultMap">
     select
@@ -110,15 +109,13 @@
   </delete>
   <insert id="insert" parameterType="com.hp.bean.User">
     insert into e_user (U_ID, G_NUM, CHECK_NUM, 
-      C_STATUS, C_NUM, CLASS_NUM, 
-      U_EXP, U_NAME, U_SEX, 
-      U_PHONE, U_EMAIL, U_ACC, 
-      U_PWD)
+      C_NUM, CLASS_NUM, U_EXP, 
+      U_NAME, U_SEX, U_PHONE, 
+      U_EMAIL, U_ACC, U_PWD)
     values (#{uId,jdbcType=INTEGER}, #{gNum,jdbcType=INTEGER}, #{checkNum,jdbcType=INTEGER}, 
-      #{cStatus,jdbcType=INTEGER}, #{cNum,jdbcType=INTEGER}, #{classNum,jdbcType=INTEGER}, 
-      #{uExp,jdbcType=INTEGER}, #{uName,jdbcType=VARCHAR}, #{uSex,jdbcType=VARCHAR}, 
-      #{uPhone,jdbcType=VARCHAR}, #{uEmail,jdbcType=VARCHAR}, #{uAcc,jdbcType=VARCHAR}, 
-      #{uPwd,jdbcType=VARCHAR})
+      #{cNum,jdbcType=INTEGER}, #{classNum,jdbcType=INTEGER}, #{uExp,jdbcType=INTEGER}, 
+      #{uName,jdbcType=VARCHAR}, #{uSex,jdbcType=VARCHAR}, #{uPhone,jdbcType=VARCHAR}, 
+      #{uEmail,jdbcType=VARCHAR}, #{uAcc,jdbcType=VARCHAR}, #{uPwd,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hp.bean.User">
     insert into e_user
@@ -131,9 +128,6 @@
       </if>
       <if test="checkNum != null">
         CHECK_NUM,
-      </if>
-      <if test="cStatus != null">
-        C_STATUS,
       </if>
       <if test="cNum != null">
         C_NUM,
@@ -172,9 +166,6 @@
       </if>
       <if test="checkNum != null">
         #{checkNum,jdbcType=INTEGER},
-      </if>
-      <if test="cStatus != null">
-        #{cStatus,jdbcType=INTEGER},
       </if>
       <if test="cNum != null">
         #{cNum,jdbcType=INTEGER},
@@ -223,9 +214,6 @@
       <if test="record.checkNum != null">
         CHECK_NUM = #{record.checkNum,jdbcType=INTEGER},
       </if>
-      <if test="record.cStatus != null">
-        C_STATUS = #{record.cStatus,jdbcType=INTEGER},
-      </if>
       <if test="record.cNum != null">
         C_NUM = #{record.cNum,jdbcType=INTEGER},
       </if>
@@ -263,7 +251,6 @@
     set U_ID = #{record.uId,jdbcType=INTEGER},
       G_NUM = #{record.gNum,jdbcType=INTEGER},
       CHECK_NUM = #{record.checkNum,jdbcType=INTEGER},
-      C_STATUS = #{record.cStatus,jdbcType=INTEGER},
       C_NUM = #{record.cNum,jdbcType=INTEGER},
       CLASS_NUM = #{record.classNum,jdbcType=INTEGER},
       U_EXP = #{record.uExp,jdbcType=INTEGER},
@@ -285,9 +272,6 @@
       </if>
       <if test="checkNum != null">
         CHECK_NUM = #{checkNum,jdbcType=INTEGER},
-      </if>
-      <if test="cStatus != null">
-        C_STATUS = #{cStatus,jdbcType=INTEGER},
       </if>
       <if test="cNum != null">
         C_NUM = #{cNum,jdbcType=INTEGER},
@@ -323,7 +307,6 @@
     update e_user
     set G_NUM = #{gNum,jdbcType=INTEGER},
       CHECK_NUM = #{checkNum,jdbcType=INTEGER},
-      C_STATUS = #{cStatus,jdbcType=INTEGER},
       C_NUM = #{cNum,jdbcType=INTEGER},
       CLASS_NUM = #{classNum,jdbcType=INTEGER},
       U_EXP = #{uExp,jdbcType=INTEGER},
