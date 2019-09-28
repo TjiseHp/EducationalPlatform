@@ -49,7 +49,7 @@ public class FileController {
 	}
 	
 	//IO流上传测试功能
-	@ResponseBody
+//	@ResponseBody
 	@RequestMapping(value="/upload",method=RequestMethod.POST)
     public String upload(
     		MultipartFile file,
@@ -75,7 +75,8 @@ public class FileController {
         check_list.setListSTime(timestamp);
         int row = fileService.insertSelective(check_list);
         System.out.println("insert  "+row);
-        return fileName2;
+//        return fileName2;'
+        return "redirect: ../user/teacherReturn";
     }  
 	
 	//文件列表跳转

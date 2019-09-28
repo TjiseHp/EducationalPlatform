@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.hp.bean.Check;
 import com.hp.bean.City;
 import com.hp.bean.Group;
 import com.hp.bean.Role;
 import com.hp.bean.User;
+import com.hp.service.CheckService;
 import com.hp.service.CityService;
 import com.hp.service.ClassService;
 import com.hp.service.CreditService;
@@ -49,6 +51,9 @@ public class UserCortroller  {
 	
 	@Autowired
 	public RoleService roleService;
+	
+	@Autowired
+	public CheckService checkService;
 	
 	//查询全部学生(会员)列表,包含积分总和
 	@ResponseBody
@@ -257,6 +262,11 @@ public class UserCortroller  {
 				user.setGroup(group);
 			}
 		}
+		
+		Check check = checkService.queryCheckBycheckNum(user.getCheckNum());
+		 if(check != null) {
+			 user.setCheck(check);
+		 }
 		
 		modelAndView.addObject("httpSession",httpSession);
 		modelAndView.addObject("user",user);

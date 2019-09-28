@@ -51,7 +51,6 @@
 	<br />
 	<hr />
 	<br /> <br />
-	<form >
 		<table class="table elegant-aero" style="width: 500px;" >
 
 			<tr>
@@ -80,17 +79,16 @@
 					<strong>状态:</strong>
 				</td>
 				<td class="text-left">
-
-			      <script type="text/javascript">
-			      var exp = null;
-			      if (isNull(exp))
-			      {
-			      alert("请认证");
-			      }
-                   </script>
-
-					
-									
+				<c:if test="${user.check.cStatus=='未审核'}">
+					<form action="${pageContext.request.contextPath}/file/upload?uId=${loginUser.uId}" method="post" enctype="multipart/form-data" onsubmit="return doCheck()">
+						<input class="btn btn-default" type="file" id="file" name="file" width="120px" value="选择文件" accept="image/*">
+						<input class="btn btn-info" type="submit" value="上传">
+					</form>
+				</c:if>
+				<c:if test="${user.check.cStatus=='审核通过'}">
+				<p>${user.check.cStatus}</p>
+				</c:if>
+				
 				</td>
 			</tr>
 			
@@ -108,7 +106,7 @@
 					<strong>学科:</strong>
 				</td>
 				<td class="text-left">
-					<p>${user.role.group.roNo}</p>
+					<p>${user.group.role.roText}</p>
 				</td>
 			</tr>
 			
@@ -166,7 +164,6 @@
 			
 		</table>
 		
-	</form>
   	</div>
 
 <script>
@@ -190,6 +187,20 @@
 	$(function() {
 		updataProgressBar();
 	})
+	
+	
+</script>
+<script type="text/javascript">
+	function doCheck(){
+		var fileName = $("#file").val();
+		if(fileName==""||fileName==null||fileName.length<1){
+			layer.msg("请先选择文件！", {time:2000, icon:5, shift:6}, function(){
+               });
+			return false;
+		}else{
+			return true;
+		}
+	}
 </script>
 <style>
 .elegant-aero {
