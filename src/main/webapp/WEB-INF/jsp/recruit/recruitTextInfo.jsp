@@ -26,7 +26,7 @@
 	  				<td class="threed">详细信息</td>	  								
 	  			</tr>
 	  			<tr>
-	  				<td style="font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;text-align:left;font-size:29px">
+	  				<td style="font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;text-align:left;font-size:20px">
 	  				${recruit.recruitText}
 	  				
 	  				</td>	 
@@ -129,35 +129,5 @@ input[type=text] {
 
         letter-spacing: 0.04em;
 
-}
-.elegant-aero {
-    margin-left:auto;
-	margin-right:auto;
-	max-width: 500px;
-	background: #D2E9FF;
-	padding: 20px 20px 20px 20px;
-	font: 12px Arial, Helvetica, sans-serif;
-	color: #666;
-}
-.elegant-aero label>span {
-	float: left;
-	margin-top: 10px;
-	color: #5E5E5E;
-}
-.elegant-aero label {
-	display: block;
-	margin: 0px 0px 5px;
-}
-.elegant-aero label>span {
-	float: left;
-	width: 100%;
-	text-align: right;
-	padding-right: 15px;
-	margin-top: 10px;
-	font-weight: bold;
-}
-.layui-card.layui-demo-maincard{
-	width:auto;
-	height:auto;
 }
 </style>
