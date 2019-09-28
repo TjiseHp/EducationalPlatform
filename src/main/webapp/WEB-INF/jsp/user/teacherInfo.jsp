@@ -108,7 +108,7 @@
 					<strong>学科:</strong>
 				</td>
 				<td class="text-left">
-					<p>${user.classNum}</p>
+					<p>${user.role.group.roNo}</p>
 				</td>
 			</tr>
 			

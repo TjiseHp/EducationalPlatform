@@ -5,6 +5,47 @@
     		%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<style type="text/css">
+        .password{
+            position: relative;
+            width: 280px;
+            height: 60px;
+        }
+        .password,.n-txtCss{
+            display: flex;
+            align-items: center;
+        }
+        .password .fa{
+            position: absolute;
+            right: 10px;
+            top:15px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+         .fa-eye-slash{
+            margin-top: 6px;
+            margin-left: 7px;
+            width: 24px;
+            height: 20px;
+            background-image: url(./vivo_img/login/eye-password.png);
+            background-repeat: no-repeat;
+            background-size: 24px 17px;
+        }
+        .fa-eye{
+            margin-top: 6px;
+            width: 24px;
+            margin-left: 7px;
+            height: 20px;
+            background-image: url(./vivo_img/login/eye-password-active.png);
+            background-repeat: no-repeat;
+            background-size: 24px 17px;
+
+        }
+
+    </style>
+
+
 
 <script type="text/javascript">
 	
@@ -135,14 +176,14 @@
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span>修改密码：</span></label>
                 <div class="col-md-7">
-					<input class="form-control" type="text" id="uPwd" name="uPwd" value = "${user.uPwd}">
+					<input class="form-control" type="password" id="uPwd" name="uPwd"   placeholder="设置密码：8-16位字母和数字"  maxlength="16"  style="outline: none;" value = "${user.uPwd}">
                 </div>
             </div>
             
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span>确认密码：</span></label>
                 <div class="col-md-7">
-					<input class="form-control" type="text" id="uPwd" name="uPwd" value = "">
+					<input class="form-control" type="password" id="uPwd" name="uPwd"  value = "">
                 </div>
             </div>
 
@@ -151,6 +192,18 @@
 				<button type="button" class="btn btn-danger" onclick="doUpdate()">提交</button>
 	        </div>
 			
+			<script type="text/javascript">
+    $(".password").on("click", ".fa-eye-slash", function () {
+        $(this).removeClass("fa-eye-slash").addClass("fa-eye");
+        $(this).prev().attr("type", "text");
+    });
+     
+    $(".password").on("click", ".fa-eye", function () {
+        $(this).removeClass("fa-eye").addClass("fa-eye-slash");
+        $(this).prev().attr("type", "password");
+    });
+</script>
+
 	</form>
 	</div>
 	</div>
