@@ -6,11 +6,11 @@
 </div>
 <div class="text-center" align="center">
 	<c:if test="${result==true}">
-		<table class="table table-bordered table-striped"
+		<table class="table elegant-aero"
 			style="width: 500px; margin-top: 100px; text-align: center;">
 			<tr>
 				<td colspan="2">
-					<strong>支付成功</strong>
+					<strong>支付成功ヽ(✿ﾟ▽ﾟ)ノ</strong>
 				</td>
 			</tr>
 			<tr>
@@ -84,4 +84,14 @@
     line-height: 50px;
     margin-bottom: 50px;
 }
+.elegant-aero {
+margin-left: auto;
+margin-right: auto;
+max-width: 500px;
+background: #D2E9FF;
+padding: 20px 20px 20px 20px;
+font: 12px Arial, Helvetica, sans-serif;
+color: #666;
+}
+td{border: 1px solid transparent !important;}
 </style>
