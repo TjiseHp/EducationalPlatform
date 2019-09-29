@@ -3,24 +3,101 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <script type="text/javascript">
+
+		/* $(".sex").change(function() {
+		    var val = $('input:radio[name="uSex"]:checked').val();
+		    console.log(val);
+		    if(val == 0) {
+		        return "男";
+		    } else if(val == 1) {
+		        return "女";
+		    }
+		}) */
+		
+		
+		
+		$(function(){
+			$.ajax({
+				   type:"post",
+				   url:"${pageContext.request.contextPath}/user/cProvince",
+				   dataType:"json",
+				   success:function(result){
+					   for(var i=0;i<result.length;i++ ){
+						   $("#s1").append("<option value='"+result[i].cProvince+"'>"+result[i].cProvince+"</option>");
+					   }
+				   }
+			   });
+			
+			 $("#s1").change(function(){
+				   $("#s2 option:gt(0)").remove();
+				   var cProvince = $("#s1 option:selected").val();
+						$.ajax({
+						type:"post",
+					   url:"${pageContext.request.contextPath}/user/cCity",
+					   data:{"cProvince":cProvince},
+					   dataType:"json",
+					   success:function(result){
+					   for(var i=0;i<result.length;i++ ){
+							   $("#s2").append("<option value='"+result[i].cNum+"'>"+result[i].cCity+"</option>");
+					   }
+				   }
+				  })
+			})  
+		})
+
+</script>
+<script type="text/javascript">
 	function doPost() {
 		var uName = $("#uName").val();
 		var uPhone = $("#uPhone").val();
 		var uEmail = $("#uEmail").val();
-		var uSex = $("#uSex").val();
-		var cNum = $("#cNum").val();
-		var classNum = $("#classNum").val();
-
-		if (uName == "" || uPhone == "" || uEmail == "" || uSex == "") {
-			layer.msg("内容不能为空", {
+		var uSex = $('input:radio[name="uSex"]:checked').val();
+		var cNum = $("#s2").val();
+		if (uName == "" || uPhone == "" || uEmail == "") {
+			layer.msg("不能为空", {
 				time : 2000,
 				icon : 5,
 				shift : 6
 			});
 			return false;
-		} else {
-			return true;
-		}
+		} 
+		console.info(uName+" "+cNum+" "+uSex+" "+uPhone);
+	
+		var loadingIndex = null;
+		$.ajax({
+        	type : "POST",
+        	url  : "${pageContext.request.contextPath}/user/docheckAndinsert",
+        	data : {
+        		"uName" : uName,
+        	    "uPhone" : uPhone,
+        		"uEmail" :uEmail,
+        		"uSex" : uSex,
+        		"cNum" : cNum
+        	},
+        	beforeSend : function(){
+        		loadingIndex = layer.msg('处理中', {icon: 16});
+        	},
+        	success : function(result) {
+        		layer.close(loadingIndex);
+        		var resObj = JSON.parse(result);
+        		console.info(resObj);
+        		console.info(resObj.result);
+        		if (resObj.result==1) {   
+					layer.msg("ok", {time:2000, icon:6, shift:6}, function(){
+    	        	window.location.href = "${pageContext.request.contextPath}/user/studentTable2";
+                    });
+        		} else {
+        			layer.msg("插入失败", {time:2000, icon:5, shift:6}, function(){
+                        
+                    });               
+        		}
+        	},
+        	error : function(err){
+        		layer.msg("系统错误", {time:2000, icon:5, shift:6}, function(){
+                    
+                });
+        	}
+        });
 
 	}
 </script>
@@ -40,37 +117,31 @@
 			<div class="row form-group">
 				<label class="control-label col-lg-3" for="name"><span>姓名：</span></label>
 				<div class="col-md-7">
-					<input class="form-control" type="text" id="uName" name="uName"
-						value="${user.uName }">
+					<input class="form-control" type="text" id="uName" name="uName">
 				</div>
 			</div>
 			
 			<div class="row form-group">
 				<label class="control-label col-lg-3" for="name"><span>性别：</span></label>
-				<div class="col-md-7">
-					<div style="padding:5px">
-					<lable class="radio-inline"><input class="form-control" type="radio" id="uSex1" name="uSex" 
-					value="男"><span>男</span></lable>
-					&nbsp;&nbsp;&nbsp;
-					<lable class="radio-inline"><input class="form-control" type="radio" id="uSex2" name="uSex" 
-					value="女"><span>女</span></lable>
-					</div>
-				</div>
+				<div style="padding-right:80px;padding-top:8px;">
+				    <lable class="sex">
+					    <input id="man" type="radio" value="男" checked="checked" name="uSex" />男   &nbsp;&nbsp;&nbsp;
+					    <input id="woman" type="radio"  value="女" name="uSex"/>女
+				    </lable>
+				    </div>
 			</div>
 			
 			<div class="row form-group">
 				<label class="control-label col-lg-3" for="name"><span>手机：</span></label>
 				<div class="col-md-7">
-					<input class="form-control" type="text" id="uPhone" name="uPhone"
-						value="${user.uPhone}">
+					<input class="form-control" type="text" id="uPhone" name="uPhone">
 				</div>
 			</div>
 			
 			<div class="row form-group">
 				<label class="control-label col-lg-3" for="name"><span>邮箱：</span></label>
 				<div class="col-md-7">
-					<input class="form-control" type="text" id="uEmail" name="uEmail"
-						value="${user.uEmail}">
+					<input class="form-control" type="text" id="uEmail" name="uEmail">
 				</div>
 			</div>
 			
@@ -84,16 +155,23 @@
 			
 			<div class="row form-group">
 				<label class="control-label col-lg-3" for="name"><span>城市：</span></label>
-				<div class="col-md-7">
-					<input class="form-control" type="text" id="cNum" name="cNum"
-						value="${user.cNum}">
+				<div class="col-md-7" style="padding-top:9px;">
+					
+					<select style="width: 100px" id="s1">
+				        <option >--请选择--</option>
+				    </select>
+				    <select style="width: 100px" id="s2">
+				        <option >--请选择--</option>
+				    </select> 
+				    
 				</div>
 			</div>
 			
 			<br/>
 			
 				<div class="row form-group">
-					<input class="btn btn-danger" type="submit" value="提交" />
+					<button type="button" class="btn btn-danger" onclick="doPost();">提交</button>
+					<!--  	<input class="btn btn-default" type="submit" value="提交"/>-->
 				</div>
 			
 		</form>
