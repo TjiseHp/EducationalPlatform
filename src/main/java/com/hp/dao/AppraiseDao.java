@@ -10,4 +10,7 @@ public interface AppraiseDao {
 	@Select("select * from e_appraise where u_id = #{uId} and u_id2 = #{uId2}")
 	Appraise queryAppraiseByUid(Appraise appraise);
 
+	//@Select("select * from e_appraise where APPRAISE_NUM = #{appraiseNum}")
+	//Appraise queryAppraiseByUid(Integer uId);
+
 }

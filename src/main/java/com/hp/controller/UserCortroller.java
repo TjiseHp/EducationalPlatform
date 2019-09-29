@@ -17,9 +17,11 @@ import com.github.pagehelper.PageInfo;
 import com.hp.bean.Chat;
 import com.hp.bean.Check;
 import com.hp.bean.City;
+import com.hp.bean.Class;
 import com.hp.bean.Group;
 import com.hp.bean.Role;
 import com.hp.bean.User;
+import com.hp.service.AppraiseService;
 import com.hp.service.CheckService;
 import com.hp.service.CityService;
 import com.hp.service.ClassService;
@@ -58,6 +60,9 @@ public class UserCortroller  {
 	
 	@Autowired
 	public CheckService checkService;
+	
+	@Autowired
+	public AppraiseService appraiseService;
 	
 	//查询全部学生(会员)列表,包含积分总和
 	@ResponseBody
@@ -270,6 +275,13 @@ public class UserCortroller  {
 		HttpSession httpSession = httpServletRequest.getSession();
 		ModelAndView modelAndView = new ModelAndView();
 		User user = userService.queryTeacherByInfo(uId);
+		
+		if(user.getuExp()!=0 && user.getuExp()!=null) {
+			user.setLeave(user.getuExp()/50);
+		}else {
+			user.setLeave(0);
+		}
+		
 		Group group =  groupService.queryGroupBygNum(user.getgNum());
 		if(group!=null) {
 			Role role = roleService.queryRoleByroNo(group.getRoNo());
@@ -283,6 +295,20 @@ public class UserCortroller  {
 		 if(check != null) {
 			 user.setCheck(check);
 		 }
+		 
+		 Class uClass = classService.queryClassByClassNum(user.getClassNum());
+		  if (uClass !=null) {
+			  user.setuClass(uClass);	
+		}
+		  
+		  City city = cityService.queryCityByCnum(user.getcNum());
+		  if (city !=null) {
+			user.setCity(city);
+		}
+		  
+		
+		
+		 
 		
 		modelAndView.addObject("httpSession",httpSession);
 		modelAndView.addObject("user",user);
