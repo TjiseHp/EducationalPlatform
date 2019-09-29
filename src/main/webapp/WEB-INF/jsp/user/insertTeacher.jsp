@@ -84,7 +84,7 @@
         		console.info(resObj.result);
         		if (resObj.result==1) {   
 					layer.msg("ok", {time:2000, icon:6, shift:6}, function(){
-    	        	window.location.href = "${pageContext.request.contextPath}/user/studentTable2";
+    	        	window.location.href = "${pageContext.request.contextPath}/user/teacherTable2";
                     });
         		} else {
         			layer.msg("插入失败", {time:2000, icon:5, shift:6}, function(){
