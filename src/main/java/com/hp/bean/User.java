@@ -34,8 +34,18 @@ public class User {
     private Group group;
     
     private Check check;
+    
+    private int leave;
 
-    public String getCredit() {
+    public int getLeave() {
+		return leave;
+	}
+
+	public void setLeave(int leave) {
+		this.leave = leave;
+	}
+
+	public String getCredit() {
 		return credit;
 	}
 
@@ -170,4 +180,12 @@ public class User {
     public void setuPwd(String uPwd) {
         this.uPwd = uPwd == null ? null : uPwd.trim();
     }
+
+	//public Appraise getAppraise() {
+	//	return appraise;
+	//}
+
+	//public void setAppraise(Appraise appraise) {
+	//	this.appraise = appraise;
+	//}
 }

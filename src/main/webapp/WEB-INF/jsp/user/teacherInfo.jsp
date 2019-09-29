@@ -40,6 +40,10 @@
 		function doUpdate(uId) {		
 			window.location.href = "${pageContext.request.contextPath}/user/updateTeacherInfo?uId="+uId;
 		}
+		
+		function doUpdateUpwd(uId){
+			window.location.href = "${pageContext.request.contextPath}/stuInfo/updateUpwd?uId="+uId;		
+		}
 
 </script>
 
@@ -93,21 +97,21 @@
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span class="spanstyle">城市：</span></label>
                 <div class="col-md-7">
-                	<label class="form-control" type="text" id="cNum" name="cNum" value = "${user.cNum}"><span class="spanstyle">${user.cNum}</span></label>
+                	<label class="form-control" type="text" id="cProvince" name="cProvince" value = ""><span >${user.city.cProvince}&nbsp;${user.city.cCity}</span></label>
                 </div>
             </div>
 			
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span class="spanstyle">学科：</span></label>
                 <div class="col-md-7">
-                	<label class="form-control" type="text" id="classNum" name="classNum" value = "${user.classNum}"><span class="spanstyle">${user.classNum}</span></label>
+                	<label class="form-control" type="text" id="classKind" name="classKind" value = ""><span >${user.uClass.classKind}</span></label>
                 </div>
             </div>
             
 			<div class="row form-group">
-                <label class="control-label col-lg-3" for="name"><span class="spanstyle">经验值：</span></label>
+                <label class="control-label col-lg-3" for="name"><span class="spanstyle">等级：</span></label>
                 <div class="col-md-7">
-                	<label class="form-control" type="text" id="uExp" name="uExp" value = "${user.uExp}"><span>${user.uExp}</span></label>
+                	<label class="form-control" type="text" id="uExp" name="uExp" value = ""><span>${user.leave}</span></label>
                 </div>
             </div>
             
@@ -150,6 +154,7 @@
                  
                  <div style="padding-right:65px;">
                  <a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doUpdate('${user.uId}');">修改个人信息</a>	
+                  <a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doUpdateUpwd('${user.uId}');">修改密码</a>
 				 </div>
 			
 </div>

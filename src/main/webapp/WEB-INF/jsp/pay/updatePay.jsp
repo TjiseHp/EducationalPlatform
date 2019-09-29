@@ -37,20 +37,7 @@
 	<div class="col-md-offset-0">
 	<div class="elegant-aero">
 	<form action="${pageContext.request.contextPath}/pay/doUpdatePay" method="post" accept-charset="utf-8" onsubmit="return doUpdate()">
-		
-			<div class="row form-group">
-                <label class="control-label col-lg-3" for="name"><span>编号：</span></label>
-                <div class="col-md-7">
-                	<input class="form-control" type="text" id="payNum" name="payNum" value = "${pay.payNum }">
-                </div>
-            </div>
-
-			<div class="row form-group">
-                <label class="control-label col-lg-3" for="name"><span>用户ID：</span></label>
-                <div class="col-md-7">
-                	<input class="form-control" type="text" id="uId" name="uId" value = "${pay.uId}">
-                </div>
-            </div>
+	
             
             <div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span>金额：</span></label>

@@ -13,8 +13,11 @@ public class ClassServiceImpl implements ClassService{
 	ClassDao classDao;
 
 	public Class queryAllByClassNum(Integer classNum) {
-		// TODO Auto-generated method stub
 		return classDao.queryAllByClassNum(classNum);
+	}
+
+	public Class queryClassByClassNum(Integer classNum) {
+		return classDao.queryClassByClassNum(classNum);
 	}
 	
 }
