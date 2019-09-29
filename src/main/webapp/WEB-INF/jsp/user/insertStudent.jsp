@@ -101,67 +101,76 @@
 	}
 </script>
 <div align="center" style="padding-top: 50px;">
-	<form action="${pageContext.request.contextPath}/user/doInsertStudent" method="post" accept-charset="utf-8" onsubmit="return doPost()">
-		<table class="table table-bordered table-striped" style="width: 500px;">
+	
+
 		<div>
-		<h1>新增信息</h1>
+		<h1 class="title1">新增信息</h1>
 	    </div>	
-			<tr>
-				<td class="text-right">
-					<strong>姓名:</strong>
-				</td>
-				<td class="text-left">
+	    <br/>
+	    <hr/>
+	    <br/>
+	    <br/>
+	    <div class="col-md-offset-0">
+		<div class="elegant-aero">
+			<form action="${pageContext.request.contextPath}/user/doInsertStudent" method="post" accept-charset="utf-8" onsubmit="return doPost()">
+			
+			<div class="row form-group">
+				<label class="control-label col-lg-3" for="name" ><span>姓名：</span></label>
+				<div class="col-md-7">
 					<input class="form-control" type="text" id="uName" name="uName">
-				</td>
-			</tr>
-			<tr>
-				<td class="text-right">
-					<strong>性别:</strong>
-				</td>
-				<td class="text-left"  >
+				</div>
+			</div>
+	
+			<div class="row form-group">
+				<label class="control-label col-lg-3" for="name" ><span>性别：</span></label>
+				    <div style="padding-right:80px;padding-top:8px;">
 				    <lable class="sex">
-				    <input id="man" type="radio" value="男" checked="checked" name="uSex" />男   &nbsp;&nbsp;&nbsp;
-				    <input id="woman" type="radio"  value="女" name="uSex"/>女
+					    <input id="man" type="radio" value="男" checked="checked" name="uSex" />男   &nbsp;&nbsp;&nbsp;
+					    <input id="woman" type="radio"  value="女" name="uSex"/>女
 				    </lable>
-				</td>				
-			</tr>
-			<tr>
-				<td class="text-right">
-					<strong>手机:</strong>
-				</td>
-				<td class="text-left">
+				    </div>
+			</div>
+			
+			<div class="row form-group">
+				<label class="control-label col-lg-3" for="name" ><span>手机：</span></label>
+				<div class="col-md-7">
 					<input class="form-control" type="text" id="uPhone" name="uPhone">
-				</td>
-			</tr>
-			<tr>
-				<td class="text-right">
-					<strong>邮箱:</strong>
-				</td>
-				<td class="text-left">
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<label class="control-label col-lg-3" for="name" ><span>邮箱：</span></label>
+				<div class="col-md-7">
 					<input class="form-control" type="text" id="uEmail" name="uEmail">
-				</td>
-			</tr>
-			<tr>
-				<td class="text-right">
-					<strong>城市:</strong>
-				</td>
-				<td class="text-left">
+				</div>
+			</div>
+			
+			<div class="row form-group">
+				<label class="control-label col-lg-3" for="name" ><span>城市：</span></label>
+				
+				<div class="col-md-7" style="padding-top:9px;">
+					
 					<select style="width: 100px" id="s1">
 				        <option >--请选择--</option>
 				    </select>
 				    <select style="width: 100px" id="s2">
 				        <option >--请选择--</option>
 				    </select> 
-				</td>
-			</tr>			
-			<tr>
-				<td colspan="2" class="text-center">
-					<button type="button" class="btn btn-danger" onclick="doPost();">提交</button>
+				    
+				</div>
+				
+			</div>
+			
+			<br/>
+
+			<div class="row form-group">
+				<button type="button" class="btn btn-danger" onclick="doPost();">提交</button>
 				<!--  	<input class="btn btn-default" type="submit" value="提交"/>-->
-				</td>
-			</tr>
-		</table>
+			</div>
+			
 	</form>
+	</div>
+	</div>
 </div>
 <style type="text/css">
 input[type=radio] {
