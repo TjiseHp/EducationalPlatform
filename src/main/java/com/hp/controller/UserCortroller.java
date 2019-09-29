@@ -118,10 +118,20 @@ public class UserCortroller  {
 	}
 	
 	//更新学生信息
+	@ResponseBody
 	@RequestMapping(value = "/doUpdateStudent",produces = {"text/html;charset=utf-8"})
 	public String doUpdateStudent(User user,HttpServletRequest httpServletRequest) {
-		userService.updateByPrimaryKeySelective(user);
-		return "redirect: studentTable2";
+		System.out.println("执行修改学生信息");
+		JSONObject json = new JSONObject();     
+	    int row= userService.updateByPrimaryKeySelective(user);
+	    System.out.println(user.getcNum());
+		if(row==1) {
+			json.put("result", true);
+		}
+		else {
+			json.put("result", false);
+		}
+		return json.toString();
 	}
 	
 

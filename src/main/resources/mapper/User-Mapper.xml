@@ -55,7 +55,7 @@
 			     on c.c_num=u.c_num 
 			  left join e_class s
 			     on s.class_num=u.class_num
-			where u.g_num = 2
+			where u.g_num = 2 or u.g_num = 3
 	</select>
 		
 	<select id="queryAllStudent" resultMap="BaseResultMap">

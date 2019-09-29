@@ -2,19 +2,7 @@
 	pageEncoding="UTF-8" deferredSyntaxAllowedAsLiteral="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript">
-
-		/* $(".sex").change(function() {
-		    var val = $('input:radio[name="uSex"]:checked').val();
-		    console.log(val);
-		    if(val == 0) {
-		        return "男";
-		    } else if(val == 1) {
-		        return "女";
-		    }
-		}) */
-		
-		
-		
+	
 		$(function(){
 			$.ajax({
 				   type:"post",

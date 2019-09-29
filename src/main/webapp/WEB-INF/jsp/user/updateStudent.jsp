@@ -2,14 +2,46 @@
 	pageEncoding="UTF-8" deferredSyntaxAllowedAsLiteral="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" import="com.hp.bean.User" %>
-
 <script type="text/javascript">
-	function doUpdate() {
+	
+		$(function(){
+			$.ajax({
+				   type:"post",
+				   url:"${pageContext.request.contextPath}/user/cProvince",
+				   dataType:"json",
+				   success:function(result){
+					   for(var i=0;i<result.length;i++ ){
+						   $("#s1").append("<option value='"+result[i].cProvince+"'>"+result[i].cProvince+"</option>");
+					   }
+				   }
+			   });
+			
+			 $("#s1").change(function(){
+				   $("#s2 option:gt(0)").remove();
+				   var cProvince = $("#s1 option:selected").val();
+						$.ajax({
+						type:"post",
+					   url:"${pageContext.request.contextPath}/user/cCity",
+					   data:{"cProvince":cProvince},
+					   dataType:"json",
+					   success:function(result){
+					   for(var i=0;i<result.length;i++ ){
+							   $("#s2").append("<option value='"+result[i].cNum+"'>"+result[i].cCity+"</option>");
+					   }
+				   }
+				  })
+			})  
+		})
+
+</script>
+<script type="text/javascript">
+	function doPost() {
+		var uId = "${user.uId}";
 		var uName = $("#uName").val();
 		var uPhone = $("#uPhone").val();
 		var uEmail = $("#uEmail").val();
-		var uSex = $("#uSex").val();
-		var cNum = $("#cNum").val();
+		var uSex = $('input:radio[name="uSex"]:checked').val();
+		var cNum = $("#s2").val();
 
 		if (uName == "" || uPhone == "" || uEmail == "" || uSex == "") {
 			layer.msg("内容不能为空", {
@@ -18,9 +50,48 @@
 				shift : 6
 			});
 			return false;
-		} else {
-			return true;
 		}
+		console.info(uName+" "+cNum+" "+uSex+" "+uPhone+" "+uId);
+
+		var loadingIndex = null;
+		$.ajax({
+        	type : "POST",
+        	url  : "${pageContext.request.contextPath}/user/doUpdateStudent",
+        	data : {
+        		"uId" : uId,
+        		"uName" : uName,
+        	    "uPhone" : uPhone,
+        		"uEmail" :uEmail,
+        		"uSex" : uSex,
+        		"cNum" : cNum
+        	},
+        	beforeSend : function(){
+        		loadingIndex = layer.msg('处理中', {icon: 16});
+        	},
+        	success : function(result) {
+        		layer.close(loadingIndex);
+        		var resObj = JSON.parse(result);
+        		console.info(resObj);
+        		console.info(resObj.result);
+        		if (resObj.result) {   
+					layer.msg("ok", {time:2000, icon:6, shift:6}, function(){
+    	        	window.location.href = "${pageContext.request.contextPath}/user/studentTable2";
+                    });
+        		} else {
+        			layer.msg("修改失败", {time:2000, icon:5, shift:6}, function(){
+                        
+                    });               
+        		}
+        	},
+        	error : function(err){
+        		layer.msg("系统错误", {time:2000, icon:5, shift:6}, function(){
+                    
+                });
+        	}
+        });
+		
+		
+		
 
 	}
 </script>
@@ -35,7 +106,7 @@
 	<div class="col-md-offset-0">
 	<div class="elegant-aero">
 		<form action="${pageContext.request.contextPath}/user/doUpdateStudent"
-			method="post" accept-charset="utf-8" onsubmit="return doUpdate()">
+			method="post" accept-charset="utf-8" onsubmit="return doPost()">
 
 			<div class="row form-group">
 				<label class="control-label col-lg-3" for="name"><span>姓名：</span></label>
@@ -49,9 +120,13 @@
 				<label class="control-label col-lg-3" for="name"><span>性别：</span></label>
 				<div class="col-md-7">
 					<div style="padding:5px">
-						<lable class="radio-inline"><input class="form-control" type="radio" id="uSex1" name="uSex" value="${user.uSex}" ${user.uSex=="男"?"checked":""}><span>男</span></lable>
+						<%-- <lable class="radio-inline"><input class="form-control" type="radio" id="uSex1" name="uSex" value="${user.uSex}" ${user.uSex=="男"?"checked":""}><span>男</span></lable>
 						&nbsp;&nbsp;&nbsp;
-						<lable class="radio-inline"><input class="form-control" type="radio" id="uSex2" name="uSex" value="${user.uSex}" ${user.uSex=="女"?"checked":""}><span>女</span></lable>
+						<lable class="radio-inline"><input class="form-control" type="radio" id="uSex2" name="uSex" value="${user.uSex}" ${user.uSex=="女"?"checked":""}><span>女</span></lable> --%>
+					    <lable class="sex">
+						    <input id="man" type="radio" value="男" checked="checked" name="uSex" />男   &nbsp;&nbsp;&nbsp;
+						    <input id="woman" type="radio"  value="女" name="uSex"/>女
+					    </lable>
 					</div>
 				</div>
 			</div>
@@ -75,16 +150,21 @@
 			<div class="row form-group">
 				<label class="control-label col-lg-3" for="name"><span>城市：</span></label>
 				<div class="col-md-7">
-					<input class="form-control" type="text" id="cNum" name="cNum"
-						value="${user.cNum}">
+					<select style="width: 100px" id="s1" >
+				        <option >--请选择--</option>
+				    </select>
+				    <select style="width: 100px" id="s2">
+				        <option >--请选择--</option>
+				    </select> 	
 				</div>
 			</div>
 
 			<br />
 
 			<div class="row form-group">
-				<input type="hidden" id=courierNo name="uId" value="${user.uId }" />
-				<input class="btn btn-danger" type="submit" value="提交" />
+				<%-- <input type="hidden" id=courierNo name="uId" value="${user.uId }" />
+				<input class="btn btn-danger" type="submit" value="提交" /> --%>
+               <button type="button" class="btn btn-danger" onclick="doPost();">提交</button>				
 			</div>
 
 		</form>
