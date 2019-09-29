@@ -10,45 +10,13 @@
 	function doUpdate(){
 		var exchangeNum = $("#exchangeNum").val();
 		var exchangeE = $("#exchangeE").val();
-		console.info(exchangeNum);
-		console.info(exchangeE);
 		
 		if(exchangeNum == ""||exchangeE == ""){
 			layer.msg("内容不能为空", {time:2000, icon:5, shift:6});
-			return;
+			return false;
 		}else{
-			console.info("OK");
+			return true;
 		}
-		
-		var loadingIndex = null;
-		$.ajax({
-        	type : "POST",
-        	url  : "${pageContext.request.contextPath}/exchange/doUpdateExchange",
-        	data : {        		
-        		"exchangeNum" : exchangeNum,
-        		"exchangeE" : exchangeE
-        	},
-        	beforeSend : function(){
-        		loadingIndex = layer.msg('处理中', {icon: 16});
-        	},
-        	success : function(result) {
-        		layer.close(loadingIndex);
-        		var resObj = JSON.parse(result);
-        		console.info(resObj.result);
-        		if (resObj.result) {
-        			
-    	        	window.location.href = "${pageContext.request.contextPath}/exchange/exchangeTable2?exchangeNum="+exchangeNum;
-        			
-        		} else {
-                    layer.msg("用户登录账号或密码不正确，请重新输入", {time:2000, icon:5, shift:6}, function(){
-                    	
-                    });
-        		}
-        	},
-        	error : function(err){
-        		layer.close("err");
-        	}
-        });
 		
     }
 		
@@ -58,44 +26,37 @@
 
 <div align="center" style="padding-top: 50px;">
 	<div>
-	<h1>修改积分比例</h1>
+	<h1 class="title1">修改积分比例</h1>
 	</div>
 	<br/>
 	<hr/>
 	<br/>
 	<br/>
-	<div class="col-md-offset-3">
+	<div class="col-md-offset-0">
+	<div class="elegant-aero">
 	<form action="${pageContext.request.contextPath}/exchange/doUpdateExchange" method="post" accept-charset="utf-8" onsubmit="return doUpdate()">
 		
 			<div class="row form-group">
-                <label class="control-label col-lg-2" for="name">编号：</label>
-                <div class="col-md-6">
+                <label class="control-label col-lg-3" for="name"><span>编号：</span></label>
+                <div class="col-md-7">
                 	<input class="form-control" type="text" id="exchangeNum" name="exchangeNum" value = "${exchange.exchangeNum }">
                 </div>
             </div>
             
 			<div class="row form-group">
-                <label class="control-label col-lg-2" for="name">比例：</label>
-                <div class="col-md-6">
-                	input class="form-control" type="text" id="exchangeE" name="exchangeE" value = "${exchange.exchangeE}">
+                <label class="control-label col-lg-3" for="name"><span>比例：</span></label>
+                <div class="col-md-7">
+                	<input class="form-control" type="text" id="exchangeE" name="exchangeE" value = "${exchange.exchangeE }">
                 </div>
             </div>
             
 			<br/>
             
-            <div class="col-md-8">
             <div class="row form-group">
-				<input class="btn btn-default" type="submit" value="提交"/>
+				<input class="btn btn-danger" type="submit" value="提交"/>
             </div>
-            </div>
-			<tr>
-				<td colspan="2" class="text-center">
-				<input type="hidden" id=courierNo name="exchangeNum" value="${exchange.exchangeNum }" />
-					<input class="btn btn-default" type="submit" value="提交"/>
-				</td>
-			</tr>
 			
-		</table>
-		</form>
+	</form>
+	</div>
 	</div>
 </div>

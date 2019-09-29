@@ -49,7 +49,7 @@ public class FileController {
 	}
 	
 	//IO流上传测试功能
-	@ResponseBody
+//	@ResponseBody
 	@RequestMapping(value="/upload",method=RequestMethod.POST)
     public String upload(
     		MultipartFile file,
@@ -75,7 +75,8 @@ public class FileController {
         check_list.setListSTime(timestamp);
         int row = fileService.insertSelective(check_list);
         System.out.println("insert  "+row);
-        return fileName2;
+//        return fileName2;'
+        return "redirect: ../user/teacherReturn";
     }  
 	
 	//文件列表跳转
@@ -133,7 +134,7 @@ public class FileController {
 		check_list2.setuId2(check_list.getuId2());
 		fileService.updateByPrimaryKeySelective(check_list2);
 		User user = userService.queryTeacherByuId(check_list2.getuId2());
-		user.setcStatus(2);
+		user.setCheckNum(2);
 		userService.updateByPrimaryKeySelective(user);
 		JSONObject json = new JSONObject();
 		if (check_list2.getListName()!=null) {
@@ -155,8 +156,8 @@ public class FileController {
 		System.out.println(check_list2.getuId2());
 		fileService.updateByPrimaryKeySelective(check_list2);
 		User user = userService.queryTeacherByuId(check_list2.getuId2());
-		user.setcStatus(1);
-		System.out.println(user.getuName()+user.getuId()+" wdnmd "+user.getcStatus());
+		user.setCheckNum(1);
+		System.out.println(user.getuName()+user.getuId()+" wdnmd "+user.getCheckNum());
 		userService.updateByPrimaryKeySelective(user);
 		JSONObject json = new JSONObject();
 		if (check_list2.getListName()!=null) {

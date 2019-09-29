@@ -21,7 +21,7 @@ public interface UserService {
 	
 	List<User> queryStudentByExample(String search);
 
-	void insertSelective(User user);
+	int insertSelective(User user);
 	
 	List<User> queryTeacherByworking();
 
@@ -41,8 +41,9 @@ public interface UserService {
 
 	User queryUserByEmail(String uEmail);
 
-	List<City> queryAllCity();
+	List<City> queryAllCity(City city);
 
-	City queryAllCityBycNum(Integer cNum);
+	List<City> queryAllCityBycProvince();
+
 
 }

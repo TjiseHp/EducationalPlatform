@@ -5,7 +5,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#table1').bootstrapTable({
-			url : '${pageContext.request.contextPath}/group/queryAllGroup',
+			url : '${pageContext.request.contextPath}/role/queryAllGroup',
 			method : 'post',
 			columns : [ {
 				sortable : "true",
@@ -160,7 +160,7 @@
 </div>
 <div id="toolbar" class="btn-group">
 	<a class="btn btn-success btn-default" role="button"
-		href="javascript:;" onclick="doAdd();"> <span
-		class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+		href="javascript:;" onclick="doAdd();"> 
+		<span class="glyphicon glyphicon-plus" aria-hidden="true"> </span>新增
 	</a>
 </div>

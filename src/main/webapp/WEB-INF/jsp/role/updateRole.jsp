@@ -14,7 +14,7 @@
 		console.info(roName);
 		console.info(roText);
 		
-		if(roNo == ""||roName == ""||roText == ""){
+		if(roName == ""||roText == ""){
 			layer.msg("内容不能为空", {time:2000, icon:5, shift:6});
 			return;
 		}else{
@@ -58,37 +58,153 @@
 </script>
 
 <div align="center" style="padding-top: 50px;">
-	<h1>修改用户角色</h1><br/>
+	<div>
+	<h1 class="title1">修改用户角色</h1>
+	</div>
+	<br />
+	<hr />
+	<br />
+	<br />
+	<div class="col-md-offset-0">
+	<div class="elegant-aero">
 	<form action="${pageContext.request.contextPath}/role/doUpdateRole" method="post" accept-charset="utf-8" onsubmit="return doUpdate()">
-		<table class="table table-bordered table-striped" style="width: 500px;" >
 	
-			<tr>
-				<td class="text-right">
-					<strong>角色名称:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="roName" name="roName" value = "${role.roName}">
-				</td>
-			</tr>
-			<tr>
-				<td class="text-right">
-					<strong>注释:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="roleText" name="roleText" value = "${role.roText}">
-				</td>
-			</tr>
+		<div class="row form-group">
+		<label class="control-label col-lg-3" for="name"><span>角色名称：</span></label>
+			<div class="col-md-7">
+			<input class="form-control" type="text" id="roName" name="roName" value = "${role.roName}">
+			</div>
+		</div>
+		
+		<div class="row form-group">
+		<label class="control-label col-lg-3" for="name"><span>注释：</span></label>
+			<div class="col-md-7">
+			<input class="form-control" type="text" id="roText" name="roText" value = "${role.roText}">
+			</div>
+		</div>
+		
+		<br />
+
+		<div class="row form-group">
+			<input type="hidden" id=courierNo name="roNo" value="${role.roNo }" />
+			<input class="btn btn-danger" type="submit" value="提交"/>
+		</div>
+
 			
-			<tr>
-				<td colspan="2" class="text-center">
-				    <input type="hidden" id=courierNo name="roNo" value="${role.roNo }" />
-					<input class="btn btn-default" type="submit" value="提交"/>
-				</td>
-			</tr>
-			
-		</table>
-		
-		
-		
 	</form>
+	</div>
+	</div>
 </div>
+
+<style type="text/css">
+input[type=radio] {
+margin-right: 5px;
+cursor: pointer;
+font-size: 14px;
+width: 15px;
+height: 12px;
+position: relative;
+}
+
+input[type=radio]:after {
+position: absolute;
+width: 15px;
+height: 15px;
+top: 0;
+content: " ";
+background-color: #fff;
+color: #fff;
+display: inline-block;
+visibility: visible;
+padding: 0px 3px;
+border-radius: 50%;
+border: 1px solid #ebebeb;
+}
+
+input[type=radio]:checked:before {
+content: " ";
+display: block;
+position: relative;
+top: 0;
+width: 15px;
+height: 15px;
+color: #fff;
+font-weight: 400;
+z-index: 1;
+border-radius: 50%;
+background-color: #40c8c4;
+}
+
+input:focus {
+box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+}
+
+box-shadow: 0 0 35px 15px rgba(29, 43, 100, 0.9) inset;
+
+input[type=text] {
+width: 300px;
+color: #404040;
+background: white;
+border: 1px solid;
+border-color: #c4c4c4 #d1d1d1 #d4d4d4;
+border-radius: 2px;
+outline: 5px solid #eff4f7;
+-moz-outline-radius: 3px;
+-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12);
+box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.title1 {
+
+background: #EEE url(data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAAHklEQVQImWNkYGBgYGD4//8/A5wF5SBYyAr+//8PAPOCFO0Q2zq7AAAAAElFTkSuQmCC) repeat;
+
+text-shadow: 3px -3px black, 2px -2px white;
+
+font-weight: bold;
+
+-webkit-text-fill-color: transparent;
+
+-webkit-background-clip: text;
+
+}
+
+.title2 {
+
+color: transparent;
+
+-webkit-text-stroke: 1px black;
+
+letter-spacing: 0.04em;
+
+}
+
+.elegant-aero {
+margin-left: auto;
+margin-right: auto;
+max-width: 500px;
+background: #D2E9FF;
+padding: 20px 20px 20px 20px;
+font: 12px Arial, Helvetica, sans-serif;
+color: #666;
+}
+
+.elegant-aero label>span {
+float: left;
+margin-top: 10px;
+color: #5E5E5E;
+}
+
+.elegant-aero label {
+display: block;
+margin: 0px 0px 5px;
+}
+
+.elegant-aero label>span {
+float: left;
+width: 100%;
+text-align: right;
+padding-right: 15px;
+margin-top: 10px;
+font-weight: bold;
+}
+</style>

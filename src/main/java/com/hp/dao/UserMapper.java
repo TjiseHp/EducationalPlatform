@@ -14,7 +14,7 @@ public interface UserMapper {
 
     int insert(User record);
 
-    int insertSelective(User user);
+    int insertSelective(User record);
 
     List<User> selectByExample(UserExample example);
 
@@ -24,7 +24,7 @@ public interface UserMapper {
 
     int updateByExample(@Param("record") User record, @Param("example") UserExample example);
 
-    int updateByPrimaryKeySelective(User user);
+    int updateByPrimaryKeySelective(User record);
 
-    int updateByPrimaryKey(Integer uId);
+    int updateByPrimaryKey(User record);
 }

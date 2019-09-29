@@ -25,43 +25,43 @@
 </script>
 
 <div align="center" style="padding-top: 50px;">
+	<div>
+	<h1 class="title1">积分操作</h1>
+	</div>
+	<br />
+	<hr />
+	<br />
+	<br />
+	<div class="col-md-offset-0">
+	<div class="elegant-aero">
 	<form action="${pageContext.request.contextPath}/credit/doInsertCredit" method="post" accept-charset="utf-8" onsubmit="return doPost()">
-		<table class="table table-bordered table-striped" style="width: 500px;">
+			
+			<div class="row form-group">
+			<label class="control-label col-lg-3" for="name"><span>积分数量：</span></label>
+				<div class="col-md-7">
+				<input class="form-control" type="text" id="creditSum" name="creditSum">
+				</div>
+			</div>
+			
+			<div class="row form-group">
+			<label class="control-label col-lg-3" for="name"><span>明细：</span></label>
+				<div class="col-md-7">
+				<input class="form-control" type="text" id="creditText" name="creditText" >
+				</div>
+			</div>
+
+	  		<div class="row form-group">
+			<label class="control-label col-lg-3" for="name"><span>操作人：</span></label>
+				<div class="col-md-7">
+				<input class="form-control" type="text" id="creditPreson" name="creditPreson">
+				</div>
+			</div>
 		
-			<tr>
-				<td class="text-right">
-					<strong>积分操作:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="creditSum" name="creditSum">
-				</td>
-			</tr>
-	  		<tr>
-				<td class="text-right">
-					<strong>明细:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="creditText" name="creditText" >
-				</td>
-			</tr>
-	
-			<tr>
-				<td class="text-right">
-					<strong>操作人:</strong>
-				</td>
-				<td class="text-left">
-					<input class="form-control" type="text" id="creditPreson" name="creditPreson">
-				</td>
-			</tr>
+			<div class="row form-group">
+				<input class="btn btn-danger" type="submit" value="提交"/>
+			</div>
 			
-			
-			
-			
-			<tr>
-				<td colspan="2" class="text-center">
-					<input class="btn btn-default" type="submit" value="提交"/>
-				</td>
-			</tr>
-		</table>
 	</form>
+	</div>
+	</div>
 </div>

@@ -6,7 +6,6 @@
 	    <id column="U_ID" jdbcType="INTEGER" property="uId" />
 	    <result column="G_NUM" jdbcType="INTEGER" property="gNum" />
 	    <result column="CHECK_NUM" jdbcType="INTEGER" property="checkNum" />
-	    <result column="C_STATUS" jdbcType="INTEGER" property="cStatus" />
 	    <result column="C_NUM" jdbcType="INTEGER" property="cNum" />
 	    <result column="CLASS_NUM" jdbcType="INTEGER" property="classNum" />
 	    <result column="U_EXP" jdbcType="INTEGER" property="uExp" />

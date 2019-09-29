@@ -48,9 +48,11 @@ public interface UserDao {
 	@Select("select * from e_user where u_Email=#{uEmail}")
 	User queryUserByEmail(String uEmail);
 
-	@Select("select * from e_city")
-	List<City> queryAllCity();
+	@Select("select * from e_city  where C_PROVINCE=#{cProvince}")
+	List<City> queryAllCity(City city);
 
-	@Select("select * from e_city where c_num = #{cNum}")
-	City queryAllCityBycNum(Integer cNum);
+	@Select("select distinct C_PROVINCE from e_city ")
+	List<City> queryAllCityBycProvince();
+
+
 }

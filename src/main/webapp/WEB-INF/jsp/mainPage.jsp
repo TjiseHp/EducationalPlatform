@@ -40,10 +40,20 @@
 <br/>
 <a href="${pageContext.request.contextPath}/exchange/exchangeTable2">积分比例</a>
 <br/>
-<a href="${pageContext.request.contextPath}/group/groupTable">角色组列表</a>
+<a href="${pageContext.request.contextPath}/role/groupTable">角色组列表</a>
 <br/>
-<a href="${pageContext.request.contextPath}/chat/stuMessageCenter?uId=${loginUser.uId}">学生消息中心</a>
+<a href="${pageContext.request.contextPath}/alipay/payMenu">支付测试</a>
 <br/>
+<a href="${pageContext.request.contextPath}/echart/test3">我带你们打</a>
+<br/>
+<a href="${pageContext.request.contextPath}/echart/test">ajaxecharttest</a>
+<br/>
+<a href="${pageContext.request.contextPath}/echart/creditEchart">积分充值图表</a>
+<br/>
+<a href="${pageContext.request.contextPath}/echart/payEchart">积分消费图表</a>
+<br/>
+<a href="${pageContext.request.contextPath}/echart/adminLookPay">查看积分充值</a>
+<br>
 <a href="${pageContext.request.contextPath}/alipay/payMenu">支付测试</a>
 <br/>
 <a href="${pageContext.request.contextPath}/file/fileList">审核列表</a>
@@ -52,7 +62,7 @@
 <br/>
 <a href="${pageContext.request.contextPath}/user/studentReturn">学生个人资料</a>
 <br/>
-<a href="${pageContext.request.contextPath}/role/assignTable2?roNo=4">权限回调</a>
+<a href="${pageContext.request.contextPath}/role/assignTable2?roNo=1">权限回调</a>
 <br/>
 <a href="${pageContext.request.contextPath}/user/returnTest">跳转测试</a>
 <br/>

@@ -63,10 +63,7 @@ public class RoleController {
 		HttpSession httpSession = httpServletRequest.getSession();
 		ModelAndView modelAndView = new ModelAndView();
 
-//		List<Role> role =  roleService.queryAllRole();
-
 		modelAndView.addObject("httpSession",httpSession);
-//		modelAndView.addObject("role",role);
 		modelAndView.addObject("mainPage", "role/roleTable.jsp");
 		modelAndView.setViewName("main");
 		return modelAndView;
@@ -99,9 +96,25 @@ public class RoleController {
 		@RequestMapping(value = "/doUpdateRole",produces = {"text/html;charset=utf-8"})
 		public String doUpdateRole(Role role,HttpServletRequest httpServletRequest) {
 			System.out.println(role.getRoNo());
+			System.out.println(role.getRoText());
 			int row= roleService.updateByPrimaryKeySelective(role);
 			System.out.println(row);
+			Role role2 = roleService.queryRoleByUpdate(role);
+			if (role2 != null) {
+				System.out.println("OK");
+				Group group = new Group();
+				group.setRoNo(group.getRoNo());
+				group.setgName(role2.getRoName()+"组");
+				row =groupService.updateByPrimaryKeySelective(group);
+				System.out.println(row);
+			}else {
+				System.out.println("NO");
+				
+				
+			}
+			
 			return "redirect: roleTable";
+			
 		}
 		
 		//插入角色--页面跳转
@@ -116,9 +129,20 @@ public class RoleController {
 		//执行插入角色
 		@RequestMapping(value = "/doInsertRole",produces = {"text/html;charset=utf-8"})
 		public String doInsertRole(Role role,HttpSession httpSession) {
-			System.out.println(role.getRoNo());
+			System.out.println(role.getRoName());
 			int row =roleService.insertSelective(role);
 			System.out.println(row);
+			Role role2 = roleService.queryRoleByRole(role);
+			if (role2 != null) {
+				System.out.println("OK");
+				Group group = new Group();
+				group.setRoNo(role2.getRoNo());
+				group.setgName(role2.getRoName()+"组");
+				row =groupService.insertSelective(group);
+				System.out.println(row);
+			}else {
+				System.out.println("NO");
+			}
 			return "redirect: roleTable";
 		}
 		
@@ -138,14 +162,6 @@ public class RoleController {
 			}
 			return json.toString();
 		}
-		
-		//角色组
-		@ResponseBody
-		@RequestMapping("/queryAllGroup")
-		public List<Group> queryAllGroup(){
-			List<Group> group =  groupService.queryAllGroup();
-			return group;
-		}
 	
 		//查询角色组列表
 		@RequestMapping("/groupTable")
@@ -157,6 +173,14 @@ public class RoleController {
 			modelAndView.addObject("mainPage", "group/groupTable.jsp");
 			modelAndView.setViewName("main");
 			return modelAndView;
+		}
+		
+		//角色组
+		@ResponseBody
+		@RequestMapping("/queryAllGroup")
+		public List<Group> queryAllGroup(){
+			List<Group> group =  groupService.queryAllGroup();
+			return group;
 		}
 		
 		//角色组列表更新跳转
@@ -195,7 +219,7 @@ public class RoleController {
 			//执行插入角色组
 			@RequestMapping(value = "/doInsertGroup",produces = {"text/html;charset=utf-8"})
 			public String doInsertGroup(Group group,HttpSession httpSession) {
-				System.out.println(group.getRoNo());
+				System.out.println(group.getgName());
 				int row =groupService.insertSelective(group);
 				System.out.println(row);
 				return "redirect: groupTable";

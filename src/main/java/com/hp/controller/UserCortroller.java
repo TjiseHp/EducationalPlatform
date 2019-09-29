@@ -1,5 +1,7 @@
 package com.hp.controller;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,11 +14,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.hp.bean.Chat;
+import com.hp.bean.Check;
 import com.hp.bean.City;
+import com.hp.bean.Group;
+import com.hp.bean.Role;
 import com.hp.bean.User;
+import com.hp.service.CheckService;
 import com.hp.service.CityService;
 import com.hp.service.ClassService;
 import com.hp.service.CreditService;
+import com.hp.service.GroupService;
+import com.hp.service.RoleService;
 import com.hp.service.UserService;
 import com.hp.util.PageUtil;
 
@@ -40,6 +49,15 @@ public class UserCortroller  {
 	
 	@Autowired
 	public CityService cityService;
+	
+	@Autowired
+	public GroupService groupService;
+	
+	@Autowired
+	public RoleService roleService;
+	
+	@Autowired
+	public CheckService checkService;
 	
 	//查询全部学生(会员)列表,包含积分总和
 	@ResponseBody
@@ -75,12 +93,14 @@ public class UserCortroller  {
 	}
 	
 	//执行插入学生信息
-	@RequestMapping(value = "/doInsertStudent",produces = {"text/html;charset=utf-8"})
-	public String doInsertStudent(User user,HttpSession httpSession) {
-		user.setgNum(1);
-		userService.insertSelective(user);
-		return "redirect: studentTable2";
-	}
+//	@RequestMapping(value = "/doInsertStudent",produces = {"text/html;charset=utf-8"})
+//	public String doInsertStudent(User user,HttpSession httpSession) {
+//		System.out.println("执行插入学生信息");
+//		System.out.println("学生性别："+user.getuSex()+"学生城市："+user.getCity().getcCity());
+//		user.setgNum(1);
+//		userService.insertSelective(user);
+//		return "redirect: studentTable2";
+//	}
 	
 	//学生更新页面跳转
 	@RequestMapping("/updateStudent")
@@ -240,6 +260,19 @@ public class UserCortroller  {
 		HttpSession httpSession = httpServletRequest.getSession();
 		ModelAndView modelAndView = new ModelAndView();
 		User user = userService.queryTeacherByInfo(uId);
+		Group group =  groupService.queryGroupBygNum(user.getgNum());
+		if(group!=null) {
+			Role role = roleService.queryRoleByroNo(group.getRoNo());
+			if(role!=null) {
+				group.setRole(role);
+				user.setGroup(group);
+			}
+		}
+		
+		Check check = checkService.queryCheckBycheckNum(user.getCheckNum());
+		 if(check != null) {
+			 user.setCheck(check);
+		 }
 		
 		modelAndView.addObject("httpSession",httpSession);
 		modelAndView.addObject("user",user);
@@ -260,7 +293,7 @@ public class UserCortroller  {
 		modelAndView.addObject("user",user);
 		modelAndView.addObject("mainPage", "user/updateTeacherInfo.jsp");
 		modelAndView.setViewName("main");
-		System.out.println("456");
+		System.out.println("进入教师个人中心");
 		return modelAndView;
 	}
 
@@ -308,23 +341,37 @@ public class UserCortroller  {
 	
 	
 	@ResponseBody
-	@RequestMapping("/city")
-	public List<City> city(){	
-		List<City> clist = userService.queryAllCity();	
+	@RequestMapping("/cProvince")
+	public List<City> cProvince(){	
+		List<City> clist = userService.queryAllCityBycProvince();	
 		return clist;
 	}
 	
 
 	@ResponseBody
 	@RequestMapping("/cCity")
-	public List<City> cCity(Integer cNum){
-	    System.out.println("cNum"+cNum);
-		City ccity = userService.queryAllCityBycNum(cNum);
-		System.out.println(ccity.getcCity());
-		List<City> list = new ArrayList<City>();
-		list.add(ccity);
-		System.out.println(list.get(0).getcCity());
-		return list;
+	public List<City> cCity(City city){
+		List<City> ccity = userService.queryAllCity(city);
+		System.out.println(ccity.get(0).getcNum());
+		return ccity;
+	}	
+	
+
+	@ResponseBody
+	@RequestMapping("/docheckAndinsert")
+	public String docheck(HttpSession session,
+			HttpServletRequest request,User user2) {
+		System.out.println(777+user2.getuName());
+		JSONObject json = new JSONObject();     
+		user2.setgNum(1);
+	   int row= userService.insertSelective(user2);
+		if(row==1) {
+			json.put("result", true);
+		}
+		else {
+			json.put("result", false);
+		}
+		return json.toString();
 	}
 	
 	

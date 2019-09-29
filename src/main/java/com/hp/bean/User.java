@@ -7,8 +7,6 @@ public class User {
 
     private Integer checkNum;
 
-    private Integer cStatus;
-
     private Integer cNum;
 
     private Integer classNum;
@@ -26,12 +24,24 @@ public class User {
     private String uAcc;
 
     private String uPwd;
-
+    
     private String credit;
     
     private City city;
     
     private Class uClass;
+    
+    private Group group;
+    
+    private Check check;
+
+    public String getCredit() {
+		return credit;
+	}
+
+	public void setCredit(String credit) {
+		this.credit = credit;
+	}
 
 	public City getCity() {
 		return city;
@@ -49,15 +59,23 @@ public class User {
 		this.uClass = uClass;
 	}
 
-	public String getCredit() {
-		return credit;
+	public Group getGroup() {
+		return group;
 	}
 
-	public void setCredit(String credit) {
-		this.credit = credit;
+	public void setGroup(Group group) {
+		this.group = group;
 	}
-    
-    public Integer getuId() {
+
+	public Check getCheck() {
+		return check;
+	}
+
+	public void setCheck(Check check) {
+		this.check = check;
+	}
+
+	public Integer getuId() {
         return uId;
     }
 
@@ -79,14 +97,6 @@ public class User {
 
     public void setCheckNum(Integer checkNum) {
         this.checkNum = checkNum;
-    }
-
-    public Integer getcStatus() {
-        return cStatus;
-    }
-
-    public void setcStatus(Integer cStatus) {
-        this.cStatus = cStatus;
     }
 
     public Integer getcNum() {

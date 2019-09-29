@@ -6,6 +6,8 @@ public class Group {
     private String gName;
 
     private Integer roNo;
+    
+    private Role role;
 
     public Integer getgNum() {
         return gNum;
@@ -30,4 +32,12 @@ public class Group {
     public void setRoNo(Integer roNo) {
         this.roNo = roNo;
     }
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
 }

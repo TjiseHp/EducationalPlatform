@@ -85,11 +85,13 @@ public class ChatController {
 		
 		//查看收件箱信息页面跳转
 		@RequestMapping("/showReceiveInfo")
-		public ModelAndView showReceiveInfo(HttpServletRequest httpServletRequest,@RequestParam(required = true,value = "chatNum") Integer chatNum) {
+		public ModelAndView showReceiveInfo(HttpServletRequest httpServletRequest,@RequestParam(required = true,value = "chatNum") Integer chatNum,@RequestParam(required = true,value = "uId") Integer uId2) {
 			HttpSession httpSession = httpServletRequest.getSession();		
 			Chat chat = chatService.queryChatByChatNum(chatNum);
-			chat.setUser1(userService.queryStudentByuId(chat.getuId()));
-			chat.setUser2(userService.queryStudentByuId(chat.getuId2()));
+			System.out.println("uId2="+uId2);
+			chat.setUser1(userService.queryAllTeacherByuId(chat.getuId()));
+			System.out.println(chat.getUser1().getuId()+" "+chat.getUser1().getuName());
+			chat.setUser2(userService.queryAllTeacherByuId(chat.getuId2()));
 			ModelAndView modelAndView = new ModelAndView();
 			modelAndView.addObject("httpSession",httpSession);
 			modelAndView.addObject("chat",chat);
@@ -128,10 +130,7 @@ public class ChatController {
 		@RequestMapping("/queryAllSendInfoByuId")
 		public List<Chat> queryAllSendInfoByuId(HttpServletRequest httpServletRequest,@RequestParam(required = true,value = "uId") Integer uId) {
 			System.out.println("***查询发件箱消息列表***");
-			User user=userService.queryStudentByuId(uId);
-			
-			List<Chat> sendInfo = chatService.queryChatListByuId(uId);
-			
+			List<Chat> sendInfo = chatService.queryChatListByuId(uId);			
 			System.out.println(uId);
 			for(Chat text1 : sendInfo) {
 				String text=text1.getChatText();
@@ -141,7 +140,7 @@ public class ChatController {
 					String showText=text.substring(0,12);
 					text1.setChatText(showText+"……");
 				}								
-				text1.setUser2(userService.queryStudentByuId(text1.getuId2()));
+				text1.setUser2(userService.queryAllTeacherByuId(text1.getuId2()));
 				System.out.println(text1.getuId2()+" "+text1.getUser2().getuName());
 			}
 			return sendInfo;
