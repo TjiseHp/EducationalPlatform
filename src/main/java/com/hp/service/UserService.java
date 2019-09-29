@@ -1,6 +1,7 @@
 package com.hp.service;
 import java.util.List;
 
+import com.hp.bean.City;
 import com.hp.bean.Recruit;
 import com.hp.bean.User;
 
@@ -20,7 +21,7 @@ public interface UserService {
 	
 	List<User> queryStudentByExample(String search);
 
-	void insertSelective(User user);
+	int insertSelective(User user);
 	
 	List<User> queryTeacherByworking();
 
@@ -37,4 +38,12 @@ public interface UserService {
 	User queryAllTeacherByuId(Integer uId);
 
 	User queryTeacherByInfo(Integer uId);
+
+	User queryUserByEmail(String uEmail);
+
+	List<City> queryAllCity(City city);
+
+	List<City> queryAllCityBycProvince();
+
+
 }

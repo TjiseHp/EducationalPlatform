@@ -1,4 +1,7 @@
 package com.hp.controller;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.hp.bean.Appraise;
+import com.hp.bean.Chat;
 import com.hp.bean.Check;
 import com.hp.bean.City;
 import com.hp.bean.Class;
@@ -95,12 +98,14 @@ public class UserCortroller  {
 	}
 	
 	//执行插入学生信息
-	@RequestMapping(value = "/doInsertStudent",produces = {"text/html;charset=utf-8"})
-	public String doInsertStudent(User user,HttpSession httpSession) {
-		user.setgNum(1);
-		userService.insertSelective(user);
-		return "redirect: studentTable2";
-	}
+//	@RequestMapping(value = "/doInsertStudent",produces = {"text/html;charset=utf-8"})
+//	public String doInsertStudent(User user,HttpSession httpSession) {
+//		System.out.println("执行插入学生信息");
+//		System.out.println("学生性别："+user.getuSex()+"学生城市："+user.getCity().getcCity());
+//		user.setgNum(1);
+//		userService.insertSelective(user);
+//		return "redirect: studentTable2";
+//	}
 	
 	//学生更新页面跳转
 	@RequestMapping("/updateStudent")
@@ -359,5 +364,42 @@ public class UserCortroller  {
 		modelAndView.setViewName("main");
 		return modelAndView;
 	}
+	
+	
+	@ResponseBody
+	@RequestMapping("/cProvince")
+	public List<City> cProvince(){	
+		List<City> clist = userService.queryAllCityBycProvince();	
+		return clist;
+	}
+	
+
+	@ResponseBody
+	@RequestMapping("/cCity")
+	public List<City> cCity(City city){
+		List<City> ccity = userService.queryAllCity(city);
+		System.out.println(ccity.get(0).getcNum());
+		return ccity;
+	}	
+	
+
+	@ResponseBody
+	@RequestMapping("/docheckAndinsert")
+	public String docheck(HttpSession session,
+			HttpServletRequest request,User user2) {
+		System.out.println(777+user2.getuName());
+		JSONObject json = new JSONObject();     
+		user2.setgNum(1);
+	   int row= userService.insertSelective(user2);
+		if(row==1) {
+			json.put("result", true);
+		}
+		else {
+			json.put("result", false);
+		}
+		return json.toString();
+	}
+	
+	
 	
 }

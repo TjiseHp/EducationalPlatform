@@ -20,6 +20,8 @@ public class Chat {
     private User user1;
     
     private User user2;
+    
+    private Chat_status chat_status;
 
     public User getUser1() {
 		return user1;
