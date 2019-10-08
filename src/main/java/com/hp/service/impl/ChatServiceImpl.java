@@ -37,6 +37,21 @@ public class ChatServiceImpl implements ChatService{
 		// TODO Auto-generated method stub
 		return chatDao.queryChatByChatNum(chatNum);
 	}
+
+	public int insertSelective(Chat chat) {
+		// TODO Auto-generated method stub
+		return chatMapper.insertSelective(chat);
+	}
+
+	public List<Chat> queryAllSendInfoByuId(Integer uId) {
+		// TODO Auto-generated method stub
+		return chatDao.queryAllSendInfoByuId(uId);
+	}
+
+	public List<Chat> queryChatListByuId(Integer uId) {
+		// TODO Auto-generated method stub
+		return chatDao.queryChatListByuId(uId);
+	}
 	
 
 }

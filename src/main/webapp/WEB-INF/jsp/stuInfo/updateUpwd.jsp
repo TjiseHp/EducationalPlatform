@@ -5,7 +5,6 @@
     		%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
 <script type="text/javascript">
 	
 	function doUpdate() {
@@ -83,7 +82,7 @@
             <div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span>新密码：</span></label>
                 <div class="col-md-7">
-                	<input class="form-control" type="text" id="uPwd" name="uPwd" value = "${user.uPwd}">
+                	<input class="form-control" type="text" id="uPwd" name="uPwd"">
                 </div>
             </div>
             

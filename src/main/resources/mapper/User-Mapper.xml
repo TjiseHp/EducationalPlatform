@@ -6,7 +6,6 @@
 	    <id column="U_ID" jdbcType="INTEGER" property="uId" />
 	    <result column="G_NUM" jdbcType="INTEGER" property="gNum" />
 	    <result column="CHECK_NUM" jdbcType="INTEGER" property="checkNum" />
-	    <result column="C_STATUS" jdbcType="INTEGER" property="cStatus" />
 	    <result column="C_NUM" jdbcType="INTEGER" property="cNum" />
 	    <result column="CLASS_NUM" jdbcType="INTEGER" property="classNum" />
 	    <result column="U_EXP" jdbcType="INTEGER" property="uExp" />
@@ -56,7 +55,7 @@
 			     on c.c_num=u.c_num 
 			  left join e_class s
 			     on s.class_num=u.class_num
-			where u.g_num = 2
+			where u.g_num = 2 or u.g_num = 3
 	</select>
 		
 	<select id="queryAllStudent" resultMap="BaseResultMap">

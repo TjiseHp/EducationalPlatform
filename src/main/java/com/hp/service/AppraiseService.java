@@ -7,4 +7,6 @@ public interface AppraiseService {
 	int insertSelective(Appraise appraise);
 	
 	Appraise queryAppraiseByUid(Appraise appraise);
+
+	//Appraise queryAppraiseByuId(Integer getuId);
 }

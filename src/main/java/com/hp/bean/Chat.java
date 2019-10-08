@@ -20,8 +20,20 @@ public class Chat {
     private User user1;
     
     private User user2;
+    
+    private Chat_status chat_status;
+    
+    
 
-    public User getUser1() {
+    public Chat_status getChat_status() {
+		return chat_status;
+	}
+
+	public void setChat_status(Chat_status chat_status) {
+		this.chat_status = chat_status;
+	}
+
+	public User getUser1() {
 		return user1;
 	}
 

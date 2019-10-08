@@ -173,24 +173,12 @@
                 </div>
             </div>
 
-			<div class="row form-group">
-                <label class="control-label col-lg-3" for="name"><span>修改密码：</span></label>
-                <div class="col-md-7">
-					<input class="form-control" type="password" id="uPwd" name="uPwd"   placeholder="设置密码：8-16位字母和数字"  maxlength="16"  style="outline: none;" value = "${user.uPwd}">
-                </div>
-            </div>
-            
-			<div class="row form-group">
-                <label class="control-label col-lg-3" for="name"><span>确认密码：</span></label>
-                <div class="col-md-7">
-					<input class="form-control" type="password" id="uPwd" name="uPwd"  value = "">
-                </div>
-            </div>
-
 	        <div class="row form-group">
 	            <input type="hidden" id=courierNo name="uId" value="${user.uId }"/>
 				<button type="button" class="btn btn-danger" onclick="doUpdate()">提交</button>
 	        </div>
+	        
+	   
 			
 			<script type="text/javascript">
     $(".password").on("click", ".fa-eye-slash", function () {

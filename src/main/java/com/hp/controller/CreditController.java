@@ -1,4 +1,5 @@
 package com.hp.controller;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -132,11 +133,9 @@ public class CreditController {
 		//执行插入积分奖惩信息		
 		@RequestMapping(value = "/doInsertCredit",produces = {"text/html;charset=utf-8"})
 		public String doInsertCredit(Credit credit,HttpSession httpSession,@RequestParam(value="uId", required = false) Integer uId) throws ParseException {
-			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-	        String date=df.format(new Date());// new Date()为获取当前系统时间
-	        Date date1 = df.parse(date);
-	        System.out.println("系统当前时间"+date1);
-	        credit.setCreditDate(date1);
+			 Date date = new Date();
+		     Timestamp timestamp = new Timestamp(date.getTime());
+	        credit.setCreditDate(timestamp);
 //			System.out.println("获取到的用户id："+credit.getuId());
 			creditService.insertSelective(credit);
 			return "redirect: creditDetail1";

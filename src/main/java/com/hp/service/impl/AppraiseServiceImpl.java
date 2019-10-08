@@ -27,5 +27,10 @@ public class AppraiseServiceImpl implements AppraiseService{
 		return appraiseDao.queryAppraiseByUid(appraise);
 	}
 
+	//public Appraise queryAppraiseByuId(Integer uId) {
+		// TODO Auto-generated method stub
+		//return appraiseDao.queryAppraiseByUid(uId);
+	//}
+
 	
 }

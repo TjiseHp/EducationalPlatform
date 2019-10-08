@@ -3,6 +3,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hp.bean.City;
 import com.hp.bean.Recruit;
 import com.hp.bean.User;
 import com.hp.dao.UserDao;
@@ -46,8 +47,8 @@ public class UserServiceImpl implements UserService {
 		return userDao.queryStudentByExample(search);
 	}
 
-	public void insertSelective(User user) {
-		userMapper.insertSelective(user);
+	public int insertSelective(User user) {
+		return userMapper.insertSelective(user);
 	}
 
 	public List<User> queryTeacherByworking() {
@@ -83,5 +84,23 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userDao.queryTeacherByInfo(uId);
 	}
+
+	public User queryUserByEmail(String uEmail) {
+		return userDao.queryUserByEmail(uEmail);
+	}
+
+	public List<City> queryAllCity(City city) {
+		// TODO Auto-generated method stub
+		return userDao.queryAllCity(city);
+	}
+
+	public List<City> queryAllCityBycProvince() {
+		// TODO Auto-generated method stub
+		return userDao.queryAllCityBycProvince();
+	}
+
+	
+
+
 
 }
