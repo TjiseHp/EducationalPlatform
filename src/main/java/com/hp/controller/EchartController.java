@@ -12,26 +12,33 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSONArray;
 import com.hp.bean.Appraise;
+import com.hp.bean.City;
 import com.hp.bean.Class;
 import com.hp.bean.Credit;
 import com.hp.bean.Pay;
 import com.hp.bean.Recruit;
 import com.hp.bean.User;
 import com.hp.service.EchartService;
+import com.hp.service.UserService;
 
 @Controller
 @RequestMapping("/echart")
 public class EchartController {
 	@Autowired
+	UserService  userService;
+	
+	@Autowired
 	EchartService echartService;
 	
 	
 	//test
-	@RequestMapping("test")
+	@RequestMapping("/test")
 	public ModelAndView test(HttpServletRequest httpServletRequest) {
 		ModelAndView modelAndView = new ModelAndView();
 		
@@ -41,7 +48,7 @@ public class EchartController {
 	}
 	
 	//test3
-		@RequestMapping("test3")
+		@RequestMapping("/test3")
 		public ModelAndView test3(HttpServletRequest httpServletRequest) {
 			ModelAndView modelAndView = new ModelAndView();
 			java.util.List<Class> list = echartService.queryAll();
@@ -52,7 +59,7 @@ public class EchartController {
 		}
 	
 	//实现
-	@RequestMapping("test2")
+	@RequestMapping("/test2")
 	public JSONObject test2() {
 				java.util.List<com.hp.bean.Class> xlist = new ArrayList<com.hp.bean.Class>();
 //				Map<String,Object> xmap=new HashMap<String,Object>();
@@ -83,7 +90,7 @@ public class EchartController {
 	
 	
 		//积分充值图表
-		@RequestMapping("creditEchart")
+		@RequestMapping("/creditEchart")
 		public ModelAndView creditEchart(User user,HttpServletRequest httpServletRequest) {
 			ModelAndView modelAndView = new ModelAndView();
 			user.setuId(1);
@@ -95,7 +102,7 @@ public class EchartController {
 		}
 		
 		//消费记录图表
-		@RequestMapping("payEchart")
+		@RequestMapping("/payEchart")
 		public ModelAndView payEchart(User user,HttpServletRequest httpServletRequest) {
 			ModelAndView modelAndView = new ModelAndView();
 			user.setuId(1);
@@ -108,7 +115,7 @@ public class EchartController {
 			return modelAndView;
 		}
 		//管理员查看充值情况
-		@RequestMapping("adminLookPay")
+		@RequestMapping("/adminLookPay")
 		public ModelAndView adminLookPay(User user,HttpServletRequest httpServletRequest) {
 			ModelAndView modelAndView = new ModelAndView();
 			java.util.List<Pay> list = echartService.queryComplatePay();
@@ -116,5 +123,29 @@ public class EchartController {
 			modelAndView.addObject("mainPage", "echart/adminLookPay.jsp");
 			modelAndView.setViewName("main");
 			return modelAndView;
+		}
+		
+		
+		//test
+		@RequestMapping("/user")
+		@ResponseBody
+		public java.util.List<User> user(){
+		
+			java.util.List<User> clist = userService.queryAllStudent();
+
+			
+			return clist;
+		}
+		
+		//test
+		@RequestMapping("/user2")
+		@ResponseBody
+		public java.util.List<User> user2(Integer uId){
+		
+			User user = userService.queryAllTeacherByuId(uId);
+			java.util.List<User> list = new ArrayList<User>();
+			list.add(user);
+			System.out.println(list.get(0).getuName());
+			return list;
 		}
 }
