@@ -9,7 +9,7 @@
 		
 		$(document).ready(function () {
 	        $('#table1').bootstrapTable({
-	            url: '${pageContext.request.contextPath}/recruit/queryRecruitTable',
+	            url: '${pageContext.request.contextPath}/recruit/queryRecruitTable?uId=${loginUser.uId}',
 	            method: 'post', 
 	            columns: [
 	                {
@@ -25,7 +25,7 @@
 	                    align: "center"
 	                },
 	                {
-	                    field: 'city.cCounty',
+	                    field: 'city.cCity',
 	                    title: '所在城市',
 	                    align: "center"
 	                },

@@ -31,17 +31,12 @@
 	                    align: "center"
 	                },
 	                {
-	                    field: 'uPhone',
-	                    title: '手机号',
-	                    align: "center"
-	                },
-	                {
 	                    field: 'uEmail',
 	                    title: '邮箱',
 	                    align: "center"
 	                },
 	                {
-	                    field: 'city.cCounty',
+	                    field: 'city.cCity',
 	                    title: '所在城市',
 	                    align: "center"
 	                },
@@ -115,15 +110,16 @@
 		window.operateEvents1 = {
 	        "click .deleteBtn": function (e, value, row, index) {
 	        	uId = row.uId;
-	        	console.info(uId);
-	        	layer.confirm('确认删除？', {
+	        	uId2 = ${loginUser.uId};
+	        	console.info(uId2);
+	        	layer.confirm('确认查看？', {
 					btn: ['确认','取消'] 
 				}, function(){
 					$.ajax({
 	                    type: "post",
-	                    url: "${pageContext.request.contextPath}/",
+	                    url: "${pageContext.request.contextPath}/recruit/lookPhone",
 	                    data: {
-	                    	"uId": uId
+	                    	"uId": uId2
                   			},
                   			beforeSend : function(){
        		        		loadingIndex = layer.msg('处理中', {icon: 16});
@@ -132,18 +128,34 @@
 	                    	layer.close(loadingIndex);
 	                    	var resObj = JSON.parse(result);
 	                    	if (resObj.result) {
-	                    		 layer.msg("删除成功", {time:2000, icon:6, shift:6}, function(){
-				                    	
-			                    });
+	            					$.ajax({
+	            	                    type: "post",
+	            	                    url: "${pageContext.request.contextPath}/recruit/lookPhone2",
+	            	                    data: {
+	            	                    	"uId": uId
+	                              			},
+	                              			beforeSend : function(){
+	                   		        		loadingIndex = layer.msg('处理中', {icon: 16});
+	                   		        	},
+	                   		        	dataType:"json",
+	            	                    success: function (result) {
+	            	                    	layer.close(loadingIndex);
+	            	                    	alert(result.uName+"的电话号码:"+result.uPhone);
+	            	                    },
+	            	                    error: function () {
+	            	                    	layer.msg("查看失败2！", {time:2000, icon:5, shift:6}, function(){
+	            		                    	
+	            		                    });
+	            	                    }
+	            	                })
 			        		} else {
-			                    layer.msg("删除失败", {time:2000, icon:5, shift:6}, function(){
+			                    layer.msg("积分不足，请充值", {time:2000, icon:5, shift:6}, function(){
 			                    	
 			                    });
 			        		}
-	                        $("#table1").bootstrapTable('refresh');
 	                    },
 	                    error: function () {
-	                    	layer.msg("删除失败！", {time:2000, icon:5, shift:6}, function(){
+	                    	layer.msg("查看失败1！", {time:2000, icon:5, shift:6}, function(){
 		                    	
 		                    });
 	                    }
@@ -154,11 +166,10 @@
 	        	
                 
                 operateFormatter();
-	            $("#table1").bootstrapTable('refresh');
 	        },
 	        
 	        "click .updateBtn": function (e, value, row, index) {
-	        	window.location.href = "${pageContext.request.contextPath}/";
+	        	window.location.href = "${pageContext.request.contextPath}/chat/createMessage";
 	        }
 	    }
 		
