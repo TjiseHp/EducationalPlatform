@@ -40,7 +40,7 @@
 		    </collection>
 		    <collection property="chat_status" ofType="com.hp.bean.Chat_status">
 		       	<id column="C_S_NUM" jdbcType="INTEGER" property="cSNum" />
-  			    <result column="C_STATUS" jdbcType="INTEGER" property="cStatus" />
+  			    <result column="C_STATUS" jdbcType="STRING" property="cStatus" />
 		    </collection>
 	  </resultMap>
 	  
