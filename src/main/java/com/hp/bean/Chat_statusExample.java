@@ -174,52 +174,62 @@ public class Chat_statusExample {
             return (Criteria) this;
         }
 
-        public Criteria andCStatusEqualTo(Integer value) {
+        public Criteria andCStatusEqualTo(String value) {
             addCriterion("C_STATUS =", value, "cStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCStatusNotEqualTo(Integer value) {
+        public Criteria andCStatusNotEqualTo(String value) {
             addCriterion("C_STATUS <>", value, "cStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCStatusGreaterThan(Integer value) {
+        public Criteria andCStatusGreaterThan(String value) {
             addCriterion("C_STATUS >", value, "cStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCStatusGreaterThanOrEqualTo(Integer value) {
+        public Criteria andCStatusGreaterThanOrEqualTo(String value) {
             addCriterion("C_STATUS >=", value, "cStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCStatusLessThan(Integer value) {
+        public Criteria andCStatusLessThan(String value) {
             addCriterion("C_STATUS <", value, "cStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCStatusLessThanOrEqualTo(Integer value) {
+        public Criteria andCStatusLessThanOrEqualTo(String value) {
             addCriterion("C_STATUS <=", value, "cStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCStatusIn(List<Integer> values) {
+        public Criteria andCStatusLike(String value) {
+            addCriterion("C_STATUS like", value, "cStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStatusNotLike(String value) {
+            addCriterion("C_STATUS not like", value, "cStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStatusIn(List<String> values) {
             addCriterion("C_STATUS in", values, "cStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCStatusNotIn(List<Integer> values) {
+        public Criteria andCStatusNotIn(List<String> values) {
             addCriterion("C_STATUS not in", values, "cStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCStatusBetween(Integer value1, Integer value2) {
+        public Criteria andCStatusBetween(String value1, String value2) {
             addCriterion("C_STATUS between", value1, value2, "cStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCStatusNotBetween(Integer value1, Integer value2) {
+        public Criteria andCStatusNotBetween(String value1, String value2) {
             addCriterion("C_STATUS not between", value1, value2, "cStatus");
             return (Criteria) this;
         }

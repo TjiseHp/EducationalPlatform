@@ -305,11 +305,6 @@ public class UserCortroller  {
 		  if (city !=null) {
 			user.setCity(city);
 		}
-		  
-		
-		
-		 
-		
 		modelAndView.addObject("httpSession",httpSession);
 		modelAndView.addObject("user",user);
 		modelAndView.addObject("mainPage", "user/teacherInfo.jsp");
@@ -336,8 +331,55 @@ public class UserCortroller  {
 	//更新老师信息
 	@ResponseBody
 	@RequestMapping("/doUpdateTeacherInfo")
-	public String doUpdateTeacherInfo(HttpSession session,User user) {
-		System.out.println("update："+user.getuId());
+	public String doUpdateTeacherInfo(
+			@RequestParam(value = "uId") Integer uId,
+			@RequestParam(value = "cNum") Integer cNum,
+			@RequestParam(value = "classNum") Integer classNum,
+			@RequestParam(value = "uName") String uName,
+			@RequestParam(value = "uSex") String uSex,
+			@RequestParam(value = "uPhone") String uPhone,
+			@RequestParam(value = "uEmail") String uEmail
+			) {
+		User user = new User();
+		user.setuId(uId);
+		user.setcNum(cNum);
+		user.setClassNum(classNum);
+		user.setuName(uName);
+		user.setuSex(uSex);
+		user.setuPhone(uPhone);
+		user.setuEmail(uEmail);
+		JSONObject json = new JSONObject();
+		int row = userService.updateByPrimaryKeySelective(user);		
+		if(row==1) {
+			System.out.println("成功");
+			json.put("result", true);
+		}else {
+			json.put("result", false);
+		}
+		return json.toString();
+	}
+	
+	//修改密码--跳转
+	@RequestMapping("/updateTeacherUpwd")
+	public ModelAndView updateTeacherUpwd(HttpServletRequest httpServletRequest,
+			@RequestParam(required = true,value = "uId") Integer uId) {
+		HttpSession httpSession = httpServletRequest.getSession();
+		System.out.println("heihei");
+		User user = userService.queryTeacherByInfo(uId);
+		System.out.println("heihei1233");
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("httpSession",httpSession);
+		modelAndView.addObject("user",user);
+		modelAndView.addObject("mainPage", "user/updateTeacherUpwd.jsp");
+		modelAndView.setViewName("main");
+		return modelAndView;
+	}
+	
+	//修改教师密码
+	@ResponseBody
+	@RequestMapping("/doUpdateTeacherUpwd")
+	public String doUpdateTeacherUpwd(HttpSession session,User user) {
+		System.out.println("update："+user.getuId()+user.getuName());
 		JSONObject json = new JSONObject();
 		int row = userService.updateByPrimaryKeySelective(user);		
 		if(row==1) {
@@ -392,6 +434,14 @@ public class UserCortroller  {
 		return ccity;
 	}	
 	
+	@ResponseBody
+	@RequestMapping("/cClass")
+	public List<Class> cClass(Class uclass){
+		List<Class> cClass = userService.queryAllClass(uclass);
+		System.out.println("class-yes");
+		return(cClass);
+	}
+	
 
 	@ResponseBody
 	@RequestMapping("/docheckAndinsert")
@@ -410,6 +460,37 @@ public class UserCortroller  {
 		return json.toString();
 	}
 	
+	@ResponseBody
+	@RequestMapping("/updatePwd")
+	public String docheck(	HttpSession session,
+							HttpServletRequest request) {
+		JSONObject json = new JSONObject();   
+		String oldPwd = request.getParameter("oldPwd");
+		String newPwd = request.getParameter("newPwd");
+		String uId = request.getParameter("uId");
+		User oldUser = new User();
+		oldUser.setuId(Integer.valueOf(uId));
+		oldUser.setuPwd(oldPwd);
+		User user = userService.queryUserByPwd(oldUser);
+				
+		if (user !=null) {
+			System.out.println("userOK");
+			user.setuPwd(newPwd);
+			int row = userService.updateByPrimaryKeySelective(user);
+			if (row==1) {
+				System.out.println("pwdOK");
+				json.put("result", true);
+			}else {
+				System.out.println("no1");
+				json.put("result", false);
+			}
+		}else {
+			System.out.println("no2");
+			json.put("result", false);
+		}
+		
+		return json.toString();
+	}
 	
 	
 }

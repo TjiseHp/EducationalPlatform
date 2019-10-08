@@ -13,13 +13,12 @@ public class Chat_status {
 		this.cSNum = cSNum;
 	}
 
+
 	public String getcStatus() {
 		return cStatus;
 	}
 
-	public void setcStatus(String cStatus) {
-		this.cStatus = cStatus;
-	}
-
-    
+    public void setcStatus(String cStatus) {
+        this.cStatus = cStatus == null ? null : cStatus.trim();
+    }
 }

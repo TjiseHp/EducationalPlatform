@@ -9,7 +9,7 @@
 	function doback(){
 		var uId = $("#uId").val();
 		console.info(uId);
-    	window.location.href = "${pageContext.request.contextPath}/user/studentReturn";
+    	window.location.href = "${pageContext.request.contextPath}/user/teacherReturn";
 	}
 	
 	
@@ -59,7 +59,7 @@
             		var resObj = JSON.parse(result);
             		if (resObj.result) {   
     					layer.msg("修改成功", {time:2000, icon:6, shift:6}, function(){
-        	        		window.location.href = "${pageContext.request.contextPath}/user/studentReturn";
+        	        		window.location.href = "${pageContext.request.contextPath}/user/teacherReturn";
                         });
             		} else {
             			layer.msg("原密码错误", {time:2000, icon:5, shift:6}, function(){
@@ -92,35 +92,32 @@
 	<br/>
 	<div class="col-md-offset-0">
 	<div class="elegant-aero">
-	<form action="${pageContext.request.contextPath}/stuInfo/doUpdateUpwd" method="post" accept-charset="utf-8" onsubmit="return doUpdate()">
-			
+	<form action="${pageContext.request.contextPath}/user/doUpdateTeacherUpwd" method="post" accept-charset="utf-8" onsubmit="return doUpdate()">
+				
 			<div class="row form-group">
-                <label class="control-label col-lg-3" for="name"><span>原密码：</span></label>
-                <div class="col-md-7">
-                	<input id="oldPwd" type="password" name="oldPwd" data-validate-length-range="4,12"  class="form-control col-md-7 col-xs-12" required="required">
-                	<span id="oldpwd2"></span>
-                </div>
-            </div>
-            
-            <div class="row form-group">
-                <label class="control-label col-lg-3" for="name"><span>输入新密码</span></label>
-                <div class="col-md-7">
-                	<input id="newPwd" type="password" name="newPwd" data-validate-length-range="5,12" class="form-control col-md-7 col-xs-12" required="required">
-                </div>
-            </div>
-            
-             <div class="row form-group">
-                <label class="control-label col-lg-3" for="name"><span>确认新密码：</span></label>
-                <div class="col-md-7">
-                	<input id="newPwd2" type="password" name="newPwd2" data-validate-linked="newPwd" class="form-control col-md-7 col-xs-12" required="required">
-                </div>
-            </div>
-            
+              <label for="oldPwd" class="control-label col-lg-3">输入原始密码</label>
+                  <div class="col-md-7">
+                      <input id="oldPwd" type="password" name="oldPwd" data-validate-length-range="4,12"  class="form-control col-md-7 col-xs-12" required="required">
+                   </div>
+                    </div>
+                     <div class="row form-group">
+                         <label for="newPwd" class="control-label col-lg-3">输入新密码</label>
+                          <div class="col-md-7">
+                               <input id="newPwd" type="password" name="newPwd" data-validate-length-range="5,12" class="form-control col-md-7 col-xs-12" required="required">
+                                </div>
+                      </div>
+                      <div class="row form-group">
+                          <label for="newPwd2" class="control-label col-lg-3">确认新密码</label>
+                           <div class="col-md-7">
+                                <input id="newPwd2" type="password" name="newPwd2" data-validate-linked="newPwd" class="form-control col-md-7 col-xs-12" required="required">
+                            </div>
+                        </div>
 			<br/>
             
             <div class="row form-group">
+            	<input type="hidden" id="courierNo" name="uId" value="${loginUser.uId}" />
             	<input type="hidden" id="uId" name="uId" value="${user.uId}"/> 
-					<button type="button" class="btn btn-danger" onclick="doUpdate();">确认</button>
+					<button type="button" class="btn btn-danger" id="pwd_btn" name ="pwd_btn" onclick="doUpdate();">确认</button>
 					<button type="button" class="btn btn-danger" onclick="doback();">返回</button>				
             </div>
 
@@ -129,6 +126,8 @@
 	</div>
 	</div>
 </div>
+
+
 <style type="text/css">
 input[type=radio] {
 margin-right: 5px;

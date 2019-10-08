@@ -3,7 +3,7 @@
 <mapper namespace="com.hp.dao.Chat_statusMapper">
   <resultMap id="BaseResultMap" type="com.hp.bean.Chat_status">
     <id column="C_S_NUM" jdbcType="INTEGER" property="cSNum" />
-    <result column="C_STATUS" jdbcType="INTEGER" property="cStatus" />
+    <result column="C_STATUS" jdbcType="VARCHAR" property="cStatus" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -98,7 +98,7 @@
   </delete>
   <insert id="insert" parameterType="com.hp.bean.Chat_status">
     insert into e_chat_status (C_S_NUM, C_STATUS)
-    values (#{cSNum,jdbcType=INTEGER}, #{cStatus,jdbcType=INTEGER})
+    values (#{cSNum,jdbcType=INTEGER}, #{cStatus,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hp.bean.Chat_status">
     insert into e_chat_status
@@ -115,7 +115,7 @@
         #{cSNum,jdbcType=INTEGER},
       </if>
       <if test="cStatus != null">
-        #{cStatus,jdbcType=INTEGER},
+        #{cStatus,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -132,7 +132,7 @@
         C_S_NUM = #{record.cSNum,jdbcType=INTEGER},
       </if>
       <if test="record.cStatus != null">
-        C_STATUS = #{record.cStatus,jdbcType=INTEGER},
+        C_STATUS = #{record.cStatus,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -142,7 +142,7 @@
   <update id="updateByExample" parameterType="map">
     update e_chat_status
     set C_S_NUM = #{record.cSNum,jdbcType=INTEGER},
-      C_STATUS = #{record.cStatus,jdbcType=INTEGER}
+      C_STATUS = #{record.cStatus,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -151,14 +151,14 @@
     update e_chat_status
     <set>
       <if test="cStatus != null">
-        C_STATUS = #{cStatus,jdbcType=INTEGER},
+        C_STATUS = #{cStatus,jdbcType=VARCHAR},
       </if>
     </set>
     where C_S_NUM = #{cSNum,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hp.bean.Chat_status">
     update e_chat_status
-    set C_STATUS = #{cStatus,jdbcType=INTEGER}
+    set C_STATUS = #{cStatus,jdbcType=VARCHAR}
     where C_S_NUM = #{cSNum,jdbcType=INTEGER}
   </update>
 </mapper>

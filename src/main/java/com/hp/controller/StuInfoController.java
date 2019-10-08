@@ -11,7 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hp.bean.City;
+import com.hp.bean.Class;
 import com.hp.bean.User;
+import com.hp.service.CityService;
+import com.hp.service.ClassService;
 import com.hp.service.CreditService;
 import com.hp.service.StuInfoService;
 import com.hp.service.UserService;
@@ -29,12 +33,23 @@ public class StuInfoController {
 	@Autowired
 	public CreditService creditService;
 	
+	@Autowired
+	public ClassService classService;
+	
+	@Autowired
+	public CityService cityService;
+	
 	//查询学生个人信息
 	@RequestMapping("/stuInfoCenter")
 	public ModelAndView  PersonalInfo(HttpServletRequest httpServletRequest,
 			@RequestParam(required = true,value = "uId") Integer uId) {
 		HttpSession httpSession = httpServletRequest.getSession();
 		User user = stuInfoService.queryStudentInfoById(uId);
+		
+		City city = cityService.queryCityByCnum(user.getcNum());
+		  if (city !=null) {
+			user.setCity(city);
+		}
 		
 		//剩余积分
 		String credit = creditService.queryCreditSum(uId);
