@@ -70,7 +70,10 @@
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span class="spanstyle">城市：</span></label>
                 <div class="col-md-7">
+                	<label class="form-control" type="text" id="cProvince" name="cProvince" value = ""><span >${user.city.cProvince}&nbsp;${user.city.cCity}</span></label>
+
                 	<label class="form-control" type="text" id="uID" name="uID" value = ""><span>${user.city.cProvince}&nbsp;${user.city.cCity}</span></label>
+
                 </div>
             </div>
             

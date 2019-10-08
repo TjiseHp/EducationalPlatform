@@ -34,7 +34,7 @@
 				                	
 				                	<c:forEach var="i"  begin="0"  end="${list.size()-1}"> 
 					        		'${list[i].creditText2}',
-						        </c:forEach>
+						       		 </c:forEach>
 				                ],
 				                axisTick: {
 				                    alignWithLabel: true

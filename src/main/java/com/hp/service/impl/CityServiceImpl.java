@@ -23,4 +23,14 @@ public class CityServiceImpl implements CityService {
 		return cityDao.queryCityByCnum(cNum);
 	}
 
+	public List<City> queryCityAllprovince() {
+		// TODO Auto-generated method stub
+		return cityDao.queryCityAllprovince();
+	}
+
+	public List<City> queryCityBycProvince(City city) {
+		// TODO Auto-generated method stub
+		return cityDao.queryCityBycProvince(city);
+	}
+
 }

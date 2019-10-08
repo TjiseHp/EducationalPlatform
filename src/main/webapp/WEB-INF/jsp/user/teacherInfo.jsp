@@ -42,7 +42,7 @@
 		}
 		
 		function doUpdateUpwd(uId){
-			window.location.href = "${pageContext.request.contextPath}/stuInfo/updateUpwd?uId="+uId;		
+			window.location.href = "${pageContext.request.contextPath}/user/updateTeacherUpwd?uId="+uId;		
 		}
 
 </script>

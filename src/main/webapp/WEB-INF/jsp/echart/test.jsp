@@ -8,48 +8,73 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/plug/js/echarts.min.js"></script>		
 <div><h1>我带你们打</h1></div>
 
-<div id="main" style="width: 95%; height: 400px;">
-<script type="text/javascript">
-	var myChart=echarts.init(document.getElementById("main"));
-    var option = ({
-    	                title:{
-    	                        text:'echarts入门示例'
-    	                        },
-    	                        tooltip:{
-    	                            
-    	                        },
-    	                        legend:{
-    	                            data:[
-						    	        	
-						    	        ]
-    	                        },
-    	                        xAxis:{
-    	                            data:[
-    	        	
-					    	        	<c:forEach var="i"  begin="0"  end="${list.size()-1}"> 
-							        		'${list[i].classKind}',
-								        </c:forEach>
-					        			]
-    	                        },
-    	                        yAxis:{
-    	                            
-    	                        },
-    	                        series:[
-    	                            {
-    	                                name:'num',
-    	                                type:'bar',
-    	                                data:[
-					    	        	<c:forEach var="i" begin="0"  end="${list.size()-1}"> 
-					    	        	'${list[i].classNum}', 
-					    	        	</c:forEach>
-    	        						]
-    	                            },
-    	                        ]
-    	        });
-    
-    myChart.setOption(option);
-    
+<div >	
+                     <label for="inputPassword3" class="col-md-2 control-label">寄件人地址</label>
+                  <div class="col-md-10">
+                  		 	<select style="width: 100px" id="s1" >
+						        <option >--请选择--</option>
+						    </select> 
+						    <select style="width: 100px" id="s2">
+						        <option >--请选择--</option>
+						    </select>
+						    <select style="width: 100px" id="s3">
+						        <option >--请选择--</option>
+						    </select>
+                </div>
+      </div>          
+               
 
+<script type="text/javascript">                
+                $(function(){
+			  
+			   $.ajax({
+				   type:"post",
+				   url:"${pageContext.request.contextPath}/echart/user",
+				   dataType:"json",
+				   success:function(result){
+					   for(var i=0;i<result.length;i++ ){
+						   $("#s1").append("<option value='"+result[i].uId+"'>"+result[i].uId+"</option>");
+					   }
+				   }
+			   });
+		})
+		
+			 $("#s1").change(function(){
+			   $("#s2 option:gt(0)").remove();
+			   $("#s3 option:gt(0)").remove();
+			   var uId = $("#s1 option:selected").val();
+					$.ajax({
+					type:"post",
+				   url:"${pageContext.request.contextPath}/echart/user2",
+				   data:{"uId":uId},
+				   dataType:"json",
+				   success:function(result){
+				   for(var i=0;i<result.length;i++ ){
+						   $("#s2").append("<option value='"+result[i].uName+"'>"+result[i].uName+"</option>");
+				   }
+			   }
+			  })
+		})
+		
+		 $("#s2").change(function(){
+			   $("#s3 option:gt(0)").remove();
+			   var uName = $("#s2 option:selected").val();
+					$.ajax({
+					type:"post",
+				   url:"${pageContext.request.contextPath}/echart/user3",
+				   data:{"uName":uName},
+				   dataType:"json",
+				   success:function(result){
+				   for(var i=0;i<result.length;i++ ){
+						   $("#s3").append("<option value='"+result+"'>"+result+"</option>");
+				   }
+			   }
+			  })
+		})
+		
+		
+		
+		
+		
+	
 </script>
-
-</div>
