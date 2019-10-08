@@ -3,7 +3,7 @@ package com.hp.bean;
 public class Chat_status {
     private Integer cSNum;
 
-    private Integer cStatus;
+    private String cStatus;
 
     public Integer getcSNum() {
         return cSNum;
@@ -13,11 +13,11 @@ public class Chat_status {
         this.cSNum = cSNum;
     }
 
-    public Integer getcStatus() {
+    public String getcStatus() {
         return cStatus;
     }
 
-    public void setcStatus(Integer cStatus) {
-        this.cStatus = cStatus;
+    public void setcStatus(String cStatus) {
+        this.cStatus = cStatus == null ? null : cStatus.trim();
     }
 }
