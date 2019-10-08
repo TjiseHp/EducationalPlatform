@@ -123,10 +123,20 @@ public class UserCortroller  {
 	}
 	
 	//更新学生信息
+	@ResponseBody
 	@RequestMapping(value = "/doUpdateStudent",produces = {"text/html;charset=utf-8"})
 	public String doUpdateStudent(User user,HttpServletRequest httpServletRequest) {
-		userService.updateByPrimaryKeySelective(user);
-		return "redirect: studentTable2";
+		System.out.println("执行修改学生信息");
+		JSONObject json = new JSONObject();     
+	    int row= userService.updateByPrimaryKeySelective(user);
+	    System.out.println(user.getcNum());
+		if(row==1) {
+			json.put("result", true);
+		}
+		else {
+			json.put("result", false);
+		}
+		return json.toString();
 	}
 	
 
@@ -321,8 +331,23 @@ public class UserCortroller  {
 	//更新老师信息
 	@ResponseBody
 	@RequestMapping("/doUpdateTeacherInfo")
-	public String doUpdateTeacherInfo(HttpSession session,User user) {
-		System.out.println("update："+user.getuId()+" "+user.getuEmail()+" "+user.getuPhone()+" "+user.getuName()+" "+user.getuSex()+" "+user.getcNum()+" "+user.getClassNum());
+	public String doUpdateTeacherInfo(
+			@RequestParam(value = "uId") Integer uId,
+			@RequestParam(value = "cNum") Integer cNum,
+			@RequestParam(value = "classNum") Integer classNum,
+			@RequestParam(value = "uName") String uName,
+			@RequestParam(value = "uSex") String uSex,
+			@RequestParam(value = "uPhone") String uPhone,
+			@RequestParam(value = "uEmail") String uEmail
+			) {
+		User user = new User();
+		user.setuId(uId);
+		user.setcNum(cNum);
+		user.setClassNum(classNum);
+		user.setuName(uName);
+		user.setuSex(uSex);
+		user.setuPhone(uPhone);
+		user.setuEmail(uEmail);
 		JSONObject json = new JSONObject();
 		int row = userService.updateByPrimaryKeySelective(user);		
 		if(row==1) {

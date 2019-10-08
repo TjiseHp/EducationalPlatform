@@ -126,9 +126,9 @@ $(function(){
         	type : "POST",
         	url  : "${pageContext.request.contextPath}/user/doUpdateTeacherInfo",
         	data : {
-        		"classNum" :classNum,
-        		"cNum":cNum,
         		"uId" : uId,
+        		"classNum" : classNum,
+        		"cNum": cNum,
         		"uEmail" : uEmail,
         		"uSex" : uSex,
         		"uName" : uName,
@@ -142,9 +142,7 @@ $(function(){
         		var resObj = JSON.parse(result);
         		console.info(resObj.result);
         		if (resObj.result) {
-        			
-    	        	window.location.href = "${pageContext.request.contextPath}/user/doUpdateTeacherInfo?uId="+uId;
-        			
+    	        	window.location.href = "${pageContext.request.contextPath}/user/teacherReturn";
         		} else {
                     layer.msg("修改错误，请重新输入", {time:2000, icon:5, shift:6}, function(){
                     	

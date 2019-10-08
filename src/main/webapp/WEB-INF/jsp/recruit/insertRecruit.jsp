@@ -8,21 +8,96 @@
 
 
 <script type="text/javascript">
-	function doPost(){
+	function doAdd(){
+		
 		var uId = $("#uId").val();
-		var cNum = $("#cNum").val();
+		var cNum = $("#s2").val();
 		var classNum = $("#classNum").val();
 		var recruitText = $("#recruitText").val();
+		console.info(uId+"111"+cNum);
 		if(uId == ""||cNum == ""||classNum == ""||recruitText == ""){
 			layer.msg("内容不能为空", {time:2000, icon:5, shift:6});
-			return false;
 		}else{
-			return true;
-		}
+			layer.confirm('确认发布？', {
+				btn: ['确认','取消'] 
+			}, function(){
+				$.ajax({
+					type:"post",
+					   url:"${pageContext.request.contextPath}/recruit/add",
+					   data:{
+						   "cNum":cNum,
+						   "uId":uId,
+						   "classNum":classNum,
+						   "recruitText":recruitText		   
+					   },
+					   dataType:"json",
+					   success:function(result){
+						   console.info(result);
+						   layer.msg("发布成功！", {time:2000, icon:6, shift:6}, function(){
+							   window.location.href = "${pageContext.request.contextPath}/main";						   
+				           });
+						   
+				   },
+				   error: function () {
+			       	layer.msg("发布失败！", {time:2000, icon:5, shift:6}, function(){
+			           });
+			      	}
+	            })
+			
+			}, function(){
+			  
+			});
+			
+				
+		};
 		
-    }
+	}
 		
 		
+		
+	  $(function(){
+		  
+		   $.ajax({
+			   type:"post",
+			   url:"${pageContext.request.contextPath}/city/city1",
+			   dataType:"json",
+			   success:function(result){
+				   for(var i=0;i<result.length;i++ ){
+					   $("#s1").append("<option value='"+result[i].cProvince+"'>"+result[i].cProvince+"</option>");
+				   }
+			   }			  
+		   });		
+		   $("#s1").change(function(){
+			   $("#s2 option:gt(0)").remove();
+			   var cProvince = $("#s1 option:selected").val();
+					$.ajax({
+					type:"post",
+				   url:"${pageContext.request.contextPath}/city/city2",
+				   data:{"cProvince":cProvince},
+				   dataType:"json",
+				   success:function(result){
+				   for(var i=0;i<result.length;i++ ){
+						   $("#s2").append("<option value='"+result[i].cNum+"'>"+result[i].cCity+"</option>");
+				   }
+			   }
+			  })
+		})
+		})
+	
+	
+	  $(function course(){
+		  
+		   $.ajax({
+			   type:"post",
+			   url:"${pageContext.request.contextPath}/class/class1",
+			   dataType:"json",
+			   success:function(result){
+				   for(var i=0;i<result.length;i++ ){
+					   $("#classNum").append("<option value='"+result[i].classNum+"'>"+result[i].classKind+"</option>");
+				   }
+			   }			  
+		   });		   
+		})
 	
 </script>
 
@@ -36,48 +111,64 @@
 	<br/>
 	<div class="col-md-offset-0">
 	<div class="elegant-aero">
-	<form action="${pageContext.request.contextPath}/recruit/add" method="post" accept-charset="utf-8" onsubmit="return doPost()">
+	<form  method="post" accept-charset="utf-8"  onsubmit="">
 			
-			<div class="row form-group">
-                <label class="control-label col-lg-3" for="name"><span>家长姓名：</span></label>
-                <div class="col-md-7">
-                	<input class="form-control" type="text" id="uId" name="uId" value="填id,仅做功能测试，之后再改">
-                </div>
-            </div>
+			
             
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span>所在城市：</span></label>
+                <input class="form-control" type="hidden" id="uId" name="uId" value="${loginUser.uId}">
                 <div class="col-md-7">
-                	<input class="form-control" type="text" id="cNum" name="cNum" value="同上">
+                			<select style="width: 100px" id="s1" >
+						        <option >--请选择--</option>
+						    </select> 
+						    <select style="width: 100px" id="s2">
+						        <option >--请选择--</option>
+						    </select>
+                	
                 </div>
             </div>
 
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span>辅导科目：</span></label>
-                <div class="col-md-7">
-                	<input class="form-control" type="text" id="classNum" name="classNum" value="同上">
+                <div class="col-md-7">                	
+                			<select style="width: 100px" id="classNum" >
+						        <option >--请选择--</option>						        
+						    </select>
                 </div>
             </div>
 
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span>具体需求：</span></label>
                 <div class="col-md-7">
-                	<textarea class="form-control"  cols="1"   rows="20"  type="text" id="recruitText" name="recruitText"></textarea>
+                	<textarea class="form-control"  cols="1"   rows="20"   id="recruitText" name="recruitText"></textarea>
                 </div>
             </div>
             			
             <br/>
             
             <div class="row form-group">
-            		<input class="form-control" type="hidden" id="uId" name="uId" value="">
-					<input class="btn btn-danger" type="submit" value="提交"/>
+					<input class="btn btn-danger" type="butten" onclick="doAdd()" value="提交"/>
             </div>
             		
 	</form>
 	</div>
 	</div>
 	</div>
+	
+<script type="text/javascript">                
+              
+		
+		
+		
+		
+		
+	
+</script>	
+	
 <style>
+
+
 input[type=radio] {
 margin-right: 5px;
 cursor: pointer;

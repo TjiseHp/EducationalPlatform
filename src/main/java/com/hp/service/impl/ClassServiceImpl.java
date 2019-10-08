@@ -1,5 +1,7 @@
 package com.hp.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +17,11 @@ public class ClassServiceImpl implements ClassService{
 	public Class queryAllByClassNum(Integer classNum) {
 		return classDao.queryAllByClassNum(classNum);
 	}
-
+	public List<Class> queryAllClass() {
+		// TODO Auto-generated method stub
+		return classDao.queryAllClass();
+	}
+	
 	public Class queryClassByClassNum(Integer classNum) {
 		return classDao.queryClassByClassNum(classNum);
 	}
