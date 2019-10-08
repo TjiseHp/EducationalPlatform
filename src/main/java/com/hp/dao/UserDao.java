@@ -3,6 +3,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Select;
 
 import com.hp.bean.City;
+import com.hp.bean.Class;
 import com.hp.bean.Credit;
 import com.hp.bean.Recruit;
 import com.hp.bean.User;
@@ -53,6 +54,12 @@ public interface UserDao {
 
 	@Select("select distinct C_PROVINCE from e_city ")
 	List<City> queryAllCityBycProvince();
+
+	@Select("select * from e_user where U_ID = #{uId} and U_PWD = #{uPwd}")
+	User queryUserByPwd(User user);
+
+	@Select("select * from e_class")
+	List<Class> queryAllClass(Class uclass);
 
 
 }

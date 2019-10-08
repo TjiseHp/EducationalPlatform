@@ -5,6 +5,56 @@
     		%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<script type="text/javascript">
+		$(function(){
+			$.ajax({
+				   type:"post",
+				   url:"${pageContext.request.contextPath}/user/cProvince",
+				   dataType:"json",
+				   success:function(result){
+					   for(var i=0;i<result.length;i++ ){
+						   $("#s1").append("<option value='"+result[i].cProvince+"'>"+result[i].cProvince+"</option>");
+					   }
+				   }
+			   });
+			
+			 $("#s1").change(function(){
+				   $("#s2 option:gt(0)").remove();
+				   var cProvince = $("#s1 option:selected").val();
+						$.ajax({
+						type:"post",
+					   url:"${pageContext.request.contextPath}/user/cCity",
+					   data:{"cProvince":cProvince},
+					   dataType:"json",
+					   success:function(result){
+					   for(var i=0;i<result.length;i++ ){
+							   $("#s2").append("<option value='"+result[i].cNum+"'>"+result[i].cCity+"</option>");
+					   }
+				   }
+				  })
+			})  
+		})
+
+</script>
+
+<script type="text/javascript">
+$(function(){
+	$.ajax({
+		   type:"post",
+		   url:"${pageContext.request.contextPath}/user/cClass",
+		   dataType:"json",
+		   success:function(result){
+			   for(var i=0;i<result.length;i++ ){
+				   $("#c1").append("<option value='"+result[i].classNum+"'>"+result[i].classKind+"</option>");
+			   }
+		   }
+	   });
+})
+
+
+
+</script>
+
 <style type="text/css">
         .password{
             position: relative;
@@ -50,14 +100,13 @@
 <script type="text/javascript">
 	
 	function doUpdate() {
-		var cNum = $("#cNum").val();
-		var classNum = $("#classNum").val();
+		var cNum = $("#s2").val();
+		var classNum = $("#c1").val();
 		var uName = $("#uName").val();
 		var uPhone = $("#uPhone").val();
 		var uEmail = $("#uEmail").val();
-		var uSex = $("#uSex").val();
+		var uSex = $('input:radio[name="uSex"]:checked').val();
 		var uId = $("#uId").val();
-		var uPwd = $("#uPwd").val();
 		console.info(cNum);
 		console.info(classNum);
 		console.info(uName);
@@ -65,8 +114,7 @@
 		console.info(uPhone);
 		console.info(uEmail);
 		console.info(uSex);
-		console.info(uPwd);
-		if(uName == ""||uPhone == ""||uEmail == ""||uSex == ""){
+		if(uName == ""||uPhone == ""||uEmail == ""||uSex == ""||cNum == ""||classNum == ""){
 			layer.msg("内容不能为空", {time:2000, icon:5, shift:6});
 			return;
 		}else{
@@ -78,14 +126,13 @@
         	type : "POST",
         	url  : "${pageContext.request.contextPath}/user/doUpdateTeacherInfo",
         	data : {
-        		"classNum" :classNum,
-        		"cNum":cNum,
         		"uId" : uId,
+        		"classNum" : classNum,
+        		"cNum": cNum,
         		"uEmail" : uEmail,
         		"uSex" : uSex,
         		"uName" : uName,
-        		"uPhone"  : uPhone,
-        		"uPwd" :uPwd
+        		"uPhone"  : uPhone
         	},
         	beforeSend : function(){
         		loadingIndex = layer.msg('处理中', {icon: 16});
@@ -95,11 +142,9 @@
         		var resObj = JSON.parse(result);
         		console.info(resObj.result);
         		if (resObj.result) {
-        			
-    	        	window.location.href = "${pageContext.request.contextPath}/user/doUpdateTeacherInfo?uId="+uId;
-        			
+    	        	window.location.href = "${pageContext.request.contextPath}/user/teacherReturn";
         		} else {
-                    layer.msg("用户登录账号或密码不正确，请重新输入", {time:2000, icon:5, shift:6}, function(){
+                    layer.msg("修改错误，请重新输入", {time:2000, icon:5, shift:6}, function(){
                     	
                     });
         		}
@@ -130,14 +175,21 @@
 		    <div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span>城市：</span></label>
                 <div class="col-md-7">
-					<input class="form-control" type="text" id="cNum" name="cNum" value = "${user.cNum}">
+					<select style="width: 100px" id="s1">
+				        <option >--请选择--</option>
+				    </select>
+				    <select style="width: 100px" id="s2">
+				        <option >--请选择--</option>
+				    </select>
                 </div>
             </div>
 		
 		    <div class="row form-group">
-                <label class="control-label col-lg-3" for="name"><span>学科：</span></label>
+                <label class="control-label col-lg-3" for="class"><span>学科：</span></label>
                 <div class="col-md-7">
-					<input class="form-control" type="text" id="classNum" name="classNum" value = "${user.classNum }">
+					<select style="width: 100px" id="c1">
+				        <option >--请选择--</option>
+				    </select>
                 </div>
             </div>
 		    
@@ -149,15 +201,15 @@
             </div>
             
 			<div class="row form-group">
-                <label class="control-label col-lg-3" for="name"><span>性别：</span></label>
-                <div class="col-md-7">
-                  	<div style="padding:5px">
-					<lable class="radio-inline"><input class="form-control" type="radio" id="uSex1" name="uSex" value="${user.uSex}"><span>男</span></lable>
-					&nbsp;&nbsp;&nbsp;
-					<lable class="radio-inline"><input class="form-control" type="radio" id="uSex2" name="uSex" value="${user.uSex}"><span>女</span></lable>
-					</div>
-            	</div>
-            </div>
+				<label class="control-label col-lg-3" for="name" ><span>性别：</span></label>
+				    <div style="padding-right:80px;padding-top:8px;">
+				    <lable class="sex">
+					    <input id="man" type="radio" value="男" checked="checked" name="uSex" />男   &nbsp;&nbsp;&nbsp;
+					    <input id="woman" type="radio"  value="女" name="uSex"/>女
+				    </lable>
+				    </div>
+			</div>
+
             
             <div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span>手机：</span></label>
@@ -174,7 +226,7 @@
             </div>
 
 	        <div class="row form-group">
-	            <input type="hidden" id=courierNo name="uId" value="${user.uId }"/>
+	            <input type="hidden" id="uId" name="uId" value="${loginUser.uId}"/>
 				<button type="button" class="btn btn-danger" onclick="doUpdate()">提交</button>
 	        </div>
 	        

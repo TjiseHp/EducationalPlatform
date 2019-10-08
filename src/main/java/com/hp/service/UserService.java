@@ -2,6 +2,7 @@ package com.hp.service;
 import java.util.List;
 
 import com.hp.bean.City;
+import com.hp.bean.Class;
 import com.hp.bean.Recruit;
 import com.hp.bean.User;
 
@@ -44,6 +45,10 @@ public interface UserService {
 	List<City> queryAllCity(City city);
 
 	List<City> queryAllCityBycProvince();
+
+	User queryUserByPwd(User oldUser);
+
+	List<Class> queryAllClass(Class uclass);
 
 
 }

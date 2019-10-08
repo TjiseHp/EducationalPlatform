@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hp.bean.City;
+import com.hp.bean.Class;
 import com.hp.bean.Recruit;
 import com.hp.bean.User;
 import com.hp.dao.UserDao;
@@ -97,6 +98,16 @@ public class UserServiceImpl implements UserService {
 	public List<City> queryAllCityBycProvince() {
 		// TODO Auto-generated method stub
 		return userDao.queryAllCityBycProvince();
+	}
+
+	public User queryUserByPwd(User user) {
+		// TODO Auto-generated method stub
+		return userDao.queryUserByPwd(user);
+	}
+
+	public List<Class> queryAllClass(Class uclass) {
+		// TODO Auto-generated method stub
+		return userDao.queryAllClass(uclass);
 	}
 
 	
