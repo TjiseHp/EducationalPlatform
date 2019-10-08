@@ -7,7 +7,7 @@
 	</div>
 	<br />
 	<hr />
-	<br /> <br />
+	<br /> <br/>
 </div>
 
 	<div class="col-md-offset-0">
