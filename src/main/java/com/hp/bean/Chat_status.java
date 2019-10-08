@@ -3,21 +3,23 @@ package com.hp.bean;
 public class Chat_status {
     private Integer cSNum;
 
-    private Integer cStatus;
+    private String cStatus;
 
-    public Integer getcSNum() {
-        return cSNum;
-    }
+	public Integer getcSNum() {
+		return cSNum;
+	}
 
-    public void setcSNum(Integer cSNum) {
-        this.cSNum = cSNum;
-    }
+	public void setcSNum(Integer cSNum) {
+		this.cSNum = cSNum;
+	}
 
-    public Integer getcStatus() {
-        return cStatus;
-    }
+	public String getcStatus() {
+		return cStatus;
+	}
 
-    public void setcStatus(Integer cStatus) {
-        this.cStatus = cStatus;
-    }
+	public void setcStatus(String cStatus) {
+		this.cStatus = cStatus;
+	}
+
+    
 }
