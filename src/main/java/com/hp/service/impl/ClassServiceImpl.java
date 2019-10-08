@@ -17,15 +17,13 @@ public class ClassServiceImpl implements ClassService{
 	public Class queryAllByClassNum(Integer classNum) {
 		return classDao.queryAllByClassNum(classNum);
 	}
-
-<<<<<<< HEAD
 	public List<Class> queryAllClass() {
 		// TODO Auto-generated method stub
 		return classDao.queryAllClass();
-=======
+	}
+	
 	public Class queryClassByClassNum(Integer classNum) {
 		return classDao.queryClassByClassNum(classNum);
->>>>>>> branch 'master' of https://github.com/TjiseHp/EducationalPlatform.git
 	}
 	
 }

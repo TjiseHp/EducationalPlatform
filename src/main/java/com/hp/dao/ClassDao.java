@@ -10,13 +10,10 @@ public interface ClassDao {
 
 	@Select("select * from e_class where class_num = #{classNum}")
 	Class queryAllByClassNum(Integer classNum);
-<<<<<<< HEAD
 	
 	@Select("select * from e_class ")
 	List<Class> queryAllClass();
-=======
 
 	@Select("select * from e_class where class_num = #{classNum}")
 	Class queryClassByClassNum(Integer classNum);
->>>>>>> branch 'master' of https://github.com/TjiseHp/EducationalPlatform.git
 }
