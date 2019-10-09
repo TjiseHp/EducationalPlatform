@@ -17,7 +17,7 @@ public interface CreditDao {
 	@Select("select * from e_credit where CREDIT_TEXT = '充值' and U_ID = #{uId}")
 	List<Credit> queryHistoryBuyByuId(Integer uId);
 
-    @Select("select * from e_credit where U_ID = #{uId}")
+    @Select("select * from e_credit where U_ID = #{uId} order by CREDIT_DATE DESC")
 	List<Credit> queryAllDetailById(Integer uId);
     
     

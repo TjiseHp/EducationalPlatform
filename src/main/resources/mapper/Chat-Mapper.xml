@@ -38,10 +38,10 @@
 			    <result column="U_ACC" jdbcType="VARCHAR" property="uAcc" />
 			    <result column="U_PWD" jdbcType="VARCHAR" property="uPwd" />
 		    </collection>
-		    <!-- <collection property="chat_status" ofType="com.hp.bean.Chat_status">
+		    <collection property="chat_status" ofType="com.hp.bean.Chat_status">
 		       	<id column="C_S_NUM" jdbcType="INTEGER" property="cSNum" />
-  			    <result column="C_STATUS" jdbcType="INTEGER" property="cStatus" />
-		    </collection> -->
+  			    <result column="C_STATUS" jdbcType="VARCHAR" property="cStatus" />
+		    </collection>
 	  </resultMap>
 	  
 	  <select id="queryAllReceiveInfoByuId" resultMap="BaseResultMap">
@@ -50,10 +50,10 @@
 			     on c.u_id=u1.u_id
 			   left join e_user u2
 			      on c.u_id2=u2.u_id
-			  <!--  left join e_chat_status s
-			      on c.c_s_num=s.c_s_num -->
+			 <!--  left join e_chat_status s
+			      on c.c_s_num=s.c_s_num  -->
 			  where  u2.u_id = #{uId2}
-			   order by c.c_s_num
+			   order by c.c_s_num ASC
 	 </select>
 	 
 	 <select id="queryAllSendInfoByuId" resultMap="BaseResultMap">

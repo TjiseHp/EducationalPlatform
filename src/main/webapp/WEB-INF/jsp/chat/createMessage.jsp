@@ -96,7 +96,7 @@
         		console.info(resObj);
         		console.info(resObj.result);
         		if (resObj.result==0) {   
-					layer.msg("ok", {time:2000, icon:5, shift:6}, function(){
+					layer.msg("ok", {time:2000, icon:6, shift:6}, function(){
     	        	window.location.href = "${pageContext.request.contextPath}/chat/stuMessageCenter";
                     });
         		} else {

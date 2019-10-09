@@ -78,7 +78,6 @@ public class StuInfoController {
 			modelAndView.addObject("user",user);
 			modelAndView.addObject("mainPage", "stuInfo/updateStuInfo.jsp");
 			modelAndView.setViewName("main");
-			System.out.println("456");
 			return modelAndView;
 		}
 		

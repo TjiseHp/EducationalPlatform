@@ -40,7 +40,7 @@
 	                },
 	                {
 	                    sortable: "true",
-	                    field: 'cSNum',
+	                    field: 'chat_status.cStatus',
 	                    title: '状态',
 	                    align: "center"
 	                },
@@ -85,7 +85,7 @@
 	            	user1.uEmail = row.user1.uEmail;	            	
 	            	chatText=row.chatText;
 	            	chatDate = row.chatDate;
-	            	cSNum = row.cSNum;
+	            	cStatus = row.chat_status.cStatus;
 	            		            		            	
 	            }
 	        });
@@ -161,9 +161,31 @@
 				var uId=${loginUser.uId};
 	        	console.info(uId);
 	            chatNum = row.chatNum;
-				console.info("chatNum");
-	        	window.location.href = "${pageContext.request.contextPath}/chat/showReceiveInfo?chatNum="+chatNum+"&uId="+uId;
-	        }
+	            cSNum = row.chat_status.cSNum;
+				console.info("chatNum");				
+				$.ajax({
+					type:'post', 
+			        data:{
+			          "chatNum" : chatNum,
+                  	  "cSNum" : cSNum
+	       		 },
+			        url:'${pageContext.request.contextPath}/chat/updateStatus',
+			        success: function(result){
+		        		var resObj = JSON.parse(result);
+		        		console.info(resObj);
+		        		console.info(resObj.result);
+		        		window.location.href = "${pageContext.request.contextPath}/chat/showReceiveInfo?chatNum="+chatNum+"&uId="+uId;
+			        },
+			    	error : function(err){
+		        		layer.msg("系统错误", {time:2000, icon:5, shift:6}, function(){
+		                    
+		                });
+		        	}
+					
+				});
+/*                 window.location.href = "${pageContext.request.contextPath}/chat/showReceiveInfo?chatNum="+chatNum+"&uId="+uId; 
+ */	        }
+	        
 	        
 	    }
 		

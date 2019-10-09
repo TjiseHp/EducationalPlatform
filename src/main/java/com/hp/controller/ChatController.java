@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hp.bean.Chat;
+import com.hp.bean.Chat_status;
 import com.hp.bean.User;
 import com.hp.service.ChatService;
 import com.hp.service.CreditService;
@@ -52,17 +53,17 @@ public class ChatController {
 		System.out.println("###查询收件箱消息列表###");
 		List<Chat> ReceiveInfo = chatService.queryAllReceiveInfoByuId(uId2);	
 		System.out.println(uId2);
-		for(Chat text1 : ReceiveInfo) {
-			System.out.println(text1.getChatDate());
-			String text=text1.getChatText();
+		for(Chat chat1 : ReceiveInfo) {
+			String text=chat1.getChatText();
 			if(text.length()<=12) {
-				text1.setChatText(text);
+				chat1.setChatText(text);
 				continue;
 			}
 			String showText=text.substring(0,12);
-			text1.setChatText(showText+"……");
-			
+			chat1.setChatText(showText+"……");
+			chat1.setChat_status(chatService.queryStatus(chat1.getcSNum()));			
 		}
+		
 		return ReceiveInfo;
 	}
 	
@@ -219,6 +220,38 @@ public class ChatController {
 			return json.toString();
 		}
 	
-	
+		
+		//点击查看事件显示状态为已读
+		@ResponseBody
+		@RequestMapping("/updateStatus")
+		public String queryAllstatus(HttpSession session,
+				HttpServletRequest request) {
+			JSONObject json = new JSONObject();
+			String chatNum1 = request.getParameter("chatNum");
+			String cSNum = request.getParameter("cSNum");
 
+			System.out.println("chatNum1:"+chatNum1);
+			if(chatNum1.equals("") || chatNum1==null||cSNum.equals("") || cSNum==null) {
+				json.put("result", true);
+				return json.toString();
+			}
+			Integer chatNum = Integer.valueOf(chatNum1);
+			Integer cSNum1 = Integer.valueOf(cSNum);
+			
+			System.out.println("cSNum1:"+cSNum1);			
+			if(cSNum1==1) {
+				System.out.println("更新状态编号");
+				int row =chatService.updateByPrimaryKeySelective(chatNum);
+				if(row!=1) {
+	        		json.put("result", true);
+					return json.toString();
+	        	}
+			}else {
+				json.put("result", true);
+				return json.toString();
+			}					
+			json.put("result", false);
+			return json.toString();	
+		}
+	
 }
