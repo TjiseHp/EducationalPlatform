@@ -189,6 +189,15 @@ public class UserCortroller  {
 			@RequestParam(required = true,value = "uId") Integer uId) {
 		HttpSession httpSession = httpServletRequest.getSession();
 		User user = userService.queryTeacherByuId(uId);
+		Class uClass = classService.queryClassByClassNum(user.getClassNum());
+		  if (uClass !=null) {
+			  user.setuClass(uClass);	
+		}
+		  
+		  City city = cityService.queryCityByCnum(user.getcNum());
+		  if (city !=null) {
+			user.setCity(city);
+		}
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("httpSession",httpSession);
 		modelAndView.addObject("user",user);
@@ -343,6 +352,15 @@ public class UserCortroller  {
 			@RequestParam(required = true,value = "uId") Integer uId) {
 		HttpSession httpSession = httpServletRequest.getSession();
 		User user = userService.queryTeacherByInfo(uId);
+		Class uClass = classService.queryClassByClassNum(user.getClassNum());
+		  if (uClass !=null) {
+			  user.setuClass(uClass);	
+		}
+		  
+		  City city = cityService.queryCityByCnum(user.getcNum());
+		  if (city !=null) {
+			user.setCity(city);
+		}
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("httpSession",httpSession);
 		modelAndView.addObject("user",user);

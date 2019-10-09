@@ -172,23 +172,25 @@ $(function(){
 	<div class="elegant-aero">
 	<form action="${pageContext.request.contextPath}/user/doUpdateTeacherInfo" method="post" accept-charset="utf-8" onsubmit="return doUpdate()">
 		
-		    <div class="row form-group">
+		    			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span>城市：</span></label>
                 <div class="col-md-7">
-					<select style="width: 100px" id="s1">
-				        <option >--请选择--</option>
+					<select style="width: 100px" id="s1" >
+				        <option >${user.city.cProvince}</option>
 				    </select>
 				    <select style="width: 100px" id="s2">
-				        <option >--请选择--</option>
-				    </select>
+				        <option >${user.city.cCity}</option>
+				    </select> 
                 </div>
             </div>
+            
+			<br/>
 		
 		    <div class="row form-group">
                 <label class="control-label col-lg-3" for="class"><span>学科：</span></label>
                 <div class="col-md-7">
 					<select style="width: 100px" id="c1">
-				        <option >--请选择--</option>
+				        <option >${user.uClass.classKind}</option>
 				    </select>
                 </div>
             </div>
