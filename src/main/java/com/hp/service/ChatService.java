@@ -3,6 +3,7 @@ package com.hp.service;
 import java.util.List;
 
 import com.hp.bean.Chat;
+import com.hp.bean.Chat_status;
 
 public interface ChatService {
 
@@ -19,5 +20,10 @@ public interface ChatService {
 	List<Chat> queryAllSendInfoByuId(Integer uId);
 
 	List<Chat> queryChatListByuId(Integer uId);
+
+	Chat_status queryStatus(Integer cSNum);
+
+	int updateByPrimaryKeySelective(Integer chatNum);
+
 
 }

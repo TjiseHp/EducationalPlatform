@@ -40,7 +40,7 @@
 		    </collection>
 		    <collection property="chat_status" ofType="com.hp.bean.Chat_status">
 		       	<id column="C_S_NUM" jdbcType="INTEGER" property="cSNum" />
-  			    <result column="C_STATUS" jdbcType="STRING" property="cStatus" />
+  			    <result column="C_STATUS" jdbcType="VARCHAR" property="cStatus" />
 		    </collection>
 	  </resultMap>
 	  
@@ -50,8 +50,8 @@
 			     on c.u_id=u1.u_id
 			   left join e_user u2
 			      on c.u_id2=u2.u_id
-			  left join e_chat_status s
-			      on c.c_s_num=s.c_s_num 
+			 <!--  left join e_chat_status s
+			      on c.c_s_num=s.c_s_num  -->
 			  where  u2.u_id = #{uId2}
 			   order by c.c_s_num ASC
 	 </select>
