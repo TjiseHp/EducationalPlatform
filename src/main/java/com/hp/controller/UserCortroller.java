@@ -374,26 +374,13 @@ public class UserCortroller  {
 	@ResponseBody
 	@RequestMapping("/doUpdateTeacherInfo")
 	public String doUpdateTeacherInfo(
-			@RequestParam(value = "uId") Integer uId,
-			@RequestParam(value = "cNum") Integer cNum,
-			@RequestParam(value = "classNum") Integer classNum,
-			@RequestParam(value = "uName") String uName,
-			@RequestParam(value = "uSex") String uSex,
-			@RequestParam(value = "uPhone") String uPhone,
-			@RequestParam(value = "uEmail") String uEmail
-			) {
-		User user = new User();
-		user.setuId(uId);
-		user.setcNum(cNum);
-		user.setClassNum(classNum);
-		user.setuName(uName);
-		user.setuSex(uSex);
-		user.setuPhone(uPhone);
-		user.setuEmail(uEmail);
+			HttpSession session,User user) {
+		System.out.println("update："+user.getuId());
 		JSONObject json = new JSONObject();
+		System.out.println("老师城市序号："+user.getClassNum());
 		int row = userService.updateByPrimaryKeySelective(user);		
 		if(row==1) {
-			System.out.println("成功");
+			System.out.println("修改成功");
 			json.put("result", true);
 		}else {
 			json.put("result", false);
@@ -406,9 +393,7 @@ public class UserCortroller  {
 	public ModelAndView updateTeacherUpwd(HttpServletRequest httpServletRequest,
 			@RequestParam(required = true,value = "uId") Integer uId) {
 		HttpSession httpSession = httpServletRequest.getSession();
-		System.out.println("heihei");
 		User user = userService.queryTeacherByInfo(uId);
-		System.out.println("heihei1233");
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("httpSession",httpSession);
 		modelAndView.addObject("user",user);

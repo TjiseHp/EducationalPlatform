@@ -51,4 +51,5 @@ public interface UserService {
 	List<Class> queryAllClass(Class uclass);
 
 
+
 }

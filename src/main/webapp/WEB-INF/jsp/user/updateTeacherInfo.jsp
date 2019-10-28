@@ -100,21 +100,21 @@ $(function(){
 <script type="text/javascript">
 	
 	function doUpdate() {
-		var cNum = $("#s2").val();
+		var cCum = $("#s2").val();
 		var classNum = $("#c1").val();
 		var uName = $("#uName").val();
 		var uPhone = $("#uPhone").val();
 		var uEmail = $("#uEmail").val();
 		var uSex = $('input:radio[name="uSex"]:checked').val();
 		var uId = $("#uId").val();
-		console.info(cNum);
+		console.info(cCum);
 		console.info(classNum);
 		console.info(uName);
 		console.info(uId);
 		console.info(uPhone);
 		console.info(uEmail);
 		console.info(uSex);
-		if(uName == ""||uPhone == ""||uEmail == ""||uSex == ""||cNum == ""||classNum == ""){
+		if(uName == ""||uPhone == ""||uEmail == ""||uSex == ""||cCum == ""||classNum == ""){
 			layer.msg("内容不能为空", {time:2000, icon:5, shift:6});
 			return;
 		}else{
@@ -128,7 +128,7 @@ $(function(){
         	data : {
         		"uId" : uId,
         		"classNum" : classNum,
-        		"cNum": cNum,
+        		"cCum": cCum,
         		"uEmail" : uEmail,
         		"uSex" : uSex,
         		"uName" : uName,
