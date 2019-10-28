@@ -37,7 +37,7 @@
 
 <script type="text/javascript">
 		
-		function doUpdate(uId) {		
+		function doUpdate(uId) {
 			window.location.href = "${pageContext.request.contextPath}/user/updateTeacherInfo?uId="+uId;
 		}
 		

@@ -175,12 +175,12 @@ $(function(){
 		    <div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span>城市：</span></label>
                 <div class="col-md-7">
-					<select style="width: 100px" id="s1">
-				        <option >--请选择--</option>
+					<select style="width: 100px" id="s1" >
+				        <option >${user.city.cProvince}</option>
 				    </select>
 				    <select style="width: 100px" id="s2">
-				        <option >--请选择--</option>
-				    </select>
+				        <option >${user.city.cCity}</option>
+				    </select> 
                 </div>
             </div>
 		
