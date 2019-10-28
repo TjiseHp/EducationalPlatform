@@ -189,6 +189,15 @@ public class UserCortroller  {
 			@RequestParam(required = true,value = "uId") Integer uId) {
 		HttpSession httpSession = httpServletRequest.getSession();
 		User user = userService.queryTeacherByuId(uId);
+		Class uClass = classService.queryClassByClassNum(user.getClassNum());
+		  if (uClass !=null) {
+			  user.setuClass(uClass);	
+		}
+		  
+		  City city = cityService.queryCityByCnum(user.getcNum());
+		  if (city !=null) {
+			user.setCity(city);
+		}
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("httpSession",httpSession);
 		modelAndView.addObject("user",user);
@@ -198,10 +207,34 @@ public class UserCortroller  {
 	}
 
 	//更新教师信息
-	@RequestMapping(value = "/doUpdateTeacher",produces = {"text/html;charset=utf-8"})
-	public String updateTeacher(User user,HttpServletRequest httpServletRequest) {
-		userService.updateByPrimaryKeySelective(user);
-		return "redirect: teacherTable2";
+	@ResponseBody
+	@RequestMapping("/doUpdateTeacher")
+	public String doUpdateTeacher(
+			@RequestParam(value = "uId") Integer uId,
+			@RequestParam(value = "cNum") Integer cNum,
+			@RequestParam(value = "classNum") Integer classNum,
+			@RequestParam(value = "uName") String uName,
+			@RequestParam(value = "uSex") String uSex,
+			@RequestParam(value = "uPhone") String uPhone,
+			@RequestParam(value = "uEmail") String uEmail
+			) {
+		User user = new User();
+		user.setuId(uId);
+		user.setcNum(cNum);
+		user.setClassNum(classNum);
+		user.setuName(uName);
+		user.setuSex(uSex);
+		user.setuPhone(uPhone);
+		user.setuEmail(uEmail);
+		JSONObject json = new JSONObject();
+		int row = userService.updateByPrimaryKeySelective(user);		
+		if(row==1) {
+			System.out.println("成功");
+			json.put("result", true);
+		}else {
+			json.put("result", false);
+		}
+		return json.toString();
 	}
 	
 	//插入教师信息--页面跳转
@@ -319,6 +352,15 @@ public class UserCortroller  {
 			@RequestParam(required = true,value = "uId") Integer uId) {
 		HttpSession httpSession = httpServletRequest.getSession();
 		User user = userService.queryTeacherByInfo(uId);
+		Class uClass = classService.queryClassByClassNum(user.getClassNum());
+		  if (uClass !=null) {
+			  user.setuClass(uClass);	
+		}
+		  
+		  City city = cityService.queryCityByCnum(user.getcNum());
+		  if (city !=null) {
+			user.setCity(city);
+		}
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("httpSession",httpSession);
 		modelAndView.addObject("user",user);

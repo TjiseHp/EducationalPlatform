@@ -103,7 +103,7 @@
             </div>
             
             <div class="row form-group">
-                <label class="control-label col-lg-3" for="name"><span>输入新密码</span></label>
+                <label class="control-label col-lg-3" for="name"><span>输入新密码：</span></label>
                 <div class="col-md-7">
                 	<input id="newPwd" type="password" name="newPwd" data-validate-length-range="5,12" class="form-control col-md-7 col-xs-12" required="required">
                 </div>

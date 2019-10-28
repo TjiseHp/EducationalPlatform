@@ -145,7 +145,7 @@
             
  			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span>城市：</span></label>
-                <div class="col-md-7">
+                <div class="col-md-7" style="padding-top:8px">
 					<select style="width: 100px" id="s1" >
 				        <option >${user.city.cProvince}</option>
 				    </select>
