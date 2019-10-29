@@ -501,7 +501,7 @@ public class UserCortroller  {
 		User user = userService.queryUserByPwd(oldUser);
 				
 		if (user !=null) {
-			System.out.println("userOK");
+			System.out.println("userOK");		
 			user.setuPwd(newPwd);
 			int row = userService.updateByPrimaryKeySelective(user);
 			if (row==1) {

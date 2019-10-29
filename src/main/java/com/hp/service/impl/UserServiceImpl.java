@@ -10,6 +10,7 @@ import com.hp.bean.User;
 import com.hp.dao.UserDao;
 import com.hp.dao.UserMapper;
 import com.hp.service.UserService;
+import com.hp.util.Md5Util;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -37,6 +38,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public int updateByPrimaryKeySelective(User user) {
+		String upwd1 = Md5Util.getMd5Code(user.getuPwd());
+		user.setuPwd(upwd1);
+//		System.out.println("加密后的密码："+user.getuPwd());
 		return userMapper.updateByPrimaryKeySelective(user);
 	}
 
@@ -60,10 +64,16 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public User queryLoginByUser(User user) {
+		String upwd1 = Md5Util.getMd5Code(user.getuPwd());
+		user.setuPwd(upwd1);
+//		System.out.println("用户登陆输入密码的加密：："+user.getuPwd());
 		return userDao.queryLoginByUser(user);
 	}
 
 	public User queryRegUser(User user) {
+		String upwd1 = Md5Util.getMd5Code(user.getuPwd());
+		user.setuPwd(upwd1);
+//		System.out.println("用户注册验证输入密码的加密：："+user.getuPwd());		
 		return userDao.queryRegUser(user);
 	}
 
@@ -102,6 +112,9 @@ public class UserServiceImpl implements UserService {
 
 	public User queryUserByPwd(User user) {
 		// TODO Auto-generated method stub
+		String upwd1 = Md5Util.getMd5Code(user.getuPwd());
+		user.setuPwd(upwd1);
+//		System.out.println("验证用户修改密码的加密："+user.getuPwd());	
 		return userDao.queryUserByPwd(user);
 	}
 
