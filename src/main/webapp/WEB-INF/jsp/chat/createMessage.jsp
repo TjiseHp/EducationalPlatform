@@ -43,7 +43,8 @@
 				<button type="button" class="btn btn-danger" onclick="doPost();">发送</button>
 					<button type="button" class="btn btn-danger" onclick="doback();">取消</button>
         </div>
-
+			<div class="suspensionleft"></div>
+			<div class="suspensionright"></div>
 	</form>
 	</div>
 	</div>
@@ -202,4 +203,8 @@ font-weight: bold;
 	width:auto;
 	height:auto;
 }
+.suspensionleft{width:20%;height:100%;background:url("${pageContext.request.contextPath}/plug/img/t/tt1.jpg") no-repeat;
+padding-top:100px;position:absolute;left:2%;top:50%;}
+.suspensionright{width:20%;height:100%;background:url("${pageContext.request.contextPath}/plug/img/t/tt2.jpg") no-repeat;
+padding-top:100px;position:absolute;left:80%;top:50%;}
 </style>
