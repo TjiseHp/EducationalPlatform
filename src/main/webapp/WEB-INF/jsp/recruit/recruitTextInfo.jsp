@@ -53,7 +53,6 @@ letter-spacing: 0.04em;
 background-color:  }
 .layui-card.layui-demo-maincard{
 	width:auto;
-	height:auto;
 }
 input[type=radio] {
     margin-right: 5px;
