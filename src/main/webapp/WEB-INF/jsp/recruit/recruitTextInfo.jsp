@@ -140,7 +140,7 @@ input[type=text] {
 }
 .recruitpicture{
 	width:100%;
-	height:200px;
+	height:130px;
 	background:url("${pageContext.request.contextPath}/plug/img/t/trecruit.jpg") no-repeat;
 	vertical-align: middle;
 	background-position: center;

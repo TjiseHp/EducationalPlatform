@@ -57,6 +57,7 @@
 	</form>
 	</div>
 	</div>
+		<br><br><br><br><br><br>
 </div>
 <style type="text/css">
 input[type=radio] {
@@ -168,6 +169,10 @@ text-align: right;
 padding-right: 15px;
 margin-top: 10px;
 font-weight: bold;
+}
+.layui-card.layui-demo-maincard{
+	width:auto;
+	height:auto;
 }
 .suspensionleft{width:20%;height:100%;background:url("${pageContext.request.contextPath}/plug/img/t/t5.jpg") no-repeat;
 padding-top:100px;position:absolute;left:2%;top:23%;}
