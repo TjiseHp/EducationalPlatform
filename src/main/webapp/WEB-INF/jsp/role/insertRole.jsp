@@ -88,7 +88,9 @@
 			<input type="hidden" id=courierNo name="roNo" value="${role.roNo }" />
 			<input class="btn btn-danger" type="submit" value="提交"/>
 		</div>
-		
+			<div class="suspensionleft"></div>
+			<div class="suspensionright"></div>
+			<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	</form>
 	</div>
 	</div>
@@ -204,5 +206,13 @@ padding-right: 15px;
 margin-top: 10px;
 font-weight: bold;
 }
+.layui-card.layui-demo-maincard{
+	width:auto;
+	height:auto;
+}
+.suspensionleft{width:20%;height:100%;background:url("${pageContext.request.contextPath}/plug/img/t/t15.jpg") no-repeat;
+padding-top:100px;position:absolute;left:2%;top:23%;}
+.suspensionright{width:20%;height:100%;background:url("${pageContext.request.contextPath}/plug/img/t/t16.jpg") no-repeat;
+padding-top:100px;position:absolute;left:80%;top:23%;}
 </style>
 

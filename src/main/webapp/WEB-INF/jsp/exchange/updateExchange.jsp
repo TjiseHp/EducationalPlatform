@@ -55,7 +55,9 @@
             <div class="row form-group">
 				<input class="btn btn-danger" type="submit" value="提交"/>
             </div>
-			
+
+			<div class="suspensionleft"></div>
+			<div class="suspensionright"></div>
 	</form>
 	</div>
 	</div>
@@ -133,4 +135,8 @@ padding-right: 15px;
 margin-top: 10px;
 font-weight: bold;
 }
+.suspensionleft{width:20%;height:100%;background:url("${pageContext.request.contextPath}/plug/img/t/tt1.jpg") no-repeat;
+padding-top:100px;position:absolute;left:2%;top:50%;}
+.suspensionright{width:20%;height:100%;background:url("${pageContext.request.contextPath}/plug/img/t/tt2.jpg") no-repeat;
+padding-top:100px;position:absolute;left:80%;top:50%;}
 </style>
