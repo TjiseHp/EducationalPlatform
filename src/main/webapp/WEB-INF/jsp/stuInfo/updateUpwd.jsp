@@ -123,7 +123,9 @@
 					<button type="button" class="btn btn-danger" onclick="doUpdate();">确认</button>
 					<button type="button" class="btn btn-danger" onclick="doback();">返回</button>				
             </div>
-
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<div class="suspensionleft"></div>
+<div class="suspensionright"></div>
 		
 	</form>
 	</div>
@@ -240,4 +242,12 @@ padding-right: 15px;
 margin-top: 10px;
 font-weight: bold;
 }
+.layui-card.layui-demo-maincard{
+	width:auto;
+	height:auto;
+}
+.suspensionleft{width:20%;height:100%;background:url("${pageContext.request.contextPath}/plug/img/t/t5.jpg") no-repeat;
+padding-top:100px;position:absolute;left:2%;top:23%;}
+.suspensionright{width:20%;height:100%;background:url("${pageContext.request.contextPath}/plug/img/t/t6.jpg") no-repeat;
+padding-top:100px;position:absolute;left:80%;top:23%;}
 </style>
