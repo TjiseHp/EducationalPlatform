@@ -13,7 +13,7 @@
   		<form action="">
   			<div align="center" style="padding-top: 50px;">
   				<div>
-  					<h1 class="title1">会员列表</h1>
+  					<h1 class="title1">招聘</h1>
   				</div>
   			</div>
   			<br />
@@ -33,12 +33,17 @@
 	  			 </tr>
   				</table>
   		</form>
+  		<br><br>
+  		(。￣△￣)!~(。￣=￣)!~(。￣□￣)!~(。￣O￣)!~(。￣△￣)!~(。￣=￣)!~(。￣□￣)!~(。￣O￣)!~(。￣△￣)!~(。￣=￣)!~(。￣□￣)!~(。￣O￣)!~
+  		<br><br>
+  		<div class="recruitpicture"></div>
   </div>
 <style>
 .elegant-aero {
 margin-left: auto;
 margin-right: auto;
-max-width: 1000px;
+width: 100%;
+
 background: #D2E9FF;
 padding: 20px 20px 20px 20px;
 font: 12px Arial, Helvetica, sans-serif;
@@ -128,5 +133,16 @@ input[type=text] {
 
         letter-spacing: 0.04em;
 
+}
+.layui-card.layui-demo-maincard{
+	width:auto;
+	height:auto;
+}
+.recruitpicture{
+	width:100%;
+	height:200px;
+	background:url("${pageContext.request.contextPath}/plug/img/t/trecruit.jpg") no-repeat;
+	vertical-align: middle;
+	background-position: center;
 }
 </style>
