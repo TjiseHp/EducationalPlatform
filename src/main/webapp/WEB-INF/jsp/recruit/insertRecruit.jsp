@@ -139,7 +139,7 @@
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span>具体需求：</span></label>
                 <div class="col-md-7">
-                	<textarea class="form-control"  cols="1"   rows="20"   id="recruitText" name="recruitText"></textarea>
+                	<textarea class="form-control"  cols="1"   rows="15"   id="recruitText" name="recruitText"></textarea>
                 </div>
             </div>
             			
@@ -148,7 +148,8 @@
             <div class="row form-group">
 					<input class="btn btn-danger" type="butten" onclick="doAdd()" value="提交"/>
             </div>
-            		
+           	<div class="suspensionleft"></div>
+			<div class="suspensionright"></div>
 	</form>
 	</div>
 	</div>
@@ -281,4 +282,8 @@ font-weight: bold;
 	width:auto;
 	height:auto;
 }
+.suspensionleft{width:20%;height:100%;background:url("${pageContext.request.contextPath}/plug/img/t/t15.jpg") no-repeat;
+padding-top:100px;position:absolute;left:2%;top:23%;}
+.suspensionright{width:20%;height:100%;background:url("${pageContext.request.contextPath}/plug/img/t/t16.jpg") no-repeat;
+padding-top:100px;position:absolute;left:80%;top:23%;}
 </style>

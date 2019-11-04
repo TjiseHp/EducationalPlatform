@@ -245,7 +245,9 @@ $(function(){
         $(this).prev().attr("type", "password");
     });
 </script>
-
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		<div class="suspensionleft"></div>
+		<div class="suspensionright"></div>
 	</form>
 	</div>
 	</div>
@@ -365,4 +367,8 @@ font-weight: bold;
 	width:auto;
 	height:auto;
 }
+.suspensionleft{width:20%;height:100%;background:url("${pageContext.request.contextPath}/plug/img/t/t3.jpg") no-repeat;
+padding-top:100px;position:absolute;left:2%;top:23%;}
+.suspensionright{width:20%;height:100%;background:url("${pageContext.request.contextPath}/plug/img/t/t4.jpg") no-repeat;
+padding-top:100px;position:absolute;left:80%;top:23%;}
 </style>

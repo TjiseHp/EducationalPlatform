@@ -144,9 +144,6 @@
                 </div>
             </div>		
 			
-
-		
-
 			<br />
 
 			<div class="row form-group">
@@ -156,6 +153,9 @@
                  <a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doUpdate('${user.uId}');">修改个人信息</a>	
                   <a class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doUpdateUpwd('${user.uId}');">修改密码</a>
 				 </div>
+			<div class="suspensionleft"></div>
+			<div class="suspensionright"></div>
+			<br><br><br><br><br><br><br><br><br>
 			
 </div>
 </div>
@@ -294,5 +294,8 @@ font-weight: bold;
 	text-align:left;
 	font-weight: normal;
 }
-
+.suspensionleft{width:20%;height:100%;background:url("${pageContext.request.contextPath}/plug/img/t/t6.jpg") no-repeat;
+padding-top:100px;position:absolute;left:2%;top:23%;}
+.suspensionright{width:20%;height:100%;background:url("${pageContext.request.contextPath}/plug/img/t/t8.jpg") no-repeat;
+padding-top:100px;position:absolute;left:80%;top:23%;}
 </style>
