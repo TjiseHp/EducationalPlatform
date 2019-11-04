@@ -124,8 +124,8 @@
 					<button type="button" class="btn btn-danger" onclick="doback();">返回</button>				
             </div>
             <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<div class="suspensionleft"></div>
-<div class="suspensionright"></div>
+			<div class="suspensionleft"></div>
+			<div class="suspensionright"></div>
 		
 	</form>
 	</div>

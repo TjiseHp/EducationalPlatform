@@ -188,7 +188,9 @@ $(function(){
 				<input type="hidden" id="uId" name="uId" value="${user.uId}"/>
 				<button type="button" class="btn btn-danger" onclick="doUpdate()">提交</button>
 			</div>
-				
+			<div class="suspensionleft"></div>
+			<div class="suspensionright"></div>
+			<br><br><br><br><br><br><br><br><br>
 		</form>
 	</div>
 	</div>
@@ -308,4 +310,8 @@ font-weight: bold;
 	width:auto;
 	height:auto;
 }
+.suspensionleft{width:20%;height:100%;background:url("${pageContext.request.contextPath}/plug/img/t/t11.jpg") no-repeat;
+padding-top:100px;position:absolute;left:2%;top:23%;}
+.suspensionright{width:20%;height:100%;background:url("${pageContext.request.contextPath}/plug/img/t/t13.jpg") no-repeat;
+padding-top:100px;position:absolute;left:80%;top:23%;}
 </style>
