@@ -161,7 +161,7 @@
             	<input type="hidden" id="uId" name="uId" value="${user.uId}"/> 
 				<button type="button" class="btn btn-danger" onclick="doUpdate();">提交</button>
             </div>
-            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 		<div class="suspensionleft"></div>
 		<div class="suspensionright"></div>
 	</form>
