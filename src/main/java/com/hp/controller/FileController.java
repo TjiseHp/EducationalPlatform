@@ -93,6 +93,9 @@ public class FileController {
 	@RequestMapping("fileListTable")
 	public List<Check_list> fileListTable() {
 		List<Check_list> check_lists = fileService.queryCheckList();
+//		for(int i = 0; i<check_lists.size();i++) {
+//			check_lists.get(i).getListETime();
+//		}
 		return check_lists;
 	}
 
@@ -103,6 +106,7 @@ public class FileController {
 
 		Check_list check_list2 = new Check_list();
 		check_list2 = fileService.queryCheckListBylistName(check_list);
+		System.out.println("额外的"+check_list2.getListName());
 //		String tool = "/";
 //		String nameString = check_list.getListName();
 //		String nameString2 = tool.concat(nameString);
@@ -145,7 +149,7 @@ public class FileController {
 		return json.toString();
 	}
 	
-	//审核通过
+	//审核未通过
 	@ResponseBody
 	@RequestMapping("fileCheckNo")
 	public String fileCheckNo(Check_list check_list) {

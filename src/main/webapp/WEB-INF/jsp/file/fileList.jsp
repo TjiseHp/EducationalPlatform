@@ -27,7 +27,7 @@
                 {
                     sortable: "true",
                     field: 'listSTime',
-                    title: '时间',
+                    title: '上传时间',
                     align: "center"
                 },
                 {
@@ -76,9 +76,7 @@
     
     function operateFormatter(value, row, index) {
 		return [
-			'<button class="btn btn-primary btn-xs rightSize creditBtn" type="button"><i class="fa fa-paste"></i><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> 文件详情</button>&nbsp;',
-	        '<button class="btn btn-info btn-xs rightSize updateBtn" type="button"><i class="fa fa-paste"></i><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 修改</button>&nbsp;',
-	        '<button class="btn btn-danger btn-xs rightSize deleteBtn" type="button"><i class="fa fa-envelope"></i><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 删除</button>'
+			'<button class="btn btn-primary btn-xs rightSize creditBtn" type="button"><i class="fa fa-paste"></i><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> 文件详情</button>&nbsp;'
 	    ].join('');
     }
 	

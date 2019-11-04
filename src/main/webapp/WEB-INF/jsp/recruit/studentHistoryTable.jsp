@@ -9,19 +9,20 @@
 		
 		$(document).ready(function () {
 	        $('#table1').bootstrapTable({
-	            url: '${pageContext.request.contextPath}/recruit/queryRecruitTable?uId=${loginUser.uId}',
+	            url: '${pageContext.request.contextPath}/recruit/queryRecruitStudentTable?uId=${loginUser.uId}',
 	            method: 'post', 
 	            columns: [
-	                {
-	                    sortable: "true",
-	                    field: 'user1.uName',
-	                    title: '发布人',
-	                    align: "center"
-	                },
+	               
 	                {
 	                    sortable: "true",
 	                    field: 'user2.uName',
 	                    title: '教师',
+	                    align: "center"
+	                },
+	                {
+	                    sortable: "true",
+	                    field: 'user1.uName',
+	                    title: '发布人',
 	                    align: "center"
 	                },
 	                {
@@ -36,7 +37,12 @@
 	                },
 	                {
 	                    field: 'state',
-	                    title: '完成时间',
+	                    title: '结束时间',
+	                    align: "center"
+	                },
+	                {
+	                    field: 'recruitSTime',
+	                    title: '申请时间',
 	                    align: "center"
 	                },
 	                {
@@ -87,8 +93,7 @@
 	    
 	    function operateFormatter(value, row, index) {
 			return [
-		        '<button class="btn btn-info btn-xs rightSize updateBtn" type="button"><i class="fa fa-paste"></i><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 详细要求</button>&nbsp;',
-		        '<button class="btn btn-danger btn-xs rightSize deleteBtn" type="button"><i class="fa fa-envelope"></i><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 结束课程</button>'
+		        '<button class="btn btn-info btn-xs rightSize updateBtn" type="button"><i class="fa fa-paste"></i><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 详细要求</button>&nbsp;'
 		    ].join('');
 	    }
 		

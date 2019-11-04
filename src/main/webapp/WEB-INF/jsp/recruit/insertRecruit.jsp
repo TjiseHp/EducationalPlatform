@@ -14,7 +14,6 @@
 		var cNum = $("#s2").val();
 		var classNum = $("#classNum").val();
 		var recruitText = $("#recruitText").val();
-		console.info(uId+"111"+cNum);
 		if(uId == ""||cNum == ""||classNum == ""||recruitText == ""){
 			layer.msg("内容不能为空", {time:2000, icon:5, shift:6});
 		}else{
@@ -32,9 +31,8 @@
 					   },
 					   dataType:"json",
 					   success:function(result){
-						   console.info(result);
 						   layer.msg("发布成功！", {time:2000, icon:6, shift:6}, function(){
-							   window.location.href = "${pageContext.request.contextPath}/main";						   
+							   window.location.href = "${pageContext.request.contextPath}/recruit/recruitTable";						   
 				           });
 						   
 				   },

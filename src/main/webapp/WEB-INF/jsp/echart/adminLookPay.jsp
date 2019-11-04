@@ -16,9 +16,8 @@
     var option = ({
     	             
 			        title: {
-			            text: '充值收入',
-			            subtext: 'anth:我带你们打'
-			        },
+			            text: '营收记录',
+			            },
 			        tooltip: {
 			            trigger: 'axis'
 			        },
