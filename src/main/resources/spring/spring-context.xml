@@ -28,6 +28,16 @@
         <property name="configLocation" value="classpath:mybatis/config.xml" />
         <property name="dataSource" ref="dataSource" />
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+        <property name="configurationProperties">
+			<props>
+			        <!--全局映射器启用缓存-->
+			       <prop key ="cacheEnabled">true</prop>
+			       <!--查询时，关闭关连对象即时加载以提高性能-->
+			       <prop key="lazyLoadingEnabled">false</prop>
+			       <!-- 设置关联对象加载的形态，此处为按需要加载字段（加载字段由sql决定），不会加载关联表的所有字段，以提高性能-->
+			        <prop key="aggressiveLazyLoading">true</prop>
+			</props>
+        </property>
     </bean>
     
     <!-- mapper扫描器，将mybatis的接口实现加入到ioc容器中 -->
