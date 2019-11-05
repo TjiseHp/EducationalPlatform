@@ -5,8 +5,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -64,11 +66,26 @@ public class ExchangeController {
 	
 	//更新营收比例信息
 	@RequestMapping(value = "/doUpdateExchange",produces = {"text/html;charset=utf-8"})
-	public String doUpdateExchange(Exchange exchange,HttpServletRequest httpServletRequest) {
-		int row = exchangeService.updateByPrimaryKeySelective(exchange);
-		System.out.println("更新了"+row+"行数据");
-		return "redirect: exchangeTable2";
-	}
+	public ModelAndView doUpdateExchange(Exchange exchange,HttpServletRequest httpServletRequest) {		
+//		System.out.println("积分比例："+exchange.getExchangeE());
+//		System.out.println("积分编号："+exchange.getExchangeNum());
+		HttpSession httpSession = httpServletRequest.getSession();
+		ModelAndView modelAndView = new ModelAndView();
+		int row = exchangeService.updateByexchangeE(exchange.getExchangeE());
+		if(row==1) {
+			modelAndView.addObject("httpSession",httpSession);		
+			modelAndView.addObject("mainPage", "exchange/exchangeTable2.jsp");
+			modelAndView.setViewName("main");
+		}else {
+			modelAndView.addObject("httpSession",httpSession);		
+			modelAndView.addObject("mainPage", "exchange/updateExchange.jsp");
+			modelAndView.setViewName("main");
+		}
+		return modelAndView;
+		}
+			
+		
+	
 	
 	//模糊查询
 	@RequestMapping("/searchExchange")

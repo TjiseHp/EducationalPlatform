@@ -50,9 +50,6 @@ $(function(){
 		   }
 	   });
 })
-
-
-
 </script>
 
 <style type="text/css">
@@ -100,21 +97,21 @@ $(function(){
 <script type="text/javascript">
 	
 	function doUpdate() {
-		var cCum = $("#s2").val();
+		var cNum = $("#s2").val();
 		var classNum = $("#c1").val();
 		var uName = $("#uName").val();
 		var uPhone = $("#uPhone").val();
 		var uEmail = $("#uEmail").val();
 		var uSex = $('input:radio[name="uSex"]:checked').val();
 		var uId = $("#uId").val();
-		console.info(cCum);
+		console.info(cNum);
 		console.info(classNum);
 		console.info(uName);
 		console.info(uId);
 		console.info(uPhone);
 		console.info(uEmail);
 		console.info(uSex);
-		if(uName == ""||uPhone == ""||uEmail == ""||uSex == ""||cCum == ""||classNum == ""){
+		if(uName == ""||uPhone == ""||uEmail == ""||uSex == ""||cNum == ""||classNum == ""){
 			layer.msg("内容不能为空", {time:2000, icon:5, shift:6});
 			return;
 		}else{
@@ -128,7 +125,7 @@ $(function(){
         	data : {
         		"uId" : uId,
         		"classNum" : classNum,
-        		"cCum": cCum,
+        		"cNum": cNum,
         		"uEmail" : uEmail,
         		"uSex" : uSex,
         		"uName" : uName,
@@ -171,10 +168,9 @@ $(function(){
 	<div class="col-md-offset-0">
 	<div class="elegant-aero">
 	<form action="${pageContext.request.contextPath}/user/doUpdateTeacherInfo" method="post" accept-charset="utf-8" onsubmit="return doUpdate()">
-		
-		    			<div class="row form-group">
+		    <div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span>城市：</span></label>
-                <div class="col-md-7">
+                <div class="col-md-7" style="padding-top:8px">
 					<select style="width: 100px" id="s1" >
 				        <option >${user.city.cProvince}</option>
 				    </select>
@@ -183,8 +179,6 @@ $(function(){
 				    </select> 
                 </div>
             </div>
-            
-			<br/>
 		
 		    <div class="row form-group">
                 <label class="control-label col-lg-3" for="class"><span>学科：</span></label>
@@ -228,9 +222,9 @@ $(function(){
             </div>
 
 	        <div class="row form-group">
-	            <input type="hidden" id="uId" name="uId" value="${loginUser.uId}"/>
-				<button type="button" class="btn btn-danger" onclick="doUpdate()">提交</button>
-	        </div>
+            	<input type="hidden" id="uId" name="uId" value="${user.uId}"/> 
+				<button type="button" class="btn btn-danger" onclick="doUpdate();">提交</button>
+            </div>
 	        
 	   
 			

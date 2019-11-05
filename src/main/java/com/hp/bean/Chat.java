@@ -22,9 +22,8 @@ public class Chat {
     private User user2;
     
     private Chat_status chat_status;
-    
-    
 
+ 
     public Chat_status getChat_status() {
 		return chat_status;
 	}

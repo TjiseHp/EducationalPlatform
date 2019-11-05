@@ -26,27 +26,25 @@
 	<div class="elegant-aero">
 	<form action="${pageContext.request.contextPath}/chat/doInsertChatInfo"
 		method="post" accept-charset="utf-8" onsubmit="return doPost()">
-		
 		<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span>收件人：</span></label>
-                <input class="form-control" type="text" id="uEmail" name="uEmail">
-
+                <input class="form-control" type="text" id="uEmail" name="uEmail" >
         </div>
 		<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span>内容：</span></label>
                 <input class="form-control" type="text"
 					id="chatText" name="chatText" style="height:100px">
-
         </div>	
 		<div class="row form-group">
 				<input type="hidden" id="uId" name="uId" value="${loginUser.uId}" /> 
 				<button type="button" class="btn btn-danger" onclick="doPost();">发送</button>
-					<button type="button" class="btn btn-danger" onclick="doback();">取消</button>
+				<button type="button" class="btn btn-danger" onclick="doback();">取消</button>
         </div>
 
-	</form>
+	</form>		
 	</div>
 	</div>
+
 
 	<script type="text/javascript">
 	function getUrlParam(name) {
@@ -68,7 +66,7 @@
 	function doPost() {
 		var uEmail = $("#uEmail").val();
 		var chatText = $("#chatText").val();
-		var uId=$("#uId").val();
+		var uId=${loginUser.uId};
 		console.info(uId+" "+uEmail+" "+chatText);
 		if(uEmail == null || uEmail == "") {
 			layer.msg("请输入收件人邮箱！", {time:2000, icon:5, shift:6}, function(){

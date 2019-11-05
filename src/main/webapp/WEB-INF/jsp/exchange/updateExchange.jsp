@@ -8,21 +8,26 @@
 
 <script type="text/javascript">
 	function doUpdate(){
-		var exchangeNum = $("#exchangeNum").val();
 		var exchangeE = $("#exchangeE").val();
+		var exchangeNum =$("#exchangeNum").val();
 		
-		if(exchangeNum == ""||exchangeE == ""){
-			layer.msg("内容不能为空", {time:2000, icon:5, shift:6});
-			return false;
-		}else{
-			return true;
-		}
-		
+		 if(exchangeE =='' ){	
+	            layer.msg("比例不能为空", {
+					time : 2000,
+					icon : 5,
+					shift : 6
+				});
+	            return false;
+	        }
+		 
+		 console.info("exchangeE："+exchangeE);
+		 console.info("exchangeNum："+exchangeNum);
+		 return true;
     }
 		
 		
 	
-</script>
+</script> 
 
 <div align="center" style="padding-top: 50px;">
 	<div>
@@ -39,14 +44,16 @@
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span>编号：</span></label>
                 <div class="col-md-7">
-                	<span>${exchange.exchangeNum}</span>
+                	<%-- <span>${exchange.exchangeNum}</span> --%>
+                	<input class="form-control" type="text"  readonly  unselectable="on" id="exchangeNum" name="exchangeNum"   value = "${exchange.exchangeNum}">
+            	
                 </div>
             </div>
             
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span>比例：</span></label>
                 <div class="col-md-7">
-                	<input class="form-control" type="text" id="exchangeE" name="exchangeE" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')"  value = "${exchange.exchangeE }">
+                	<input class="form-control" type="text" id="exchangeE" name="exchangeE" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')"  value = "${exchange.exchangeE}">
                 </div>
             </div>
             

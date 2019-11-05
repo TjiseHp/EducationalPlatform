@@ -50,6 +50,11 @@ public class PayServiceImpl implements PayService {
 		return null;
 	}
 
+	public int selectAllpay(Pay pay) {
+		// TODO Auto-generated method stub
+		return payDao.selectAllpay(pay);
+	}
+
 
 
 }

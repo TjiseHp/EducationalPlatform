@@ -119,14 +119,13 @@ public class PayController {
 
 	}
 		
-	//执行插入营收信息
-	@RequestMapping(value = "/doInsertPay",produces = {"text/html;charset=utf-8"})
-	public String doInsertPay(Pay pay,HttpSession httpSession) {
-		
-		int row = payService.insertSelective(pay);
-		System.out.println("插入了"+row+"行数据");
-		return "redirect: payTable2";
-	}
+	//查询总营收信息
+	/*@RequestMapping(value = "/doInsertPay",produces = {"text/html;charset=utf-8"})
+	
+	 * public String doInsertPay(Pay pay,HttpSession httpSession) { int row =
+	 * payService.insertSelective(pay); System.out.println("插入了"+row+"行数据"); return
+	 * "redirect: payTable2"; }
+	 */
 	
 	//查询营收信息--页面跳转2
 	@RequestMapping("/payTable2")

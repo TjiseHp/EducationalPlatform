@@ -47,12 +47,27 @@
 
 </script>
 <script type="text/javascript">
+$(function(){
+	$.ajax({
+		   type:"post",
+		   url:"${pageContext.request.contextPath}/user/cClass",
+		   dataType:"json",
+		   success:function(result){
+			   for(var i=0;i<result.length;i++ ){
+				   $("#c1").append("<option value='"+result[i].classNum+"'>"+result[i].classKind+"</option>");
+			   }
+		   }
+	   });
+})
+</script>
+<script type="text/javascript">
 	function doPost() {
 		var uName = $("#uName").val();
 		var uPhone = $("#uPhone").val();
 		var uEmail = $("#uEmail").val();
 		var uSex = $('input:radio[name="uSex"]:checked').val();
 		var cNum = $("#s2").val();
+		var classNum = $("#c1").val();
 		if (uName == "" || uPhone == "" || uEmail == "") {
 			layer.msg("不能为空", {
 				time : 2000,
@@ -62,17 +77,18 @@
 			return false;
 		} 
 		console.info(uName+" "+cNum+" "+uSex+" "+uPhone);
-	
+		console.info(classNum);
 		var loadingIndex = null;
 		$.ajax({
         	type : "POST",
-        	url  : "${pageContext.request.contextPath}/user/docheckAndinsert",
+        	url  : "${pageContext.request.contextPath}/user/docheckAndinsert1",
         	data : {
         		"uName" : uName,
         	    "uPhone" : uPhone,
         		"uEmail" :uEmail,
         		"uSex" : uSex,
-        		"cNum" : cNum
+        		"cNum" : cNum,
+        		"classNum":classNum
         	},
         	beforeSend : function(){
         		loadingIndex = layer.msg('处理中', {icon: 16});
@@ -145,13 +161,21 @@
 				</div>
 			</div>
 			
-			<div class="row form-group">
+			<%-- <div class="row form-group">
 				<label class="control-label col-lg-3" for="name"><span>学科：</span></label>
 				<div class="col-md-7">
 					<input class="form-control" type="text" id="classNum" name="classNum"
 						value="${user.classNum}">
 				</div>
-			</div>
+			</div> --%>
+			 <div class="row form-group">
+                <label class="control-label col-lg-3" for="class"><span>学科：</span></label>
+                <div class="col-md-7">
+					<select style="width: 100px" id="c1">
+                           <option >--请选择--</option>
+			    </select>
+                </div>
+            </div>
 			
 			<div class="row form-group">
 				<label class="control-label col-lg-3" for="name"><span>城市：</span></label>

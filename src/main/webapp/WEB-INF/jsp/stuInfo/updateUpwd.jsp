@@ -4,7 +4,7 @@
     		deferredSyntaxAllowedAsLiteral="true"
     		%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<script src="${pageContext.request.contextPath}/plug/js/md5.js"></script>
 <script type="text/javascript">
 	function doback(){
 		var uId = $("#uId").val();
@@ -40,6 +40,7 @@
 				shift : 6
 			});
         }
+        
         var loadingIndex = null;
         if(submit){
             $.ajax({

@@ -25,5 +25,9 @@ public class ClassServiceImpl implements ClassService{
 	public Class queryClassByClassNum(Integer classNum) {
 		return classDao.queryClassByClassNum(classNum);
 	}
+	public Integer queryAllClassByclasskind(String classkind) {
+		// TODO Auto-generated method stub
+		return classDao.queryAllClassByclasskind(classkind);
+	}
 	
 }

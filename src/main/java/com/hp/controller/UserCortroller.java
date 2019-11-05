@@ -29,6 +29,7 @@ import com.hp.service.CreditService;
 import com.hp.service.GroupService;
 import com.hp.service.RoleService;
 import com.hp.service.UserService;
+import com.hp.util.Md5Util;
 import com.hp.util.PageUtil;
 
 /**
@@ -374,13 +375,26 @@ public class UserCortroller  {
 	@ResponseBody
 	@RequestMapping("/doUpdateTeacherInfo")
 	public String doUpdateTeacherInfo(
-			HttpSession session,User user) {
-		System.out.println("update："+user.getuId());
+			HttpSession session,HttpServletRequest request) {
 		JSONObject json = new JSONObject();
-		System.out.println("老师城市序号："+user.getClassNum());
+		String uId = request.getParameter("uId");
+		String classkind = request.getParameter("classNum");
+		String cNum = request.getParameter("cNum");
+		String uEmail = request.getParameter("uEmail");
+		String uSex = request.getParameter("uSex");
+		String uName = request.getParameter("uName");
+		String uPhone = request.getParameter("uPhone");
+		User user = new User();
+		user.setuId(Integer.valueOf(uId));
+		user.setClassNum(classService.queryAllClassByclasskind(classkind));
+		user.setcNum(cityService.querycNumBycCity(cNum));
+		user.setuEmail(uEmail);
+		user.setuSex(uSex);
+		user.setuName(uName);
+		user.setuPhone(uPhone);
 		int row = userService.updateByPrimaryKeySelective(user);		
 		if(row==1) {
-			System.out.println("修改成功");
+			System.out.println("更新老师信息成功");
 			json.put("result", true);
 		}else {
 			json.put("result", false);
@@ -470,11 +484,12 @@ public class UserCortroller  {
 	}
 	
 
+	//插入学生
 	@ResponseBody
 	@RequestMapping("/docheckAndinsert")
 	public String docheck(HttpSession session,
 			HttpServletRequest request,User user2) {
-		System.out.println(777+user2.getuName());
+		System.out.println("user2.getuName："+user2.getuName());
 		JSONObject json = new JSONObject();     
 		user2.setgNum(1);
 	   int row= userService.insertSelective(user2);
@@ -487,6 +502,27 @@ public class UserCortroller  {
 		return json.toString();
 	}
 	
+	//插入教师
+	@ResponseBody
+	@RequestMapping("/docheckAndinsert1")
+	public String docheck1(HttpSession session,
+			HttpServletRequest request,User user2) {
+		System.out.println("user2.getuName："+user2.getuName());
+		JSONObject json = new JSONObject();     
+		user2.setgNum(2);
+		user2.setCheckNum(2);
+		user2.setuExp(0);
+	   int row= userService.insertSelective(user2);
+		if(row==1) {
+			json.put("result", true);
+		}
+		else {
+			json.put("result", false);
+		}
+		return json.toString();
+	}
+	
+	
 	@ResponseBody
 	@RequestMapping("/updatePwd")
 	public String docheck(	HttpSession session,
@@ -494,6 +530,7 @@ public class UserCortroller  {
 		JSONObject json = new JSONObject();   
 		String oldPwd = request.getParameter("oldPwd");
 		String newPwd = request.getParameter("newPwd");
+		String upwd1 = Md5Util.getMd5Code(newPwd);
 		String uId = request.getParameter("uId");
 		User oldUser = new User();
 		oldUser.setuId(Integer.valueOf(uId));
@@ -501,8 +538,8 @@ public class UserCortroller  {
 		User user = userService.queryUserByPwd(oldUser);
 				
 		if (user !=null) {
-			System.out.println("userOK");		
-			user.setuPwd(newPwd);
+			System.out.println("userOK");	
+			user.setuPwd(upwd1);
 			int row = userService.updateByPrimaryKeySelective(user);
 			if (row==1) {
 				System.out.println("pwdOK");

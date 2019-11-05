@@ -52,16 +52,16 @@ public class ChatController {
 	public List<Chat> queryAllReceiveInfoByuId(HttpServletRequest httpServletReques,@RequestParam(required = true,value = "uId") Integer uId2) {
 		System.out.println("###查询收件箱消息列表###");
 		List<Chat> ReceiveInfo = chatService.queryAllReceiveInfoByuId(uId2);	
-		System.out.println(uId2);
+		System.out.println("收件人ID："+uId2);
 		for(Chat chat1 : ReceiveInfo) {
 			String text=chat1.getChatText();
+			chat1.setChat_status(chatService.queryStatus(chat1.getcSNum()));	
 			if(text.length()<=12) {
 				chat1.setChatText(text);
 				continue;
 			}
 			String showText=text.substring(0,12);
 			chat1.setChatText(showText+"……");
-			chat1.setChat_status(chatService.queryStatus(chat1.getcSNum()));			
 		}
 		
 		return ReceiveInfo;
@@ -174,16 +174,16 @@ public class ChatController {
 				HttpServletRequest request) {
 			JSONObject json = new JSONObject();
 			String uId2 = request.getParameter("uId");
-			String uEmail = request.getParameter("uEmail");
+			String uEmailBefore = request.getParameter("uEmail");
 			String chatText = request.getParameter("chatText");
-			System.out.println(uId2+" "+uEmail+" "+chatText);
-			if(uId2.equals("") || uId2==null || uEmail.equals("") || uEmail==null || chatText.equals("") || chatText==null) {
+			System.out.println(uId2+" "+uEmailBefore+" "+chatText);
+			if(uId2.equals("") || uId2==null || uEmailBefore.equals("") || uEmailBefore==null || chatText.equals("") || chatText==null) {
 				json.put("result", 1);
 				return json.toString();
 			}
 			Integer uId = Integer.valueOf(uId2);
 			System.out.println("uId:"+uId);
-			User user=userService.queryStudentByuId(uId);
+			User user=userService.queryTeacherByuId(uId);
 	        Date date = new Date();
 	        Timestamp timestamp = new Timestamp(date.getTime());
 			if(user.getgNum()==1) {
@@ -198,24 +198,45 @@ public class ChatController {
 					return json.toString();	       
 				}			
 			}
-			
-	        User user1=userService.queryUserByEmail(uEmail);
-	        if(user1==null) {
-				json.put("result", 3);
-				return json.toString();
-	        }else {
-	        	Chat chat=new Chat();
-	        	chat.setuId2(user1.getuId());
-	        	chat.setuId(uId);
-	        	chat.setcSNum(1);
-	        	chat.setChatText(chatText);
-	        	chat.setChatDate(timestamp);
-	        	int row = chatService.insertSelective(chat);
-	        	if(row!=1) {
-	        		json.put("result", 1);
+			//通过分隔符遍历插入邮件
+			String[] uEmailLater = uEmailBefore.split(";|；");
+			for(String uEmail:uEmailLater) {
+		        User user1=userService.queryUserByEmail(uEmail);
+		        if(user1==null) {
+					json.put("result", 3);
 					return json.toString();
-	        	}
-	        }
+		        }else {
+		        	Chat chat=new Chat();
+		        	chat.setuId2(user1.getuId());
+		        	chat.setuId(uId);
+		        	chat.setcSNum(1);
+		        	chat.setChatText(chatText);
+		        	chat.setChatDate(timestamp);
+		        	int row = chatService.insertSelective(chat);
+		        	if(row!=1) {
+		        		json.put("result", 1);
+						return json.toString();
+		        	}
+		        }
+				
+			}
+//	        User user1=userService.queryUserByEmail(uEmail);
+//	        if(user1==null) {
+//				json.put("result", 3);
+//				return json.toString();
+//	        }else {
+//	        	Chat chat=new Chat();
+//	        	chat.setuId2(user1.getuId());
+//	        	chat.setuId(uId);
+//	        	chat.setcSNum(1);
+//	        	chat.setChatText(chatText);
+//	        	chat.setChatDate(timestamp);
+//	        	int row = chatService.insertSelective(chat);
+//	        	if(row!=1) {
+//	        		json.put("result", 1);
+//					return json.toString();
+//	        	}
+//	        }
 	        json.put("result", 0);
 			return json.toString();
 		}

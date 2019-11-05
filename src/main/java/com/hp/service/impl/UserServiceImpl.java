@@ -38,9 +38,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public int updateByPrimaryKeySelective(User user) {
-		String upwd1 = Md5Util.getMd5Code(user.getuPwd());
-		user.setuPwd(upwd1);
+//		String upwd1 = Md5Util.getMd5Code(user.getuPwd());
+//		user.setuPwd(upwd1);
 //		System.out.println("加密后的密码："+user.getuPwd());
+		System.out.println("用户id："+user.getuId());
 		return userMapper.updateByPrimaryKeySelective(user);
 	}
 
@@ -121,6 +122,11 @@ public class UserServiceImpl implements UserService {
 	public List<Class> queryAllClass(Class uclass) {
 		// TODO Auto-generated method stub
 		return userDao.queryAllClass(uclass);
+	}
+
+	public int updateByuPwd(User user) {
+		
+		return userDao.updateByuPwd(user);
 	}
 
 	

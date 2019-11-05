@@ -12,4 +12,7 @@ public interface ClassService {
 	List<Class> queryAllClass();
 
 	Class queryClassByClassNum(Integer classNum);
+
+
+	Integer queryAllClassByclasskind(String classkind);
 }

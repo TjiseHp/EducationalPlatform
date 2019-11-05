@@ -50,6 +50,8 @@ public interface UserService {
 
 	List<Class> queryAllClass(Class uclass);
 
+	int updateByuPwd(User user);
+
 
 
 }

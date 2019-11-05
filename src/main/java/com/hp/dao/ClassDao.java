@@ -16,4 +16,7 @@ public interface ClassDao {
 
 	@Select("select * from e_class where class_num = #{classNum}")
 	Class queryClassByClassNum(Integer classNum);
+
+	@Select("select CLASS_NUM from e_class where CLASS_KIND= #{classkind}")
+	Integer queryAllClassByclasskind(String classkind);
 }
