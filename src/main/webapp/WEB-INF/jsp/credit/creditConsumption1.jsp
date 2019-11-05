@@ -92,6 +92,10 @@
 			console.info(uId);
 	    	window.location.href = "${pageContext.request.contextPath}/credit/sCreditDetail?uId="+uId;
 		}
+		
+		function doEchart(){
+			window.location.href = "${pageContext.request.contextPath}/echart/payEchart?uId=${loginUser.uId}";
+		}
 	        
 	       
 		
@@ -111,4 +115,8 @@
 		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doback();" >
 			<span >返回</span>
 		</a>
+		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doEchart();" >
+			<span >统计图表查看</span>
+		</a>
 	</div>
+	

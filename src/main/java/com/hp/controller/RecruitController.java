@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alipay.api.domain.UseTime;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hp.bean.Appraise;
@@ -73,9 +74,11 @@ public class RecruitController {
 	//根据城市，科目条件查询招聘信息
 	@ResponseBody
 	@RequestMapping("/queryRecruitByCity")
-	public List<Recruit> queryRecruitByCity(Recruit recruit) {
-		recruit.setClassNum(3);
-		recruit.setcNum(23);
+	public List<Recruit> queryRecruitByCity(User user) {
+		User users = userService.queryTeacherByuId(user.getuId());
+		Recruit recruit = new Recruit();
+		recruit.setClassNum(users.getClassNum());
+		recruit.setcNum(users.getcNum());
 		List<Recruit> recruits = recruitService.queryAllBycNum(recruit);
 		for (int j = 0; j < recruits.size(); j++) {
 			Date date = recruits.get(j).getRecruitSTime();
@@ -259,6 +262,47 @@ public class RecruitController {
 		
 	}
 		
+	//招聘记录页面跳转(教师端)
+		@RequestMapping("/studentHistory")
+		public ModelAndView teacherHistory(HttpServletRequest httpServletRequest) {
+			
+			ModelAndView modelAndView = new ModelAndView();		
+			modelAndView.addObject("mainPage", "recruit/studentHistoryTable.jsp");
+			modelAndView.setViewName("main");
+			return modelAndView;
+		}
+		
+		//招聘记录查询(教师端)
+		@ResponseBody
+		@RequestMapping("/queryRecruitStudentTable")
+		public List<Recruit> queryRecruitStudentTable(User user) {
+			
+			Integer integer = user.getuId();
+			List<Recruit> recruits=recruitService.queryRecruitByUid2(integer);
+			for (int i = 0; i < recruits.size(); i++) {
+				String uName = userService.queryUnameByUid(recruits.get(i).getuId());
+				String uName2 = userService.queryUnameByUid(recruits.get(i).getuId2());
+				City city = cityService.queryCityByCnum(recruits.get(i).getcNum());
+				com.hp.bean.Class class1 = classService.queryAllByClassNum(recruits.get(i).getClassNum());
+				User userTest = new User();
+				User userTest2 = new User();
+				userTest.setuName(uName);
+				userTest2.setuName(uName2);
+				recruits.get(i).setUser1(userTest);
+				recruits.get(i).setUser2(userTest2);
+				recruits.get(i).setCity(city);
+				recruits.get(i).setuClass(class1);
+				if (recruits.get(i).getRecruitEDate()==null) {
+					recruits.get(i).setState("未完成");
+				}else {
+					Date date = recruits.get(i).getRecruitEDate();
+					SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+					String dateString = simpleDateFormat.format(date);
+					recruits.get(i).setState(dateString);
+				}
+			}
+			return recruits;
+		}
 
 	
 }

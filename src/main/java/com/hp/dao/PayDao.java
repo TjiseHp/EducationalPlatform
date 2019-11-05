@@ -8,7 +8,7 @@ import com.hp.bean.User;
 
 public interface PayDao {
 
-	@Select("select * from e_pay ")
+	@Select("select * from e_pay where TRADE_NO is not NULL ORDER BY PAY_DATE DESC")
 	List<Pay> queryAllPay();
 
 	@Select("select * from e_pay where PAY_NUM = #{payNum}")

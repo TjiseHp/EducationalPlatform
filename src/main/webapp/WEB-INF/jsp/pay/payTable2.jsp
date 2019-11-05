@@ -161,6 +161,12 @@
 			console.info("ADD");
 			window.location.href = "${pageContext.request.contextPath}/pay/insertPay";
 		} */
+
+		function doAdd() {
+			window.location.href = "${pageContext.request.contextPath}/echart/adminLookPay";
+		}
+
+		
 		
 	</script>
 	
@@ -171,8 +177,7 @@
             </div>
         </div>
     </div>
-   <!--  <div id="toolbar" class="btn-group">
-		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doAdd();" >
-			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>增加
-		</a>
-	</div>  -->
+
+	</div>
+	
+

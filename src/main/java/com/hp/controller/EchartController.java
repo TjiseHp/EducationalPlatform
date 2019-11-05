@@ -93,7 +93,6 @@ public class EchartController {
 		@RequestMapping("/creditEchart")
 		public ModelAndView creditEchart(User user,HttpServletRequest httpServletRequest) {
 			ModelAndView modelAndView = new ModelAndView();
-			user.setuId(1);
 			java.util.List<Credit> list = echartService.queryCreditEchart(user.getuId());
 			modelAndView.addObject("list",list);
 			modelAndView.addObject("mainPage", "echart/creditEchart.jsp");

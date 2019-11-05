@@ -40,6 +40,8 @@
 <script type="text/javascript">
 	
 	function doUpdate() {
+		var testPhone = /^[1][3,4,5,7,8][0-9]{9}$/;
+		var testEmail = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
 		var uName = $("#uName").val();
 		var uPhone = $("#uPhone").val();
 		var uEmail = $("#uEmail").val();
@@ -53,11 +55,18 @@
 		console.info(uSex);
 		console.info(cNum);
 		if(uName == ""||uPhone == ""||uEmail == ""||uSex == ""){
-			layer.msg("内容不能为空", {time:2000, icon:5, shift:6});
+			layer.msg("内容不能为空！", {time:2000, icon:5, shift:6});
 			return;
-		}else{
-			console.info("OK");
 		}
+		if(!testPhone.test(uPhone)){
+			layer.msg("请输入正确的手机号！", {time:2000, icon:5, shift:6});
+			return;
+		}
+		if(!testEmail.test(uEmail)){
+			layer.msg("请输入正确的邮箱！", {time:2000, icon:5, shift:6});
+			return;
+		}
+		
 		
 		var loadingIndex = null;
 		$.ajax({
@@ -146,10 +155,10 @@
  			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span>城市：</span></label>
                 <div class="col-md-7" style="padding-top:8px">
-					<select style="width: 100px" id="s1" >
+					<select id="s1" >
 				        <option >${user.city.cProvince}</option>
 				    </select>
-				    <select style="width: 100px" id="s2">
+				    <select id="s2">
 				        <option >${user.city.cCity}</option>
 				    </select> 
                 </div>
@@ -161,7 +170,6 @@
             	<input type="hidden" id="uId" name="uId" value="${user.uId}"/> 
 				<button type="button" class="btn btn-danger" onclick="doUpdate();">提交</button>
             </div>
-		
 	</form>
 	</div>
 </div>
@@ -251,8 +259,7 @@ letter-spacing: 0.04em;
 .elegant-aero {
 margin-left: auto;
 margin-right: auto;
-max-width: 500px;
-background: #D2E9FF;
+max-width: 80%;
 padding: 20px 20px 20px 20px;
 font: 12px Arial, Helvetica, sans-serif;
 color: #666;
@@ -276,5 +283,17 @@ text-align: right;
 padding-right: 15px;
 margin-top: 10px;
 font-weight: bold;
+}
+.layui-card.layui-demo-maincard{
+	width:auto;
+	height:auto;
+}
+input[type="text"]{
+	margin-top:6px;
+}
+select{
+	width:130px;
+	height:20px;
+	margin-top:4px;
 }
 </style>

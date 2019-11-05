@@ -75,7 +75,7 @@
 	                    	layer.close(loadingIndex);
 	                    	var resObj = JSON.parse(result);
 	                    	if(resObj.result){
-	                    		layer.msg("审核成功", {time:2000, icon:5, shift:6}, function(){
+	                    		layer.msg("审核成功", {time:2000, icon:4, shift:6}, function(){
 	                    			window.location.href = "${pageContext.request.contextPath}/file/fileList";
 			                    });
 	                    		
@@ -113,7 +113,7 @@
 			</tr>		
 			<tr>
 				<td class="text-left">
-					<img alt="${check_list.listName}" src="/img/${check_list.listName}">
+					<img alt="${check_list.listName}" src="/img777/${check_list.listName}">
 				</td>
 			</tr>						
 			<tr>

@@ -17,7 +17,10 @@
 	
 	<div class="row form-group" align="center">
 	  <div>
-      		<span>（づ￣3￣）づ╭❤～支付成功ヽ(✿ﾟ▽ﾟ)ノ</span>
+      		<span><h2>（づ￣3￣）づ╭❤～支付成功ヽ(✿ﾟ▽ﾟ)ノ</h2></span>
+      </div>
+      <div>
+      <img src ="${pageContext.request.contextPath}/plug/img/icon/Icon (9).png">
       </div>
     </div>
 	<div class="row form-group">
@@ -53,7 +56,7 @@
            				 o(╥﹏╥)o
         		</div>
 	        	<div>
-	        	啊哦~支付失败了~
+	                           支付失败,请重新支付。
 	        	</div>
 			</div>
 	</c:if>

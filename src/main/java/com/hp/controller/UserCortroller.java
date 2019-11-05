@@ -31,6 +31,10 @@ import com.hp.service.RoleService;
 import com.hp.service.UserService;
 import com.hp.util.Md5Util;
 import com.hp.util.PageUtil;
+import com.hp.util.ProtostuffUtils2;
+import com.hp.util.SerializeDeserializeWrapper;
+
+import redis.clients.jedis.Jedis;
 
 /**
  * *
@@ -40,6 +44,8 @@ import com.hp.util.PageUtil;
 @Controller
 @RequestMapping("/user")
 public class UserCortroller  {
+	
+	public Jedis jedis = new Jedis("127.0.0.1",6379);
 	
 	@Autowired
 	public UserService userService;
@@ -76,6 +82,12 @@ public class UserCortroller  {
 				credit="0";
 			}
 			u.setCredit(credit);
+		}
+		if (!jedis.exists("stuList".getBytes())) {
+			SerializeDeserializeWrapper<List<User>> wrapper = SerializeDeserializeWrapper.builder(students);
+			byte[] saveByte = ProtostuffUtils2.serialize(wrapper);
+			jedis.set("stuList".getBytes(), saveByte);
+			jedis.expire("stuList".getBytes(), 3600);
 		}
 		return students;
 	}
@@ -178,7 +190,13 @@ public class UserCortroller  {
 			int exp1=t.getuExp();
 			int exp2=exp1/100;
 			t.setuExp(exp2);
-		}	
+		}
+		if (!jedis.exists("teacherList".getBytes())) {
+			SerializeDeserializeWrapper<List<User>> wrapper = SerializeDeserializeWrapper.builder(teacher);
+			byte[] saveByte = ProtostuffUtils2.serialize(wrapper);
+			jedis.set("teacherList".getBytes(), saveByte);
+			jedis.expire("teacherList".getBytes(), 3600);
+		}
 		return teacher;
 	}
 	

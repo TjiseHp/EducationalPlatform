@@ -2,6 +2,8 @@ package com.hp.bean;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Recruit {
     private Integer recruitNum;
 
@@ -109,6 +111,9 @@ public class Recruit {
         this.classNum = classNum;
     }
 
+
+
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     public Date getRecruitSTime() {
         return recruitSTime;
     }
@@ -117,6 +122,9 @@ public class Recruit {
         this.recruitSTime = recruitSTime;
     }
 
+
+
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     public Date getRecruitEDate() {
         return recruitEDate;
     }

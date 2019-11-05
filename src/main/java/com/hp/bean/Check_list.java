@@ -2,6 +2,9 @@ package com.hp.bean;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+
 public class Check_list {
     private Integer listId;
 
@@ -39,6 +42,7 @@ public class Check_list {
         this.uId2 = uId2;
     }
 
+    
     public String getListName() {
         return listName;
     }
@@ -47,6 +51,9 @@ public class Check_list {
         this.listName = listName == null ? null : listName.trim();
     }
 
+   
+
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     public Date getListSTime() {
         return listSTime;
     }
