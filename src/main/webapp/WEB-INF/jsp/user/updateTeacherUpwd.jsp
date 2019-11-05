@@ -121,7 +121,6 @@
 					<button type="button" class="btn btn-danger" onclick="doback();">返回</button>				
             </div>
 
-		
 	</form>
 	</div>
 	</div>
@@ -213,8 +212,7 @@ letter-spacing: 0.04em;
 .elegant-aero {
 margin-left: auto;
 margin-right: auto;
-max-width: 500px;
-background: #D2E9FF;
+max-width: 80%;
 padding: 20px 20px 20px 20px;
 font: 12px Arial, Helvetica, sans-serif;
 color: #666;

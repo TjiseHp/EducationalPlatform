@@ -54,6 +54,11 @@ public class RecruitServiceImpl implements RecruitService {
 		return recruitMapper.updateByPrimaryKeySelective(record);
 	}
 
+	public List<Recruit> queryRecruitByUid2(Integer uId) {
+		// TODO Auto-generated method stub
+		return recruitDao.queryRecruitByUid2(uId);
+	}
+
 
 
 	

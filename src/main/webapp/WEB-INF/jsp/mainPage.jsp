@@ -6,17 +6,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	
 
-		<div>
+		<div width="100%">
 
 			<div class="picture">
 				<div id="box" class="all">
 					<div class="inner">
 						<!-- 相框-->
 						<ul>
-							<li><a href="#"><img src="${pageContext.request.contextPath}/plug/img/mainpage/timg.jpg" width="1079" height="350" alt=""></a></li>
-							<li><a href="#"><img src="${pageContext.request.contextPath}/plug/img/mainpage/timg2.jpg" width="1079" height="350" alt=""></a></li>
-							<li><a href="#"><img src="${pageContext.request.contextPath}/plug/img/mainpage/timg3.jpg" width="1079" height="350" alt=""></a></li>
-							<li><a href="#"><img src="${pageContext.request.contextPath}/plug/img/mainpage/timg4.jpg" width="1079" height="350" alt=""></a></li>
+							<li><a href="#"><img src="${pageContext.request.contextPath}/plug/img/mainpage/timg.jpg" width="100%" height="400" alt=""></a></li>
+							<li><a href="#"><img src="${pageContext.request.contextPath}/plug/img/mainpage/timg2.jpg" width="100%" height="400" alt=""></a></li>
+							<li><a href="#"><img src="${pageContext.request.contextPath}/plug/img/mainpage/timg3.jpg" width="100%" height="400" alt=""></a></li>
+							<li><a href="#"><img src="${pageContext.request.contextPath}/plug/img/mainpage/timg4.jpg" width="100%" height="400" alt=""></a></li>
 						</ul>
 						<ol>
 							<!--里面存放小圆点-->
@@ -29,7 +29,7 @@
 						</span>
 					</div>
 				</div>
-
+			
 				<div class="notice">
 					<div class="title2">
 						<h3>新闻信息</h3>
@@ -85,12 +85,12 @@
 		</div>
 				<style>
 	.picture {
-		width: 1079px;
-		height: 350px;
+		width: 100%;
+		height: 400px;
 	}
 
 	.notice {
-		width: 500px;
+		width: 50%;
 		height: 215px;
 		float: left;
 		padding-left: 20px;
@@ -98,7 +98,7 @@
 	}
 
 	.part {
-		width: 530px;
+		width: 50%;
 		height: 215px;
 		float: left;
 		padding-left: 20px;
@@ -118,16 +118,16 @@
 	}
 
 	.all {
-		width: 1079px;
-		height: 350px;
+		width: 100%;
+		height: 400px;
 		position: relative;
 		margin-bottom: 5px;
 	}
 
 	.inner {
 		position: relative;
-		width: 1079px;
-		height: 350px;
+		width: 100%;
+		height: 400px;
 		overflow: hidden;
 	}
 

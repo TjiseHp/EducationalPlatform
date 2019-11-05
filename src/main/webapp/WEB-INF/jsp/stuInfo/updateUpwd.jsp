@@ -123,7 +123,6 @@
 					<button type="button" class="btn btn-danger" onclick="doUpdate();">确认</button>
 					<button type="button" class="btn btn-danger" onclick="doback();">返回</button>				
             </div>
-
 		
 	</form>
 	</div>
@@ -214,8 +213,7 @@ letter-spacing: 0.04em;
 .elegant-aero {
 margin-left: auto;
 margin-right: auto;
-max-width: 500px;
-background: #D2E9FF;
+max-width: 80%;
 padding: 20px 20px 20px 20px;
 font: 12px Arial, Helvetica, sans-serif;
 color: #666;
@@ -239,5 +237,13 @@ text-align: right;
 padding-right: 15px;
 margin-top: 10px;
 font-weight: bold;
+font-size:20px;
+}
+.layui-card.layui-demo-maincard{
+	width:auto;
+	height:auto;
+}
+input[type="password"]{
+	margin-top:6px;
 }
 </style>

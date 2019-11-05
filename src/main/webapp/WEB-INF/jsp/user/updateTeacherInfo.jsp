@@ -181,12 +181,12 @@ $(function(){
 	<form action="${pageContext.request.contextPath}/user/doUpdateTeacherInfo" method="post" accept-charset="utf-8" onsubmit="return doUpdate()">
 		
 		    			<div class="row form-group">
-                <label class="control-label col-lg-3" for="name"><span>城市：</span></label>
+                <label class="control-label col-lg-3" for="name"><span style="font-size:15px;font-weight:normal;">城市：</span></label>
                 <div class="col-md-7">
-					<select style="width: 100px" id="s1" >
+					<select id="s1" >
 				        <option >${user.city.cProvince}</option>
 				    </select>
-				    <select style="width: 100px" id="s2">
+				    <select id="s2">
 				        <option >${user.city.cCity}</option>
 				    </select> 
                 </div>
@@ -195,7 +195,7 @@ $(function(){
 			<br/>
 		
 		    <div class="row form-group">
-                <label class="control-label col-lg-3" for="class"><span>学科：</span></label>
+                <label class="control-label col-lg-3" for="class"><span style="font-size:15px;font-weight:normal;">学科：</span></label>
                 <div class="col-md-7">
 					<select style="width: 100px" id="c1">
 				        <option >${user.uClass.classKind}</option>
@@ -204,14 +204,14 @@ $(function(){
             </div>
 		    
     		<div class="row form-group">
-                <label class="control-label col-lg-3" for="name"><span>姓名：</span></label>
+                <label class="control-label col-lg-3" for="name"><span style="font-size:15px;font-weight:normal;">姓名：</span></label>
                 <div class="col-md-7">
                 	<input class="form-control" type="text" id="uName" name="uName" value = "${user.uName }">
                 </div>
             </div>
             
 			<div class="row form-group">
-				<label class="control-label col-lg-3" for="name" ><span>性别：</span></label>
+				<label class="control-label col-lg-3" for="name" ><span style="font-size:15px;font-weight:normal;">性别：</span></label>
 				    <div style="padding-right:80px;padding-top:8px;">
 				    <lable class="sex">
 					    <input id="man" type="radio" value="男" checked="checked" name="uSex" />男   &nbsp;&nbsp;&nbsp;
@@ -222,14 +222,14 @@ $(function(){
 
             
             <div class="row form-group">
-                <label class="control-label col-lg-3" for="name"><span>手机：</span></label>
+                <label class="control-label col-lg-3" for="name"><span style="font-size:15px;font-weight:normal;">手机：</span></label>
                 <div class="col-md-7">
                   	<input class="form-control" type="text" id="uPhone" name="uPhone" value = "${user.uPhone}">
                 </div>
             </div>
             
  			<div class="row form-group">
-                <label class="control-label col-lg-3" for="name"><span>邮箱：</span></label>
+                <label class="control-label col-lg-3" for="name"><span style="font-size:15px;font-weight:normal;">邮箱：</span></label>
                 <div class="col-md-7">
 					<input class="form-control" type="text" id="uEmail" name="uEmail" value = "${user.uEmail}">
                 </div>
@@ -253,12 +253,12 @@ $(function(){
         $(this).prev().attr("type", "password");
     });
 </script>
-
 	</form>
 	</div>
 	</div>
 </div>
-<style type="text/css">
+<style>
+td{border: 1px solid transparent !important;}
 input[type=radio] {
 margin-right: 5px;
 cursor: pointer;
@@ -343,16 +343,14 @@ letter-spacing: 0.04em;
 .elegant-aero {
 margin-left: auto;
 margin-right: auto;
-max-width: 500px;
-background: #D2E9FF;
-padding: 20px 20px 20px 20px;
+max-width: 80%;
+padding: 20px 20px 20px 60px;
 font: 12px Arial, Helvetica, sans-serif;
 color: #666;
 }
 
 .elegant-aero label>span {
 float: left;
-margin-top: 10px;
 color: #5E5E5E;
 }
 
@@ -364,9 +362,8 @@ margin: 0px 0px 5px;
 .elegant-aero label>span {
 float: left;
 width: 100%;
-text-align: right;
+text-align: left;
 padding-right: 15px;
-margin-top: 10px;
 font-weight: bold;
 }
 .layui-card.layui-demo-maincard{

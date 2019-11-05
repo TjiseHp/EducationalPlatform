@@ -28,57 +28,57 @@
 	<br />
 	<hr />
 	<br /> <br />
-	<div class="col-md-offset-0">
+	<div class="col-md-offset-1">
 	<div class="elegant-aero">
 	<form>
 	
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span class="spanstyle">账号：</span></label>
                 <div class="col-md-7">
-                	<label class="form-control" type="text" id="uID" name="uID" value = "${user.uAcc}"><span>${user.uAcc}</span></label>
+                	<label class="form-control" type="text" id="uID" name="uID" value = "${user.uAcc}"><span style="font-size:15px;font-weight:normal;">${user.uAcc}</span></label>
                 </div>
             </div>
 				
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span class="spanstyle">姓名：</span></label>
                 <div class="col-md-7">
-                	<label class="form-control" type="text" id="uID" name="uID" value = "${user.uName }"><span>${user.uName }</span></label>
+                	<label class="form-control" type="text" id="uID" name="uID" value = "${user.uName }"><span style="font-size:15px;font-weight:normal;">${user.uName }</span></label>
                 </div>
             </div>
             
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span class="spanstyle">性别：</span></label>
                 <div class="col-md-7">
-                	<label class="form-control" type="text" id="uID" name="uID" value = "${user.uSex}"><span>${user.uSex}</span></label>
+                	<label class="form-control" type="text" id="uID" name="uID" value = "${user.uSex}"><span style="font-size:15px;font-weight:normal;">${user.uSex}</span></label>
                 </div>
             </div>
             
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span class="spanstyle">手机：</span></label>
                 <div class="col-md-7">
-                	<label class="form-control" type="text" id="uID" name="uID" value = "${user.uPhone}"><span>${user.uPhone}</span></label>
+                	<label class="form-control" type="text" id="uID" name="uID" value = "${user.uPhone}"><span style="font-size:15px;font-weight:normal;">${user.uPhone}</span></label>
                 </div>
             </div>
 
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span class="spanstyle">邮箱：</span></label>
                 <div class="col-md-7">
-                	<label class="form-control" type="text" id="uID" name="uID" value = "${user.uEmail}"><span>${user.uEmail}</span></label>
+                	<label class="form-control" type="text" id="uID" name="uID" value = "${user.uEmail}"><span style="font-size:15px;font-weight:normal;">${user.uEmail}</span></label>
                 </div>
             </div>
 			
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span class="spanstyle">城市：</span></label>
                 <div class="col-md-7">
-                	<label class="form-control" type="text" id="cProvince" name="cProvince" value = ""><span >${user.city.cProvince}&nbsp;${user.city.cCity}</span></label>
+                	<label class="form-control" type="text" id="cProvince" name="cProvince" value = ""><span style="font-size:15px;font-weight:normal;">${user.city.cProvince}&nbsp;${user.city.cCity}</span></label>
                 </div>
             </div>
             
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span class="spanstyle">剩余积分：</span></label>
                 <div class="col-md-7">
-                	<label class="form-control" type="text" id="uID" name="uID" value = "${user.credit}"><span>${user.credit}</span>
-                	<a style="margin-left:250px;margin-top: -43px;" class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doCredit('${user.uId}');">积分详情</a>
+                	<label class="form-control" type="text" id="uID" name="uID" value = "${user.credit}"><span style="font-size:15px;font-weight:normal;">${user.credit}</span>
+                	<a style="margin-left:430px;margin-top: -43px;" class="btn btn-primary btn-xs" role="button" href="javascript:;" onclick="doCredit('${user.uId}');">积分详情</a>
                 	</label>
                 </div>
             </div>
@@ -98,8 +98,7 @@
 .elegant-aero {
 margin-left: auto;
 margin-right: auto;
-max-width: 500px;
-background: #D2E9FF;
+max-width: 80%;
 padding: 20px 20px 20px 20px;
 font: 12px Arial, Helvetica, sans-serif;
 color: #666;
@@ -107,6 +106,7 @@ color: #666;
 .elegant-aero label>span {
 float: left;
 color: #5E5E5E;
+font-size :20px;
 }
 
 .elegant-aero label {

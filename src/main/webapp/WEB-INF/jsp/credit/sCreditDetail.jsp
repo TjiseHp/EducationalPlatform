@@ -100,6 +100,9 @@
 			console.info("doHistory");
 			window.location.href = "${pageContext.request.contextPath}/credit/creditHistoryBuy?uId="+uId;
 		}
+		function doEchart() {			
+			window.location.href = "${pageContext.request.contextPath}/echart/creditEchart?uId=${loginUser.uId}";
+		}
 		
 	</script>
 	
@@ -117,6 +120,10 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;		
 		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doHistory();" >
 			<span >历史购买订单</span>
+		</a>
+		&nbsp;&nbsp;&nbsp;&nbsp;	
+		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doEchart();" >
+			<span >充值统计查看</span>
 		</a>
 	</div>
 	

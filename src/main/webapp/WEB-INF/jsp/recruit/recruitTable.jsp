@@ -118,7 +118,7 @@
 		
 		function doAdd() {
 			console.info("ADD");
-			window.location.href = "${pageContext.request.contextPath}/";
+			window.location.href = "${pageContext.request.contextPath}/recruit/insertRecruit";
 		}
 		
 	</script>

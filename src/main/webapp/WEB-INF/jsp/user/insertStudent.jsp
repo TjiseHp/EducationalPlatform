@@ -112,7 +112,7 @@
 	
 			<div class="row form-group">
 				<label class="control-label col-lg-3" for="name" ><span>性别：</span></label>
-				    <div style="padding-right:80px;padding-top:8px;">
+				    <div style="padding-right:200px;padding-top:10px;">
 				    <lable class="sex">
 					    <input id="man" type="radio" value="男" checked="checked" name="uSex" />男   &nbsp;&nbsp;&nbsp;
 					    <input id="woman" type="radio"  value="女" name="uSex"/>女
@@ -139,10 +139,10 @@
 				
 				<div class="col-md-7" style="padding-top:9px;">
 					
-					<select style="width: 100px" id="s1">
+					<select id="s1">
 				        <option >--请选择--</option>
 				    </select>
-				    <select style="width: 100px" id="s2">
+				    <select id="s2">
 				        <option >--请选择--</option>
 				    </select> 
 				    
@@ -156,7 +156,7 @@
 				<button type="button" class="btn btn-danger" onclick="doPost();">提交</button>
 				<!--  	<input class="btn btn-default" type="submit" value="提交"/>-->
 			</div>
-			
+
 	</form>
 	</div>
 	</div>
@@ -240,8 +240,7 @@ input[type=text] {
 .elegant-aero {
     margin-left:auto;
 	margin-right:auto;
-	max-width: 500px;
-	background: #D2E9FF;
+	max-width: 80% ;
 	padding: 20px 20px 20px 20px;
 	font: 12px Arial, Helvetica, sans-serif;
 	color: #666;
@@ -262,9 +261,18 @@ input[type=text] {
 	padding-right: 15px;
 	margin-top: 10px;
 	font-weight: bold;
+	font-size :20px;
 }
 .layui-card.layui-demo-maincard{
 	width:auto;
 	height:auto;
+}
+input[type="text"]{
+	margin-top:6px;
+}
+select{
+	width:130px;
+	height:20px;
+	margin-top:4px;
 }
 </style>
