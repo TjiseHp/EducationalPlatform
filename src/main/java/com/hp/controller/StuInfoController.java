@@ -93,27 +93,38 @@ public class StuInfoController {
 		@ResponseBody
 		@RequestMapping("/doUpdateStuInfo")
 		public String doUpdateStuInfo(HttpSession session,HttpServletRequest request) {
+			JSONObject json = new JSONObject();
 			String uId = request.getParameter("uId");
 			String cNum = request.getParameter("cNum");
 			String uEmail = request.getParameter("uEmail");
 			String uSex = request.getParameter("uSex");
 			String uName = request.getParameter("uName");
 			String uPhone = request.getParameter("uPhone");
+			System.out.println("cNum:"+cNum);
 			User user = new User();
 			user.setuId(Integer.valueOf(uId));
-			user.setcNum(cityService.querycNumBycCity(cNum));	
-			user.setuEmail(uEmail);
-			user.setuSex(uSex);
-			user.setuName(uName);
-			user.setuPhone(uPhone);			
-			System.out.println("学生getuId："+user.getuId());
-			System.out.println("学生getcNum："+user.getcNum());
-			JSONObject json = new JSONObject();
-			int row = userService.updateByPrimaryKeySelective(user);		
-			if(row==1) {
-				System.out.println("更新学生信息成功");
-				json.put("result", true);
+			if(cNum.contains("市")) {
+				user.setcNum(cityService.querycNumBycCity(cNum));
 			}else {
+			user.setcNum(Integer.valueOf(cNum));}
+			//查询当前用户的email在数据库中的条数
+			int row = userService.queryUserCountByEmail(uEmail);
+			//通过id查询出当前用户的email是否和传来的email相同
+			User user1 = userService.queryStudentByuId(Integer.valueOf(uId));
+			if(user1.getuEmail().equals(uEmail)||row==0) {
+			    user.setuEmail(uEmail);
+			    user.setuSex(uSex);
+			    user.setuName(uName);
+			    user.setuPhone(uPhone);			
+				System.out.println("学生getuId："+user.getuId());
+				System.out.println("学生getcNum："+user.getcNum());
+				int row2 = userService.updateByPrimaryKeySelective(user);		
+				if(row2==1) {
+					System.out.println("更新学生信息成功");
+					json.put("result", true);
+				}
+			}				
+			else {
 				json.put("result", false);
 			}
 			return json.toString();

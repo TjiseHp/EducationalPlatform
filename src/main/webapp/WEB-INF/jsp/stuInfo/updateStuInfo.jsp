@@ -92,7 +92,7 @@
 	    	        	window.location.href = "${pageContext.request.contextPath}/stuInfo/stuInfoCenter?uId="+uId;
                     });
         		} else {
-        			layer.msg("修改失败", {time:2000, icon:5, shift:6}, function(){
+        			layer.msg("邮箱重复，请重新输入！", {time:2000, icon:5, shift:6}, function(){
                         
                     });               
         		}     		
