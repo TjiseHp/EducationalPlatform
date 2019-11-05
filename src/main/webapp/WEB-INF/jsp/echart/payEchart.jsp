@@ -10,6 +10,7 @@
 
 
 <!-- 直接复制，js可放置到页面最底部，也可在div内，修改复制后修改div id和js内输出id，使之对应 而后修改控制层-->
+<!--
 <div id="main" style="width: 1200px; height: 400px;">
 <script type="text/javascript">
 	var myChart=echarts.init(document.getElementById("main"));
@@ -73,8 +74,9 @@
 </script>
 
 </div>
-
-<div id="666" style="width: 1200px; height: 400px;">
+  -->
+  <!-- 
+<div id="666" style="width: 600px; height: 400px;">
 <script type="text/javascript">
 	var myChart=echarts.init(document.getElementById("666"));
     var option = ({
@@ -105,7 +107,7 @@
     	    },
     	    series : [
     	        {
-    	            name:'访问来源',
+    	            name:'消费类别',
     	            type:'pie',
     	            radius : '55%',
     	            center: ['50%', '50%'],
@@ -155,4 +157,75 @@
 
 </script>
 
+</div>
+ -->
+<div id="main" style="width: 1200px; height: 400px;">
+<script type="text/javascript">
+	var myChart=echarts.init(document.getElementById("main"));
+    var option = ({
+    	             
+			        title: {
+			            text: '消费记录',
+			            },
+			        tooltip: {
+			            trigger: 'axis'
+			        },
+			        
+			        toolbox: {
+			            show: true,
+			            feature: {
+			                dataZoom: {
+			                    yAxisIndex: 'none'
+			                },
+			                dataView: {readOnly: false},
+			                magicType: {type: ['line', 'bar']},
+			                restore: {},
+			                saveAsImage: {}
+			            }
+			        },
+			        xAxis:  {
+			            type: 'category',
+			            boundaryGap: false,
+			            data: [
+			            	<c:forEach var="i"  begin="0"  end="${list.size()-1}"> 
+			        		'${list[i].creditText2}',
+				       		 </c:forEach>
+		        		]
+			        },
+			        yAxis: {
+			            type: 'value',
+			            axisLabel: {
+			                formatter: '{value} 元'
+			            }
+			        },
+			        series: [
+			            {
+			                name:"月消费",
+			                type:'line',
+			                data:[
+			                	<c:forEach var="i"  begin="0"  end="${list.size()-1}"> 
+				        		'${list[i].creditSum}',
+					        </c:forEach>
+			                	],
+			                markPoint: {
+			                    data: [
+			                        {type: 'max', name: '最大值'},
+			                        {type: 'min', name: '最小值'}
+			                    ]
+			                },
+			                markLine: {
+			                    data: [
+			                        {type: 'average', name: '平均值'}
+			                    ]
+			                }
+			            },
+			           
+			        ]
+				          
+    	        });
+    
+    myChart.setOption(option);
+    
+
+</script>
 </div>

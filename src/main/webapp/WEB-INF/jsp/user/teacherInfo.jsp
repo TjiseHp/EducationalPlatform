@@ -33,7 +33,7 @@
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span class="spanstyle">用户ID：</span></label>
                 <div class="col-md-7">
-                	<label class="form-control" type="text" id="uID" name="uID" value = "${user.uId}"><span>${user.uId}</span></label>
+                	<label class="form-control" type="text" id="uID" name="uID" value = "${user.uId}"><span style="font-size:15px;font-weight:normal;">${user.uId}</span></label>
                 </div>
             </div>
 
@@ -41,7 +41,7 @@
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span class="spanstyle">用户身份：</span></label>
                 <div class="col-md-7">
-                	<label class="form-control" type="text" id="roName" name="roName" value = "${user.group.role.roName }"><span>${user.group.role.roName }</span></label>
+                	<label class="form-control" type="text" id="roName" name="roName" value = "${user.group.role.roName }"><span style="font-size:15px;font-weight:normal;">${user.group.role.roName }</span></label>
                 </div>
             </div>
 			
@@ -67,28 +67,28 @@
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span class="spanstyle">城市：</span></label>
                 <div class="col-md-7">
-                	<label class="form-control" type="text" id="cProvince" name="cProvince" value = ""><span >${user.city.cProvince}&nbsp;${user.city.cCity}</span></label>
+                	<label class="form-control" type="text" id="cProvince" name="cProvince" value = ""><span style="font-size:15px;font-weight:normal;">${user.city.cProvince}&nbsp;${user.city.cCity}</span></label>
                 </div>
             </div>
 			
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span class="spanstyle">学科：</span></label>
                 <div class="col-md-7">
-                	<label class="form-control" type="text" id="classKind" name="classKind" value = ""><span >${user.uClass.classKind}</span></label>
+                	<label class="form-control" type="text" id="classKind" name="classKind" value = ""><span style="font-size:15px;font-weight:normal;">${user.uClass.classKind}</span></label>
                 </div>
             </div>
             
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span class="spanstyle">等级：</span></label>
                 <div class="col-md-7">
-                	<label class="form-control" type="text" id="uExp" name="uExp" value = ""><span>${user.leave}</span></label>
+                	<label class="form-control" type="text" id="uExp" name="uExp" value = ""><span style="font-size:15px;font-weight:normal;">${user.leave}</span></label>
                 </div>
             </div>
             
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span class="spanstyle">姓名：</span></label>
                 <div class="col-md-7">
-                	<label class="form-control" type="text" id="uName" name="uName" value = "${user.uName }"><span>${user.uName }</span></label>
+                	<label class="form-control" type="text" id="uName" name="uName" value = "${user.uName }"><span style="font-size:15px;font-weight:normal;">${user.uName }</span></label>
                 </div>
             </div>	
             	
@@ -96,27 +96,24 @@
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span class="spanstyle">性别：</span></label>
                 <div class="col-md-7">
-                	<label class="form-control" type="text" id="uSex" name="uSex" value = "${user.uSex}"><span>${user.uSex}</span></label>
+                	<label class="form-control" type="text" id="uSex" name="uSex" value = "${user.uSex}"><span style="font-size:15px;font-weight:normal;">${user.uSex}</span></label>
                 </div>
             </div>		
 
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span class="spanstyle">手机：</span></label>
                 <div class="col-md-7">
-                	<label class="form-control" type="text" id="uPhone" name="uPhone" value = "${user.uPhone}"><span>${user.uPhone}</span></label>
+                	<label class="form-control" type="text" id="uPhone" name="uPhone" value = "${user.uPhone}"><span style="font-size:15px;font-weight:normal;">${user.uPhone}</span></label>
                 </div>
             </div>		
 
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span class="spanstyle">邮箱：</span></label>
                 <div class="col-md-7">
-                	<label class="form-control" type="text" id="uEmail" name="uEmail" value = "${user.uEmail}"><span>${user.uEmail}</span></label>
+                	<label class="form-control" type="text" id="uEmail" name="uEmail" value = "${user.uEmail}"><span style="font-size:15px;font-weight:normal;">${user.uEmail}</span></label>
                 </div>
             </div>		
 			
-
-		
-
 			<br />
 
 			<div class="row form-group">
@@ -231,7 +228,11 @@ letter-spacing: 0.04em;
 .elegant-aero {
 margin-left: auto;
 margin-right: auto;
+<<<<<<< HEAD
 max-width:80%;
+=======
+max-width: 80%;
+>>>>>>> branch 'master' of https://github.com/TjiseHp/EducationalPlatform.git
 padding: 20px 20px 20px 60px;
 font: 12px Arial, Helvetica, sans-serif;
 color: #666;
@@ -253,15 +254,10 @@ width: 100%;
 text-align: left;
 padding-right: 15px;
 font-weight: bold;
+font-size :20px;
 }
 .layui-card.layui-demo-maincard{
 	width:auto;
 	height:auto;
 }
-.spanstyle{
-	padding-top:7px;
-	text-align:left;
-	font-weight: normal;
-}
-
 </style>

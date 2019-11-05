@@ -8,28 +8,44 @@
 
 		<div style="margin:0 auto" >
 
-			<div class="picture">
-				<div id="box" class="all">
-					<div class="inner">
-						<!-- 相框-->
-						<ul>
-							<li><a href="#"><img src="${pageContext.request.contextPath}/plug/img/mainpage/timg.jpg" width="1079" height="350" alt=""></a></li>
-							<li><a href="#"><img src="${pageContext.request.contextPath}/plug/img/mainpage/timg2.jpg" width="1079" height="350" alt=""></a></li>
-							<li><a href="#"><img src="${pageContext.request.contextPath}/plug/img/mainpage/timg3.jpg" width="1079" height="350" alt=""></a></li>
-							<li><a href="#"><img src="${pageContext.request.contextPath}/plug/img/mainpage/timg4.jpg" width="1079" height="350" alt=""></a></li>
-						</ul>
-						<ol>
-							<!--里面存放小圆点-->
+			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+			  <!-- Indicators -->
+			  <ol class="carousel-indicators">
+			    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+			    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+			    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+			  </ol>
+			
+			  <!-- Wrapper for slides -->
+			  <div class="carousel-inner" role="listbox">
+			    <div class="item active">
+			      <img src="${pageContext.request.contextPath}/plug/img/t/1.png" alt="...">
+			      <div class="carousel-caption">
+			      </div>
+			    </div>
+			    <div class="item">
+			      <img src="${pageContext.request.contextPath}/plug/img/t/2.png" alt="...">
+			      <div class="carousel-caption">
+			      </div>
+			    </div>
+			    			    <div class="item">
+			      <img src="${pageContext.request.contextPath}/plug/img/t/3.png" alt="...">
+			      <div class="carousel-caption">
+			      </div>
+			    </div>
+			  </div>
 
-						</ol>
-					</div>
-					<div class="focusD" id="arr">
-						<span id="left">
-							<</span> <span id="right">>
-						</span>
-					</div>
-				</div>
-
+			  <!-- Controls -->
+			  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+			    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			    <span class="sr-only">Previous</span>
+			  </a>
+			  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			    <span class="sr-only">Next</span>
+			  </a>
+			</div>
+			
 				<div class="notice">
 					<div class="title2">
 						<h2>新闻信息</h2>
@@ -268,16 +284,17 @@
                
 		</div>				
 			</div>
-		</div>
-		 
-		<style>
+
+			
+<style>
+
 	.picture {
-		width: 1079px;
-		height: 350px;
+		width: 100%;
+		height: 400px;
 	}
 
 	.notice {
-		width: 500px;
+		width: 50%;
 		height: 215px;
 		float: left;
 		padding-left: 20px;
@@ -285,7 +302,7 @@
 	}
 
 	.part {
-		width: 530px;
+		width: 50%;
 		height: 215px;
 		float: left;
 		padding-left: 20px;
@@ -315,16 +332,16 @@
 	}
 
 	.all {
-		width: 1079px;
-		height: 350px;
+		width: 100%;
+		height: 400px;
 		position: relative;
 		margin-bottom: 5px;
 	}
 
 	.inner {
 		position: relative;
-		width: 1079px;
-		height: 350px;
+		width: 100%;
+		height: 400px;
 		overflow: hidden;
 	}
 
@@ -450,6 +467,7 @@
 		text-decoration: none;
 		line-height: 40px;
 	}
+
 	
 	.layui-card.layui-demo-maincard{
 	width:auto;
@@ -569,3 +587,6 @@
 		return document.getElementById(id);
 	}
 </script>
+
+
+

@@ -187,11 +187,6 @@
             </div>
         </div>
     </div>
-	<div id="toolbar" class="btn-group">
-		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doAdd();" >
-			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>消息群发
-		</a>
-	</div>
 
 
 

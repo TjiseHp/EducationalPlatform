@@ -100,6 +100,8 @@ $(function(){
 <script type="text/javascript">
 	
 	function doUpdate() {
+		var testPhone = /^[1][3,4,5,7,8][0-9]{9}$/;
+		var testEmail = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
 		var cCum = $("#s2").val();
 		var classNum = $("#c1").val();
 		var uName = $("#uName").val();
@@ -117,8 +119,14 @@ $(function(){
 		if(uName == ""||uPhone == ""||uEmail == ""||uSex == ""||cCum == ""||classNum == ""){
 			layer.msg("内容不能为空", {time:2000, icon:5, shift:6});
 			return;
-		}else{
-			console.info("OK");
+		}
+		if(!testPhone.test(uPhone)){
+			layer.msg("请输入正确的手机号！", {time:2000, icon:5, shift:6});
+			return;
+		}
+		if(!testEmail.test(uEmail)){
+			layer.msg("请输入正确的邮箱！", {time:2000, icon:5, shift:6});
+			return;
 		}
 		
 		var loadingIndex = null;
@@ -174,11 +182,11 @@ $(function(){
 		
 		    			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span>城市：</span></label>
-                <div class="col-md-7">
-					<select style="width: 100px" id="s1" >
+                <div class="col-md-7" style="margin-top:10px">
+					<select id="s1" >
 				        <option >${user.city.cProvince}</option>
 				    </select>
-				    <select style="width: 100px" id="s2">
+				    <select id="s2">
 				        <option >${user.city.cCity}</option>
 				    </select> 
                 </div>
@@ -188,7 +196,7 @@ $(function(){
 		
 		    <div class="row form-group">
                 <label class="control-label col-lg-3" for="class"><span>学科：</span></label>
-                <div class="col-md-7">
+                <div class="col-md-7" style="margin-top:10px">
 					<select style="width: 100px" id="c1">
 				        <option >${user.uClass.classKind}</option>
 				    </select>
@@ -245,12 +253,12 @@ $(function(){
         $(this).prev().attr("type", "password");
     });
 </script>
-
 	</form>
 	</div>
 	</div>
 </div>
-<style type="text/css">
+<style>
+td{border: 1px solid transparent !important;}
 input[type=radio] {
 margin-right: 5px;
 cursor: pointer;
@@ -335,16 +343,14 @@ letter-spacing: 0.04em;
 .elegant-aero {
 margin-left: auto;
 margin-right: auto;
-max-width: 500px;
-background: #D2E9FF;
-padding: 20px 20px 20px 20px;
+max-width: 80%;
+padding: 20px 20px 20px 60px;
 font: 12px Arial, Helvetica, sans-serif;
 color: #666;
 }
 
 .elegant-aero label>span {
 float: left;
-margin-top: 10px;
 color: #5E5E5E;
 }
 
@@ -356,13 +362,24 @@ margin: 0px 0px 5px;
 .elegant-aero label>span {
 float: left;
 width: 100%;
-text-align: right;
+text-align: left;
 padding-right: 15px;
-margin-top: 10px;
 font-weight: bold;
+font-size :20px;
 }
 .layui-card.layui-demo-maincard{
 	width:auto;
 	height:auto;
+}
+input[type="text"]{
+	margin-top:6px;
+}
+select{
+	width:130px;
+	height:20px;
+	margin-top:4px;
+}
+span{
+	margin-top:10px;
 }
 </style>

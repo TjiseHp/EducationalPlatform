@@ -9,7 +9,7 @@
 		
 		$(document).ready(function () {
 	        $('#table1').bootstrapTable({
-	            url: '${pageContext.request.contextPath}/recruit/queryRecruitByCity',
+	            url: '${pageContext.request.contextPath}/recruit/queryRecruitByCity?uId=${loginUser.uId}',
 	            method: 'post', 
 	            columns: [
 	                {
