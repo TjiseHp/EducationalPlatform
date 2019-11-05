@@ -6,29 +6,45 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	
 
-		<div width="100%">
+		<div>
 
-			<div class="picture">
-				<div id="box" class="all">
-					<div class="inner">
-						<!-- 相框-->
-						<ul>
-							<li><a href="#"><img src="${pageContext.request.contextPath}/plug/img/mainpage/timg.jpg" width="100%" height="400" alt=""></a></li>
-							<li><a href="#"><img src="${pageContext.request.contextPath}/plug/img/mainpage/timg2.jpg" width="100%" height="400" alt=""></a></li>
-							<li><a href="#"><img src="${pageContext.request.contextPath}/plug/img/mainpage/timg3.jpg" width="100%" height="400" alt=""></a></li>
-							<li><a href="#"><img src="${pageContext.request.contextPath}/plug/img/mainpage/timg4.jpg" width="100%" height="400" alt=""></a></li>
-						</ul>
-						<ol>
-							<!--里面存放小圆点-->
+			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+			  <!-- Indicators -->
+			  <ol class="carousel-indicators">
+			    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+			    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+			    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+			  </ol>
+			
+			  <!-- Wrapper for slides -->
+			  <div class="carousel-inner" role="listbox">
+			    <div class="item active">
+			      <img src="${pageContext.request.contextPath}/plug/img/t/1.png" alt="...">
+			      <div class="carousel-caption">
+			      </div>
+			    </div>
+			    <div class="item">
+			      <img src="${pageContext.request.contextPath}/plug/img/t/2.png" alt="...">
+			      <div class="carousel-caption">
+			      </div>
+			    </div>
+			    			    <div class="item">
+			      <img src="${pageContext.request.contextPath}/plug/img/t/3.png" alt="...">
+			      <div class="carousel-caption">
+			      </div>
+			    </div>
+			  </div>
 
-						</ol>
-					</div>
-					<div class="focusD" id="arr">
-						<span id="left">
-							<</span> <span id="right">>
-						</span>
-					</div>
-				</div>
+			  <!-- Controls -->
+			  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+			    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			    <span class="sr-only">Previous</span>
+			  </a>
+			  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			    <span class="sr-only">Next</span>
+			  </a>
+			</div>
 			
 				<div class="notice">
 					<div class="title2">
@@ -82,8 +98,8 @@
 					</div>
 				</div>
 			</div>
-		</div>
-				<style>
+			
+<style>
 	.picture {
 		width: 100%;
 		height: 400px;
@@ -254,115 +270,3 @@
 		line-height: 40px;
 	}
 </style>
-<script>
-	var index = 0;
-	//获取最外面的div
-	var box = my$("box");
-	//获取相框
-	var inner = box.children[0];
-	//获取去相框的宽度
-	var imgWidth = inner.offsetWidth;
-	// 获取ul
-	var ulObj = inner.children[0];
-	//获取ul中所有的li
-	var list = ulObj.children;
-	//获取ol
-	var olObj = inner.children[1];
-	//获取焦点
-	var arr = my$("arr");
-
-	//创建小按钮-----根据ul中li的个数
-	for (var i = 0; i < list.length; i++) {
-		var liObjs = document.createElement("li");
-		olObj.appendChild(liObjs);
-		liObjs.innerHTML = (i + 1);
-		//在ol中每个li中增加自定义属性，添加索引值
-		liObjs.setAttribute("index", i);
-		//注册鼠标进入事件
-		liObjs.onmouseover = function() {
-			//先干掉所有背景颜色
-			for (var j = 0; j < olObj.children.length; j++) {
-				olObj.children[j].removeAttribute("class");
-			}
-			//设置当前鼠标进来的类样式
-			this.className = "current";
-			//获取ol中li的索引值
-			index = this.getAttribute("index");
-			//移动ul
-			animate(ulObj, -index * imgWidth); //移动动画函数
-		};
-	}
-	//设置第一个ol中li的背景颜色
-	olObj.children[0].className = "current";
-	//克隆ol中第一个li放到最后一个
-	ulObj.appendChild(ulObj.children[0].cloneNode(true));
-
-
-	var timeId = setInterval(clickHandle, 5000);
-
-	my$("box").onmouseover = function() {
-		arr.style.display = "block";
-		clearInterval(timeId);
-	};
-	//点击右边按钮
-	my$("right").onclick = clickHandle;
-
-	function clickHandle() {
-		if (index == ulObj.children.length - 1) {
-			ulObj.style.left = 0 + "px";
-			index = 0;
-		}
-		index++;
-		animate(ulObj, -index * imgWidth);
-		if (index == list.length - 1) {
-			olObj.children[0].className = "current";
-			olObj.children[olObj.children.length - 1].className = "";
-		} else {
-			for (var i = 0; i < olObj.children.length; i++) {
-				olObj.children[i].className = "";
-			}
-			olObj.children[index].className = "current";
-		}
-	};
-	//点击左边按钮
-	my$("left").onclick = function() {
-		if (index == 0) {
-			index = list.length - 1;
-			ulObj.style.left = -index * imgWidth + "px";
-		}
-		index--;
-		animate(ulObj, -index * imgWidth);
-		for (var i = 0; i < olObj.children.length; i++) {
-			olObj.children[i].className = "";
-		}
-		olObj.children[index].className = "current";
-	};
-
-	my$("box").onmouseout = function() {
-		arr.style.display = "none";
-		timeId = setInterval(clickHandle, 5000);
-	};
-
-
-
-	// 设置一个元素，移动到指定位置
-	function animate(element, target) {
-		clearInterval(element.timeId);
-		element.timeId = setInterval(function() {
-			var current = element.offsetLeft;
-			var step = 9;
-			step = current > target ? -step : step;
-			current += step;
-			if (Math.abs(target - current) > Math.abs(step)) {
-				element.style.left = current + "px";
-			} else {
-				clearInterval(element.timeId);
-				element.style.left = target + "px";
-			}
-		}, 10);
-	}
-
-	function my$(id) {
-		return document.getElementById(id);
-	}
-</script>
