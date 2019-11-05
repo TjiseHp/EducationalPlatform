@@ -40,6 +40,8 @@
 <script type="text/javascript">
 	
 	function doUpdate() {
+		var testPhone = /^[1][3,4,5,7,8][0-9]{9}$/;
+		var testEmail = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
 		var uName = $("#uName").val();
 		var uPhone = $("#uPhone").val();
 		var uEmail = $("#uEmail").val();
@@ -53,11 +55,18 @@
 		console.info(uSex);
 		console.info(cNum);
 		if(uName == ""||uPhone == ""||uEmail == ""||uSex == ""){
-			layer.msg("内容不能为空", {time:2000, icon:5, shift:6});
+			layer.msg("内容不能为空！", {time:2000, icon:5, shift:6});
 			return;
-		}else{
-			console.info("OK");
 		}
+		if(!testPhone.test(uPhone)){
+			layer.msg("请输入正确的手机号！", {time:2000, icon:5, shift:6});
+			return;
+		}
+		if(!testEmail.test(uEmail)){
+			layer.msg("请输入正确的邮箱！", {time:2000, icon:5, shift:6});
+			return;
+		}
+		
 		
 		var loadingIndex = null;
 		$.ajax({
