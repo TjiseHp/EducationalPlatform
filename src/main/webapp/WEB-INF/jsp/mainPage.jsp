@@ -6,7 +6,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	
 
-		<div>
+		<div style="margin:0 auto" >
 
 			<div class="picture">
 				<div id="box" class="all">
@@ -32,7 +32,7 @@
 
 				<div class="notice">
 					<div class="title2">
-						<h3>新闻信息</h3>
+						<h2>新闻信息</h2>
 					</div>
 					<div class="tzgg_news">
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -58,7 +58,7 @@
 
 				<div class="part">
 					<div class="title2">
-						<h3>公告信息</h3>
+						<h2>公告信息</h2>
 					</div>
 					<div class="tzgg_news">
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -81,9 +81,196 @@
 						</table>
 					</div>
 				</div>
+				
+				
+				<hr/>
+				<div class="bg_img">
+				  
+				<div class="gtco-container">
+					<div class="row">
+					<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+						<h2>精品课程</h2>
+						<p>High quality courses</p>
+					</div>
+					</div><br/><br/>
+					
+					<div class="row">
+						<div class="col-lg-4 col-md-4 col-sm-6">
+							<a href="${pageContext.request.contextPath}/plug/img/images/img_01.jpg" class="fh5co-project-item image-popup"></a>
+								<figure>
+										<div class="overlay"><i class="ti-plus"></i></div>
+										<img src="${pageContext.request.contextPath}/plug/img/mainpage/img_01.jpg" alt="Image" class="img-responsive">
+									</figure><br/>
+									<div class="fh5co-text">
+										<h2>“1对1”重点冲刺</h2><br/>
+										<h3>“1对1” 个性化教学<br/>
+										    量身定制辅导方案<br />
+										    专业教师进行辅导培训
+										</h3>
+									</div>
+							</div>
+							<div class="col-lg-4 col-md-4 col-sm-6">
+								<a href="${pageContext.request.contextPath}/plug/img/mainpage/img_04.jpg" class="fh5co-project-item image-popup"></a>
+									<figure>
+										<div class="overlay"><i class="ti-plus"></i></div>
+										<img src="${pageContext.request.contextPath}/plug/img/mainpage/img_04.jpg" alt="Image" class="img-responsive">
+									</figure><br/>
+									<div class="fh5co-text" id="center">
+										<h2>精品小班互动教学</h2><br/>
+										<h3>模块化课程精讲<br/>
+											提升课堂互动体验<br>
+											激发持久自主学习力
+										</h3>
+									</div>
+											
+							</div>
+							
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+								<a href="${pageContext.request.contextPath}/plug/img/mainpage/img_02.jpg" class="fh5co-project-item image-popup"></a>
+									<figure>
+										<div class="overlay"><i class="ti-plus"></i></div>
+										<img src="${pageContext.request.contextPath}/plug/img/mainpage/img_02.jpg" alt="Image" class="img-responsive">
+									</figure><br/>
+									<div class="fh5co-text">
+										<h2>到家辅导</h2><br/>
+										<h3>足不出户，学习更安心<br/>
+											打造学习型家庭环境<br>
+											学情反馈，家长即时沟通
+										</h3>
+									</div>
+							</div>
+					</div>
+					</div>
+					<hr>
+					
+		<div class="gtco-container">
+				<div class="row">
+					  <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+						<h2>金牌老师</h2>
+						<p>Professional teacher</p><br/><br/>
+						<h3>懂沟通、懂考点、更懂孩子<h3><br/>
+	           <div class="describe">
+                      <p>层层筛选</p>
+                      <p>严控10%老师招聘录取率</p>
+                      <p>教学紧扣当地教材与考点</p>
+                      <p>老师每月月考达标</p>
+                      <p>100%接受过家庭教育培训，更懂孩子成绩背后的问题所在！</p>
+                </div>
+			</div>
+			</div>
+			<div class="row">
+			   <div class="col-lg-4 col-md-4 col-sm-6">
+								<a href="${pageContext.request.contextPath}/plug/img/mainpage/tc-1.png" class="fh5co-project-item image-popup"></a>
+									<figure>
+										<div class="overlay"><i class="ti-plus"></i></div>
+										<img src="${pageContext.request.contextPath}/plug/img/mainpage/tc-1.png" alt="Image" class="img-responsive">
+									</figure><br/>
+									<div class="fh5co-text">
+										<h2>王慧超</h2><br/>
+										<h3>河北师范大学教育学硕士</h3>
+                                        <h3>十年一线教学、研发、培训经验</h3>
+                                        <h3>高考英语140</h3>
+                                        <h3>六级听力满分</h3>
+                                        <h3>专注研究中、高考命题规律</h3>
+									</div>
+				</div>
+							   <div class="col-lg-4 col-md-4 col-sm-6">
+								<a href="${pageContext.request.contextPath}/plug/img/mainpage/tc-2.png" class="fh5co-project-item image-popup"></a>
+									<figure>
+										<div class="overlay"><i class="ti-plus"></i></div>
+										<img src="${pageContext.request.contextPath}/plug/img/mainpage/tc-2.png" alt="Image" class="img-responsive">
+									</figure><br/>
+									<div class="fh5co-text">
+										<h2>付成波</h2><br/>
+										 <h3>近十年一线初高中化学教学经验</h3>
+                                         <h3>授课人数近3000人</h3>
+                                         <h3> 擅长考前冲刺的重点、难点及易错点的讲授</h3>
+                                         <h3>独立总结出一套高效学习法。</h3>
+									</div>
+							</div>
+							
+							<div class="col-lg-4 col-md-4 col-sm-6">
+								<a href="${pageContext.request.contextPath}/plug/img/mainpage/tc-6.png" class="fh5co-project-item image-popup"></a>
+									<figure>
+										<div class="overlay"><i class="ti-plus"></i></div>
+										<img src="${pageContext.request.contextPath}/plug/img/mainpage/tc-6.png" alt="Image" class="img-responsive">
+									</figure><br/>
+									<div class="fh5co-text">
+										<h2>闫晶晶</h2><br/>
+										 <h3>河北师范大学毕业</h3>
+                                         <h3>获得英语专业八级证书</h3>
+                                         <h3>近8年初高中英语教学经验</h3>
+                                         <h3>专注中考压轴题研究</h3>
+                                         <h3>深入研究中考命题规律</h3>
+                                         <h3>每年培养出多名名校学生</h3>
+									</div>
+							</div>	
+					</div>
+			</div>
+			<hr/>
+			
+			<div class="gtco-container" style="margin:0 auto">
+			<div class="row">
+					<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+						<h2>教学全流程专业服务</h2>
+						<p>Teaching whole process professional service</p>
+					</div>
+		    </div>
+		    <br/><br/>
+		    <div class="row" style="align:center">
+		    			   <div class="col-lg-4 col-md-4 col-sm-6" >
+								<a href="${pageContext.request.contextPath}/plug/img/mainpage/img_09.jpg" class="fh5co-project-item image-popup"></a>
+									<figure>
+										<div class="overlay"><i class="ti-plus"></i></div>
+										<img src="${pageContext.request.contextPath}/plug/img/mainpage/img_09.jpg" alt="Image" class="img-responsive">
+									</figure><br/>
+									<div class="fh5co-text">
+										<h3>TMAS学能测评，<br/>
+										        潜能优势全知道<br/>
+                                                                                        定制个性化教学方案<br/>
+                                                                                        建立微信服务群<br/>
+                                                                                        课前准备提醒短信</h3>
+									</div>
+				</div>
+				
+					 <div class="col-lg-4 col-md-4 col-sm-6">
+								<a href="${pageContext.request.contextPath}/plug/img/mainpage/img_08.jpg" class="fh5co-project-item image-popup"></a>
+									<figure>
+										<div class="overlay"><i class="ti-plus"></i></div>
+										<img src="${pageContext.request.contextPath}/plug/img/mainpage/img_08.jpg" alt="Image" class="img-responsive">
+									</figure><br/>
+									<div class="fh5co-text">
+										<h3>课程知识点详解<br/>
+										情景导入，要点高效教学<br/>
+                                                                                当堂总结，检测满分过关<br/>
+                                                                                照片、小视频直播<br/>
+                                                                                全程教学服务监督</h3>
+									</div>
+				</div>
+				
+									 <div class="col-lg-4 col-md-4 col-sm-6">
+								<a href="${pageContext.request.contextPath}/plug/img/mainpage/img_10.jpg" class="fh5co-project-item image-popup"></a>
+									<figure>
+										<div class="overlay"><i class="ti-plus"></i></div>
+										<img src="${pageContext.request.contextPath}/plug/img/mainpage/img_10.jpg" alt="Image" class="img-responsive">
+									</figure>
+									<br/>
+									<div class="fh5co-text">
+										<h3>学习情况日报<br/>
+                                                                                       学员记录档案家长同步<br/>
+                                                                                       电话24小时答疑<br/>
+                                                                                       托管自习<br/>
+                                                                                       定期家长会</h3>
+									</div>
+				</div>
+		    </div>
+			</div><br/><br/><br/>
+               
+		</div>				
 			</div>
 		</div>
-				<style>
+		 
+		<style>
 	.picture {
 		width: 1079px;
 		height: 350px;
@@ -104,6 +291,16 @@
 		padding-left: 20px;
 		padding-top: 20px;
 	}
+	
+		.pig{
+	     height:1079px;
+	     width:100px;
+	     background-color:black;
+         padding-left: 0px;
+         padding-right:0px;
+	
+	}	
+	
 	.layui-nav-img{width:30px;height:30px;margin-right:10px;border-radius:50%;margin-top: 15px;}
 </style>
 <style>
@@ -253,6 +450,12 @@
 		text-decoration: none;
 		line-height: 40px;
 	}
+	
+	.layui-card.layui-demo-maincard{
+	width:auto;
+	height:auto;
+	
+}
 </style>
 <script>
 	var index = 0;

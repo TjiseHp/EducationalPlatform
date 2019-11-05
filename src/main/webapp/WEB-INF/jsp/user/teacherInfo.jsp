@@ -2,37 +2,6 @@
 	pageEncoding="UTF-8" deferredSyntaxAllowedAsLiteral="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<style>
-/* 进度条样式设置 开始 */
-.progress_bar {
-	display: inline-block;
-	width: 200px;
-	height: 20px;
-	border-radius: 8px;
-	border: 1px solid #eee;
-	overflow: hidden;
-	box-shadow: 0 0 1px #ccc;
-	margin: 0px 10px;
-}
-
-.progress_bar span {
-	display: inline-block;
-	height: 100%;
-	width: 0;
-	line-height: 20px;
-	vertical-align: top;
-	transition: all .6s;
-}
-
-.progress_bar_label {
-	font-size: 14px;
-	font-weight: bold;
-	vertical-align: top;
-	margin: 0 5px;
-}
-/* 进度条样式设置 结束 */
-</style>
-
 
 
 <script type="text/javascript">
@@ -46,6 +15,7 @@
 		}
 
 </script>
+
 
 
 <div align="center" style="padding-top: 50px;">
@@ -161,7 +131,7 @@
 </div>
 		</div>
   	</div>
-
+ 
 
 <script type="text/javascript">
 	function doCheck(){
@@ -261,8 +231,7 @@ letter-spacing: 0.04em;
 .elegant-aero {
 margin-left: auto;
 margin-right: auto;
-max-width: 500px;
-background: #D2E9FF;
+max-width:80%;
 padding: 20px 20px 20px 60px;
 font: 12px Arial, Helvetica, sans-serif;
 color: #666;
