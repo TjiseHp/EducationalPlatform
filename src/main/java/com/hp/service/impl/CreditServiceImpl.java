@@ -50,6 +50,11 @@ public class CreditServiceImpl implements CreditService {
 		return creditDao.queryAllDetailById(uId);
 	}
 
+	public Credit queryAllCreditByIdAndText2(Credit credit) {
+		// TODO Auto-generated method stub
+		return creditDao.queryAllCreditByIdAndText2(credit);
+	}
+
 
 
 
