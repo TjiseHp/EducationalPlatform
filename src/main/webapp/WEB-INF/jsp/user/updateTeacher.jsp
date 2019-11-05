@@ -81,7 +81,7 @@ $(function(){
 		var loadingIndex = null;
 		$.ajax({
         	type : "POST",
-        	url  : "${pageContext.request.contextPath}/user/doUpdateTeacher",
+        	url  : "${pageContext.request.contextPath}/user/doUpdateTeacherInfo",
         	data : {
         		"uId" : uId,
         		"classNum" : classNum,
@@ -99,7 +99,7 @@ $(function(){
         		var resObj = JSON.parse(result);
         		console.info(resObj.result);
         		if (resObj.result) {
-    	        	window.location.href = "${pageContext.request.contextPath}/user/teacherTable2";
+    	        	window.location.href = "${pageContext.request.contextPath}/user/teacherTable2?uId="+uId;
         		} else {
                     layer.msg("修改错误，请重新输入", {time:2000, icon:5, shift:6}, function(){
                     	

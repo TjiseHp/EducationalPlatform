@@ -42,7 +42,7 @@
 	                },
 	                {
 	                    field: 'recruitSTime',
-	                    title: '申请时间',
+	                    title: '发布时间',
 	                    align: "center"
 	                },
 	                {
@@ -93,7 +93,7 @@
 	    
 	    function operateFormatter(value, row, index) {
 			return [
-		        '<button class="btn btn-info btn-xs rightSize updateBtn" type="button"><i class="fa fa-paste"></i><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 详细要求</button>&nbsp;'
+		        '<button class="btn btn-info btn-xs rightSize updateBtn" type="button"><i class="fa fa-paste"></i><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span> 详细要求</button>&nbsp;'
 		    ].join('');
 	    }
 		
@@ -121,11 +121,6 @@
 	        }
 	    }
 		
-		function doAdd() {
-			console.info("ADD");
-			window.location.href = "${pageContext.request.contextPath}/recruit/insertRecruit";
-		}
-		
 	</script>
 	
 	<div class="result-wrap">
@@ -135,10 +130,5 @@
             </div>
         </div>
     </div>
-	<div id="toolbar" class="btn-group">
-		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doAdd();" >
-			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
-		</a>
-	</div>
 
 

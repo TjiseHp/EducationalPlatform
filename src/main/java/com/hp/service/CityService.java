@@ -11,4 +11,6 @@ public interface CityService {
 	List<City> queryCityAllprovince();
 	
 	List<City> queryCityBycProvince(City city);
+
+	Integer querycNumBycCity(String cNum);
 }

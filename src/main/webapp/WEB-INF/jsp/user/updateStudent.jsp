@@ -56,7 +56,7 @@
 		var loadingIndex = null;
 		$.ajax({
         	type : "POST",
-        	url  : "${pageContext.request.contextPath}/user/doUpdateStudent",
+        	url  : "${pageContext.request.contextPath}/stuInfo/doUpdateStuInfo",
         	data : {
         		"uId" : uId,
         		"uName" : uName,
@@ -75,7 +75,7 @@
         		console.info(resObj.result);
         		if (resObj.result) {   
 					layer.msg("ok", {time:2000, icon:6, shift:6}, function(){
-    	        	window.location.href = "${pageContext.request.contextPath}/user/studentTable2";
+    	        	window.location.href = "${pageContext.request.contextPath}/user/studentTable2?uId="+uId;
                     });
         		} else {
         			layer.msg("修改失败", {time:2000, icon:5, shift:6}, function(){

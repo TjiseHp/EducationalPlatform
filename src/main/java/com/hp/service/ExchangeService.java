@@ -8,7 +8,7 @@ public interface ExchangeService {
 	
 	List<Exchange> queryAllExchange();
 
-	int updateByPrimaryKeySelective(Exchange exchange);
+//	int updateByPrimaryKeySelective(Exchange exchange);
 
 	List<Exchange> queryExchangeByExample(String search);
 
@@ -17,6 +17,8 @@ public interface ExchangeService {
 	int insertSelective(Exchange exchange);
 
 	double queryExchange();
+
+	int updateByexchangeE(Double exchangeE);
 
 	
 

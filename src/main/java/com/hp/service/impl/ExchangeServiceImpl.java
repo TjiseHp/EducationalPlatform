@@ -28,9 +28,9 @@ public class ExchangeServiceImpl implements ExchangeService {
 		return exchangeDao.queryExchangeByexchangeNum(exchangeNum);
 	}
 
-	public int updateByPrimaryKeySelective(Exchange exchange) {
-		return exchangeMapper.updateByPrimaryKeySelective(exchange);
-	}
+//	public int updateByPrimaryKeySelective(Exchange exchange) {
+//		return exchangeDao.updateByexchangeE(exchange);
+//	}
 	
 	public List<Exchange> queryExchangeByExample(String search) {
 		return exchangeDao.queryExchangeByExample(search);
@@ -42,6 +42,12 @@ public class ExchangeServiceImpl implements ExchangeService {
 
 	public double queryExchange() {
 		return exchangeDao.queryExchange();
+	}
+
+	public int updateByexchangeE(Double exchangeE) {
+		// TODO Auto-generated method stub
+		return  exchangeDao.updateByexchangeE(exchangeE);
+
 	}
 
 

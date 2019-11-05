@@ -38,14 +38,15 @@
 	                    formatter: function (value, row, index) {
 	                        return changeDateFormat(value)
 	                    }
-	                },
-	                {
+	                }
+	                /* ,
+	               {
 	                	field: 'option',
 	                    title: '操作',
 	                    align: "center",
 	                    formatter: operateFormatter,
 	                    events: operateEvents1
-	                }
+	                }  */
 	            ],
 	            height: 580,
 	            pagination: true,
@@ -84,12 +85,12 @@
 	        });
 	    })
 	    
-	    function operateFormatter(value, row, index) {
+	   /*  function operateFormatter(value, row, index) {
 			return [
 		        '<button class="btn btn-info btn-xs rightSize updateBtn" type="button"><i class="fa fa-paste"></i><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 修改</button>&nbsp;',
 		        '<button class="btn btn-danger btn-xs rightSize deleteBtn" type="button"><i class="fa fa-envelope"></i><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 删除</button>'
 		    ].join('');
-	    }
+	    } */
 		
 		function changeDateFormat(cellval) {
 		    var dateVal = cellval + "";
@@ -156,9 +157,15 @@
 	        }
 	    }
 		
+		/* function doAdd() {
+			console.info("ADD");
+			window.location.href = "${pageContext.request.contextPath}/pay/insertPay";
+		} */
+
 		function doAdd() {
 			window.location.href = "${pageContext.request.contextPath}/echart/adminLookPay";
 		}
+
 		
 		
 	</script>
@@ -170,9 +177,7 @@
             </div>
         </div>
     </div>
-	<div id="toolbar" class="btn-group">
-		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doAdd();" >
-			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>统计图表
-		</a>
+
 	</div>
 	
+

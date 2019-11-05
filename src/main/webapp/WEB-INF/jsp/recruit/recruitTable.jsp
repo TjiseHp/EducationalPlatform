@@ -87,7 +87,7 @@
 	    
 	    function operateFormatter(value, row, index) {
 			return [
-		        '<button class="btn btn-info btn-xs rightSize updateBtn" type="button"><i class="fa fa-paste"></i><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 详细要求</button>&nbsp;',
+		        '<button class="btn btn-info btn-xs rightSize updateBtn" type="button"><i class="fa fa-paste"></i><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span> 详细要求</button>&nbsp;',
 		        '<button class="btn btn-danger btn-xs rightSize deleteBtn" type="button"><i class="fa fa-envelope"></i><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 结束课程</button>'
 		    ].join('');
 	    }
@@ -132,7 +132,7 @@
     </div>
 	<div id="toolbar" class="btn-group">
 		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doAdd();" >
-			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发布招聘信息
 		</a>
 	</div>
 

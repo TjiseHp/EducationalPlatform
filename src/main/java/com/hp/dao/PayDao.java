@@ -19,6 +19,9 @@ public interface PayDao {
 	@Select("select * from e_pay where PAY_NUM = #{payNum}")
 	Pay queryPay(String payNum);
 
+	@Select("select SUM(PAY_TEXT) from e_pay")
+	int selectAllpay(Pay pay);
+
 
 
 	

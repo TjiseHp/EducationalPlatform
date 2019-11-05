@@ -75,7 +75,7 @@
 	    
 	    function operateFormatter(value, row, index) {
 			return [
-		        '<button class="btn btn-info btn-xs rightSize updateBtn" type="button"><i class="fa fa-paste"></i><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 申请</button>&nbsp;'
+		        '<button class="btn btn-info btn-xs rightSize updateBtn" type="button"><i class="fa fa-paste"></i><span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span> 申请</button>&nbsp;'
 		    ].join('');
 	    }
 		
@@ -151,13 +151,5 @@
             </div>
         </div>
     </div>
-	<div id="toolbar" class="btn-group">
-		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doAdd();" >
-			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
-		</a>
-	</div>
-
-
-
 
 

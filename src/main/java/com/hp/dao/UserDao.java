@@ -1,6 +1,7 @@
 package com.hp.dao;
 import java.util.List;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.hp.bean.City;
 import com.hp.bean.Class;
@@ -60,6 +61,9 @@ public interface UserDao {
 
 	@Select("select * from e_class")
 	List<Class> queryAllClass(Class uclass);
+
+	@Update("update e_user SET U_PWD = #{uPwd} WHERE U_ID = #{uId}")
+	int updateByuPwd(User user);
 
 
 }

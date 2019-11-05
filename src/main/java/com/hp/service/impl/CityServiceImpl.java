@@ -33,4 +33,9 @@ public class CityServiceImpl implements CityService {
 		return cityDao.queryCityBycProvince(city);
 	}
 
+	public Integer querycNumBycCity(String cNum) {
+		// TODO Auto-generated method stub
+		return cityDao.querycNumBycCity(cNum);
+	}
+
 }

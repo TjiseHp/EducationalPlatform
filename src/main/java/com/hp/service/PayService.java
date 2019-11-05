@@ -19,6 +19,8 @@ public interface PayService {
 
 	int insertSelective(Pay pay);
 
+	int selectAllpay(Pay pay);
+
 
 
 

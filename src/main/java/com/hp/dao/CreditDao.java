@@ -20,6 +20,8 @@ public interface CreditDao {
     @Select("select * from e_credit where U_ID = #{uId} order by CREDIT_DATE DESC")
 	List<Credit> queryAllDetailById(Integer uId);
     
+    @Select("select * from e_credit where U_ID = #{uId} and CREDIT_TEXT2 = #{creditText2}")
+	Credit queryAllCreditByIdAndText2(Credit credit);
     
 	
 //	List<Credit> queryAllDetailById(Integer uId);

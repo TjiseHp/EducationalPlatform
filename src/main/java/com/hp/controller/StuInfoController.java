@@ -92,12 +92,26 @@ public class StuInfoController {
 		//更新学生信息
 		@ResponseBody
 		@RequestMapping("/doUpdateStuInfo")
-		public String doUpdateStuInfo(HttpSession session,User user) {
-			System.out.println("update："+user.getuId());
+		public String doUpdateStuInfo(HttpSession session,HttpServletRequest request) {
+			String uId = request.getParameter("uId");
+			String cNum = request.getParameter("cNum");
+			String uEmail = request.getParameter("uEmail");
+			String uSex = request.getParameter("uSex");
+			String uName = request.getParameter("uName");
+			String uPhone = request.getParameter("uPhone");
+			User user = new User();
+			user.setuId(Integer.valueOf(uId));
+			user.setcNum(cityService.querycNumBycCity(cNum));	
+			user.setuEmail(uEmail);
+			user.setuSex(uSex);
+			user.setuName(uName);
+			user.setuPhone(uPhone);			
+			System.out.println("学生getuId："+user.getuId());
+			System.out.println("学生getcNum："+user.getcNum());
 			JSONObject json = new JSONObject();
 			int row = userService.updateByPrimaryKeySelective(user);		
 			if(row==1) {
-				System.out.println("成功");
+				System.out.println("更新学生信息成功");
 				json.put("result", true);
 			}else {
 				json.put("result", false);
@@ -111,10 +125,7 @@ public class StuInfoController {
 				(HttpServletRequest httpServletRequest,
 				@RequestParam(required = true,value = "uId") Integer uId) {
 			HttpSession httpSession = httpServletRequest.getSession();
-			System.out.println("heihei");
 			User user = stuInfoService.queryStudentInfoById(uId);
-			System.out.println("heihei1233");
-
 			ModelAndView modelAndView = new ModelAndView();
 			modelAndView.addObject("httpSession",httpSession);
 			modelAndView.addObject("user",user);
@@ -127,9 +138,9 @@ public class StuInfoController {
 		@ResponseBody
 		@RequestMapping("/doUpdateUpwd")
 		public String doUpdateUpwd(HttpSession session,User user) {
-			System.out.println("update："+user.getuId()+user.getuName());
+			System.out.println("update："+user.getuId()+user.getuPwd());
 			JSONObject json = new JSONObject();
-			int row = userService.updateByPrimaryKeySelective(user);		
+			int row = userService.updateByuPwd(user);		
 			if(row==1) {
 				System.out.println("成功");
 				json.put("result", true);
