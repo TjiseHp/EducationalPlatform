@@ -123,7 +123,7 @@
 			
 			<div class="row form-group">
 				<label class="control-label col-lg-3" for="name"><span>性别：</span></label>
-				<div style="padding-right:80px;padding-top:8px;">
+				<div style="padding-right:200px;padding-top:10px;">
 				    <lable class="sex">
 					    <input id="man" type="radio" value="男" checked="checked" name="uSex" />男   &nbsp;&nbsp;&nbsp;
 					    <input id="woman" type="radio"  value="女" name="uSex"/>女
@@ -265,8 +265,7 @@ letter-spacing: 0.04em;
 .elegant-aero {
 margin-left: auto;
 margin-right: auto;
-max-width: 500px;
-background: #D2E9FF;
+max-width: 80%;
 padding: 20px 20px 20px 20px;
 font: 12px Arial, Helvetica, sans-serif;
 color: #666;
@@ -290,13 +289,18 @@ text-align: right;
 padding-right: 15px;
 margin-top: 10px;
 font-weight: bold;
+font-size :20px;
 }
 .layui-card.layui-demo-maincard{
 	width:auto;
 	height:auto;
 }
-.suspensionleft{width:20%;height:100%;background:url("${pageContext.request.contextPath}/plug/img/t/t12.jpg") no-repeat;
-padding-top:100px;position:absolute;left:2%;top:23%;}
-.suspensionright{width:20%;height:100%;background:url("${pageContext.request.contextPath}/plug/img/t/t4.jpg") no-repeat;
-padding-top:100px;position:absolute;left:80%;top:23%;}
+input[type="text"]{
+	margin-top:6px;
+}
+select{
+	width:130px;
+	height:20px;
+	margin-top:4px;
+}
 </style>
