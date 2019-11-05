@@ -181,8 +181,8 @@ $(function(){
 	<form action="${pageContext.request.contextPath}/user/doUpdateTeacherInfo" method="post" accept-charset="utf-8" onsubmit="return doUpdate()">
 		
 		    			<div class="row form-group">
-                <label class="control-label col-lg-3" for="name"><span style="font-size:15px;font-weight:normal;">城市：</span></label>
-                <div class="col-md-7">
+                <label class="control-label col-lg-3" for="name"><span>城市：</span></label>
+                <div class="col-md-7" style="margin-top:10px">
 					<select id="s1" >
 				        <option >${user.city.cProvince}</option>
 				    </select>
@@ -195,8 +195,8 @@ $(function(){
 			<br/>
 		
 		    <div class="row form-group">
-                <label class="control-label col-lg-3" for="class"><span style="font-size:15px;font-weight:normal;">学科：</span></label>
-                <div class="col-md-7">
+                <label class="control-label col-lg-3" for="class"><span>学科：</span></label>
+                <div class="col-md-7" style="margin-top:10px">
 					<select style="width: 100px" id="c1">
 				        <option >${user.uClass.classKind}</option>
 				    </select>
@@ -204,14 +204,14 @@ $(function(){
             </div>
 		    
     		<div class="row form-group">
-                <label class="control-label col-lg-3" for="name"><span style="font-size:15px;font-weight:normal;">姓名：</span></label>
+                <label class="control-label col-lg-3" for="name"><span>姓名：</span></label>
                 <div class="col-md-7">
                 	<input class="form-control" type="text" id="uName" name="uName" value = "${user.uName }">
                 </div>
             </div>
             
 			<div class="row form-group">
-				<label class="control-label col-lg-3" for="name" ><span style="font-size:15px;font-weight:normal;">性别：</span></label>
+				<label class="control-label col-lg-3" for="name" ><span>性别：</span></label>
 				    <div style="padding-right:80px;padding-top:8px;">
 				    <lable class="sex">
 					    <input id="man" type="radio" value="男" checked="checked" name="uSex" />男   &nbsp;&nbsp;&nbsp;
@@ -222,14 +222,14 @@ $(function(){
 
             
             <div class="row form-group">
-                <label class="control-label col-lg-3" for="name"><span style="font-size:15px;font-weight:normal;">手机：</span></label>
+                <label class="control-label col-lg-3" for="name"><span>手机：</span></label>
                 <div class="col-md-7">
                   	<input class="form-control" type="text" id="uPhone" name="uPhone" value = "${user.uPhone}">
                 </div>
             </div>
             
  			<div class="row form-group">
-                <label class="control-label col-lg-3" for="name"><span style="font-size:15px;font-weight:normal;">邮箱：</span></label>
+                <label class="control-label col-lg-3" for="name"><span>邮箱：</span></label>
                 <div class="col-md-7">
 					<input class="form-control" type="text" id="uEmail" name="uEmail" value = "${user.uEmail}">
                 </div>
@@ -365,9 +365,21 @@ width: 100%;
 text-align: left;
 padding-right: 15px;
 font-weight: bold;
+font-size :20px;
 }
 .layui-card.layui-demo-maincard{
 	width:auto;
 	height:auto;
+}
+input[type="text"]{
+	margin-top:6px;
+}
+select{
+	width:130px;
+	height:20px;
+	margin-top:4px;
+}
+span{
+	margin-top:10px;
 }
 </style>

@@ -280,6 +280,7 @@ width: 100%;
 text-align: left;
 padding-right: 15px;
 font-weight: bold;
+font-size :20px;
 }
 .layui-card.layui-demo-maincard{
 	width:auto;

@@ -157,10 +157,10 @@
 				<label class="control-label col-lg-3" for="name"><span>城市：</span></label>
 				<div class="col-md-7" style="padding-top:9px;">
 					
-					<select style="width: 100px" id="s1">
+					<select id="s1">
 				        <option >--请选择--</option>
 				    </select>
-				    <select style="width: 100px" id="s2">
+				    <select id="s2">
 				        <option >--请选择--</option>
 				    </select> 
 				    

@@ -95,21 +95,21 @@
 	<form action="${pageContext.request.contextPath}/user/doUpdateTeacherUpwd" method="post" accept-charset="utf-8" onsubmit="return doUpdate()">
 				
 			<div class="row form-group">
-              <label for="oldPwd" class="control-label col-lg-3">输入原始密码</label>
+              <label for="oldPwd" class="control-label col-lg-3"><span>输入原始密码</span></label>
                   <div class="col-md-7">
-                      <input id="oldPwd" type="password" name="oldPwd" data-validate-length-range="4,12"  class="form-control col-md-7 col-xs-12" required="required">
+                      <input id="oldPwd" type="password" name="oldPwd" data-validate-length-range="4,12"  class="form-control col-md-7 col-xs-12" required="required" style="margin-top:7px">
                    </div>
                     </div>
                      <div class="row form-group">
-                         <label for="newPwd" class="control-label col-lg-3">输入新密码</label>
+                         <label for="newPwd" class="control-label col-lg-3"><span>输入新密码</span></label>
                           <div class="col-md-7">
-                               <input id="newPwd" type="password" name="newPwd" data-validate-length-range="5,12" class="form-control col-md-7 col-xs-12" required="required">
+                               <input id="newPwd" type="password" name="newPwd" data-validate-length-range="5,12" class="form-control col-md-7 col-xs-12" required="required" style="margin-top:7px">
                                 </div>
                       </div>
                       <div class="row form-group">
-                          <label for="newPwd2" class="control-label col-lg-3">确认新密码</label>
+                          <label for="newPwd2" class="control-label col-lg-3"><span>确认新密码</span></label>
                            <div class="col-md-7">
-                                <input id="newPwd2" type="password" name="newPwd2" data-validate-linked="newPwd" class="form-control col-md-7 col-xs-12" required="required">
+                                <input id="newPwd2" type="password" name="newPwd2" data-validate-linked="newPwd" class="form-control col-md-7 col-xs-12" required="required" style="margin-top:7px">
                             </div>
                         </div>
 			<br/>
@@ -236,5 +236,6 @@ text-align: right;
 padding-right: 15px;
 margin-top: 10px;
 font-weight: bold;
+font-size :20px;
 }
 </style>
