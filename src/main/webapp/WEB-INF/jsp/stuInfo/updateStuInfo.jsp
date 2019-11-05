@@ -146,10 +146,10 @@
  			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span>城市：</span></label>
                 <div class="col-md-7" style="padding-top:8px">
-					<select style="width: 100px" id="s1" >
+					<select id="s1" >
 				        <option >${user.city.cProvince}</option>
 				    </select>
-				    <select style="width: 100px" id="s2">
+				    <select id="s2">
 				        <option >${user.city.cCity}</option>
 				    </select> 
                 </div>
@@ -161,9 +161,6 @@
             	<input type="hidden" id="uId" name="uId" value="${user.uId}"/> 
 				<button type="button" class="btn btn-danger" onclick="doUpdate();">提交</button>
             </div>
-            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-		<div class="suspensionleft"></div>
-		<div class="suspensionright"></div>
 	</form>
 	</div>
 </div>
@@ -253,8 +250,7 @@ letter-spacing: 0.04em;
 .elegant-aero {
 margin-left: auto;
 margin-right: auto;
-max-width: 500px;
-background: #D2E9FF;
+max-width: 80%;
 padding: 20px 20px 20px 20px;
 font: 12px Arial, Helvetica, sans-serif;
 color: #666;
@@ -283,8 +279,12 @@ font-weight: bold;
 	width:auto;
 	height:auto;
 }
-.suspensionleft{width:20%;height:100%;background:url("${pageContext.request.contextPath}/plug/img/t/t3.jpg") no-repeat;
-padding-top:100px;position:absolute;left:2%;top:23%;}
-.suspensionright{width:20%;height:100%;background:url("${pageContext.request.contextPath}/plug/img/t/t4.jpg") no-repeat;
-padding-top:100px;position:absolute;left:80%;top:23%;}
+input[type="text"]{
+	margin-top:6px;
+}
+select{
+	width:130px;
+	height:20px;
+	margin-top:4px;
+}
 </style>
