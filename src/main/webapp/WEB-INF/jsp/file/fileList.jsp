@@ -28,11 +28,6 @@
                     sortable: "true",
                     field: 'listSTime',
 
-                    title: '时间',
-                    align: "center",
-                    formatter: function (value, row, index) {
-                        return changeDateFormat(value)
-                    }
 
                     title: '上传时间',
                     align: "center"

@@ -7,12 +7,13 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/plug/js/echarts.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/plug/js/echarts.min.js"></script>		
 <div>
-<h1>消费记录</h1>
-	<div  class="btn-group">
+
+
+<div  id="toolbar" class="btn-group">
 		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doHref();" >
 			<span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span>返回
 		</a>
-	</div>
+	</div><div style = "text-align:center;font-size:50px">消费记录</div>	
 </div>
 
 <script type="text/javascript">

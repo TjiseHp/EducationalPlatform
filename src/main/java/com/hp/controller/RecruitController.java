@@ -201,7 +201,7 @@ public class RecruitController {
 		java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
 		recruit.setuId2(101);
 		recruitService.updateByPrimaryKeySelective(recruit);
-		modelAndView.addObject("mainPage", "mainPage.jsp");
+		modelAndView.addObject("mainPage", "recruit/recruitByCity.jsp");
 		modelAndView.setViewName("main");
 		return modelAndView;
 	}

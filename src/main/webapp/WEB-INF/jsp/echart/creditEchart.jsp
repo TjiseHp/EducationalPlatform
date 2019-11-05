@@ -6,13 +6,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/plug/js/echarts.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/plug/js/echarts.min.js"></script>		
-<div><h1>积分充值记录</h1>
-	<div  class="btn-group">
+<div>
+	<div  id="toolbar" class="btn-group">
 		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doHref();" >
-			<span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span>返回
+			<span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span>  返回
 		</a>
 	</div>
-</div>
+	<div style = "text-align:center;font-size:50px">积分充值记录</div>	
+	
+	</div>
+
 <script type="text/javascript">
 		function doHref() {
 			var uId = ${loginUser.uId};
