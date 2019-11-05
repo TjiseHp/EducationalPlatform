@@ -228,11 +228,8 @@ letter-spacing: 0.04em;
 .elegant-aero {
 margin-left: auto;
 margin-right: auto;
-<<<<<<< HEAD
 max-width:80%;
-=======
 max-width: 80%;
->>>>>>> branch 'master' of https://github.com/TjiseHp/EducationalPlatform.git
 padding: 20px 20px 20px 60px;
 font: 12px Arial, Helvetica, sans-serif;
 color: #666;
