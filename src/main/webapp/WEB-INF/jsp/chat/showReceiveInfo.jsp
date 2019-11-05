@@ -4,22 +4,22 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div align="center" style="padding-top: 50px;">
+<div>
+		<h1 class="title1">信息</h1>
+	    </div>	
+	    <br/>
+	    <hr/>
+	    <br/>
+	    <br/>
 	<form>
-		<table class="table "
-			style="width: 80%;">
-			<tr>
-				<td colspan="2" class="text-center">
-					<h1 >信息</h1>
-				</td>
-			</tr>
-
+		<table >
 			<tr>
 				<td class="text-right"><strong>发件人:</strong></td>
 				<td class="text-left" style="color: #999;">${chat.user1.uName}&nbsp;${chat.user1.uEmail}
 				</td>
 			</tr>
 			<tr>
-				<td class="text-right"><strong>时间:</strong></td>
+				<td class="text-right" ><strong>时间:</strong></td>
 				<td class="text-left" style="color: #999;"><fmt:formatDate value="${chat.chatDate}"
 						pattern="yyyy-MM-dd HH:mm:ss" /></td>
 			</tr>
@@ -35,14 +35,10 @@
 				&nbsp;&nbsp;&nbsp;&nbsp;
 				&nbsp;&nbsp;&nbsp;&nbsp;
 				&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;${chat.chatText}
+				${chat.chatText}
 
 				</td>
 			</tr>
-
 			<tr>
 				<td colspan="2" class="text-center"><a
 					class="btn btn-danger" role="button" href="javascript:;"
@@ -53,7 +49,6 @@
 
 
 		</table>
-
 	</form>
 	<script type="text/javascript">
 		function doback(uId) {
@@ -71,3 +66,8 @@
 		}
 	</script>
 </div>
+<style>
+tr{
+	height: 100px;
+}
+</style>
