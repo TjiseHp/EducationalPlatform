@@ -179,7 +179,7 @@ public class RecruitController {
 	public List<Recruit> queryRecruitTeacherTable(User user) {
 		
 		Integer integer = user.getuId();
-		List<Recruit> recruits=recruitService.queryRecruitByuId(integer);
+		List<Recruit> recruits=recruitService.queryRecruitByuIdAndNotNull(integer);
 		for(int i=0;i<recruits.size();i++) {
 			Integer uId = recruits.get(i).getuId2();
 			User users = userService.queryTeacherByuId(uId);

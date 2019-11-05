@@ -21,4 +21,6 @@ public interface RecruitService {
 	int updateByPrimaryKeySelective(Recruit record);	
 
 	List<Recruit> queryRecruitByUid2(Integer uId);
+	
+	List<Recruit> queryRecruitByuIdAndNotNull(Integer uId);
 }
