@@ -233,7 +233,7 @@
 		    <version>5.1.10</version>
 		</dependency>
 		
-		<!-- helper依赖包:jsqlparser -->
+		<!-- helper依赖包: -->
 		<dependency>
 		    <groupId>com.github.jsqlparser</groupId>
 		    <artifactId>jsqlparser</artifactId>

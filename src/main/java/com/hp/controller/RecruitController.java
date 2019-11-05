@@ -22,6 +22,7 @@ import com.alipay.api.domain.UseTime;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hp.bean.Appraise;
+import com.hp.bean.Check_list;
 import com.hp.bean.City;
 import com.hp.bean.Credit;
 import com.hp.bean.Recruit;
@@ -236,17 +237,38 @@ public class RecruitController {
 	//电话查询积分验证
 	@ResponseBody
 	@RequestMapping("/lookPhone")
-	public String lookPhone( Credit credit) {
+	public String lookPhone( Check_list check_list) {
 		java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
 		JSONObject jsonObject = new JSONObject();
+		//数据库插入用
+		Credit credit = new Credit();		
+		credit.setuId(check_list.getuId());
+		
+		//判断是否重复消费积分用
+		Credit credit2 = new Credit();
+		credit2.setuId(check_list.getuId());
+		int id1 = check_list.getuId2();
+		String string3 = String.valueOf(id1);
+		credit2.setCreditText2(string3);
+		//总量
 		String string = creditService.queryCreditSum(credit.getuId());
+		
 		int i = Integer.parseInt(string);
 		if(i>300) {
-			credit.setCreditSum(-300);
-			credit.setCreditText("查看教师资料");
-			credit.setCreditDate(currentDate);
-			creditService.insertSelective(credit);
-			jsonObject.put("result", true);
+			Credit credit3 = creditService.queryAllCreditByIdAndText2(credit2);
+			if(credit3==null) {
+				credit.setCreditSum(-300);
+				credit.setCreditText("查看教师资料");
+				credit.setCreditDate(currentDate);
+				int id = check_list.getuId2();
+				String string2 = String.valueOf(id);
+				credit.setCreditText2(string2);
+				creditService.insertSelective(credit);				
+				jsonObject.put("result", true);
+			}else {				
+				jsonObject.put("result", false);
+			}
+			
 		}else {
 			jsonObject.put("result", false);
 		}
@@ -261,6 +283,32 @@ public class RecruitController {
 		return users;
 		
 	}
+	
+	//电话查询积分验证
+		@ResponseBody
+		@RequestMapping("/lookPhone3")
+		public String lookPhone3( Check_list check_list) {
+			JSONObject jsonObject = new JSONObject();
+			//数据库插入用
+			Credit credit = new Credit();		
+			credit.setuId(check_list.getuId());
+			
+		
+			
+			//总量
+			String string = creditService.queryCreditSum(credit.getuId());
+			
+			int i = Integer.parseInt(string);
+			if(i>300) {				
+					jsonObject.put("result", true);
+				
+				
+			}else {
+				jsonObject.put("result", false);
+			}
+			return jsonObject.toString();
+		}
+	
 		
 	//招聘记录页面跳转(教师端)
 		@RequestMapping("/studentHistory")

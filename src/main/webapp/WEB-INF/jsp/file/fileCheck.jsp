@@ -118,8 +118,10 @@
 			</tr>						
 			<tr>
 				<td colspan="2" class="text-center">
-					<button  onclick="checkPs()">通过</button>
-					<button  onclick="checkNoPs()">不通过</button>
+					<div class="btn-group">						
+						<button type="button" class="btn btn-success glyphicon glyphicon-ok" onclick="checkPs()"> 通过</button>
+						<button type="button" class="btn btn-danger glyphicon glyphicon-remove" onclick="checkNoPs()"> 不通过</button>
+					</div>
 				</td>
 			</tr>
 		</table>   

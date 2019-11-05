@@ -18,5 +18,6 @@ public interface CreditService {
 
 	int insertSelective(Credit credit);
 
+	Credit queryAllCreditByIdAndText2(Credit credit);
 
 }

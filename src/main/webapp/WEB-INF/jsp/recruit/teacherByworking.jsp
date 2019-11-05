@@ -103,7 +103,7 @@
 	    function operateFormatter(value, row, index) {
 			return [
 		        '<button class="btn btn-info btn-xs rightSize updateBtn" type="button"><i class="fa fa-paste"></i><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>  聊天</button>&nbsp;',
-		        '<button class="btn btn-danger btn-xs rightSize deleteBtn" type="button"><i class="fa fa-envelope"></i><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 手机号码查看</button>'
+		        '<button class="btn btn-primary btn-xs rightSize deleteBtn" type="button"><i class="fa fa-envelope"></i><span class="glyphicon glyphicon-search" aria-hidden="true"></span> 手机号码查看</button>'
 		    ].join('');
 	    }
 		
@@ -111,7 +111,6 @@
 	        "click .deleteBtn": function (e, value, row, index) {
 	        	uId = row.uId;
 	        	uId2 = ${loginUser.uId};
-	        	console.info(uId2);
 	        	layer.confirm('确认查看？', {
 					btn: ['确认','取消'] 
 				}, function(){
@@ -119,7 +118,8 @@
 	                    type: "post",
 	                    url: "${pageContext.request.contextPath}/recruit/lookPhone",
 	                    data: {
-	                    	"uId": uId2
+	                    	"uId": uId2,
+	                    	"uId2": uId
                   			},
                   			beforeSend : function(){
        		        		loadingIndex = layer.msg('处理中', {icon: 16});
@@ -134,13 +134,10 @@
 	            	                    data: {
 	            	                    	"uId": uId
 	                              			},
-	                              			beforeSend : function(){
-	                   		        		loadingIndex = layer.msg('处理中', {icon: 16});
-	                   		        	},
 	                   		        	dataType:"json",
 	            	                    success: function (result) {
 	            	                    	layer.close(loadingIndex);
-	            	                    	alert(result.uName+"的电话号码:"+result.uPhone);
+	            	                    	alert(result.uName+"的电话号码:"+result.uPhone+'\n'+"(扣除积分300)");
 	            	                    },
 	            	                    error: function () {
 	            	                    	layer.msg("查看失败2！", {time:2000, icon:5, shift:6}, function(){
@@ -149,9 +146,51 @@
 	            	                    }
 	            	                })
 			        		} else {
-			                    layer.msg("积分不足，请充值", {time:2000, icon:5, shift:6}, function(){
-			                    	
-			                    });
+			        			//嵌套
+			        			
+			    					$.ajax({
+			    	                    type: "post",
+			    	                    url: "${pageContext.request.contextPath}/recruit/lookPhone3",
+			    	                    data: {
+			    	                    	"uId": uId2,
+			    	                    	"uId2": uId
+			                      			},
+			    	                    success: function (result) {
+			    	                    	layer.close(loadingIndex);
+			    	                    	var resObj = JSON.parse(result);
+			    	                    	if (resObj.result) {
+			    	            					$.ajax({
+			    	            	                    type: "post",
+			    	            	                    url: "${pageContext.request.contextPath}/recruit/lookPhone2",
+			    	            	                    data: {
+			    	            	                    	"uId": uId
+			    	                              			},
+			    	                   		        	dataType:"json",
+			    	            	                    success: function (result) {
+			    	            	                    	layer.close(loadingIndex);
+			    	            	                    	alert(result.uName+"的电话号码:"+result.uPhone+'\n'+"(第二次查看，不再重复收费)");
+			    	            	                    },
+			    	            	                    error: function () {
+			    	            	                    	layer.msg("查看失败2！", {time:2000, icon:5, shift:6}, function(){
+			    	            		                    	
+			    	            		                    });
+			    	            	                    }
+			    	            	                })
+			    			        		} else {    
+			    			        			
+			    			                    layer.msg("积分不足，请充值", {time:2000, icon:5, shift:6}, function(){
+			    			                    	
+			    			                    });
+			    			        		}
+			    	                    },
+			    	                    error: function () {
+			    	                    	layer.msg("查看失败1！", {time:2000, icon:5, shift:6}, function(){
+			    		                    	
+			    		                    });
+			    	                    }
+			    	                })
+			        			//嵌套
+			        		
 			        		}
 	                    },
 	                    error: function () {
