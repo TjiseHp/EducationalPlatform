@@ -31,7 +31,7 @@
 
                 <input class="form-control" type="text" id="uEmail" name="uEmail" >
 
-                <input class="form-control" type="text" id="uEmail" name="uEmail" style="height:100px;width:500px;">
+                <!-- <input class="form-control" type="text" id="uEmail" name="uEmail" style="height:100px;width:500px;"> -->
 
 
         </div>
@@ -238,7 +238,7 @@ input[type=text] {
 .elegant-aero label>span {
 	float: left;
 	width: 100%;
-	text-align: right;
+	text-align: left;
 	padding-right: 15px;
 	margin-top: 10px;
 	font-weight: bold;

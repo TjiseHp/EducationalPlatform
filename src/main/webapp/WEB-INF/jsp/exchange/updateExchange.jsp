@@ -43,14 +43,9 @@
 		
 			<div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span>编号：</span></label>
-
                 <div class="col-md-7">
                 	<%-- <span>${exchange.exchangeNum}</span> --%>
                 	<input class="form-control" type="text"  readonly  unselectable="on" id="exchangeNum" name="exchangeNum"   value = "${exchange.exchangeNum}">
-            	
-
-                <div class="col-md-7" style="margin-top:16px;text-align:left;">
-                	<span>${exchange.exchangeNum}</span>
                 </div>
             </div>
             
