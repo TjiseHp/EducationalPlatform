@@ -37,6 +37,8 @@
 <script type="text/javascript">
 	function doPost() {
 		var uId = "${user.uId}";
+		var testPhone = /^[1][3,4,5,7,8][0-9]{9}$/;
+		var testEmail = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
 		var uName = $("#uName").val();
 		var uPhone = $("#uPhone").val();
 		var uEmail = $("#uEmail").val();
@@ -49,7 +51,15 @@
 				icon : 5,
 				shift : 6
 			});
-			return false;
+			return;
+		}
+		if(!testPhone.test(uPhone)){
+			layer.msg("请输入正确的手机号！", {time:2000, icon:5, shift:6});
+			return;
+		}
+		if(!testEmail.test(uEmail)){
+			layer.msg("请输入正确的邮箱！", {time:2000, icon:5, shift:6});
+			return;
 		}
 		console.info(uName+" "+cNum+" "+uSex+" "+uPhone+" "+uId);
 
@@ -120,13 +130,13 @@
 				<label class="control-label col-lg-3" for="name"><span>性别：</span></label>
 				<div class="col-md-7">
 					<div style="padding:5px">
-						<%-- <lable class="radio-inline"><input class="form-control" type="radio" id="uSex1" name="uSex" value="${user.uSex}" ${user.uSex=="男"?"checked":""}><span>男</span></lable>
+						<lable class="radio-inline"><input class="form-control" type="radio" id="uSex1" name="uSex" value="${user.uSex}" ${user.uSex=="男"?"checked":""}><span>男</span></lable>
 						&nbsp;&nbsp;&nbsp;
-						<lable class="radio-inline"><input class="form-control" type="radio" id="uSex2" name="uSex" value="${user.uSex}" ${user.uSex=="女"?"checked":""}><span>女</span></lable> --%>
-					    <lable class="sex">
+						<lable class="radio-inline"><input class="form-control" type="radio" id="uSex2" name="uSex" value="${user.uSex}" ${user.uSex=="女"?"checked":""}><span>女</span></lable>
+<!-- 					    <lable class="sex">
 						    <input id="man" type="radio" value="男" checked="checked" name="uSex" />男   &nbsp;&nbsp;&nbsp;
 						    <input id="woman" type="radio"  value="女" name="uSex"/>女
-					    </lable>
+					    </lable> -->
 					</div>
 				</div>
 			</div>
