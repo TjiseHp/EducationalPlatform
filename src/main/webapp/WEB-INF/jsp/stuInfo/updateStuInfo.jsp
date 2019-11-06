@@ -283,6 +283,7 @@ text-align: right;
 padding-right: 15px;
 margin-top: 10px;
 font-weight: bold;
+font-size:20px;
 }
 .layui-card.layui-demo-maincard{
 	width:auto;

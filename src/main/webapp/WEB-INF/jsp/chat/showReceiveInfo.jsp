@@ -12,7 +12,7 @@
 	    <br/>
 	    <br/>
 	<form>
-		<table >
+		<table style="width:80%">
 			<tr>
 				<td class="text-right"><strong>发件人:</strong></td>
 				<td class="text-left" style="color: #999;">${chat.user1.uName}&nbsp;${chat.user1.uEmail}
@@ -29,15 +29,8 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="text-left" colspan="2" style="color: #999;">
-				&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;
-				${chat.chatText}
-
-				</td>
+				<td class="text-right"><strong>内容:</strong></td>
+				<td style="color: #999;">${chat.chatText}</td>
 			</tr>
 			<tr>
 				<td colspan="2" class="text-center"><a
@@ -69,5 +62,12 @@
 <style>
 tr{
 	height: 100px;
+}
+strong{
+	font-size:20px;
+}
+.layui-card.layui-demo-maincard{
+	width:auto;
+	height:auto;
 }
 </style>
