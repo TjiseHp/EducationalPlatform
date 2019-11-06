@@ -57,6 +57,8 @@ $(function(){
 <script type="text/javascript">
 	function doUpdate() {
 		var cNum = $("#s2").val();
+		var testPhone = /^[1][3,4,5,7,8][0-9]{9}$/;
+		var testEmail = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
 		var classNum = $("#c1").val();
 		var uName = $("#uName").val();
 		var uSex = $('input:radio[name="uSex"]:checked').val();
@@ -74,8 +76,14 @@ $(function(){
 		if(uName == ""||uPhone == ""||uEmail == ""||uSex == ""||cNum == ""||classNum == ""){
 			layer.msg("内容不能为空", {time:2000, icon:5, shift:6});
 			return;
-		}else{
-			console.info("OK");
+		}
+		if(!testPhone.test(uPhone)){
+			layer.msg("请输入正确的手机号！", {time:2000, icon:5, shift:6});
+			return;
+		}
+		if(!testEmail.test(uEmail)){
+			layer.msg("请输入正确的邮箱！", {time:2000, icon:5, shift:6});
+			return;
 		}
 		
 		var loadingIndex = null;

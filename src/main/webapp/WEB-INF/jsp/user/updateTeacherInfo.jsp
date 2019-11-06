@@ -101,7 +101,7 @@ $(function(){
 		var cNum = $("#s2").val();
 		var testPhone = /^[1][3,4,5,7,8][0-9]{9}$/;
 		var testEmail = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
-		var cCum = $("#s2").val();
+ 		var cCum = $("#s2").val();
 
 		var classNum = $("#c1").val();
 		var uName = $("#uName").val();
@@ -152,7 +152,7 @@ $(function(){
         		if (resObj.result) {
     	        	window.location.href = "${pageContext.request.contextPath}/user/teacherReturn";
         		} else {
-                    layer.msg("修改错误，请重新输入", {time:2000, icon:5, shift:6}, function(){
+                    layer.msg("邮箱重复，请重新输入", {time:2000, icon:5, shift:6}, function(){
                     	
                     });
         		}
@@ -181,9 +181,6 @@ $(function(){
 	<form action="${pageContext.request.contextPath}/user/doUpdateTeacherInfo" method="post" accept-charset="utf-8" onsubmit="return doUpdate()">
 		    <div class="row form-group">
                 <label class="control-label col-lg-3" for="name"><span>城市：</span></label>
-
-                <div class="col-md-7" style="padding-top:8px">
-					<select style="width: 100px" id="s1" >
 
                 <div class="col-md-7" style="margin-top:10px">
 					<select id="s1" >

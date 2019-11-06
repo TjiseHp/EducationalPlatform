@@ -402,19 +402,42 @@ public class UserCortroller  {
 		String uSex = request.getParameter("uSex");
 		String uName = request.getParameter("uName");
 		String uPhone = request.getParameter("uPhone");
+		System.out.println("老师classkind:"+classkind);
+		System.out.println("老师cNum"+cNum);
 		User user = new User();
 		user.setuId(Integer.valueOf(uId));
-		user.setClassNum(classService.queryAllClassByclasskind(classkind));
-		user.setcNum(cityService.querycNumBycCity(cNum));
-		user.setuEmail(uEmail);
-		user.setuSex(uSex);
-		user.setuName(uName);
-		user.setuPhone(uPhone);
-		int row = userService.updateByPrimaryKeySelective(user);		
-		if(row==1) {
-			System.out.println("更新老师信息成功");
-			json.put("result", true);
+		//修改第二遍时如果不改变城市或者科目则前台传来的值为字符串型
+		User user1 = userService.queryTeacherByInfo(Integer.valueOf(uId));		
+		if(user1.getClassNum().equals(classkind)) {
+			user.setClassNum(Integer.valueOf(classkind));
+		}
+		else {
+			user.setClassNum(classService.queryAllClassByclasskind(classkind));
+		}
+        //判断城市
+		if(cNum.contains("市")) {
+			user.setcNum(cityService.querycNumBycCity(cNum));
 		}else {
+		user.setcNum(Integer.valueOf(cNum));
+		}
+		//查询当前用户的email在数据库中的条数
+		int row = userService.queryUserCountByEmail(uEmail);
+		//通过id查询出当前用户的email是否和传来的email相同
+		User user2 = userService.queryTeacherByuId(Integer.valueOf(uId));
+		if(user2.getuEmail().equals(uEmail)||row==0) {
+		    user.setuEmail(uEmail);
+		    user.setuSex(uSex);
+		    user.setuName(uName);
+		    user.setuPhone(uPhone);		
+			System.out.println("教师getuId："+user.getuId());
+			System.out.println("教师getcNum："+user.getcNum());
+			int row2 = userService.updateByPrimaryKeySelective(user);		
+			if(row2==1) {
+				System.out.println("更新教师信息成功");
+				json.put("result", true);
+			}
+		}				
+		else {
 			json.put("result", false);
 		}
 		return json.toString();

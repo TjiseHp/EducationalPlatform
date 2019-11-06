@@ -65,5 +65,8 @@ public interface UserDao {
 	@Update("update e_user SET U_PWD = #{uPwd} WHERE U_ID = #{uId}")
 	int updateByuPwd(User user);
 
+	@Select("Select count(*) from e_user where u_Email=#{uEmail}")
+	int queryUserCountByEmail(String uEmail);
+
 
 }

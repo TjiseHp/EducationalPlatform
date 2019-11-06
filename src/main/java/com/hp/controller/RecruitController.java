@@ -179,7 +179,7 @@ public class RecruitController {
 	public List<Recruit> queryRecruitTeacherTable(User user) {
 		
 		Integer integer = user.getuId();
-		List<Recruit> recruits=recruitService.queryRecruitByuId(integer);
+		List<Recruit> recruits=recruitService.queryRecruitByuIdAndNotNull(integer);
 		for(int i=0;i<recruits.size();i++) {
 			Integer uId = recruits.get(i).getuId2();
 			User users = userService.queryTeacherByuId(uId);
@@ -201,7 +201,7 @@ public class RecruitController {
 		java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
 		recruit.setuId2(101);
 		recruitService.updateByPrimaryKeySelective(recruit);
-		modelAndView.addObject("mainPage", "mainPage.jsp");
+		modelAndView.addObject("mainPage", "recruit/recruitByCity.jsp");
 		modelAndView.setViewName("main");
 		return modelAndView;
 	}

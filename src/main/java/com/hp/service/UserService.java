@@ -52,6 +52,8 @@ public interface UserService {
 
 	int updateByuPwd(User user);
 
+	int queryUserCountByEmail(String uEmail);
+
 
 
 }

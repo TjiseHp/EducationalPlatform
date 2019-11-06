@@ -63,6 +63,8 @@ $(function(){
 <script type="text/javascript">
 	function doPost() {
 		var uName = $("#uName").val();
+		var testPhone = /^[1][3,4,5,7,8][0-9]{9}$/;
+		var testEmail = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
 		var uPhone = $("#uPhone").val();
 		var uEmail = $("#uEmail").val();
 		var uSex = $('input:radio[name="uSex"]:checked').val();
@@ -74,8 +76,16 @@ $(function(){
 				icon : 5,
 				shift : 6
 			});
-			return false;
-		} 
+			return;
+		}
+		if(!testPhone.test(uPhone)){
+			layer.msg("请输入正确的手机号！", {time:2000, icon:5, shift:6});
+			return;
+		}
+		if(!testEmail.test(uEmail)){
+			layer.msg("请输入正确的邮箱！", {time:2000, icon:5, shift:6});
+			return;
+		}
 		console.info(uName+" "+cNum+" "+uSex+" "+uPhone);
 		console.info(classNum);
 		var loadingIndex = null;

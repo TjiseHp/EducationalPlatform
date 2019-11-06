@@ -4,9 +4,12 @@
     		deferredSyntaxAllowedAsLiteral="true"
     		%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-	
-
+<script type="text/javascript">
+function doAdd() {
+			window.location.href = "${pageContext.request.contextPath}/recruit/recruitTable";
+		}
+			
+</script>
 
 
 <div class="table-responsive text-center">
@@ -36,6 +39,11 @@
   		<br><br>
   		(。￣△￣)!~(。￣=￣)!~(。￣□￣)!~(。￣O￣)!~(。￣△￣)!~(。￣=￣)!~(。￣□￣)!~(。￣O￣)!~(。￣△￣)!~(。￣=￣)!~(。￣□￣)!~(。￣O￣)!~
   		<br><br>
+  		<div id="toolbar" class="btn-group">
+		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doAdd();" >
+			<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> 返回
+		</a>
+	</div>
   		<div class="recruitpicture"></div>
   </div>
 <style>

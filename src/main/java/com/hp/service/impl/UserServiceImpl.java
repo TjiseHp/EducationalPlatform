@@ -129,6 +129,11 @@ public class UserServiceImpl implements UserService {
 		return userDao.updateByuPwd(user);
 	}
 
+	public int queryUserCountByEmail(String uEmail) {
+		// TODO Auto-generated method stub
+		return userDao.queryUserCountByEmail(uEmail);
+	}
+
 	
 
 
