@@ -26,7 +26,7 @@ function doAdd() {
 
   				<table class="table elegant-aero">
 	  			<tr class="demo-table-hover">
-	  				<td class="threed">详细信息</td>	  								
+	  				<td class="threed" style="text-align: center;">详细信息</td>	  								
 	  			</tr>
 	  			<tr>
 	  				<td style="font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;text-align:left;font-size:20px">
@@ -47,9 +47,7 @@ function doAdd() {
 .elegant-aero {
 margin-left: auto;
 margin-right: auto;
-width: 100%;
-
-background: #D2E9FF;
+width: 80%;
 padding: 20px 20px 20px 20px;
 font: 12px Arial, Helvetica, sans-serif;
 color: #666;
@@ -142,5 +140,10 @@ input[type=text] {
 .layui-card.layui-demo-maincard{
 	width:auto;
 	height:auto;
+}
+.recruitText{
+	font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
+	text-align: left;
+	font-size: 24px;
 }
 </style>
