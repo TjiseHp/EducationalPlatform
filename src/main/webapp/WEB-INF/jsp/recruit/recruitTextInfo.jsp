@@ -36,15 +36,12 @@ function doAdd() {
 	  			 </tr>
   				</table>
   		</form>
-  		<br><br>
-  		(。￣△￣)!~(。￣=￣)!~(。￣□￣)!~(。￣O￣)!~(。￣△￣)!~(。￣=￣)!~(。￣□￣)!~(。￣O￣)!~(。￣△￣)!~(。￣=￣)!~(。￣□￣)!~(。￣O￣)!~
-  		<br><br>
+
   		<div id="toolbar" class="btn-group">
 		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doAdd();" >
 			<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> 返回
 		</a>
 	</div>
-  		<div class="recruitpicture"></div>
   </div>
 <style>
 .elegant-aero {
@@ -145,12 +142,5 @@ input[type=text] {
 .layui-card.layui-demo-maincard{
 	width:auto;
 	height:auto;
-}
-.recruitpicture{
-	width:100%;
-	height:130px;
-	background:url("${pageContext.request.contextPath}/plug/img/t/trecruit.jpg") no-repeat;
-	vertical-align: middle;
-	background-position: center;
 }
 </style>
