@@ -293,7 +293,7 @@ input[type="text"]{
 	margin-top:6px;
 }
 select{
-	width:130px;
+	width:40%;
 	height:20px;
 	margin-top:4px;
 }
