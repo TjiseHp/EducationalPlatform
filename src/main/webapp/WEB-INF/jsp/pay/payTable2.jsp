@@ -162,7 +162,7 @@
 			window.location.href = "${pageContext.request.contextPath}/pay/insertPay";
 		} */
 
-		function doAdd() {
+		function doHref() {
 			window.location.href = "${pageContext.request.contextPath}/echart/adminLookPay";
 		}
 
@@ -177,7 +177,12 @@
             </div>
         </div>
     </div>
-
+    
+	<div  id="toolbar" class="btn-group">
+		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doHref();" >
+			<span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span>  统计图表
+		</a>
 	</div>
-	
+    
+</div>
 

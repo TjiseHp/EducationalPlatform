@@ -6,8 +6,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/plug/js/echarts.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/plug/js/echarts.min.js"></script>		
-<div><h1>积分充值记录</h1></div>
+<div>
+	<div  id="toolbar" class="btn-group">
+		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doHref();" >
+			<span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span>  返回
+		</a>
+	</div>
+	<div style = "text-align:center;font-size:50px">营收记录</div>	
+	
+	</div>
 
+<script type="text/javascript">
+		function doHref() {
+			var uId = ${loginUser.uId};
+			window.location.href = "${pageContext.request.contextPath}/pay/payTable2";
+		}
+</script>
 
 <!-- 直接复制，js可放置到页面最底部，也可在div内，修改复制后修改div id和js内输出id，使之对应 而后修改控制层-->
 <div id="main" style="width: 1200px; height: 400px;">
