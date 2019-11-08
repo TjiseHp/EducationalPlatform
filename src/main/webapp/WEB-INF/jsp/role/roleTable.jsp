@@ -71,6 +71,7 @@
 	function operateFormatter(value, row, index) {
 		return [
 				'<button class="btn btn-info btn-xs rightSize updateBtn" type="button"><i class="fa fa-paste"></i><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 修改</button>&nbsp;',
+				'<button class="btn btn-info btn-xs rightSize assignBtn" type="button"><i class="fa fa-paste"></i><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 权限</button>&nbsp;',
 				'<button class="btn btn-danger btn-xs rightSize deleteBtn" type="button"><i class="fa fa-envelope"></i><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 删除</button>' ]
 				.join('');
 	}
@@ -138,6 +139,10 @@
 
 			operateFormatter();
 			$("#table1").bootstrapTable('refresh');
+		},
+		
+		"click .assignBtn" : function(e, value, row, index) {
+			window.location.href = "${pageContext.request.contextPath}/role/assignTable?roNo="+ roNo;
 		},
 
 		"click .updateBtn" : function(e, value, row, index) {
