@@ -17,7 +17,7 @@
 	
 	<div class="row form-group" align="center">
 	  <div>
-      		<span><h2>（づ￣3￣）づ╭❤～支付成功ヽ(✿ﾟ▽ﾟ)ノ</h2></span>
+      		<span><h2>支付成功</h2></span>
       </div>
       <div>
       <img src ="${pageContext.request.contextPath}/plug/img/icon/Icon (9).png">

@@ -150,7 +150,10 @@ $(function(){
         		var resObj = JSON.parse(result);
         		console.info(resObj.result);
         		if (resObj.result) {
-    	        	window.location.href = "${pageContext.request.contextPath}/user/teacherReturn";
+        			layer.msg("ok", {time:2000, icon:6, shift:6}, function(){
+        			window.location.href = "${pageContext.request.contextPath}/user/teacherReturn";
+                    });
+    	        	
         		} else {
                     layer.msg("邮箱重复，请重新输入", {time:2000, icon:5, shift:6}, function(){
                     	

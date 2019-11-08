@@ -26,7 +26,7 @@ function doAdd() {
 
   				<table class="table elegant-aero">
 	  			<tr class="demo-table-hover">
-	  				<td class="threed">详细信息</td>	  								
+	  				<td class="threed" style="text-align: center;">详细信息</td>	  								
 	  			</tr>
 	  			<tr>
 	  				<td style="font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;text-align:left;font-size:20px">
@@ -36,23 +36,18 @@ function doAdd() {
 	  			 </tr>
   				</table>
   		</form>
-  		<br><br>
-  		(。￣△￣)!~(。￣=￣)!~(。￣□￣)!~(。￣O￣)!~(。￣△￣)!~(。￣=￣)!~(。￣□￣)!~(。￣O￣)!~(。￣△￣)!~(。￣=￣)!~(。￣□￣)!~(。￣O￣)!~
-  		<br><br>
+
   		<div id="toolbar" class="btn-group">
 		<a class="btn btn-success btn-default" role="button" href="javascript:;" onclick="doAdd();" >
 			<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> 返回
 		</a>
 	</div>
-  		<div class="recruitpicture"></div>
   </div>
 <style>
 .elegant-aero {
 margin-left: auto;
 margin-right: auto;
-width: 100%;
-
-background: #D2E9FF;
+width: 80%;
 padding: 20px 20px 20px 20px;
 font: 12px Arial, Helvetica, sans-serif;
 color: #666;
@@ -146,11 +141,9 @@ input[type=text] {
 	width:auto;
 	height:auto;
 }
-.recruitpicture{
-	width:100%;
-	height:130px;
-	background:url("${pageContext.request.contextPath}/plug/img/t/trecruit.jpg") no-repeat;
-	vertical-align: middle;
-	background-position: center;
+.recruitText{
+	font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
+	text-align: left;
+	font-size: 24px;
 }
 </style>

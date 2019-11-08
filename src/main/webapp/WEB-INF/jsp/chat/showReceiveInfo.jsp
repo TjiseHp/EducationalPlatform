@@ -12,25 +12,25 @@
 	    <br/>
 	    <br/>
 	<form>
-		<table style="width:80%">
+		<table width="100%">
 			<tr>
-				<td class="text-right"><strong>发件人:</strong></td>
-				<td class="text-left" style="color: #999;">${chat.user1.uName}&nbsp;${chat.user1.uEmail}
+				<td class="text-right" style="color: #999;font-size:10px; background-color: #E4F3FB	;"><strong>发件人：</strong></td>
+				<td class="text-left" style="color: #999;font-size:10px; background-color: #E4F3FB	;"><strong>${chat.user1.uName}&nbsp;<span style="color: #999;font-size:10px;">${chat.user1.uEmail}</span></strong>
 				</td>
 			</tr>
 			<tr>
-				<td class="text-right" ><strong>时间:</strong></td>
-				<td class="text-left" style="color: #999;"><fmt:formatDate value="${chat.chatDate}"
-						pattern="yyyy-MM-dd HH:mm:ss" /></td>
+				<td class="text-right" style="color: #999;font-size:10px; background-color: #E4F3FB	;"><strong>时间：</strong></td>
+				<td class="text-left" style="color: #999;font-size:10px; background-color: #E4F3FB	;"><strong><fmt:formatDate value="${chat.chatDate}"
+						pattern="yyyy-MM-dd HH:mm:ss" /></strong></td>
 			</tr>
 			<tr>
-				<td class="text-right"><strong>收件人:</strong></td>
-				<td class="text-left" style="color: #999;">${chat.user2.uName}&nbsp;${chat.user2.uEmail}
+				<td class="text-right" style="color: #999;font-size:10px; background-color: #E4F3FB	;"><strong>收件人：</strong></td>
+				<td class="text-left" style="color: #999;font-size:10px; background-color: #E4F3FB ;"><strong>${chat.user2.uName}&nbsp;<span style="color: #999;font-size:10px;">${chat.user2.uEmail}</span></strong>
 				</td>
 			</tr>
 			<tr>
-				<td class="text-right"><strong>内容:</strong></td>
-				<td style="color: #999;">${chat.chatText}</td>
+				<td class="text-right" style="color: #999;font-size:10px;"><strong>内容：</strong></td>
+				<td><strong style="font-size: 15px;">${chat.chatText}</strong></td>
 			</tr>
 			<tr>
 				<td colspan="2" class="text-center"><a
@@ -61,10 +61,10 @@
 </div>
 <style>
 tr{
-	height: 100px;
+	height: 60px;
 }
 strong{
-	font-size:20px;
+	font-size:10px;
 }
 .layui-card.layui-demo-maincard{
 	width:auto;
