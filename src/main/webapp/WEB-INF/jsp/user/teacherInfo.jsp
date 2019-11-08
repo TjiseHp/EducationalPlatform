@@ -49,7 +49,7 @@
                 <label class="control-label col-lg-3" for="name"><span class="spanstyle">状态：</span></label>
                 <div class="col-md-7">
                 				      
-                	
+                <!-- 
 				<c:if test="${user.check.cStatus=='未审核'}">
 					<form action="${pageContext.request.contextPath}/file/upload?uId=${loginUser.uId}" method="post" enctype="multipart/form-data" onsubmit="return doCheck()">
 						<input class="btn btn-default" type="file" id="file" name="file" width="120px" value="选择文件" accept="image/*">
@@ -58,6 +58,16 @@
 				</c:if>
 				<c:if test="${user.check.cStatus=='审核通过'}">
 				<label class="form-control" type="text" id="uSex" name="uSex"><span>${user.check.cStatus}</span></label>
+				</c:if>
+				 -->
+				<c:if test="${user.checkNum==1}">
+					<form action="${pageContext.request.contextPath}/file/upload?uId=${loginUser.uId}" method="post" enctype="multipart/form-data" onsubmit="return doCheck()">
+						<input class="btn btn-default" type="file" id="file" name="file" width="120px" value="选择文件" accept="image/*">
+						<input class="btn btn-info" type="submit" value="上传">
+					</form>
+				</c:if>
+				<c:if test="${user.checkNum==2}">
+				<label class="form-control" type="text" id="uSex" name="uSex"><span>审核通过</span></label>
 				</c:if>
 				
 				
